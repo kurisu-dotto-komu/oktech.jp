@@ -9,7 +9,7 @@ import EventCardImage from "./EventCardImage";
 
 type Variant = "compact" | "polaroid" | "big";
 
-function EventCard({
+export default function EventCard({
   event,
   variant = "compact",
   className = "",
@@ -58,23 +58,5 @@ function EventCard({
       <EventCardImage event={event} variant={variant} />
       <EventCardDescription event={event} variant={variant} />
     </AnimatedLink>
-  );
-}
-
-export default EventCard;
-
-export function EventCardList({ events }: { events: EventEnriched[] }) {
-  return (
-    <div className="flex flex-col gap-4">
-      {events.map((event, index) => (
-        <EventCard
-          key={event.id}
-          variant="compact"
-          event={event}
-          index={index}
-          count={events.length}
-        />
-      ))}
-    </div>
   );
 }

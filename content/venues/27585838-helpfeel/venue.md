@@ -8,7 +8,7 @@ coordinates:
 meetupId: 27585838
 hasPage: true
 cover: ./helpfeel-logo.svg
-website: https://helpfeel.com/
+url: https://helpfeel.com/
 gmaps: https://maps.app.goo.gl/qRx1gSfXBJkqGxur9
 ---
 

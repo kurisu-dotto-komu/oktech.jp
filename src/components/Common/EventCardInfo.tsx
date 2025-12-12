@@ -7,7 +7,6 @@ import type { EventEnriched } from "@/content";
 import { formatDate, formatDuration, formatTime, getEndTime } from "@/utils/formatDate";
 
 import EventStatusBadge from "./EventStatusBadge";
-import Link from "./Link";
 
 type Variant = "compact" | "polaroid" | "big";
 type InfoField = "countdown" | "date" | "time" | "venue";
@@ -70,7 +69,6 @@ export default function EventCardInfo({
   const showBadge = showCountdown && isCompact;
   const address = event.venue?.address;
   const noWrap = !fullAddress;
-  const linkToVenue = fullAddress && event.venue?.hasPage ? `/venue/${event.venue?.id}` : undefined;
   return (
     <div
       className={clsx(
@@ -103,15 +101,7 @@ export default function EventCardInfo({
       {showVenue && (
         <InfoItem Icon={LuBuilding2} {...{ noWrap, variant }}>
           <div className={clsx("flex", !isCompact ? "flex-col gap-1" : "gap-1")}>
-            <div>
-              {linkToVenue ? (
-                <Link className="text-link" href={linkToVenue}>
-                  {event.venue?.title}
-                </Link>
-              ) : (
-                <span>{event.venue?.title}</span>
-              )}
-            </div>
+            <span>{event.venue?.title}</span>
             {(fullAddress || isCompact) && address && <div>{address}</div>}
           </div>
         </InfoItem>

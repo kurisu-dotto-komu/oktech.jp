@@ -1,0 +1,72 @@
+---
+import EventCardList from "@/components/Common/EventCardList";
+import MarkdownContent from "@/components/Common/MarkdownContent.astro";
+import type { EventEnriched } from "@/content";
+import { getEvents } from "@/content";
+
+interface Props {
+  event: EventEnriched;
+}
+
+const { event } = Astro.props;
+
+if (!event.venue || !event.venueSlug) {
+  return;
+}
+
+const venue = event.venue;
+const venueSlug = event.venueSlug;
+
+if (!venue.cover) {
+  return;
+}
+
+const allEvents = await getEvents();
+const venueEvents = allEvents.filter((e) => e.venueSlug === venueSlug && e.id !== event.id);
+---
+
+<div class="flex flex-col gap-8 pt-8">
+  <h3 class="sub-title">About the Venue</h3>
+
+  <div class="border-base-200 rounded-box flex flex-col gap-3 border p-4 sm:p-6">
+    <div class="flex items-center gap-4">
+      <figure
+        class="bg-base-100 rounded-box flex h-16 w-16 flex-shrink-0 items-center justify-center overflow-hidden sm:h-20 sm:w-20"
+      >
+        <img
+          src={venue.cover.src}
+          alt={`${venue.title} cover`}
+          class="h-full w-full object-contain p-2"
+        />
+      </figure>
+      <div class="flex flex-col">
+        <h4 class="text-xl">{venue.title}</h4>
+        {
+          venue.url && (
+            <a
+              href={venue.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-base-content/70 text-sm hover:underline"
+            >
+              {new URL(venue.url).origin}
+            </a>
+          )
+        }
+      </div>
+    </div>
+
+    <div class="text-base-content/70 prose max-w-none">
+      <MarkdownContent markdown={`venues/${venueSlug}/venue.md`} class="prose max-w-none" />
+    </div>
+  </div>
+
+  {
+    venueEvents.length > 0 && (
+      <div class="flex flex-col gap-6">
+        <h4 class="text-2xl font-light">Other Events at this Venue</h4>
+        <EventCardList client:visible events={venueEvents} expandable />
+      </div>
+    )
+  }
+</div>

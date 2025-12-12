@@ -3,13 +3,11 @@ import {
   type CollectionEntry,
   type InferEntrySchema,
   defineCollection,
-  getCollection,
   getEntry,
   z,
 } from "astro:content";
 import path from "path";
 
-import { SHOW_DEV_ENTRIES } from "@/constants";
 import { memoize } from "@/utils/memoize";
 import { type ResponsiveImageData, getResponsiveImage } from "@/utils/responsiveImage";
 
@@ -104,12 +102,6 @@ function venuesSchema() {
     mapDarkImage: z.string().optional(),
   });
 }
-
-export const getVenues = memoize(async (): Promise<CollectionEntry<"venues">[]> => {
-  const venues = await getCollection("venues");
-  const relevant = SHOW_DEV_ENTRIES ? venues : venues.filter((venue) => !venue.data.devOnly);
-  return relevant.filter((venue) => venue.data.hasPage);
-});
 
 async function loadOptionalImage(
   imagePath: string | undefined,

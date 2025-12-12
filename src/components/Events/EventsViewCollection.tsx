@@ -1,4 +1,5 @@
-import EventCard, { EventCardList } from "@/components/Common/EventCard";
+import EventCard from "@/components/Common/EventCard";
+import EventCardList from "@/components/Common/EventCardList";
 import type { EventEnriched } from "@/content";
 import { groupEventsByYearAndUpcoming } from "@/utils/eventGrouping";
 

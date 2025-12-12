@@ -2,6 +2,7 @@
 import { getEvents, getEvent } from "@/content";
 import EventAttachments from "@/components/Event/EventAttachments";
 import EventGallery from "@/components/Event/EventGallery";
+import VenueSection from "@/components/Event/VenueSection.astro";
 import SidebarPageLayout from "@/layouts/SidebarPageLayout.astro";
 import MarkdownContent from "@/components/Common/MarkdownContent.astro";
 import EventImageBig from "@/components/Event/EventImageBig";
@@ -50,6 +51,7 @@ const isUpcoming = isEventUpcoming(event);
       <EventTags tags={event.data.topics} />
       <MarkdownContent markdown={`events/${eventSlug}/event.md`} />
     </div>
+    <VenueSection event={event} />
   </Fragment>
 
   <Fragment slot="after-content">

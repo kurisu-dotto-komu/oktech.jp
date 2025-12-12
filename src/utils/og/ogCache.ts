@@ -82,14 +82,12 @@ export class OGImageCache {
       const isEventsAlbumPage = cleanHref === "/events/album";
       const isEventPage =
         cleanHref.startsWith("/events/") && !isEventsListPage && !isEventsAlbumPage;
-      const isVenuePage = cleanHref.startsWith("/venue/");
 
       if (
         isEventsPage ||
         isEventsListPage ||
         isEventsAlbumPage ||
         isEventPage ||
-        isVenuePage ||
         (isHomePage && cleanHref !== "/")
       ) {
         // For non-home pages with handlers, append og.png to the path

@@ -11,8 +11,6 @@ const eventPages = allEntries.filter(
   (e) => e.href?.startsWith("/events/") && e.href !== "/events/list" && e.href !== "/events/album",
 );
 
-const venuePages = allEntries.filter((e) => e.href?.startsWith("/venue/"));
-
 // Get article pages
 const articlePages = allEntries.filter((e) => e.href?.startsWith("/articles/"));
 
@@ -20,7 +18,6 @@ const articlePages = allEntries.filter((e) => e.href?.startsWith("/articles/"));
 const otherMarkdownPages = allEntries.filter(
   (e) =>
     !e.href?.startsWith("/events/") &&
-    !e.href?.startsWith("/venue/") &&
     !e.href?.startsWith("/articles/") &&
     !e.href?.endsWith(".xml") &&
     !e.href?.endsWith(".ics") &&
@@ -46,9 +43,8 @@ const mainRoutes = [
   allEntries.find((e) => e.href === "/oktech-events.ics"),
 ].filter((entry): entry is Entry => entry !== undefined); // Type guard to ensure only Entry types
 
-// Sort events, venues, and articles alphabetically
+// Sort events and articles alphabetically
 eventPages.sort((a, b) => a.title.localeCompare(b.title));
-venuePages.sort((a, b) => a.title.localeCompare(b.title));
 articlePages.sort((a, b) => a.title.localeCompare(b.title));
 ---
 
@@ -73,9 +69,6 @@ articlePages.sort((a, b) => a.title.localeCompare(b.title));
 
       <!-- Events Section -->
       <SitemapSection title="Events" entries={eventPages} client:load />
-
-      <!-- Venues Section -->
-      <SitemapSection title="Venues" entries={venuePages} client:load />
     </div>
   </div>
 </PageLayout>

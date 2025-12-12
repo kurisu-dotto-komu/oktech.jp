@@ -1,7 +1,7 @@
 import { getCollection } from "astro:content";
 
 import { SEO_DATA } from "@/constants";
-import { getEvents, getVenues } from "@/content";
+import { getEvents } from "@/content";
 
 import { getSEO } from "./seo";
 import { urls } from "./urls";
@@ -104,24 +104,6 @@ export async function buildSitemapEntries(): Promise<Entry[]> {
     }),
   );
   entries.push(...eventPages);
-
-  // Dynamic venue pages
-  const venues = await getVenues();
-  const venuePages: Entry[] = await Promise.all(
-    venues.map(async (v) => {
-      const href = `/venue/${v.id}`;
-      const seo = await getSEO(href);
-      return {
-        href,
-        title: v.data.title,
-        fullUrl: urls.toAbsolute(href),
-        description: seo.description,
-        keywords: seo.keywords,
-        ogImage: seo.ogImage,
-      };
-    }),
-  );
-  entries.push(...venuePages);
 
   return entries;
 }
