@@ -14,7 +14,9 @@ Create a feature that allows users to edit event markdown content directly from 
 
 ## Overview of Solutions
 
-After researching GitHub's API capabilities and authentication constraints, we've identified three viable approaches:
+After researching GitHub's API capabilities and authentication constraints, we've identified five viable approaches:
+
+### SSG-Only Solutions (No External Infrastructure)
 
 1. **[Copy-to-Clipboard](#option-1-copy-to-clipboard)** - Simplest approach with zero infrastructure requirements. User manually pastes content into GitHub's web editor.
 
@@ -23,6 +25,12 @@ After researching GitHub's API capabilities and authentication constraints, we'v
 3. **[GitHub Actions Proxy](#option-3-github-actions-proxy)** - Uses GitHub Actions as a serverless backend, with two variants:
    - [Issue Comment Trigger](#3a-issue-comment-trigger) - Zero authentication via public issue creation
    - [Workflow Dispatch](#3b-workflow-dispatch) - Direct workflow trigger with user token
+
+### External Infrastructure Solutions
+
+4. **[Cloudflare Workers for OAuth](#option-4-cloudflare-workers-for-oauth)** - Minimal serverless function to handle OAuth token exchange securely.
+
+5. **[Dedicated App Deployment](#option-5-dedicated-app-deployment)** - Full-featured backend (e.g., Netlify/Vercel) to manage authentication and GitHub API interactions.
 
 Each approach has different trade-offs between simplicity, user experience, and infrastructure requirements.
 
@@ -327,9 +335,178 @@ jobs:
 - ❌ Token management UX friction
 - ❌ Token stored in localStorage
 
+### Option 4: Cloudflare Workers for OAuth
+
+Use Cloudflare Workers (or similar edge functions) to handle the OAuth flow securely while keeping the main site static.
+
+**How it works:**
+1. User clicks "Login with GitHub" in the app
+2. App redirects to GitHub OAuth authorization page
+3. GitHub redirects back to Cloudflare Worker endpoint with authorization code
+4. Worker exchanges code for access token using client secret (stored in environment variables)
+5. Worker returns token to client (via secure cookie or response)
+6. Client uses token to make GitHub API calls directly (create branch, commit, PR)
+
+**Implementation:**
+```typescript
+// Cloudflare Worker
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const url = new URL(request.url);
+
+    // Handle OAuth callback
+    if (url.pathname === '/api/github/callback') {
+      const code = url.searchParams.get('code');
+
+      // Exchange code for token
+      const tokenResponse = await fetch('https://github.com/login/oauth/access_token', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          client_id: env.GITHUB_CLIENT_ID,
+          client_secret: env.GITHUB_CLIENT_SECRET,
+          code,
+        }),
+      });
+
+      const { access_token } = await tokenResponse.json();
+
+      // Return token to client (or set as secure cookie)
+      return new Response(JSON.stringify({ token: access_token }), {
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    return new Response('Not Found', { status: 404 });
+  },
+};
+```
+
+**Pros:**
+- ✅ Proper OAuth flow with secure client secret storage
+- ✅ Seamless user experience (standard OAuth login)
+- ✅ No token management required from user
+- ✅ Minimal infrastructure (single serverless function)
+- ✅ Free tier available on Cloudflare Workers
+
+**Cons:**
+- ❌ Requires external infrastructure (violates SSG-only constraint)
+- ❌ Must manage OAuth app registration
+- ❌ Requires environment variable configuration
+- ❌ Additional complexity in deployment
+
+### Option 5: Dedicated App Deployment
+
+Deploy a full backend application (e.g., on Netlify, Vercel, Railway) to handle authentication and GitHub API interactions.
+
+**How it works:**
+1. Deploy a backend API (Node.js/Express, Python/Flask, etc.) alongside or separately from the static site
+2. Backend handles OAuth flow, stores session data, and proxies GitHub API requests
+3. Frontend makes requests to backend API instead of directly to GitHub
+4. Backend manages tokens, permissions, and rate limiting
+
+**Architecture:**
+```
+┌─────────────┐         ┌──────────────┐         ┌────────────┐
+│  Static     │         │   Backend    │         │   GitHub   │
+│  Frontend   │◄───────►│     API      │◄───────►│    API     │
+│ (GH Pages)  │  HTTPS  │  (Netlify)   │  HTTPS  │            │
+└─────────────┘         └──────────────┘         └────────────┘
+                              │
+                              ▼
+                        ┌──────────────┐
+                        │   Database   │
+                        │  (Sessions)  │
+                        └──────────────┘
+```
+
+**Example Backend (Express):**
+```typescript
+import express from 'express';
+import session from 'express-session';
+import { Octokit } from '@octokit/rest';
+
+const app = express();
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+}));
+
+// OAuth login
+app.get('/auth/github', (req, res) => {
+  const redirectUrl = `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&scope=repo`;
+  res.redirect(redirectUrl);
+});
+
+// OAuth callback
+app.get('/auth/github/callback', async (req, res) => {
+  const { code } = req.query;
+
+  // Exchange for token
+  const tokenResponse = await fetch('https://github.com/login/oauth/access_token', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: JSON.stringify({
+      client_id: process.env.GITHUB_CLIENT_ID,
+      client_secret: process.env.GITHUB_CLIENT_SECRET,
+      code,
+    }),
+  });
+
+  const { access_token } = await tokenResponse.json();
+  req.session.githubToken = access_token;
+
+  res.redirect('/');
+});
+
+// API endpoint to create PR
+app.post('/api/events/:slug/edit', async (req, res) => {
+  const { slug } = req.params;
+  const { content } = req.body;
+  const token = req.session.githubToken;
+
+  if (!token) {
+    return res.status(401).json({ error: 'Not authenticated' });
+  }
+
+  const octokit = new Octokit({ auth: token });
+
+  // Create branch, commit, and PR
+  const branch = `edit-event-${slug}-${Date.now()}`;
+  // ... (similar to Option 2 implementation)
+
+  res.json({ prUrl: pr.data.html_url });
+});
+
+app.listen(3000);
+```
+
+**Pros:**
+- ✅ Most professional and scalable solution
+- ✅ Full control over authentication flow and security
+- ✅ Can add features like session management, rate limiting, caching
+- ✅ Better error handling and logging
+- ✅ Can integrate with other services (database, analytics, etc.)
+- ✅ Standard OAuth flow users are familiar with
+
+**Cons:**
+- ❌ Requires dedicated backend infrastructure
+- ❌ Most complex to set up and maintain
+- ❌ May incur hosting costs beyond free tiers
+- ❌ Requires more security considerations (session management, CORS, etc.)
+- ❌ Adds latency compared to direct client-side calls
+- ❌ Completely abandons SSG-only architecture
+
 ## Conclusion
 
-Three distinct approaches are available, each with different trade-offs:
+Five distinct approaches are available, ranging from pure static solutions to full backend implementations:
+
+### SSG-Only Solutions
 
 **Copy-to-Clipboard** offers the lowest barrier to entry - no setup, no authentication, no infrastructure. However, it requires manual user action and provides the least seamless experience.
 
@@ -339,7 +516,15 @@ Three distinct approaches are available, each with different trade-offs:
 - The **Issue variant** requires zero authentication and works for anonymous users, at the cost of using issues unconventionally
 - The **Workflow Dispatch variant** provides cleaner UX with narrower token permissions than direct API access
 
-All approaches successfully maintain the SSG-only architecture without requiring external infrastructure like Cloudflare Workers or serverless functions. The choice depends on whether the priority is simplicity, automation, or user experience.
+These three options successfully maintain the SSG-only architecture without requiring external infrastructure.
+
+### External Infrastructure Solutions
+
+**Cloudflare Workers** provides a minimal serverless approach for handling OAuth securely. Adds one edge function while keeping the main site static. Strikes a balance between infrastructure simplicity and proper authentication flow.
+
+**Dedicated App Deployment** is the most robust and professional solution, offering full control over authentication, security, and features. However, it requires the most infrastructure and completely abandons the SSG-only architecture.
+
+The choice depends on whether the priority is maintaining a pure static site (Options 1-3), adding minimal infrastructure for better UX (Option 4), or building a full-featured application (Option 5).
 
 ## Implementation Checklist
 
