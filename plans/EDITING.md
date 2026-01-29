@@ -12,31 +12,53 @@ Create a feature that allows users to edit event markdown content directly from 
 - **Preview mode**: Live preview of rendered markdown
 - **PR creation**: Submit changes as a pull request to the repository
 
-## Research Findings
+## Overview of Solutions
 
-### What Doesn't Work
+After researching GitHub's API capabilities and authentication constraints, we've identified three viable approaches:
 
-**GitHub URL Pre-filling for Edits**
-- Initial idea: Use URL format like `https://github.com/OWNER/REPO/edit/BRANCH/path/to/file.txt?value=CONTENT`
-- **Result**: GitHub does **not** support pre-filling content via URL parameters when editing existing files
-- The `value` parameter only works for creating **new** files via `/new/` endpoint
-- Reference: [oktechjp/card](https://github.com/oktechjp/card) repo uses copy-to-clipboard workaround
+1. **[Copy-to-Clipboard](#option-1-copy-to-clipboard)** - Simplest approach with zero infrastructure requirements. User manually pastes content into GitHub's web editor.
 
-**Pure OAuth/API Without Backend**
-- GitHub OAuth requires `client_secret` for token exchange (cannot be exposed client-side)
-- Even with new PKCE support (added July 2025), client secret is still required
-- Device Flow doesn't require secret, but GitHub blocks direct browser calls (CORS restrictions)
-- **Conclusion**: Cannot achieve GitHub API authentication with purely static GitHub Pages deployment
+2. **[User-Provided Personal Access Token](#option-2-user-provided-personal-access-token)** - Fully automated workflow where users provide their own GitHub token for direct API access.
+
+3. **[GitHub Actions Proxy](#option-3-github-actions-proxy)** - Uses GitHub Actions as a serverless backend, with two variants:
+   - [Issue Comment Trigger](#3a-issue-comment-trigger) - Zero authentication via public issue creation
+   - [Workflow Dispatch](#3b-workflow-dispatch) - Direct workflow trigger with user token
+
+Each approach has different trade-offs between simplicity, user experience, and infrastructure requirements.
+
+## What Doesn't Work
+
+### GitHub URL Pre-filling for Edits
+
+**Initial idea:** Use URL format like `https://github.com/OWNER/REPO/edit/BRANCH/path/to/file.txt?value=CONTENT` to pre-fill edited content.
+
+**Result:** GitHub does **not** support pre-filling content via URL parameters when editing existing files. The `value` parameter only works for creating **new** files via the `/new/` endpoint.
+
+**Reference:** The [oktechjp/card](https://github.com/oktechjp/card) repository encountered this same limitation and uses a copy-to-clipboard workaround with multiple confirmation dialogs to guide users through the manual paste process.
+
+### Pure OAuth/API Without Backend
+
+**Initial idea:** Use GitHub OAuth or Device Flow to authenticate directly from the client-side static site.
+
+**Challenges discovered:**
+- GitHub OAuth requires `client_secret` for token exchange, which cannot be safely exposed in client-side code
+- Even with new PKCE support (added July 2025), the client secret is still required for the token exchange step
+- Device Flow doesn't require a secret, but GitHub blocks direct browser calls due to CORS restrictions
+- Both approaches require some form of server/proxy to handle the authentication flow securely
+
+**Conclusion:** Cannot achieve GitHub API authentication with a purely static GitHub Pages deployment. Any OAuth-based solution requires at least minimal server infrastructure (e.g., Cloudflare Workers, Netlify Functions) which violates our SSG-only constraint.
 
 ## Viable Solutions
 
-### Option 1: Copy-to-Clipboard (Simplest)
+### Option 1: Copy-to-Clipboard
+
+The simplest approach with zero infrastructure requirements.
 
 **How it works:**
 1. User edits content in the web app
-2. Clicks "Create PR" → content copied to clipboard
-3. Opens GitHub edit URL
-4. User manually pastes content and submits PR
+2. Clicks "Create PR" → content is copied to clipboard
+3. Browser opens GitHub edit URL in new tab
+4. User manually pastes content and submits PR through GitHub's interface
 
 **Implementation:**
 ```typescript
@@ -51,20 +73,25 @@ const onClick = async () => {
 ```
 
 **Pros:**
-- ✅ Zero infrastructure
+- ✅ Zero infrastructure required
 - ✅ No authentication needed
-- ✅ Simple implementation
+- ✅ Simple implementation (~10 lines of code)
+- ✅ Works immediately without setup
 
 **Cons:**
-- ❌ Manual paste step
+- ❌ Manual paste step required
 - ❌ Not seamless UX
+- ❌ User must have GitHub account and be logged in
 
 ### Option 2: User-Provided Personal Access Token
 
+Fully automated workflow where users provide their own GitHub token.
+
 **How it works:**
-1. User creates fine-grained PAT with `contents:write` scope for repository
-2. Pastes token into app (stored in localStorage)
-3. App uses GitHub API directly to create branch, commit, and PR
+1. User creates a fine-grained Personal Access Token with `contents:write` scope for the repository
+2. User pastes token into the app (stored in localStorage)
+3. App uses GitHub API directly to create branch, commit changes, and open PR
+4. User receives PR URL immediately
 
 **Implementation:**
 ```typescript
@@ -104,28 +131,33 @@ const createPR = async (token: string, slug: string, content: string) => {
 ```
 
 **Pros:**
-- ✅ Fully automated workflow
-- ✅ No external infrastructure
-- ✅ User controls permissions
+- ✅ Fully automated workflow (one click)
+- ✅ No external infrastructure needed
+- ✅ User maintains full control over permissions via token scopes
+- ✅ Can revoke token anytime
 
 **Cons:**
-- ❌ Requires user to create PAT
-- ❌ Token management UX complexity
+- ❌ Requires user to create and manage PAT
+- ❌ Token management UX adds friction
+- ❌ Security concerns if token is compromised (though scoped to single repo)
+- ❌ Token stored in localStorage (cleared if user clears browser data)
 
-### Option 3: GitHub Actions Proxy (Recommended ⭐)
+### Option 3: GitHub Actions Proxy
 
-Using GitHub Actions as a serverless backend - three approaches:
+Uses GitHub Actions as a serverless backend - two implementation variants.
 
-#### 3a. Issue Comment Trigger (Zero Auth!)
+#### 3a. Issue Comment Trigger
+
+Uses GitHub's public issue system as an API endpoint - requires zero authentication.
 
 **How it works:**
-1. User edits content in app
-2. Clicks "Create PR" → opens GitHub issue creation with pre-filled body
-3. Issue body contains special command: `/edit-event slug:event-123` + content
-4. User submits issue (no auth needed for public repos!)
+1. User edits content in the app
+2. Clicks "Create PR" → opens GitHub issue creation page with pre-filled body
+3. Issue body contains special command format: `/edit-event slug:event-123` followed by markdown content
+4. User submits the issue (no auth needed for public repos!)
 5. GitHub Action triggers on `issues.opened` event
-6. Workflow parses issue, creates branch, commits, opens PR
-7. Bot comments PR link on issue and closes it
+6. Workflow parses issue body, creates branch, commits changes, opens PR
+7. Bot comments PR link on the issue and automatically closes it
 
 **Workflow example:**
 ```yaml
@@ -190,22 +222,28 @@ jobs:
 ```
 
 **Pros:**
-- ✅ No authentication needed
-- ✅ 100% GitHub infrastructure
-- ✅ Audit trail in issues
-- ✅ Works with public repos
+- ✅ Zero authentication required
+- ✅ 100% GitHub infrastructure (aligns with SSG-only goal)
+- ✅ Complete audit trail in issues
+- ✅ Works for anonymous users on public repos
+- ✅ GitHub handles all security and rate limiting
 
 **Cons:**
-- ❌ Extra step (create issue)
-- ❌ Slightly unconventional UX
-- ❌ Creates issues (though auto-closed)
+- ❌ Extra step (user must submit issue)
+- ❌ Unconventional UX (using issues as API)
+- ❌ Creates issues (though immediately auto-closed)
+- ❌ Issue history may become cluttered over time
 
-#### 3b. Workflow Dispatch (User Token Required)
+#### 3b. Workflow Dispatch
+
+Direct workflow trigger using user-provided token with narrower scope.
 
 **How it works:**
-1. User provides PAT with `actions:write` scope
-2. App triggers workflow via API with content as input
-3. Workflow creates PR automatically
+1. User creates PAT with only `actions:write` scope (narrower than Option 2)
+2. User pastes token into app (stored in localStorage)
+3. App triggers workflow via API, passing content as base64-encoded input
+4. Workflow creates branch, commits, and opens PR automatically
+5. User receives PR URL
 
 **Client-side trigger:**
 ```typescript
@@ -279,23 +317,29 @@ jobs:
 ```
 
 **Pros:**
-- ✅ Clean, direct workflow
-- ✅ No issues cluttered
-- ✅ User controls token
+- ✅ Clean, direct workflow (one API call)
+- ✅ No issues created or cluttered
+- ✅ Narrower token scope than Option 2 (`actions:write` vs `contents:write`)
+- ✅ User maintains control over token
 
 **Cons:**
-- ❌ Requires PAT creation
-- ❌ Token management
+- ❌ Still requires PAT creation and management
+- ❌ Token management UX friction
+- ❌ Token stored in localStorage
 
-## Recommendation
+## Conclusion
 
-**Start with Option 3a (Issue Comment Trigger)** because:
-1. Zero authentication friction
-2. Uses only GitHub infrastructure (aligns with SSG-only goal)
-3. Creative but functional
-4. Can always upgrade to other options later
+Three distinct approaches are available, each with different trade-offs:
 
-**Fallback to Option 1 (Copy-to-Clipboard)** if Issue approach feels too hacky.
+**Copy-to-Clipboard** offers the lowest barrier to entry - no setup, no authentication, no infrastructure. However, it requires manual user action and provides the least seamless experience.
+
+**User-Provided PAT** enables full automation with a single click, but adds friction through token creation and management. Users must understand GitHub's token system and handle secure storage.
+
+**GitHub Actions Proxy** represents a middle ground using GitHub's own infrastructure:
+- The **Issue variant** requires zero authentication and works for anonymous users, at the cost of using issues unconventionally
+- The **Workflow Dispatch variant** provides cleaner UX with narrower token permissions than direct API access
+
+All approaches successfully maintain the SSG-only architecture without requiring external infrastructure like Cloudflare Workers or serverless functions. The choice depends on whether the priority is simplicity, automation, or user experience.
 
 ## Implementation Checklist
 
@@ -303,8 +347,9 @@ jobs:
 - [ ] Build markdown editor component with preview
 - [ ] Implement localStorage persistence
 - [ ] Add version history UI
-- [ ] Create GitHub Actions workflow
-- [ ] Build "Create PR" flow with issue template
+- [ ] Choose and implement PR creation approach
+- [ ] Create GitHub Actions workflow (if using Option 3)
+- [ ] Build "Create PR" flow UI
 - [ ] Add user documentation
 - [ ] Test end-to-end flow
 
