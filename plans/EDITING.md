@@ -14,7 +14,7 @@ Create a feature that allows users to edit event markdown content directly from 
 
 ## Overview of Solutions
 
-After researching GitHub's API capabilities and authentication constraints, we've identified five viable approaches:
+After researching GitHub's API capabilities and authentication constraints, we've identified six viable approaches:
 
 ### SSG-Only Solutions (No External Infrastructure)
 
@@ -31,6 +31,10 @@ After researching GitHub's API capabilities and authentication constraints, we'v
 4. **[Cloudflare Workers for OAuth](#option-4-cloudflare-workers-for-oauth)** - Minimal serverless function to handle OAuth token exchange securely.
 
 5. **[Dedicated App Deployment](#option-5-dedicated-app-deployment)** - Full-featured backend (e.g., Netlify/Vercel) to manage authentication and GitHub API interactions.
+
+### Off-the-Shelf CMS Solutions
+
+6. **[Sveltia CMS](#option-6-sveltia-cms)** - Drop-in git-based headless CMS with modern UI, configurable schemas, and built-in preview.
 
 Each approach has different trade-offs between simplicity, user experience, and infrastructure requirements.
 
@@ -502,9 +506,107 @@ app.listen(3000);
 - ❌ Adds latency compared to direct client-side calls
 - ❌ Completely abandons SSG-only architecture
 
+### Option 6: Sveltia CMS
+
+Use an existing git-based headless CMS instead of building a custom editing solution.
+
+**What is Sveltia CMS?**
+
+[Sveltia CMS](https://github.com/sveltia/sveltia-cms) is a modern, open-source git-based CMS built with Svelte. It's a drop-in replacement for Decap CMS (formerly Netlify CMS) with a significantly improved UI, better performance, and built-in features like i18n support. Currently in beta with v1.0 expected early 2026.
+
+**How it works:**
+1. Add Sveltia CMS to the site (single HTML file + config)
+2. Define content schema in `admin/config.yml` (collections, fields, widgets)
+3. Users access `/admin` to log in via GitHub OAuth or PAT
+4. CMS provides rich editor UI with live preview
+5. Saves commit directly to GitHub via GraphQL API
+6. PRs can be created via editorial workflow feature
+
+**Configuration example:**
+```yaml
+# admin/config.yml
+backend:
+  name: github
+  repo: oktechjp/oktech.jp
+  branch: main
+  # For OAuth (requires small auth backend):
+  # base_url: https://your-auth-worker.workers.dev
+  # Or users can authenticate with PAT directly
+
+media_folder: static/images
+public_folder: /images
+
+collections:
+  - name: events
+    label: Events
+    folder: events
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Date, widget: datetime }
+      - { name: venue, label: Venue, widget: string }
+      - { name: body, label: Content, widget: markdown }
+```
+
+**Authentication options:**
+- **PAT (simplest)**: Users enter their GitHub Personal Access Token directly - no backend needed
+- **OAuth via Cloudflare Worker**: Use [sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth) for proper OAuth flow
+- **OAuth via GitHub (coming soon)**: GitHub is adding client-side PKCE support, which will eliminate the need for any auth backend
+
+**Pros:**
+- ✅ Polished, production-ready editor UI out of the box
+- ✅ Configurable schema via YAML (define exactly what fields can be edited)
+- ✅ Built-in live preview
+- ✅ Editorial workflow support (draft → review → publish)
+- ✅ Mobile-friendly interface
+- ✅ Excellent i18n support (useful for JP/EN content)
+- ✅ Media management with drag-and-drop uploads
+- ✅ Stock photo integration (Unsplash, Pexels, Pixabay)
+- ✅ Drop-in Decap CMS config compatibility
+- ✅ Fast - uses GitHub GraphQL API to batch requests
+- ✅ Open source (MIT license)
+- ✅ Can work with PAT-only auth (no backend required)
+
+**Cons:**
+- ❌ Requires OAuth backend for non-technical users (though PAT works without)
+- ❌ Still in beta (v1.0 expected early 2026)
+- ❌ Separate `/admin` interface rather than inline editing on event pages
+- ❌ Not a custom solution - may not fit exact UX requirements
+- ❌ Learning curve for CMS configuration
+
+**Integration with Discord bot / external tools:**
+
+Sveltia CMS is purely client-side - it has no API. However, since it's git-based, external tools like a Discord bot can work alongside it by committing directly to GitHub:
+
+```
+Discord Bot → GitHub API → commits to repo
+                ↓
+Sveltia CMS (browser) → reads same repo via GitHub API
+```
+
+External tools would:
+1. Use GitHub API directly (e.g., via Octokit)
+2. Commit files that match the schema defined in `config.yml`
+3. Sveltia users would see those files appear in the CMS
+
+This is actually a strength - the "API" is just Git, so any tool that can commit to GitHub integrates automatically.
+
+**Comparison with custom solutions:**
+
+| Aspect | Custom Solution (Options 1-5) | Sveltia CMS |
+|--------|------------------------------|-------------|
+| Development time | Days to weeks | Hours |
+| UI polish | Must build from scratch | Production-ready |
+| Maintenance | Ongoing | Community-maintained |
+| Customization | Full control | Limited to config options |
+| UX integration | Inline on event pages | Separate `/admin` panel |
+| Schema validation | Must implement | Built-in |
+| Preview | Must implement | Built-in |
+
 ## Conclusion
 
-Five distinct approaches are available, ranging from pure static solutions to full backend implementations:
+Six distinct approaches are available, ranging from pure static solutions to off-the-shelf CMS platforms:
 
 ### SSG-Only Solutions
 
@@ -524,7 +626,11 @@ These three options successfully maintain the SSG-only architecture without requ
 
 **Dedicated App Deployment** is the most robust and professional solution, offering full control over authentication, security, and features. However, it requires the most infrastructure and completely abandons the SSG-only architecture.
 
-The choice depends on whether the priority is maintaining a pure static site (Options 1-3), adding minimal infrastructure for better UX (Option 4), or building a full-featured application (Option 5).
+### Off-the-Shelf CMS
+
+**Sveltia CMS** offers a pragmatic alternative to building custom editing UI. It provides a polished, production-ready editor with configurable schemas, live preview, and editorial workflow out of the box. Can work with PAT-only auth (no backend) or OAuth via a small Cloudflare Worker. The trade-off is less customization and a separate `/admin` interface rather than inline editing. Best suited if the goal is "get a working CMS quickly" rather than "build a bespoke editing experience."
+
+The choice depends on whether the priority is maintaining a pure static site (Options 1-3), adding minimal infrastructure for better UX (Option 4), building a full-featured custom application (Option 5), or leveraging an existing CMS solution (Option 6).
 
 ## Implementation Checklist
 
@@ -558,3 +664,6 @@ The event editing feature would complement these existing workflows by making it
 - [oktechjp/card repository](https://github.com/oktechjp/card) - Example using copy-to-clipboard approach
 - [Create Pull Request Action](https://github.com/marketplace/actions/create-pull-request)
 - [Slash Command Dispatch](https://github.com/marketplace/actions/slash-command-dispatch)
+- [Sveltia CMS](https://github.com/sveltia/sveltia-cms) - Git-based headless CMS, Decap/Netlify CMS successor
+- [Sveltia CMS Documentation](https://sveltiacms.app/en/docs/start)
+- [sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth) - Cloudflare Workers OAuth for Sveltia CMS
