@@ -14,6 +14,9 @@ export const cmsRepo = (): string => import.meta.env.PUBLIC_CMS_REPO || DEFAULT_
 export function buildBackend(): CmsBackend {
   const env = import.meta.env;
 
+  // Browser-local sandbox (OPFS, no GitHub) for UI tests: PUBLIC_CMS_BACKEND=test-repo
+  if (env.PUBLIC_CMS_BACKEND === "test-repo") return { name: "test-repo" };
+
   return {
     name: "github",
     repo: cmsRepo(),

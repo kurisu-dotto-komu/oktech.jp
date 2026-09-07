@@ -4,6 +4,8 @@
 interface ImportMetaEnv {
   /** Git repository backing the CMS, as `owner/repo`. */
   readonly PUBLIC_CMS_REPO?: string;
+  /** `test-repo` runs the CMS against a browser-local sandbox (UI tests only). */
+  readonly PUBLIC_CMS_BACKEND?: string;
   /** Git branch the CMS commits to. */
   readonly PUBLIC_CMS_BRANCH?: string;
   /** Origin of the sveltia-cms-auth OAuth worker. */
