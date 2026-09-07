@@ -11,7 +11,8 @@ import { CMS_FIXTURE_SLUGS } from "../../helpers/url";
 const SHARED_COVER =
   "/content/media/events/207109452-presentations-discussions-and-connections/506739.webp";
 
-const FIXTURE_MEETUP_ID = 999999900;
+/** Meetup event id written into the fixture event's `channels` list. */
+const FIXTURE_MEETUP_REF = "999999900";
 
 export type CmsFixture = {
   label: string;
@@ -40,11 +41,11 @@ const eventFixture: CmsFixture = {
     dateTime: "2020-01-02 19:00",
     duration: 120,
     cover: SHARED_COVER,
-    venue: FIXTURE_MEETUP_ID,
+    venue: CMS_FIXTURE_SLUGS.VENUE,
     space: "Fixture Room",
     howToFindUs: "Follow the fixture signs to the round-trip test room.",
     topics: ["Testing"],
-    links: { website: "https://example.com/cms-fixture-event" },
+    channels: [{ type: "meetup", ref: FIXTURE_MEETUP_REF }],
     attachments: [
       {
         icon: "slides",
@@ -66,15 +67,13 @@ const venueFixture: CmsFixture = {
   title: "CMS Fixture Venue",
   frontmatter: {
     title: "CMS Fixture Venue",
-    meetupId: FIXTURE_MEETUP_ID,
     city: "osaka",
-    country: "Japan",
     address: "1-1-1 Fixture, Kita-ku, Osaka",
     state: "Osaka",
     space: "1F",
     url: "https://example.com/cms-fixture-venue",
     gmaps: "https://maps.app.goo.gl/cms-fixture-venue",
-    coordinates: { lat: 34.7025, lng: 135.4959 },
+    location: '{"type":"Point","coordinates":[135.4959,34.7025]}',
     description: "Temporary venue written by the CMS CRUD round-trip test.",
     hasPage: true,
     devOnly: false,
