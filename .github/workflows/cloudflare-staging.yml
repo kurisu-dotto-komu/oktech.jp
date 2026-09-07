@@ -4,6 +4,7 @@ on:
   push:
     branches: ["sveltia-cms"]
   pull_request:
+    types: [opened, synchronize, reopened, closed]
   workflow_dispatch:
 
 permissions:
@@ -27,6 +28,7 @@ env:
 
 jobs:
   deploy:
+    if: github.event.action != 'closed'
     name: ${{ github.event_name == 'pull_request' && 'Preview' || 'Deploy' }}
     runs-on: ubuntu-latest
     steps:
@@ -69,16 +71,20 @@ jobs:
           path: node_modules/.astro
           key: ${{ steps.astro-cache.outputs.cache-primary-key }}
 
-      - name: Upload preview version
+      # Each PR gets its own Worker + hostname; the close job below removes it
+      - name: Deploy preview
         if: github.event_name == 'pull_request'
         id: preview
+        env:
+          PR: ${{ github.event.pull_request.number }}
         run: |
-          npx wrangler versions upload --message "PR #${{ github.event.pull_request.number }} ${{ github.sha }}" | tee upload.log
-          echo "url=$(grep -oE 'https://[a-z0-9-]+\.[a-z0-9-]+\.workers\.dev' upload.log | head -1)" >> "$GITHUB_OUTPUT"
+          host="pr-$PR.preview.$STAGING_HOST"
+          npx wrangler deploy --name "oktech-pr-$PR" --domain "$host"
+          echo "url=https://$host" >> "$GITHUB_OUTPUT"
 
       # The commit status is what Sveltia CMS reads to offer a "View Preview" link in the editor
       - name: Publish preview URL
-        if: github.event_name == 'pull_request' && steps.preview.outputs.url != ''
+        if: github.event_name == 'pull_request'
         uses: actions/github-script@v8
         with:
           script: |
@@ -104,3 +110,10 @@ jobs:
       - name: Deploy to ${{ vars.STAGING_HOST }}
         if: github.event_name != 'pull_request'
         run: npx wrangler deploy --domain "$STAGING_HOST"
+
+  cleanup:
+    if: github.event.action == 'closed'
+    name: Remove preview
+    runs-on: ubuntu-latest
+    steps:
+      - run: npx --yes wrangler@4 delete --name "oktech-pr-${{ github.event.pull_request.number }}" --force
