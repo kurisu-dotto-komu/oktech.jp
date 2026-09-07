@@ -1,7 +1,13 @@
 import Link from "@/components/Common/Link";
 import { MENU } from "@/constants";
+import { CMS_PATH } from "@/utils/cms";
 
-export default function FooterMinorLinks() {
+interface FooterMinorLinksProps {
+  /** Deep link to edit the current page in the CMS; falls back to the general editor. */
+  cmsHref?: string;
+}
+
+export default function FooterMinorLinks({ cmsHref }: FooterMinorLinksProps) {
   const minorItems = MENU.filter((item) => item.footerMinor === true);
 
   return (
@@ -13,11 +19,13 @@ export default function FooterMinorLinks() {
           return <Component key={item.href} label={item.label} href={item.href} icon={item.icon} />;
         }
 
+        const href = item.href === CMS_PATH && cmsHref ? cmsHref : item.href;
+
         // Default link without icon
         return (
           <Link
             key={item.href}
-            href={item.href}
+            href={href}
             className="link link-hover"
             target={item.target}
             rel={item.target === "_blank" ? "noopener noreferrer" : undefined}

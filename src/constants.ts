@@ -8,9 +8,12 @@ import {
   LuHouse,
   LuInfo,
   LuMap,
+  LuPencil,
   LuShoppingBag,
   LuUserPlus,
 } from "react-icons/lu";
+
+import { CMS_PATH } from "@/utils/cms";
 
 // Development mode flag - automatically detected based on environment
 export const DEV_MODE = process.env.NODE_ENV === "development";
@@ -97,6 +100,12 @@ export const MENU: {
     href: "/sitemap",
     footerMinor: true,
     icon: LuMap,
+  },
+  {
+    label: "CMS",
+    href: CMS_PATH,
+    footerMinor: true,
+    icon: LuPencil,
   },
   {
     label: "Things Store",

@@ -3,6 +3,7 @@ import { getEvents, getEvent } from "@/content";
 import EventAttachments from "@/components/Event/EventAttachments";
 import EventGallery from "@/components/Event/EventGallery";
 import SidebarPageLayout from "@/layouts/SidebarPageLayout.astro";
+import { cmsEditHref } from "@/utils/cms";
 import MarkdownContent from "@/components/Common/MarkdownContent.astro";
 import EventImageBig from "@/components/Event/EventImageBig";
 import LocationCardEvent from "@/components/Common/LocationCardEvent";
@@ -26,9 +27,13 @@ const { eventSlug } = Astro.params;
 const event = await getEvent(eventSlug);
 
 const isUpcoming = isEventUpcoming(event);
+
+// Occurrences of a recurring event live in their parent's file, which is deliberately
+// not editable in the CMS, so they only get the generic editor link.
+const cmsHref = event.data.bodySlug ? undefined : cmsEditHref("events", eventSlug);
 ---
 
-<SidebarPageLayout footerEvent={event}>
+<SidebarPageLayout footerEvent={event} cmsHref={cmsHref}>
   <Fragment slot="before-layout">
     <MarketingRedirect
       meetupId={event.data.meetupId}

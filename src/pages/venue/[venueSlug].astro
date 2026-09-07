@@ -1,6 +1,7 @@
 ---
 import { EventCardList } from "@/components/Common/EventCard";
 import SidebarPageLayout from "@/layouts/SidebarPageLayout.astro";
+import { cmsEditHref } from "@/utils/cms";
 import { getVenue, getEvents, getVenues } from "@/content";
 import LocationCardVenue from "@/components/Common/LocationCardVenue";
 import MarkdownContent from "@/components/Common/MarkdownContent.astro";
@@ -24,7 +25,7 @@ const venueEvents = allEvents.filter(
 );
 ---
 
-<SidebarPageLayout>
+<SidebarPageLayout cmsHref={cmsEditHref("venues", venueSlug)}>
   <Fragment slot="sidebar">
     <LocationCardVenue venue={venue} client:visible />
   </Fragment>

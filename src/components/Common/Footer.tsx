@@ -9,7 +9,12 @@ import type { EventEnriched } from "@/content";
 import Brand from "./Brand";
 import BuiltWithCommit from "./BuiltWithCommit";
 
-export default function Footer({ event }: { event?: EventEnriched }) {
+interface FooterProps {
+  event?: EventEnriched;
+  cmsHref?: string;
+}
+
+export default function Footer({ event, cmsHref }: FooterProps) {
   return (
     <footer data-testid="footer">
       <Container className="flex flex-col gap-8 py-10">
@@ -25,7 +30,7 @@ export default function Footer({ event }: { event?: EventEnriched }) {
               <span>
                 Copyright © {new Date().getFullYear()} {SITE.shortName}
               </span>
-              <FooterMinorLinks />
+              <FooterMinorLinks cmsHref={cmsHref} />
             </div>
             {event && <EventProjectorButton event={event} variant="link" />}
           </div>
