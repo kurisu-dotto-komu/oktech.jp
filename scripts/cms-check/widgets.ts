@@ -1,16 +1,19 @@
 import type { JsonSchema } from "./jsonSchema";
 
+/** Widgets registered in src/pages/admin.astro via CMS.registerWidget. */
+export const CUSTOM_WIDGETS = ["pull_request"];
+
 /**
  * The schema lets any unknown widget name through as a `CustomField`, so the
  * built-in names are read back out of that definition's `not.enum` list and
- * enforced separately - this project registers no custom widgets.
+ * enforced separately, plus the custom widgets this project registers.
  */
 export function getBuiltInWidgets(schema: JsonSchema): string[] {
   const widgets = schema.definitions?.CustomField?.properties?.widget?.not?.enum;
   if (!Array.isArray(widgets) || widgets.length === 0) {
     throw new Error("Could not read the built-in widget names from the Sveltia schema");
   }
-  return widgets.map(String);
+  return [...widgets.map(String), ...CUSTOM_WIDGETS];
 }
 
 export function checkWidgets(config: unknown, builtIns: string[]): string[] {

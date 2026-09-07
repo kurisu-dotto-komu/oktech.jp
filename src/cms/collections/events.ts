@@ -4,6 +4,7 @@ import {
   coverField,
   devOnlyField,
   numberField,
+  pullRequestField,
   stringField,
   stringListField,
   textField,
@@ -87,6 +88,7 @@ const recurredFromField: CmsField = {
 
 function eventFields(): CmsField[] {
   return [
+    pullRequestField(),
     titleField("Title"),
     textField("description", "Short Description", false, {
       hint: "One or two sentences used in listings, feeds and social cards.",

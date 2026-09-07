@@ -7,12 +7,15 @@ const DEFAULT_BRANCH = "main";
  * GitHub backend. Without PUBLIC_CMS_AUTH_BASE_URL (the sveltia-cms-auth worker origin)
  * browser sign-in is unavailable and only token sign-in or local-repository mode work.
  */
+/** `owner/repo` the CMS commits to. */
+export const cmsRepo = (): string => import.meta.env.PUBLIC_CMS_REPO || DEFAULT_REPO;
+
 export function buildBackend(): CmsBackend {
   const env = import.meta.env;
 
   return {
     name: "github",
-    repo: env.PUBLIC_CMS_REPO || DEFAULT_REPO,
+    repo: cmsRepo(),
     branch: env.PUBLIC_CMS_BRANCH || DEFAULT_BRANCH,
     base_url: env.PUBLIC_CMS_AUTH_BASE_URL || undefined,
     // Public repo: ask contributors for the narrowest GitHub grant (no private repo access)

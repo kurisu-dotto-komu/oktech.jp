@@ -15,7 +15,9 @@
       import CMS from "@sveltia/cms";
 
       import { buildCmsConfig } from "@/cms/config";
+      import PullRequestControl, { PULL_REQUEST_WIDGET } from "@/cms/widgets/pullRequest";
 
+      CMS.registerWidget(PULL_REQUEST_WIDGET, PullRequestControl);
       CMS.init({ config: buildCmsConfig() });
     </script>
   </body>

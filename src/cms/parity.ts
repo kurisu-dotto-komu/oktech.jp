@@ -17,13 +17,15 @@ export type ParityTarget = {
 
 /** The markdown body is stored as the file's content, not as frontmatter. */
 const BODY = "body";
+/** Read-only link widget; never written to frontmatter. */
+const PULL_REQUEST = "pullRequest";
 
 export const PARITY_TARGETS: readonly ParityTarget[] = [
   {
     collection: "events",
     schemaModule: "src/content/events.ts",
     schemaFunction: "eventsSchema",
-    cmsOnly: [BODY],
+    cmsOnly: [BODY, PULL_REQUEST],
     derived: [
       "id",
       "readingTime",
@@ -38,7 +40,7 @@ export const PARITY_TARGETS: readonly ParityTarget[] = [
     collection: "venues",
     schemaModule: "src/content/venues.ts",
     schemaFunction: "venuesSchema",
-    cmsOnly: [BODY],
+    cmsOnly: [BODY, PULL_REQUEST],
     derived: [
       "id",
       "readingTime",
@@ -52,7 +54,7 @@ export const PARITY_TARGETS: readonly ParityTarget[] = [
     collection: "articles",
     schemaModule: "src/content/articles.ts",
     schemaFunction: "articlesSchema",
-    cmsOnly: [BODY],
+    cmsOnly: [BODY, PULL_REQUEST],
     derived: ["id", "filePath"],
   },
 ];

@@ -1,4 +1,5 @@
 import type { CmsField } from "@/cms/types";
+import { PULL_REQUEST_WIDGET } from "@/cms/widgets/pullRequest";
 
 type StringOptions = { required?: boolean; default?: string; hint?: string };
 type NumberOptions = { required?: boolean; default?: number; min?: number };
@@ -71,4 +72,14 @@ export function devOnlyField(): CmsField {
 
 export function keywordsField(): CmsField {
   return stringListField("keywords", "Keywords", "Keyword");
+}
+
+/** Read-only link to the entry's pull request (custom widget, never written to frontmatter). */
+export function pullRequestField(): CmsField {
+  return {
+    name: "pullRequest",
+    label: "Pull request",
+    widget: PULL_REQUEST_WIDGET,
+    required: false,
+  };
 }

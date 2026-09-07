@@ -2,6 +2,7 @@ import {
   bodyField,
   booleanField,
   keywordsField,
+  pullRequestField,
   stringField,
   textField,
   titleField,
@@ -41,6 +42,7 @@ export function buildArticlesCollection(): CmsEntryCollection {
     slug: "{{slug}}",
     summary: "{{title}}",
     fields: [
+      pullRequestField(),
       titleField("Title"),
       textField("description", "Description", false),
       keywordsField(),

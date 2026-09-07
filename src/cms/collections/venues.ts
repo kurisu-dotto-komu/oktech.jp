@@ -4,6 +4,7 @@ import {
   coverField,
   devOnlyField,
   meetupIdField,
+  pullRequestField,
   stringField,
   titleField,
 } from "@/cms/fields/common";
@@ -44,6 +45,7 @@ export function buildVenuesCollection(): CmsEntryCollection {
     summary: "{{title}} - {{city}}",
     sortable_fields: ["title", "city", "meetupId"],
     fields: [
+      pullRequestField(),
       titleField("Venue Name"),
       meetupIdField("Meetup Venue ID"),
       stringField("city", "City", { required: false }),
