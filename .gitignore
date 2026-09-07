@@ -46,8 +46,5 @@ test/screenshots/output/
 # cloudflare wrangler
 .wrangler/
 
-# dist parity gate snapshots
-.parity/
-
 # venue maps stitched at build time (committed map.jpg bitmaps are kept)
 src/assets/map-*.jpg

@@ -58,14 +58,13 @@ jobs:
         id: pages
         uses: actions/configure-pages@v6
 
-      # Cache node_modules to avoid reinstalling (shared with import workflow)
+      # Cache node_modules to avoid reinstalling
       - name: Restore node_modules cache
         id: node-modules-cache
         uses: actions/cache@v6.1.0
         with:
           path: |
             ${{ env.BUILD_PATH }}/node_modules
-            ~/.cache/puppeteer
             ~/.cache/ms-playwright
           key: ${{ runner.os }}-node-modules-${{ hashFiles(format('{0}/package-lock.json', env.BUILD_PATH)) }}
           restore-keys: |
@@ -122,7 +121,6 @@ jobs:
         with:
           path: |
             ${{ env.BUILD_PATH }}/node_modules
-            ~/.cache/puppeteer
             ~/.cache/ms-playwright
           key: ${{ runner.os }}-node-modules-${{ hashFiles(format('{0}/package-lock.json', env.BUILD_PATH)) }}
 

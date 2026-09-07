@@ -2,10 +2,9 @@ import rss from "@astrojs/rss";
 
 import { SITE } from "@/constants";
 import { getEvents } from "@/content";
-
-import { formatDate } from "../utils/formatDate";
-import { urls } from "../utils/urls";
-import { eventUrl } from "../utils/urls/entries";
+import { formatDate } from "@/utils/formatDate";
+import { urls } from "@/utils/urls";
+import { eventUrl } from "@/utils/urls/entries";
 
 export async function GET() {
   const events = await getEvents();
