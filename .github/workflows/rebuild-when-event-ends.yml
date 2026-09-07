@@ -1,0 +1,55 @@
+name: Rebuild when the next event ends
+
+# Events move from "upcoming" to "past" purely by the passage of time, so a static
+# build goes stale on its own. This job computes the next event's end time straight
+# from content/ (the same helper the site uses) and rebuilds once it has passed.
+
+on:
+  schedule:
+    # Daily at midnight JST (15:00 UTC)
+    - cron: "0 15 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: rebuild-when-event-ends
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: Check whether the next event has ended
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Compute the next event end
+        id: next
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # The live site was rendered by the last successful build, so it still lists
+          # every event ending after that moment as upcoming.
+          SINCE="$(gh run list --workflow cloudflare-staging.yml --branch "$GITHUB_REF_NAME" \
+            --status success --limit 1 --json updatedAt --jq '.[0].updatedAt')"
+          SINCE="${SINCE:-$(git log -1 --format=%cI)}"
+          ENDS="$(npx tsx scripts/next-event-end.ts "$SINCE")"
+          echo "Last build $SINCE; next event ends ${ENDS:-<nothing upcoming>}"
+          if [ -n "$ENDS" ] && [ "$(date -u +%s)" -ge "$(date -u -d "$ENDS" +%s)" ]; then
+            echo "due=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Trigger a rebuild
+        if: steps.next.outputs.due == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run cloudflare-staging.yml --ref "${{ github.ref_name }}"

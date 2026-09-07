@@ -47,8 +47,6 @@ const config: KnipConfig = {
     "daisyui",
     // Used by satori
     "satori-html",
-    // puppeteer is used by map generation library
-    "puppeteer",
     "@fontsource/lexend",
   ],
 

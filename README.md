@@ -45,133 +45,16 @@ The configuration is TypeScript in [src/cms/](./src/cms/), not a `config.yml`. S
 
 ## Content
 
-Primary content lives in `content/` and syncs with upstream data from [oktechjp/public](https://github.com/oktechjp/public).
+Primary content lives in `content/` and is edited in this repository, either through the CMS or by hand.
 
-- [./content/events](./content/events) are synced automatically by the import [workflow](#workflows).
-- [./content/venues](./content/venues) and [./content/articles](./content/articles) are added manually.
+- [./content/events](./content/events) — one folder per event, with its cover and gallery images.
+- [./content/venues](./content/venues) and [./content/articles](./content/articles) — added the same way.
 
 ## Workflows
 
-For now, most of the time, event content and photos should only be edited in the [oktechjp/public](https://github.com/oktechjp/public) repository. This will trigger a [scheduler](.github/workflows/scheduler.yml) workflow that [imports](.github/workflows/import.yml) and commits the changes, and triggers a [build](.github/workflows/astro.yml) that that gets deployed to GitHub Pages.
+Pushes and pull requests build the site and deploy it with [cloudflare-staging.yml](.github/workflows/cloudflare-staging.yml); pushes to `main` build, test and publish to GitHub Pages with [astro.yml](.github/workflows/astro.yml).
 
-```mermaid
-flowchart LR
-    %% External Triggers
-    Cron([Daily Cron<br/>15:00 UTC])
-    ManualScheduler([Manual Dispatch<br/>scheduler.yml])
-    ManualImport([Manual Dispatch<br/>import.yml])
-    ManualBuild([Manual Dispatch<br/>astro.yml])
-    Upstream([Upstream Commit<br/>oktechjp/public])
-    DirectPush([Direct Push<br/>to main])
-
-    subgraph scheduler["scheduler.yml"]
-        direction LR
-        Scheduler[Scheduler Workflow]
-        CheckMeta[Read content/meta.json<br/>commitHash, contentHash,<br/>nextEventEnds]
-        FetchUpstream[Fetch latest commit<br/>from oktechjp/public]
-        CheckEvent{Event ended?}
-        CompareCommit{Commit hash changed?}
-        FetchContent[Fetch events.json<br/>& photos.json]
-        ComputeHash[Compute content hash<br/>SHA256]
-        CompareHash{Content hash changed?}
-        TriggerImport[Dispatch import.yml]
-        End1(End)
-
-        Scheduler --> CheckMeta --> FetchUpstream --> CheckEvent
-        CheckEvent -->|Yes| TriggerImport
-        CheckEvent -->|No| CompareCommit
-        CompareCommit -->|Yes| FetchContent --> ComputeHash --> CompareHash
-        CompareCommit -->|No| End1
-        CompareHash -->|Yes| TriggerImport
-        CompareHash -->|No| End1
-    end
-
-    subgraph import["import.yml"]
-        direction LR
-        Import[Import Workflow]
-        SetupAndRestoreNodeCache[[Setup Node 22<br/>restore node_modules cache]]
-        RunImport[Run npm import script<br/>fetch oktechjp/public]
-        SaveNodeCache[[Save node_modules cache<br/>for next runs]]
-        UpdateMeta[Update content/meta.json<br/>with commit & hashes]
-        CheckChanges{Content changes?}
-        CommitPush[Commit & push<br/>to main branch]
-        TriggerBuild[Dispatch astro.yml]
-        End2(End)
-
-        Import --> SetupAndRestoreNodeCache --> RunImport --> SaveNodeCache --> UpdateMeta --> CheckChanges
-        CheckChanges -->|Yes| CommitPush
-        CheckChanges -->|No| End2
-        CommitPush --> TriggerBuild
-    end
-
-    subgraph build["astro.yml"]
-        direction LR
-        Build[Build Workflow]
-        SetupAndRestoreNodeBuild[[Setup Node 22<br/>restore node_modules cache]]
-        RestoreAstroCache[[Restore Astro asset cache]]
-        BuildAstro[Build Astro site]
-        RunTests[Run npm run test:dist]
-        TestsPassed{Tests pass?}
-        SaveNodeBuild[[Save node_modules cache]]
-        SaveAstroCache[[Save Astro cache<br/>per run]]
-        Deploy[Upload to Github Pages]
-        End3(End)
-
-        Build --> SetupAndRestoreNodeBuild --> RestoreAstroCache --> BuildAstro --> RunTests --> TestsPassed
-        TestsPassed -->|Yes| SaveNodeBuild --> SaveAstroCache --> Deploy --> End3
-        TestsPassed -->|No| End3
-    end
-
-    %% Cross-workflow connections
-    Cron --> Scheduler
-    ManualScheduler --> Scheduler
-    Upstream --> Scheduler
-    TriggerImport --> Import
-    ManualImport --> Import
-    TriggerBuild --> Build
-    ManualBuild --> Build
-    DirectPush --> Build
-
-    %% Shared cache resources
-    NodeModulesCacheImport[(Shared node_modules<br/>+ browser caches)]
-    NodeModulesCacheBuild[(Shared node_modules<br/>+ browser caches)]
-    AstroAssetCache[(Astro asset cache)]
-
-    NodeModulesCacheImport --> SetupAndRestoreNodeCache
-    SaveNodeCache --> NodeModulesCacheImport
-    NodeModulesCacheBuild --> SetupAndRestoreNodeBuild
-    SaveNodeBuild --> NodeModulesCacheBuild
-    NodeModulesCacheImport -.-> NodeModulesCacheBuild
-    AstroAssetCache --> RestoreAstroCache
-    SaveAstroCache --> AstroAssetCache
-
-    %% Subgraph styling
-    style scheduler fill:#222222,stroke:transparent,stroke-width:3px,rx:12,ry:12,color:#ffffff
-    style import fill:#222222,stroke:transparent,stroke-width:3px,rx:12,ry:12,color:#ffffff
-    style build fill:#222222,stroke:transparent,stroke-width:3px,rx:12,ry:12,color:#ffffff
-
-    %% Styling aligned with dark theme palette
-    classDef triggerStyle fill:#000,stroke:#459bc9,color:#ffffff,stroke-width:3px
-    classDef workflowStyle fill:#000,stroke:#33333,color:#ffffff,stroke-width:3px
-    classDef decisionStyle fill:#000,stroke:#fd4d69,color:#ffffff,stroke-width:2px
-    classDef actionStyle fill:#000,stroke:#49d773,color:#ffffff,stroke-width:2px
-    classDef endpointStyle fill:#000,stroke:#fd4d69,color:#ffffff,stroke-width:2px
-    classDef cacheStyle fill:#000,stroke:#da9a00,color:#ffffff,stroke-width:2px
-    classDef cacheResourceStyle fill:#000,stroke:#da9a00,color:#ffffff,stroke-width:3px
-
-    class Cron,ManualScheduler,ManualImport,ManualBuild,Upstream,DirectPush triggerStyle
-    class Scheduler,Import,Build workflowStyle
-    class CheckEvent,CompareCommit,CompareHash,CheckChanges,TestsPassed decisionStyle
-    class SetupAndRestoreNodeCache,SaveNodeCache,SetupAndRestoreNodeBuild,RestoreAstroCache,SaveNodeBuild,SaveAstroCache cacheStyle
-    class NodeModulesCacheImport,NodeModulesCacheBuild,AstroAssetCache cacheResourceStyle
-    class CheckMeta,FetchUpstream,FetchContent,ComputeHash,TriggerImport,InstallDeps,RunImport,UpdateMeta,CommitPush,TriggerBuild,SetupPages,InstallOrCi,PrintEnv,BuildAstro,InstallBrowsers,RunTests,UploadArtifact,Deploy actionStyle
-    class End1,End2,End3 endpointStyle
-```
-
-## Import Script Overview
-
-You can also manually run the import script within a dev environment. See
-[./scripts/import-data/README.md](./scripts/import-data/README.md) for invocation details, required environment variables, and troubleshooting steps. Use `npm run import -- --help` to see all options.
+Because an event moves from upcoming to past purely with the passage of time, [rebuild-when-event-ends.yml](.github/workflows/rebuild-when-event-ends.yml) runs daily, computes the next event end with `tsx scripts/next-event-end.ts`, and triggers a rebuild once it has passed.
 
 ## Tests
 

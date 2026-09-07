@@ -16,15 +16,6 @@ export function parseEventDateTime(value: string, filePath: string, entryId?: st
   return dateTime;
 }
 
-export function toYMD(date: Date): string {
-  return new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Asia/Tokyo",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(date);
-}
-
 export function extractTimeOfDay(dateTime: string, filePath: string, entryId?: string): string {
   const match = /^\d{4}-\d{2}-\d{2} (\d{2}:\d{2})$/.exec(dateTime);
   if (!match) {
