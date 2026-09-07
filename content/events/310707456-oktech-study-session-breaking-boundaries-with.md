@@ -5,6 +5,7 @@ dateTime: 2025-10-05 19:00
 duration: 120
 cover: /content/media/events/310707456-oktech-study-session-breaking-boundaries-with/839879.webp
 venue: 25963776-kokoplaza
+series: study-sessions
 howToFindUs: We are in room 701 of the Kokoplaza.
 topics:
   - Design Patterns

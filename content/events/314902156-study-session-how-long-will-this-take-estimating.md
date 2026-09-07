@@ -5,6 +5,7 @@ dateTime: 2026-06-07 19:00
 duration: 120
 cover: /content/media/events/314902156-study-session-how-long-will-this-take-estimating/414144.webp
 venue: 25963776-kokoplaza
+series: study-sessions
 howToFindUs: We are in room 701 of the Kokoplaza.
 topics:
   - Engineering Leadership

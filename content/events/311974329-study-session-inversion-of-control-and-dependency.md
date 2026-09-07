@@ -5,6 +5,7 @@ dateTime: 2025-11-23 19:00
 duration: 120
 cover: /content/media/events/311974329-study-session-inversion-of-control-and-dependency/265681.webp
 venue: 25963776-kokoplaza
+series: study-sessions
 howToFindUs: We are in room 701 of the Kokoplaza.
 topics:
   - Engineering Leadership

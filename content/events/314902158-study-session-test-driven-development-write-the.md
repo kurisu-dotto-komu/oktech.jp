@@ -5,6 +5,7 @@ dateTime: 2026-06-21 19:00
 duration: 120
 cover: /content/media/events/314902158-study-session-test-driven-development-write-the/688053.webp
 venue: 25963776-kokoplaza
+series: study-sessions
 howToFindUs: We are in room 701 of the Kokoplaza.
 topics:
   - Engineering Leadership

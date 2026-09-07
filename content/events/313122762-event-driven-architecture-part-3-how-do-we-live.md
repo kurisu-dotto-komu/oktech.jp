@@ -5,6 +5,7 @@ dateTime: 2026-03-22 19:00
 duration: 120
 cover: /content/media/events/313122762-event-driven-architecture-part-3-how-do-we-live/580254.webp
 venue: 25963776-kokoplaza
+series: study-sessions
 howToFindUs: We are in room 801 of the Kokoplaza.
 topics:
   - Engineering Leadership

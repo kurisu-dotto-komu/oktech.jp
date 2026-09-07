@@ -5,6 +5,7 @@ dateTime: 2025-07-20 19:00
 duration: 120
 cover: /content/media/events/307774539-oktech-study-session-a-walking-skeleton-approach/458708.webp
 venue: 25963776-kokoplaza
+series: study-sessions
 howToFindUs: We are in room 701 of the Kokoplaza.
 topics:
   - Design Patterns

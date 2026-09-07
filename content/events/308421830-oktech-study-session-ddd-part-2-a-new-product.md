@@ -5,6 +5,7 @@ dateTime: 2025-08-17 19:00
 duration: 120
 cover: /content/media/events/308421830-oktech-study-session-ddd-part-2-a-new-product/122188.webp
 venue: 25963776-kokoplaza
+series: study-sessions
 howToFindUs: We are in room 701 of the Kokoplaza.
 topics:
   - Design Patterns

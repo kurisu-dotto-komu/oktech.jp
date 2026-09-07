@@ -5,6 +5,7 @@ dateTime: 2026-05-10 19:00
 duration: 120
 cover: /content/media/events/314050338-code-review-culture-part-2-what-will-the-ai-do-to/515379.webp
 venue: 25963776-kokoplaza
+series: study-sessions
 howToFindUs: We are in room 701 of the Kokoplaza.
 topics:
   - Engineering Leadership
