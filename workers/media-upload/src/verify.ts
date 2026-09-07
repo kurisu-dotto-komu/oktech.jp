@@ -1,5 +1,6 @@
+import { deriveSecretAccessKey, parseAccessKeyId } from "../../shared/credentials";
 import { buildCanonicalRequest, computeSignature, equalsConstantTime, parseAmzDate } from "./sigv4";
-import type { Maintainer } from "./types";
+import type { Principal } from "./types";
 
 const AUTHORIZATION_PATTERN =
   /^AWS4-HMAC-SHA256\s+Credential=([^/\s]+)\/(\d{8})\/([^/\s]+)\/([^/\s]+)\/aws4_request,\s*SignedHeaders=([a-z0-9;.\-_]+),\s*Signature=([0-9a-f]{64})$/;
@@ -34,26 +35,28 @@ export interface VerifyInput {
   headers: Headers;
   /** SHA-256 of the body, already checked against the actual bytes by the caller. */
   payloadHash: string;
-  maintainers: Maintainer[];
+  /** Shared with the auth Worker; the only thing that makes a signature verifiable. */
+  serverSecret: string;
   maxClockSkewSeconds: number;
   now?: Date;
 }
 
 export type VerifyResult =
-  | { ok: true; maintainer: Maintainer }
+  | { ok: true; principal: Principal }
   | { ok: false; status: number; message: string };
 
 /**
- * Recompute the SigV4 signature over the incoming request and match it against the
- * whitelist. Several rows may share an `accessKeyId` (the CMS config holds exactly one,
- * while each editor holds their own secret), so every candidate secret is tried.
+ * Recover the credential from the SigV4 `Credential=` field, re-derive its secret and
+ * recompute the signature over the incoming request. No list of editors is consulted:
+ * holding a signature that verifies *is* the proof that the auth Worker minted this
+ * credential, and the expiry baked into the access key id bounds how long that lasts.
  */
 export async function verifyRequest({
   method,
   url,
   headers,
   payloadHash,
-  maintainers,
+  serverSecret,
   maxClockSkewSeconds,
   now = new Date(),
 }: VerifyInput): Promise<VerifyResult> {
@@ -88,6 +91,16 @@ export async function verifyRequest({
     return { ok: false, status: 400, message: "Body does not match x-amz-content-sha256" };
   }
 
+  const parsed = parseAccessKeyId(auth.accessKeyId);
+
+  if (!parsed || !serverSecret) {
+    return { ok: false, status: 403, message: "Unrecognised access key id" };
+  }
+
+  if (parsed.expiresAt.getTime() <= now.getTime()) {
+    return { ok: false, status: 403, message: "Credential has expired; sign in again to renew it" };
+  }
+
   const canonicalRequest = buildCanonicalRequest({
     method,
     url,
@@ -101,22 +114,18 @@ export async function verifyRequest({
     payloadHash,
   });
 
-  const candidates = maintainers.filter((row) => row.accessKeyId === auth.accessKeyId);
+  const expected = await computeSignature({
+    secretAccessKey: await deriveSecretAccessKey(serverSecret, auth.accessKeyId),
+    dateStamp: auth.dateStamp,
+    region: auth.region,
+    service: auth.service,
+    amzDate,
+    canonicalRequest,
+  });
 
-  for (const maintainer of candidates) {
-    const expected = await computeSignature({
-      secretAccessKey: maintainer.secretAccessKey,
-      dateStamp: auth.dateStamp,
-      region: auth.region,
-      service: auth.service,
-      amzDate,
-      canonicalRequest,
-    });
-
-    if (equalsConstantTime(expected, auth.signature)) {
-      return { ok: true, maintainer };
-    }
+  if (!equalsConstantTime(expected, auth.signature)) {
+    return { ok: false, status: 403, message: "Signature does not match the credential" };
   }
 
-  return { ok: false, status: 403, message: "Signature does not match any maintainer" };
+  return { ok: true, principal: parsed };
 }

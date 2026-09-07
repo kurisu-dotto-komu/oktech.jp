@@ -5,6 +5,7 @@ import {
   ACCESS_KEY_ID,
   BUCKET,
   ENDPOINT,
+  LOGIN,
   ORIGIN,
   SECRET,
   check,
@@ -15,13 +16,13 @@ import {
 } from "./harness";
 import { signLikeSveltia } from "./sign";
 
-const preflight = (origin: string) =>
+const preflight = (origin: string, allowed?: string) =>
   worker.fetch(
     new Request(`${ENDPOINT}/${BUCKET}/events/x.png`, {
       method: "OPTIONS",
       headers: { Origin: origin, "Access-Control-Request-Method": "PUT" },
     }),
-    makeEnv(),
+    allowed ? makeEnv({ ALLOWED_ORIGINS: allowed }) : makeEnv(),
   );
 
 async function main(): Promise<void> {
@@ -34,21 +35,17 @@ async function main(): Promise<void> {
     (await send(await signedPut("events/260919-cover.png"), env)).status === 409,
   );
 
-  const overwriteEnv = makeEnv({
-    MAINTAINERS: JSON.stringify([
-      { name: "editor", accessKeyId: ACCESS_KEY_ID, secretAccessKey: SECRET, overwrite: true },
-    ]),
-  });
+  const overwriteEnv = makeEnv({ OVERWRITE_LOGINS: `someone-else, ${LOGIN}` });
 
   await send(await signedPut("events/dup.png"), overwriteEnv);
 
   check(
-    "overwrite:true lets a maintainer replace a key",
+    "OVERWRITE_LOGINS lets a named editor replace a key",
     (await send(await signedPut("events/dup.png"), overwriteEnv)).status === 200,
   );
 
   check(
-    "a key outside the maintainer's prefixes is refused",
+    "a key outside ALLOWED_PREFIXES is refused",
     (await send(await signedPut("articles/x.png"), env)).status === 403,
   );
 
@@ -58,10 +55,7 @@ async function main(): Promise<void> {
     "a traversal in the request path cannot address another bucket",
     (await send(await signedPut("events/../../x.png"), env)).status === 404,
   );
-  check(
-    "checkKey rejects a dot-dot segment outright",
-    !checkKey("events/../x.png", { name: "e", accessKeyId: "a", secretAccessKey: "b" }, env).ok,
-  );
+  check("checkKey rejects a dot-dot segment outright", !checkKey("events/../x.png", env).ok);
 
   check(
     "a non-image content type is refused",
@@ -106,6 +100,14 @@ async function main(): Promise<void> {
   check(
     "an unlisted origin fails preflight",
     (await preflight("https://evil.example")).status === 403,
+  );
+  check(
+    "a wildcard entry matches a preview origin",
+    (await preflight("https://pr-7-preview.example.test", "https://*.example.test")).status === 204,
+  );
+  check(
+    "a wildcard does not span the scheme",
+    (await preflight("http://pr-7-preview.example.test", "https://*.example.test")).status === 403,
   );
 
   report();

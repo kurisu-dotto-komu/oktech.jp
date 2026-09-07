@@ -1,15 +1,9 @@
-/** One row of the `MAINTAINERS` secret: a whitelisted editor and what they may write. */
-export interface Maintainer {
-  /** Human label, used only in logs and error messages. */
-  name: string;
-  /** Public half of the pair; travels in the SigV4 `Credential=` field. */
-  accessKeyId: string;
-  /** Private half; pasted into the CMS settings by this editor only. */
-  secretAccessKey: string;
-  /** Key prefixes this editor may write to. Defaults to all of `ALLOWED_PREFIXES`. */
-  prefixes?: string[];
-  /** Allow replacing an existing object. Off by default so uploads never clobber. */
-  overwrite?: boolean;
+/** Who a verified request belongs to, recovered from the SigV4 access key id. */
+export interface Principal {
+  /** GitHub login the credential was minted for. */
+  login: string;
+  /** When the credential stops verifying. */
+  expiresAt: Date;
 }
 
 export interface R2ObjectMeta {
@@ -38,9 +32,9 @@ export interface R2Bucket {
 export interface Env {
   /** R2 binding holding the media bucket. */
   MEDIA: R2Bucket;
-  /** Secret: JSON array of {@link Maintainer}. */
-  MAINTAINERS: string;
-  /** Comma-separated origins allowed to call this Worker from a browser. */
+  /** Secret: the same value the auth Worker derives credentials from. */
+  SERVER_SECRET: string;
+  /** Comma-separated origins allowed to call this Worker from a browser; `*` is a wildcard. */
   ALLOWED_ORIGINS: string;
   /** Comma-separated key prefixes uploads must start with. */
   ALLOWED_PREFIXES: string;
@@ -52,4 +46,14 @@ export interface Env {
   MAX_CLOCK_SKEW_SECONDS: string;
   /** Optional: require this bucket name in the request path. Empty accepts any. */
   BUCKET_NAME?: string;
+  /** Optional: comma-separated logins refused even while their credential is unexpired. */
+  DENYLIST?: string;
+  /** Optional: comma-separated logins allowed to replace an existing object. */
+  OVERWRITE_LOGINS?: string;
+  /** Optional `owner/repo` whose collaborators are re-checked live. Needs the App secrets. */
+  REPO?: string;
+  /** Optional: GitHub App id, for the live permission re-check. */
+  GITHUB_APP_ID?: string;
+  /** Optional: GitHub App private key, PKCS#8 PEM. Absent disables the live re-check. */
+  GITHUB_APP_PRIVATE_KEY?: string;
 }

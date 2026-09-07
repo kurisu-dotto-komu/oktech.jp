@@ -1,9 +1,10 @@
+import { numberFromEnv } from "../../shared/env";
+import { checkAccess } from "./access";
 import { handlePreflight, withCors } from "./cors";
-import { parseMaintainers } from "./maintainers";
-import { checkKey, checkUpload, numberFromEnv } from "./policy";
+import { checkKey, checkUpload, mayOverwrite } from "./policy";
 import { listObjectsXml, parseRoute, textResponse, xmlResponse } from "./s3";
 import { sha256Hex } from "./sigv4";
-import type { Env, Maintainer } from "./types";
+import type { Env, Principal } from "./types";
 import { verifyRequest } from "./verify";
 
 const DEFAULT_MAX_KEYS = 1000;
@@ -31,12 +32,12 @@ async function handleList(env: Env, url: URL, bucket: string): Promise<Response>
 
 async function handlePut(
   env: Env,
-  maintainer: Maintainer,
+  principal: Principal,
   key: string,
   body: ArrayBuffer,
   contentType: string,
 ): Promise<Response> {
-  const keyCheck = checkKey(key, maintainer, env);
+  const keyCheck = checkKey(key, env);
 
   if (!keyCheck.ok) {
     return textResponse(keyCheck.status, keyCheck.message);
@@ -48,8 +49,8 @@ async function handlePut(
     return textResponse(uploadCheck.status, uploadCheck.message);
   }
 
-  if (!maintainer.overwrite && (await env.MEDIA.head(key))) {
-    return textResponse(409, `${key} already exists; rename the file or ask for overwrite rights`);
+  if (!mayOverwrite(principal.login, env) && (await env.MEDIA.head(key))) {
+    return textResponse(409, `${key} already exists; rename the file after the entry`);
   }
 
   const stored = await env.MEDIA.put(key, body, { httpMetadata: { contentType } });
@@ -95,7 +96,7 @@ async function route(request: Request, env: Env): Promise<Response> {
     url,
     headers: request.headers,
     payloadHash: await sha256Hex(body),
-    maintainers: parseMaintainers(env.MAINTAINERS),
+    serverSecret: env.SERVER_SECRET,
     maxClockSkewSeconds: numberFromEnv(env.MAX_CLOCK_SKEW_SECONDS, DEFAULT_CLOCK_SKEW_SECONDS),
   });
 
@@ -103,18 +104,18 @@ async function route(request: Request, env: Env): Promise<Response> {
     return textResponse(verified.status, verified.message);
   }
 
+  const access = await checkAccess(verified.principal.login, env);
+
+  if (!access.ok) {
+    return textResponse(access.status, access.message);
+  }
+
   if (request.method === "GET" && !key && url.searchParams.get("list-type") === "2") {
     return handleList(env, url, bucket);
   }
 
   if (request.method === "PUT" && key) {
-    return handlePut(
-      env,
-      verified.maintainer,
-      key,
-      body,
-      request.headers.get("Content-Type") ?? "",
-    );
+    return handlePut(env, verified.principal, key, body, request.headers.get("Content-Type") ?? "");
   }
 
   if (request.method === "HEAD" && key) {

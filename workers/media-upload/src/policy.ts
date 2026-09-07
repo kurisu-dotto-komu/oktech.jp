@@ -1,4 +1,5 @@
-import type { Env, Maintainer } from "./types";
+import { listIncludes, numberFromEnv, splitList } from "../../shared/env";
+import type { Env } from "./types";
 
 /** File extensions each allowed type may carry, so a key cannot lie about its content. */
 const EXTENSIONS: Record<string, string[]> = {
@@ -16,32 +17,11 @@ export type PolicyResult = { ok: true } | { ok: false; status: number; message: 
 
 const deny = (status: number, message: string): PolicyResult => ({ ok: false, status, message });
 
-export const splitList = (value: string | undefined): string[] =>
-  (value ?? "")
-    .split(",")
-    .map((entry) => entry.trim())
-    .filter(Boolean);
+/** Only these logins may replace an existing object; everyone else gets a `409`. */
+export const mayOverwrite = (login: string, env: Env): boolean =>
+  listIncludes(env.OVERWRITE_LOGINS, login);
 
-export const numberFromEnv = (value: string | undefined, fallback: number): number => {
-  const parsed = Number(value);
-
-  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
-};
-
-/** Prefixes this maintainer may write to: their own list, narrowed to the global allowlist. */
-export function allowedPrefixesFor(maintainer: Maintainer, env: Env): string[] {
-  const global = splitList(env.ALLOWED_PREFIXES);
-
-  if (!maintainer.prefixes?.length) {
-    return global;
-  }
-
-  return maintainer.prefixes.filter((prefix) =>
-    global.some((allowed) => prefix.startsWith(allowed)),
-  );
-}
-
-export function checkKey(key: string, maintainer: Maintainer, env: Env): PolicyResult {
+export function checkKey(key: string, env: Env): PolicyResult {
   if (!key || key.length > MAX_KEY_LENGTH) {
     return deny(400, "Object key is empty or too long");
   }
@@ -56,7 +36,7 @@ export function checkKey(key: string, maintainer: Maintainer, env: Env): PolicyR
     return deny(400, "Object key is not a plain forward-slash path");
   }
 
-  const prefixes = allowedPrefixesFor(maintainer, env);
+  const prefixes = splitList(env.ALLOWED_PREFIXES);
 
   if (!prefixes.some((prefix) => key.startsWith(prefix))) {
     return deny(403, `Object key must start with one of: ${prefixes.join(", ") || "(none)"}`);

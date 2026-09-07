@@ -1,3 +1,4 @@
+import { deriveCredential } from "../../shared/credentials";
 import worker from "../src/index";
 import type { Env, R2Bucket, R2ListResult, R2ObjectMeta } from "../src/types";
 import { signLikeSveltia, toRequest } from "./sign";
@@ -6,9 +7,13 @@ import type { SignedShape } from "./sign";
 export const ORIGIN = "https://cms.example.test";
 export const ENDPOINT = "https://upload.example.test";
 export const BUCKET = "example-media";
-export const ACCESS_KEY_ID = "oktech-cms";
-/** 40 base64 characters, the shape Sveltia's `apiKeyPattern` for `aws_s3` demands. */
-export const SECRET = "p2ChKSlnzCAtH8SmfvcbUcjimBwihfQgJVP/YmLJ";
+export const SERVER_SECRET = "test-server-secret-not-a-real-one";
+export const LOGIN = "test-editor";
+
+/** The credential an editor's browser would have been handed by the auth Worker. */
+export const CREDENTIAL = await deriveCredential(SERVER_SECRET, LOGIN);
+export const ACCESS_KEY_ID = CREDENTIAL.accessKeyId;
+export const SECRET = CREDENTIAL.secretAccessKey;
 export const PNG = new Uint8Array([137, 80, 78, 71, 13, 10, 26, 10]).buffer;
 
 /** In-memory stand-in for the R2 binding. */
@@ -52,14 +57,7 @@ export class FakeBucket implements R2Bucket {
 export function makeEnv(overrides: Partial<Env> = {}): Env & { MEDIA: FakeBucket } {
   return {
     MEDIA: new FakeBucket(),
-    MAINTAINERS: JSON.stringify([
-      {
-        name: "editor",
-        accessKeyId: ACCESS_KEY_ID,
-        secretAccessKey: SECRET,
-        prefixes: ["events/"],
-      },
-    ]),
+    SERVER_SECRET,
     ALLOWED_ORIGINS: `${ORIGIN},http://localhost:4321`,
     ALLOWED_PREFIXES: "events/,venues/,series/",
     ALLOWED_CONTENT_TYPES: "image/webp,image/jpeg,image/png,image/avif,image/gif",

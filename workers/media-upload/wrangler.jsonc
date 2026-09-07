@@ -14,15 +14,25 @@
     // Optional: when non-empty, the bucket segment of the request path must match it.
     // Sveltia addresses the Worker as `<endpoint>/<bucket>/<key>`.
     "BUCKET_NAME": "",
-    // Origins the CMS is served from. Per-PR preview hosts are deliberately absent:
-    // previews are for reviewing, authoring happens on the stable /admin.
+    // Origins the CMS is served from; `*` is a wildcard. Per-PR preview hosts are covered
+    // by the wildcard so an editor can upload from a preview of their own branch.
     "ALLOWED_ORIGINS": "http://localhost:4321",
     // Uploads must land under one of these.
     "ALLOWED_PREFIXES": "events/,venues/,series/",
     "ALLOWED_CONTENT_TYPES": "image/webp,image/jpeg,image/png,image/avif,image/gif",
     "MAX_UPLOAD_BYTES": "10485760",
     "MAX_CLOCK_SKEW_SECONDS": "300",
+    // Optional kill switch: comma-separated GitHub logins refused on every request, even
+    // while the credential they hold is unexpired.
+    "DENYLIST": "",
+    // Optional: comma-separated logins allowed to replace an existing object.
+    "OVERWRITE_LOGINS": "",
+    // Optional `owner/repo`. Only used for the live permission re-check below; leaving it
+    // empty (or omitting the GitHub App secrets) disables that check entirely.
+    "REPO": "",
   },
-  // Secret, set with `npx wrangler secret put MAINTAINERS`: a JSON array of
-  // { name, accessKeyId, secretAccessKey, prefixes?, overwrite? }. See README.md.
+  // Secrets, set with `npx wrangler secret put <name>`:
+  //   SERVER_SECRET            required; the same value the cms-auth Worker holds
+  //   GITHUB_APP_ID            optional; enables the live permission re-check
+  //   GITHUB_APP_PRIVATE_KEY   optional; PKCS#8 PEM for that App
 }

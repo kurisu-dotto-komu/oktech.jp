@@ -1,11 +1,12 @@
-import { splitList } from "./policy";
+import { originAllowed } from "../../shared/origins";
 import type { Env } from "./types";
 
 const DEFAULT_ALLOWED_HEADERS =
   "authorization, content-type, x-amz-acl, x-amz-content-sha256, x-amz-date";
 
+/** `ALLOWED_ORIGINS` entries are full origins and may use `*` as a wildcard. */
 const isAllowedOrigin = (origin: string | null, env: Env): boolean =>
-  !!origin && splitList(env.ALLOWED_ORIGINS).includes(origin);
+  originAllowed(env.ALLOWED_ORIGINS, origin);
 
 /** Adds the CORS headers to a response built by a route handler. */
 export function withCors(response: Response, request: Request, env: Env): Response {

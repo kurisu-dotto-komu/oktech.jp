@@ -2,12 +2,12 @@
   "name": "oktech-media-upload-worker",
   "private": true,
   "type": "module",
-  "description": "S3-compatible upload endpoint for Sveltia CMS, gated on a maintainer whitelist",
+  "description": "S3-compatible upload endpoint for Sveltia CMS, gated on derived per-editor credentials",
   "scripts": {
     "test": "npx tsx test/verify.test.ts && npx tsx test/policy.test.ts && npx tsx test/sveltia-parity.test.ts",
     "dev": "npx wrangler dev",
     "deploy": "npx wrangler deploy",
-    "secret:maintainers": "npx wrangler secret put MAINTAINERS",
-    "keygen": "node -e \"const c=require('crypto');console.log('accessKeyId    ',c.randomBytes(10).toString('hex'));console.log('secretAccessKey',c.randomBytes(30).toString('base64'))\""
+    "secret:server": "npx wrangler secret put SERVER_SECRET",
+    "keygen": "node -e \"console.log(require('crypto').randomBytes(32).toString('base64'))\""
   }
 }
