@@ -1,6 +1,8 @@
 {
   "$schema": "../../node_modules/wrangler/config-schema.json",
-  "name": "oktech-cms-auth",
+  // Keeps the name the OAuth proxy was first deployed under, so re-deploying updates that
+  // Worker rather than standing up a second one beside it.
+  "name": "oktech-sveltia-auth",
   "main": "src/index.ts",
   "compatibility_date": "2026-09-01",
   "workers_dev": false,
