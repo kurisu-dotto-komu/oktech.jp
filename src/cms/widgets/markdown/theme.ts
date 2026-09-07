@@ -4,7 +4,7 @@ import { oneDark } from "@codemirror/theme-one-dark";
 import { EditorView } from "@codemirror/view";
 import { tags } from "@lezer/highlight";
 
-import type { ColorScheme } from "@/cms/widgets/markdown/colorScheme";
+import type { ColorScheme } from "@/cms/colorScheme";
 
 const MONOSPACE = 'ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace';
 

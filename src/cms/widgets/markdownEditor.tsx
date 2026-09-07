@@ -2,7 +2,7 @@ import { Component, createRef } from "react";
 
 import type { CustomFieldControlProps } from "@sveltia/cms";
 
-import { observeColorScheme, readColorScheme } from "@/cms/widgets/markdown/colorScheme";
+import { observeColorScheme, readColorScheme } from "@/cms/colorScheme";
 import { type MarkdownEditor, createMarkdownEditor } from "@/cms/widgets/markdown/editor";
 
 const asText = (value: unknown) => (typeof value === "string" ? value : "");

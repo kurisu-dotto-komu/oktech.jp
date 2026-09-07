@@ -3,7 +3,7 @@ import { markdown } from "@codemirror/lang-markdown";
 import { Compartment, EditorState } from "@codemirror/state";
 import { EditorView, keymap } from "@codemirror/view";
 
-import type { ColorScheme } from "@/cms/widgets/markdown/colorScheme";
+import type { ColorScheme } from "@/cms/colorScheme";
 import { editorTheme } from "@/cms/widgets/markdown/theme";
 
 type EditorOptions = {

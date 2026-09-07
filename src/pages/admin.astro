@@ -1,5 +1,7 @@
 ---
 // Sveltia CMS admin page. Configuration lives in src/cms/.
+import { Font } from "astro:assets";
+
 import { SITE } from "@/constants";
 ---
 
@@ -11,6 +13,11 @@ import { SITE } from "@/constants";
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
     <title>{SITE.shortName} CMS</title>
+    {
+      /* Emits the site's @font-face rules; src/cms/previews/styles.ts copies them into the
+    preview iframe, which cannot link them because their family name is build-specific. */
+    }
+    <Font cssVariable="--font-lexend" />
     <style is:global>
       /*
        * Sveltia prints a "(+09:00) Tokyo" chip beside every datetime input whose field sets
@@ -27,6 +34,7 @@ import { SITE } from "@/constants";
     <script>
       import { bootstrapMediaUploads } from "@/cms/bootstrap";
       import { buildCmsConfig } from "@/cms/config";
+      import { registerPreviews } from "@/cms/previews";
       import MarkdownEditorControl from "@/cms/widgets/markdownEditor";
       import { MARKDOWN_WIDGET, PULL_REQUEST_WIDGET } from "@/cms/widgets/names";
       import PullRequestControl from "@/cms/widgets/pullRequest";
@@ -43,6 +51,7 @@ import { SITE } from "@/constants";
 
       CMS.registerWidget(PULL_REQUEST_WIDGET, PullRequestControl);
       CMS.registerWidget(MARKDOWN_WIDGET, MarkdownEditorControl);
+      registerPreviews(CMS);
       CMS.init({ config });
     </script>
   </body>

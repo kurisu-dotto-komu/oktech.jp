@@ -26,6 +26,8 @@ version) and served from our own `/admin` page — no CDN, no `config.yml`.
 | `collections/*.ts` | `events`, `series`, `venues`, `articles`, `pages`                     |
 | `fields/*.ts`      | Shared field builders (`titleField`, `coverField`, `channelsField`…)  |
 | `widgets/*`        | The `pull_request` link and the `markdown_code` body editor           |
+| `previews/*`       | The preview-pane templates, rendered with the site's own components   |
+| `colorScheme.ts`   | Reads and watches the CMS light/dark choice, shared by both of those  |
 
 Event, venue and article pages carry a **CMS** footer link that opens that entry in the editor.
 Venues and articles are folder bundles, so Sveltia addresses them by their whole sub path
@@ -228,6 +230,37 @@ It is declared in the zod schemas and listed as `derived` in `src/cms/parity.ts`
 
 Redirects are HTML only — a `.ics` URL never gets a redirect stub, because under
 `build.format: "file"` that would put a meta-refresh HTML body at a calendar URL.
+
+## The preview pane
+
+Sveltia's default preview is a list of field labels and raw values. `registerPreviews()` in
+[`src/cms/previews/`](../src/cms/previews/) replaces it for **events**, **venues** and
+**articles** with templates built from the site's own Tailwind and DaisyUI classes, so what an
+editor sees is the page they are about to publish — same fonts, colours, cover framing, icon rows
+and `prose` body.
+
+Three things make that work:
+
+- **The site's stylesheet.** `registerPreviewStyle()` is handed the URL Vite emits for
+  `src/styles/global.css?url`, which is the same Tailwind + DaisyUI build the site links. Astro's
+  Fonts API has no stable URL — it inlines `@font-face` rules under a build-specific family name —
+  so `admin.astro` renders `<Font>` and the preview copies those rules into the iframe as raw CSS.
+- **`data-theme` on the iframe.** `PreviewShell` mirrors the CMS's own light/dark choice onto the
+  preview document, which is what the DaisyUI themes key off.
+- **No hooks, anywhere in the preview tree.** Sveltia renders custom React components with its own
+  bundled React, where hooks from the site's copy have no dispatcher and throw. Everything under
+  `previews/` is a class component or a plain function component, and the only site components
+  reused are the ones that are hook-free all the way down (`EventTags` today). `EventCardInfo` and
+  `EventCardImage` look reusable but reach `EventCountdown`, which is stateful, so the preview
+  composes those rows itself from the same classes and the same `formatDate` helpers.
+
+The body is rendered with **micromark** (GFM), not `widgetFor("body")`: the body uses our own
+`markdown_code` widget, and `CMS.getFieldType("markdown")` returns nothing, so there is no built-in
+markdown preview to borrow. micromark is already in the tree behind Astro's markdown pipeline and
+escapes raw HTML by default.
+
+Relations are resolved with `getCollection(name, slug)`, which is async — that is why
+`EventPreview` is a class component with state rather than a function.
 
 ## The body editor
 
