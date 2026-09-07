@@ -116,4 +116,13 @@ jobs:
     name: Remove preview
     runs-on: ubuntu-latest
     steps:
-      - run: npx --yes wrangler@4 delete --name "oktech-pr-${{ github.event.pull_request.number }}" --force
+      # Direct API calls: `wrangler delete` also tries to list KV namespaces, which the token can't
+      - env:
+          NAME: oktech-pr-${{ github.event.pull_request.number }}
+        run: |
+          api="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers"
+          auth="Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+          for id in $(curl -sf -H "$auth" "$api/domains" | jq -r --arg s "$NAME" '.result[] | select(.service == $s) | .id'); do
+            curl -sf -o /dev/null -X DELETE -H "$auth" "$api/domains/$id"
+          done
+          curl -sf -o /dev/null -X DELETE -H "$auth" "$api/scripts/$NAME" || echo "$NAME already gone"
