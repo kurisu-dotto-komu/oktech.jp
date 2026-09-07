@@ -16,14 +16,20 @@ import type { CmsEntryCollection, CmsField } from "@/cms/types";
 
 const dateTimeField: CmsField = {
   name: "dateTime",
-  label: "Date & Time (JST)",
+  label: "Date & Time (Japan Time)",
   widget: "datetime",
   format: "YYYY-MM-DD HH:mm",
   input_timezone: "Asia/Tokyo",
   output_utc: false,
   required: true,
-  hint: "Start time in Japan Standard Time.",
+  hint: "Start time in Japan Time.",
 };
+
+/**
+ * `dropdown_threshold` is the largest number of options Sveltia still renders as radio
+ * buttons; `0` is below any option count, so a relation with it is always a dropdown.
+ */
+const ALWAYS_DROPDOWN = 0;
 
 const venueField: CmsField = {
   name: "venue",
@@ -33,6 +39,7 @@ const venueField: CmsField = {
   value_field: "{{slug}}",
   display_fields: ["title", "city"],
   search_fields: ["title", "city", "address"],
+  dropdown_threshold: ALWAYS_DROPDOWN,
   required: false,
 };
 
@@ -44,6 +51,7 @@ const seriesField: CmsField = {
   value_field: "{{slug}}",
   display_fields: ["title"],
   search_fields: ["title", "label"],
+  dropdown_threshold: ALWAYS_DROPDOWN,
   required: false,
   hint: "Recurring series this occurrence belongs to. Every future occurrence is listed on its own.",
 };
@@ -71,7 +79,7 @@ function eventFields(): CmsField[] {
     stringListField("topics", "Topics", "Topic", {
       hint: "Free-form tags, e.g. AI/ML, Web Development.",
     }),
-    channelsField("Channels"),
+    channelsField("External Links"),
     galleryField(),
     attachmentsField(),
     booleanField("isCancelled", "Cancelled", false),

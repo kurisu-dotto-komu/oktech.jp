@@ -6,18 +6,23 @@ import { CHANNELS } from "@/content/channels";
 const CHANNEL_HINT =
   "Reference on that platform: the numeric Meetup event id, the Luma slug, or a full URL for anything else.";
 
+const CHANNELS_HINT =
+  "Where this is published. The order of the rows is the order the buttons appear in on the site.";
+
 /**
  * Where an entry is published. Adding a platform is one row in src/content/channels.ts
  * and no schema change, which is what `type` being a plain string rather than an enum buys.
+ * The field is named `channels` in front matter; editors see it as "External Links".
  */
 export function channelsField(label: string): CmsField {
   return {
     name: "channels",
     label,
-    label_singular: "Channel",
+    label_singular: "External Link",
     widget: "list",
     required: false,
     allow_reorder: true,
+    hint: CHANNELS_HINT,
     summary: "{{fields.type}} — {{fields.ref}}",
     fields: [
       {

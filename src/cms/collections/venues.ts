@@ -53,7 +53,7 @@ export function buildVenuesCollection(): CmsEntryCollection {
       stringField("url", "Website URL", { required: false }),
       stringField("gmaps", "Google Maps URL", { required: false }),
       locationField,
-      channelsField("Channels"),
+      channelsField("External Links"),
       stringField("description", "Short Description", { required: false }),
       booleanField("hasPage", "Has Dedicated Page", false),
       devOnlyField(),

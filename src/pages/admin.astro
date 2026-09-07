@@ -11,6 +11,17 @@ import { SITE } from "@/constants";
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
     <title>{SITE.shortName} CMS</title>
+    <style is:global>
+      /*
+       * Sveltia prints a "(+09:00) Tokyo" chip beside every datetime input whose field sets
+       * `input_timezone`. It is rendered unconditionally — there is no option to turn it off —
+       * so it is hidden here instead; the field's own label and hint already say Japan Time.
+       * The element carries a build-specific Svelte scope class, so only `.timezone` is matched.
+       */
+      .field-wrapper .timezone {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <script>

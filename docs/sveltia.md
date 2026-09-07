@@ -94,19 +94,27 @@ bucket. Flat files are what makes Sveltia's **Duplicate** action available (it i
 collection with a `path` template), which is how the next occurrence of a series is created.
 
 Slug template `{{fields.dateTime | date('YYMMDD')}}-{{title}}`. Fields: `title`, `description`,
-`dateTime`, `duration`, `cover`, `venue`, `series`, `space`, `howToFindUs`, `topics`, `channels`,
-`gallery`, `attachments`, `isCancelled`, `devOnly`, body.
+`dateTime`, `duration`, `cover`, `venue`, `series`, `space`, `howToFindUs`, `topics`, `channels`
+(labelled **External Links**), `gallery`, `attachments`, `isCancelled`, `devOnly`, body.
 
-- **`dateTime` is Japan Standard Time.** The widget is pinned to `Asia/Tokyo` with
-  `output_utc: false` and writes the exact wall-clock string `YYYY-MM-DD HH:mm`, regardless of the
-  editor's own timezone. `jstDateTime` in
-  [`src/content/schemas/date.ts`](../src/content/schemas/date.ts) rejects any other shape, so never
-  hand-edit this into an ISO timestamp.
+To give an event a different slug — a legacy Meetup-style `<meetupId>-<title>`, say — save it once
+and then use **⋯ → Edit Slug**, which opens prefilled with the generated slug and accepts anything
+that is not empty, slashed or already taken. The action is disabled until the entry has been saved,
+so the template above is always what a new event starts with.
+
+- **`dateTime` is Japan Time.** The widget is pinned to `Asia/Tokyo` with `output_utc: false` and
+  writes the exact wall-clock string `YYYY-MM-DD HH:mm`, regardless of the editor's own timezone.
+  `jstDateTime` in [`src/content/schemas/date.ts`](../src/content/schemas/date.ts) rejects any other
+  shape, so never hand-edit this into an ISO timestamp. Sveltia adds a `(+09:00) Tokyo` chip next to
+  any input with `input_timezone`; it has no off switch, so [`admin.astro`](../src/pages/admin.astro)
+  hides it with one CSS rule — the label and hint already say Japan Time.
 - **`description`** is real, authored front matter and is what search engines and social cards show.
   It is not derived from the body.
 - **`venue`** is a relation storing the venue's **entry id** (its folder name). An id that matches no
   venue fails the build rather than silently rendering nothing.
-- **`series`** is a relation into the Series collection; see below.
+- **`series`** is a relation into the Series collection; see below. Both relations set
+  `dropdown_threshold: 0` so they always render as a searchable dropdown rather than a radio list,
+  however few options there happen to be.
 - **`topics`** is a free-form string list, not a curated vocabulary.
 - **`gallery`** is a reorderable list of `{ src, caption? }`. Photos are editable here.
 - The event list view is grouped by Series and sortable by date or title, with cover thumbnails.
@@ -120,15 +128,15 @@ occurrences that do not set their own), body.
 **There is no `/series/<slug>` page and no recurrence rule.** Every occurrence is an ordinary event
 with its own file, its own URL, its own `.ics` and its own listing entry — nothing is generated. To
 schedule the next one, open the most recent occurrence, choose **⋯ → Duplicate**, change the date
-(the slug follows automatically) and replace the Meetup row under Channels. Duplicate clears the
+(the slug follows automatically) and replace the Meetup row under External Links. Duplicate clears the
 slug and `aliases` for you but cannot clear an ordinary field, so the old channel reference is
 carried over on purpose — it is visible in the PR preview before you publish.
 
 ### Venues — `content/venues/<slug>/venue.md`
 
 A folder bundle, so a logo or photo can live beside the entry. Slug template `{{title}}`. Fields:
-`title`, `city`, `address`, `state`, `space`, `url`, `gmaps`, `location`, `channels`, `description`,
-`hasPage`, `devOnly`, `cover`, body.
+`title`, `city`, `address`, `state`, `space`, `url`, `gmaps`, `location`, `channels` (labelled
+**External Links**), `description`, `hasPage`, `devOnly`, `cover`, body.
 
 - **`location`** is the Sveltia **map** widget: search for the address, then drag the pin. It is
   stored as a GeoJSON point string. Setting it is all that is needed — the light and dark map
@@ -148,11 +156,11 @@ Standalone markdown pages served at `/<slug>` (the code of conduct today). Field
 `description`, `keywords`, body. It is a normal folder collection, not a singleton, so pages can be
 created and renamed with the same redirect protection as everything else.
 
-## Channels
+## External Links
 
-`channels` is an ordered list of `{ type, ref }` on events and venues. It replaces the old
-`meetupId` and `links` fields, and **the order you put the rows in is the order the buttons appear
-in on the site**.
+`channels` is an ordered list of `{ type, ref }` on events and venues, shown in the editor as
+**External Links** (one row is an **External Link**). It replaces the old `meetupId` and `links`
+fields, and **the order you put the rows in is the order the buttons appear in on the site**.
 
 `ref` is the platform-local id (a Meetup event id, a Luma slug) or a full URL for anything else.
 The platform list comes from [`src/content/channels.ts`](../src/content/channels.ts), which is the
