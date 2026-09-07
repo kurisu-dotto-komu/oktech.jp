@@ -34,7 +34,9 @@
     "test:screenshots": "rm -rf test/screenshots/output && TEST_TYPE=screenshots playwright test",
     "test:build": "npm run build && npm run knip && npm run typecheck && npm run check:cms && TEST_BUILD=true playwright test",
     "test:dist": "TEST_BUILD=true playwright test",
-    "test:cms-crud": "tsx scripts/cms-fixture.ts run"
+    "test:cms-crud": "tsx scripts/cms-fixture.ts run",
+    "parity:snapshot": "tsx scripts/dist-parity.ts snapshot",
+    "parity:check": "tsx scripts/dist-parity.ts check"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",

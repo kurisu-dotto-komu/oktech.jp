@@ -45,3 +45,6 @@ test/screenshots/output/
 
 # cloudflare wrangler
 .wrangler/
+
+# dist parity gate snapshots
+.parity/
