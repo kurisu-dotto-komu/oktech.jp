@@ -48,7 +48,7 @@ Not yet done: the ~350 MB of legacy images still live in Git, the upload Worker 
 
 **Next:**
 
-- **Deploy the upload Worker** and switch the CMS over to it, so no bucket credential sits in an editor's browser. Steps are in [docs/media-upload.md](./media-upload.md).
+- **Back up the media bucket.** The bucket has no versioning, so an accidental overwrite or deletion (or a leaked upload credential) is unrecoverable today. Add a scheduled copy to a second bucket or another provider (e.g. a nightly `rclone`/S3 sync from a Worker cron or GitHub Actions), keep a few days of history, and document the restore procedure.
 - **In-CMS cropping for cover images.** Covers are displayed 16:9 and are currently centre-cropped by the site, which is wrong for some images. Nothing in the current design blocks this: the cover value is a plain URL string, so a custom crop widget can be added without a schema or content change.
 - **Move the legacy images out of the repository.** Once every image reference is a bucket URL this is a single commit of string rewrites — but deleting the files is not enough, they stay in Git history and every clone still downloads them. That needs a coordinated history rewrite, so it is planned as its own step (see below).
 
