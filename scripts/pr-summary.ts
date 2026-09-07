@@ -35,36 +35,65 @@ const COLLECTIONS: Record<string, { label: string; path: string }> = {
   venues: { label: "Venue", path: "venue" },
   articles: { label: "Article", path: "articles" },
 };
+// Flat entries (content/events/<slug>.md) and page bundles (content/venues/<slug>/venue.md)
 const describe = (file: string) => {
-  const [, collection = "", slug = ""] = file.match(/^content\/([^/]+)\/([^/]+)\//) ?? [];
+  const [, collection = "", slug = ""] =
+    file.match(/^content\/([^/]+)\/([^/]+)\//) ??
+    file.match(/^content\/([^/]+)\/([^/]+)\.md$/) ??
+    [];
   const { label = "Page", path = "" } = COLLECTIONS[collection] ?? {};
   return { label, path, collection, slug };
 };
+
+/** Fields rendered in full (heading + text) instead of a truncated table cell. */
+const FULL_TEXT_FIELDS = ["title", "description", "howToFindUs", "channels"];
+
+const asBlock = (value: unknown) =>
+  typeof value === "string" ? value : JSON.stringify(value, null, 2);
 
 const fmt = (value: unknown) => {
   const text = typeof value === "string" ? value : JSON.stringify(value);
   return text === undefined ? "—" : `\`${text.length > 60 ? `${text.slice(0, 57)}…` : text}\``;
 };
 
-function markdownDiff(status: string, file: string): string[] {
+type Diff = { rows: string[]; blocks: string[] };
+
+function markdownDiff(status: string, file: string): Diff {
   const before = status === "A" ? null : show(base, file);
   const after = status === "D" ? null : show(head, file);
   const prev = before ? matter(before) : null;
   const next = after ? matter(after) : null;
   const keys = new Set([...Object.keys(prev?.data ?? {}), ...Object.keys(next?.data ?? {})]);
   const rows: string[] = [];
-  for (const key of [...keys].sort()) {
+  const blocks: string[] = [];
+  const order = (key: string) => {
+    const i = FULL_TEXT_FIELDS.indexOf(key);
+    return i === -1 ? FULL_TEXT_FIELDS.length : i;
+  };
+  for (const key of [...keys].sort((x, y) => order(x) - order(y) || x.localeCompare(y))) {
     const a = prev?.data[key];
     const b = next?.data[key];
-    if (JSON.stringify(a) !== JSON.stringify(b)) rows.push(`| ${key} | ${fmt(a)} | ${fmt(b)} |`);
-  }
-  if ((prev?.content ?? "") !== (next?.content ?? "")) {
-    const words = (s: string) => s.trim().split(/\s+/).filter(Boolean).length;
-    rows.push(
-      `| _body_ | ${words(prev?.content ?? "")} words | ${words(next?.content ?? "")} words |`,
+    if (JSON.stringify(a) === JSON.stringify(b)) continue;
+    if (!FULL_TEXT_FIELDS.includes(key)) {
+      rows.push(`| ${key} | ${fmt(a)} | ${fmt(b)} |`);
+      continue;
+    }
+    const heading = `#### ${key}`;
+    const fence = typeof b === "string" || typeof a === "string" ? "" : "json";
+    const show = (v: unknown) =>
+      v === undefined ? "_—_" : `\`\`\`${fence}\n${asBlock(v)}\n\`\`\``;
+    blocks.push(
+      a === undefined
+        ? `${heading}\n\n${show(b)}`
+        : `${heading}\n\n**Before**\n\n${show(a)}\n\n**After**\n\n${show(b)}`,
     );
   }
-  return rows;
+  const bodyBefore = prev?.content.trim() ?? "";
+  const bodyAfter = next?.content.trim() ?? "";
+  if (bodyBefore !== bodyAfter) {
+    blocks.push(bodyAfter ? `#### body\n\n${bodyAfter}` : "#### body\n\n_removed_");
+  }
+  return { rows, blocks };
 }
 
 const VERB: Record<string, string> = { A: "Create", M: "Update", D: "Delete", R: "Rename" };
@@ -79,19 +108,21 @@ for (const { status, file } of changes) {
   }
   const title = show(status === "D" ? base : head, file);
   const name = title ? (matter(title).data.title ?? slug) : slug;
-  const rows = markdownDiff(status, file);
+  const { rows, blocks } = markdownDiff(status, file);
+  const entryFile = file.split("/").pop()?.replace(/\.md$/, "") ?? "";
+  const entryPath = collection === "events" ? slug : `${slug}/${entryFile}`;
   const links = [
     previewUrl && collection && status !== "D" ? `[Preview](${previewUrl}/${path}/${slug})` : "",
     cmsUrl && collection
-      ? `[Edit in CMS](${cmsUrl}/#/collections/${collection}/entries/${slug}/${file.split("/").pop()?.replace(/\.md$/, "")})`
+      ? `[Edit in CMS](${cmsUrl}/#/collections/${collection}/entries/${entryPath})`
       : "",
   ].filter(Boolean);
   sections.push(
     `### ${VERB[status] ?? status} ${label}: ${name}`,
     links.length ? links.join(" · ") : "",
-    rows.length
-      ? ["| Field | Before | After |", "| --- | --- | --- |", ...rows].join("\n")
-      : "_No front matter changes._",
+    ...blocks,
+    rows.length ? ["| Field | Before | After |", "| --- | --- | --- |", ...rows].join("\n") : "",
+    !rows.length && !blocks.length ? "_No content changes in this file._" : "",
   );
 }
 
