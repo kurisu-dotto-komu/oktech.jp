@@ -15,6 +15,11 @@ topics:
 channels:
   - type: meetup
     ref: '307295517'
+gallery:
+  - src: /content/media/events/307295517-go-workshop/gallery/PXL_20250621_0420331092.webp
+  - src: /content/media/events/307295517-go-workshop/gallery/PXL_20250621_0425287982.webp
+  - src: /content/media/events/307295517-go-workshop/gallery/PXL_20250621_0438453472.webp
+  - src: /content/media/events/307295517-go-workshop/gallery/PXL_20250621_0629562173.webp
 ---
 
 Escape the Sun and touch Go!

@@ -15,6 +15,29 @@ topics:
 channels:
   - type: meetup
     ref: '296533487'
+gallery:
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/351660.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/351661.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/351662.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/351663.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/351664.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/351665.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/351666.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/351667.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/351668.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/351669.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/351670.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/351671.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/351672.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/354721.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/IMG_1474.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/IMG_1475.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/IMG_1476.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/IMG_1477.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/IMG_1479.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/IMG_1480.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/IMG_1485.webp
+  - src: /content/media/events/296533487-working-conditions-in-japan-discussion/gallery/IMG_1488.webp
 ---
 
 We are back with another OWDDM where Martin has abandoned us (he’s gone to JSCONF in Tokyo, lucky guy) and I, Destiny and friends fill in. We are happy to have you this month again! We are also very excited to see new faces! Welcome!

@@ -10,6 +10,17 @@ topics:
 channels:
   - type: meetup
     ref: '288045345'
+gallery:
+  - src: /content/media/events/288045345-creative-combo-mixer/gallery/250161.webp
+  - src: /content/media/events/288045345-creative-combo-mixer/gallery/250246.webp
+  - src: /content/media/events/288045345-creative-combo-mixer/gallery/475903.webp
+  - src: /content/media/events/288045345-creative-combo-mixer/gallery/475923.webp
+  - src: /content/media/events/288045345-creative-combo-mixer/gallery/475958.webp
+  - src: /content/media/events/288045345-creative-combo-mixer/gallery/476033.webp
+  - src: /content/media/events/288045345-creative-combo-mixer/gallery/476113.webp
+  - src: /content/media/events/288045345-creative-combo-mixer/gallery/673265.webp
+  - src: /content/media/events/288045345-creative-combo-mixer/gallery/673380.webp
+  - src: /content/media/events/288045345-creative-combo-mixer/gallery/673395.webp
 ---
 
 Hello Everyone, this is an unexpected event! Surprise

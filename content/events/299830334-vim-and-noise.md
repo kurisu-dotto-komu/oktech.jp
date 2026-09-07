@@ -15,6 +15,10 @@ topics:
 channels:
   - type: meetup
     ref: '299830334'
+gallery:
+  - src: /content/media/events/299830334-vim-and-noise/gallery/IMG_20240413_1728023.webp
+  - src: /content/media/events/299830334-vim-and-noise/gallery/IMG_20240413_1728142.webp
+  - src: /content/media/events/299830334-vim-and-noise/gallery/IMG_20240413_1847382.webp
 ---
 
 Hello everyone!

@@ -9,6 +9,14 @@ howToFindUs: Please follow the map in the featured picture
 channels:
   - type: meetup
     ref: '260877986'
+gallery:
+  - src: /content/media/events/260877986-owddm-april-2019-meetup/gallery/712808.webp
+  - src: /content/media/events/260877986-owddm-april-2019-meetup/gallery/712809.webp
+  - src: /content/media/events/260877986-owddm-april-2019-meetup/gallery/712810.webp
+  - src: /content/media/events/260877986-owddm-april-2019-meetup/gallery/712811.webp
+  - src: /content/media/events/260877986-owddm-april-2019-meetup/gallery/712812.webp
+  - src: /content/media/events/260877986-owddm-april-2019-meetup/gallery/781220.webp
+  - src: /content/media/events/260877986-owddm-april-2019-meetup/gallery/783030.webp
 ---
 
 Finally, Spring is here and the warm days are starting! Before the long golden week holiday, we would like to invite you to our April Meetup for two nice talks and optionally some drinks afterward in a nearby Izakaya.

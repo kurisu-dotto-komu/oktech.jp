@@ -8,6 +8,8 @@ howToFindUs: 7th Floor, North Building  Grand Front Umeda (Take the North 北 3 
 channels:
   - type: meetup
     ref: '221046973'
+gallery:
+  - src: /content/media/events/221046973-join-us-on-march-28th/gallery/297275.webp
 ---
 
 While we are waiting on the spring to show up, lets have another meetup in march!

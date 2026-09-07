@@ -9,6 +9,8 @@ howToFindUs: The event is on the 3rd floor. The front of the building will be cl
 channels:
   - type: meetup
     ref: '264050187'
+gallery:
+  - src: /content/media/events/264050187-autumn-the-beautiful-season-of-colors-osaka-web/gallery/578454.webp
 ---
 
 Hi Everyone.

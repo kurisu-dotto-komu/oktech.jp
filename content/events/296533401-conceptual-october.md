@@ -14,6 +14,12 @@ topics:
 channels:
   - type: meetup
     ref: '296533401'
+gallery:
+  - src: /content/media/events/296533401-conceptual-october/gallery/IMG_0242.webp
+  - src: /content/media/events/296533401-conceptual-october/gallery/IMG_0243.webp
+  - src: /content/media/events/296533401-conceptual-october/gallery/IMG_0244.webp
+  - src: /content/media/events/296533401-conceptual-october/gallery/IMG_0245.webp
+  - src: /content/media/events/296533401-conceptual-october/gallery/IMG_0246.webp
 ---
 
 Hello web friends! 👋

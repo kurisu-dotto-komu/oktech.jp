@@ -19,6 +19,44 @@ channels:
     ref: https://www.linkedin.com/events/7425161162834464768/
   - type: discord
     ref: https://discord.com/events/1034792577293094972/1466666882521104517
+gallery:
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_0242.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_0246.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_0247.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_0249.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_0250.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_0252.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_0254.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_0255.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_0256.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_0257.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_0258.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_0260.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_0261.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_0262.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_0263.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_0264.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_20260228_172632-01.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_20260228_172718-01.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_20260228_174051-01.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_20260228_182605-01.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/IMG_20260228_182848-02.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_0811018902.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_0811505492.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_0815192012.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_0824033972.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_0825028472.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_0825493442.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_0838492552.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_0842352782.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_0854395552.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_0858523412.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_0921519472.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_0922136432.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_0931385752.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_0934556342.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_0938414872.webp
+  - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_1026208242.webp
 ---
 
 Join us for this February we are coping with the trends of the last year and look at AI through two different lenses.

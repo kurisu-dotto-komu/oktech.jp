@@ -15,6 +15,20 @@ topics:
 channels:
   - type: meetup
     ref: '292274060'
+gallery:
+  - src: /content/media/events/292274060-owddm-hn-kansai-hacker-hanami-in-osaka/gallery/IMG_0409.webp
+  - src: /content/media/events/292274060-owddm-hn-kansai-hacker-hanami-in-osaka/gallery/IMG_0410.webp
+  - src: /content/media/events/292274060-owddm-hn-kansai-hacker-hanami-in-osaka/gallery/IMG_0411.webp
+  - src: /content/media/events/292274060-owddm-hn-kansai-hacker-hanami-in-osaka/gallery/IMG_0412.webp
+  - src: /content/media/events/292274060-owddm-hn-kansai-hacker-hanami-in-osaka/gallery/IMG_0416.webp
+  - src: /content/media/events/292274060-owddm-hn-kansai-hacker-hanami-in-osaka/gallery/IMG_0417.webp
+  - src: /content/media/events/292274060-owddm-hn-kansai-hacker-hanami-in-osaka/gallery/IMG_0434.webp
+  - src: /content/media/events/292274060-owddm-hn-kansai-hacker-hanami-in-osaka/gallery/IMG_0437.webp
+  - src: /content/media/events/292274060-owddm-hn-kansai-hacker-hanami-in-osaka/gallery/IMG_0845.webp
+  - src: /content/media/events/292274060-owddm-hn-kansai-hacker-hanami-in-osaka/gallery/IMG_0851.webp
+  - src: /content/media/events/292274060-owddm-hn-kansai-hacker-hanami-in-osaka/gallery/IMG_0866.webp
+  - src: /content/media/events/292274060-owddm-hn-kansai-hacker-hanami-in-osaka/gallery/IMG_0867.webp
+  - src: /content/media/events/292274060-owddm-hn-kansai-hacker-hanami-in-osaka/gallery/IMG_0874.webp
 ---
 
 Happy Spring!👋

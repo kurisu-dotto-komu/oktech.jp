@@ -14,6 +14,26 @@ topics:
 channels:
   - type: meetup
     ref: '297504081'
+gallery:
+  - src: /content/media/events/297504081-light-december-talks/gallery/821977.webp
+  - src: /content/media/events/297504081-light-december-talks/gallery/821979.webp
+  - src: /content/media/events/297504081-light-december-talks/gallery/821983.webp
+  - src: /content/media/events/297504081-light-december-talks/gallery/821984.webp
+  - src: /content/media/events/297504081-light-december-talks/gallery/821986.webp
+  - src: /content/media/events/297504081-light-december-talks/gallery/821996.webp
+  - src: /content/media/events/297504081-light-december-talks/gallery/822006.webp
+  - src: /content/media/events/297504081-light-december-talks/gallery/827796.webp
+  - src: /content/media/events/297504081-light-december-talks/gallery/827797.webp
+  - src: /content/media/events/297504081-light-december-talks/gallery/827798.webp
+  - src: /content/media/events/297504081-light-december-talks/gallery/827799.webp
+  - src: /content/media/events/297504081-light-december-talks/gallery/827800.webp
+  - src: /content/media/events/297504081-light-december-talks/gallery/827801.webp
+  - src: /content/media/events/297504081-light-december-talks/gallery/827802.webp
+  - src: /content/media/events/297504081-light-december-talks/gallery/827803.webp
+  - src: /content/media/events/297504081-light-december-talks/gallery/827804.webp
+  - src: /content/media/events/297504081-light-december-talks/gallery/827805.webp
+  - src: /content/media/events/297504081-light-december-talks/gallery/827806.webp
+  - src: /content/media/events/297504081-light-december-talks/gallery/827807.webp
 ---
 
 Hello Everyone,

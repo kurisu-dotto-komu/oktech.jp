@@ -1,7 +1,6 @@
 import { glob } from "astro/loaders";
 import { defineCollection, reference, z } from "astro:content";
 
-import { eventGalleryImageCollection } from "@/content/gallery";
 import { articleSchema } from "@/content/schemas/article";
 import { eventSchema } from "@/content/schemas/event";
 import { entryRef, folderId } from "@/content/schemas/id";
@@ -37,5 +36,4 @@ export const collections = {
     loader: glob({ base: "./content/pages", pattern: "*.md" }),
     schema: pageSchema,
   }),
-  eventGalleryImage: eventGalleryImageCollection,
 };

@@ -14,6 +14,18 @@ topics:
 channels:
   - type: meetup
     ref: '288129290'
+gallery:
+  - src: /content/media/events/288129290-fast-autumn-web/gallery/049832.webp
+  - src: /content/media/events/288129290-fast-autumn-web/gallery/093707.webp
+  - src: /content/media/events/288129290-fast-autumn-web/gallery/213243.webp
+  - src: /content/media/events/288129290-fast-autumn-web/gallery/253701.webp
+  - src: /content/media/events/288129290-fast-autumn-web/gallery/253756.webp
+  - src: /content/media/events/288129290-fast-autumn-web/gallery/253826.webp
+  - src: /content/media/events/288129290-fast-autumn-web/gallery/313952.webp
+  - src: /content/media/events/288129290-fast-autumn-web/gallery/314037.webp
+  - src: /content/media/events/288129290-fast-autumn-web/gallery/565559.webp
+  - src: /content/media/events/288129290-fast-autumn-web/gallery/676865.webp
+  - src: /content/media/events/288129290-fast-autumn-web/gallery/988031.webp
 ---
 
 We survived this summer!And this months meeting will be all about speed. 🚀

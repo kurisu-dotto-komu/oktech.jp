@@ -14,6 +14,9 @@ topics:
 channels:
   - type: meetup
     ref: '300583797'
+gallery:
+  - src: /content/media/events/300583797-state-of-html/gallery/IMG_20240511_1736372.webp
+  - src: /content/media/events/300583797-state-of-html/gallery/IMG_20240511_1742402.webp
 ---
 
 Hello Friends,

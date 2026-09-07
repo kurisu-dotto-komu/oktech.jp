@@ -14,6 +14,18 @@ topics:
 channels:
   - type: meetup
     ref: '298753731'
+gallery:
+  - src: /content/media/events/298753731-try-nostr-with-shisha/gallery/829228.webp
+  - src: /content/media/events/298753731-try-nostr-with-shisha/gallery/829229.webp
+  - src: /content/media/events/298753731-try-nostr-with-shisha/gallery/829230.webp
+  - src: /content/media/events/298753731-try-nostr-with-shisha/gallery/IMG_20240131_1850032.webp
+  - src: /content/media/events/298753731-try-nostr-with-shisha/gallery/IMG_20240131_1904582.webp
+  - src: /content/media/events/298753731-try-nostr-with-shisha/gallery/IMG_20240131_190503.webp
+  - src: /content/media/events/298753731-try-nostr-with-shisha/gallery/IMG_20240131_1905092.webp
+  - src: /content/media/events/298753731-try-nostr-with-shisha/gallery/IMG_20240131_192011.webp
+  - src: /content/media/events/298753731-try-nostr-with-shisha/gallery/IMG_4939.webp
+  - src: /content/media/events/298753731-try-nostr-with-shisha/gallery/IMG_4942.webp
+  - src: /content/media/events/298753731-try-nostr-with-shisha/gallery/IMG_4962.webp
 ---
 
 Calling for all are curious about Web3 and distributed protocols!

@@ -19,6 +19,8 @@ channels:
     ref: https://www.linkedin.com/events/7473202752966316032/
   - type: discord
     ref: https://discord.com/events/1034792577293094972/1516994013352296579
+gallery:
+  - src: /content/media/events/314843644-manage-dependencies-with-nix-and-co/gallery/792486.webp
 ---
 
 Right after the Gion Festival, join us as we tackle one of the greatest problems in software development.

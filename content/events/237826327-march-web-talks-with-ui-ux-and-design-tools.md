@@ -8,6 +8,9 @@ venue: 24213835-aiming-inc
 channels:
   - type: meetup
     ref: '237826327'
+gallery:
+  - src: /content/media/events/237826327-march-web-talks-with-ui-ux-and-design-tools/gallery/403152.webp
+  - src: /content/media/events/237826327-march-web-talks-with-ui-ux-and-design-tools/gallery/403163.webp
 ---
 
 Dear designers and developers,

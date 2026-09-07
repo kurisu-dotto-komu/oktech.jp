@@ -14,6 +14,9 @@ topics:
 channels:
   - type: meetup
     ref: '287159257'
+gallery:
+  - src: /content/media/events/287159257-hello-world-meet-and-greet-at-space-kante/gallery/568574.webp
+    caption: arrived at the co-working space, it's pretty well visited already (because of gion festival?) but there are seats open, let's see how we can arrange a conversation later on.
 ---
 
 Hello Friends, 👋

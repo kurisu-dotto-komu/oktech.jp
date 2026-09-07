@@ -14,6 +14,15 @@ topics:
 channels:
   - type: meetup
     ref: '287156985'
+gallery:
+  - src: /content/media/events/287156985-hiding-from-the-heat-login-ux-and-live-coding/gallery/273041.webp
+  - src: /content/media/events/287156985-hiding-from-the-heat-login-ux-and-live-coding/gallery/289653.webp
+  - src: /content/media/events/287156985-hiding-from-the-heat-login-ux-and-live-coding/gallery/701128.webp
+  - src: /content/media/events/287156985-hiding-from-the-heat-login-ux-and-live-coding/gallery/711082.webp
+  - src: /content/media/events/287156985-hiding-from-the-heat-login-ux-and-live-coding/gallery/711197.webp
+  - src: /content/media/events/287156985-hiding-from-the-heat-login-ux-and-live-coding/gallery/736574.webp
+  - src: /content/media/events/287156985-hiding-from-the-heat-login-ux-and-live-coding/gallery/776985.webp
+  - src: /content/media/events/287156985-hiding-from-the-heat-login-ux-and-live-coding/gallery/974604.webp
 ---
 
 Summer heat in Osaka, and we meet to escape the blistering sun and talk about web & things. 😎

@@ -14,6 +14,9 @@ topics:
 channels:
   - type: meetup
     ref: '288224695'
+gallery:
+  - src: /content/media/events/288224695-login-september/gallery/271015.webp
+  - src: /content/media/events/288224695-login-september/gallery/271016.webp
 ---
 
 Welcome to September, Friends! 👋

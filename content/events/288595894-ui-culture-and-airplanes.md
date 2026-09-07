@@ -14,6 +14,20 @@ topics:
 channels:
   - type: meetup
     ref: '288595894'
+gallery:
+  - src: /content/media/events/288595894-ui-culture-and-airplanes/gallery/354366.webp
+  - src: /content/media/events/288595894-ui-culture-and-airplanes/gallery/354516.webp
+  - src: /content/media/events/288595894-ui-culture-and-airplanes/gallery/354581.webp
+  - src: /content/media/events/288595894-ui-culture-and-airplanes/gallery/354671.webp
+  - src: /content/media/events/288595894-ui-culture-and-airplanes/gallery/621294.webp
+  - src: /content/media/events/288595894-ui-culture-and-airplanes/gallery/621394.webp
+  - src: /content/media/events/288595894-ui-culture-and-airplanes/gallery/621619.webp
+  - src: /content/media/events/288595894-ui-culture-and-airplanes/gallery/806100.webp
+  - src: /content/media/events/288595894-ui-culture-and-airplanes/gallery/828922.webp
+  - src: /content/media/events/288595894-ui-culture-and-airplanes/gallery/875668.webp
+  - src: /content/media/events/288595894-ui-culture-and-airplanes/gallery/875768.webp
+  - src: /content/media/events/288595894-ui-culture-and-airplanes/gallery/875858.webp
+  - src: /content/media/events/288595894-ui-culture-and-airplanes/gallery/875903.webp
 ---
 
 Dear web enthusiasts, we're in a busy autumn! 🔥

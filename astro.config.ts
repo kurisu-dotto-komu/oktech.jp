@@ -1,6 +1,5 @@
 // @ts-check
 import react from "@astrojs/react";
-import yaml from "@rollup/plugin-yaml";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
 import remarkBreaks from "remark-breaks";
@@ -55,7 +54,6 @@ export default defineConfig({
     plugins: [
       svgr(),
       tailwindcss(),
-      yaml(),
       ...(analyzeBundle
         ? [
             visualizer({

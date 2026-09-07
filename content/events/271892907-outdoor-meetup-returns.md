@@ -9,6 +9,11 @@ howToFindUs: 🚉 Accessible from the Tsurumi-ryokuchi Station on the Nagahori T
 channels:
   - type: meetup
     ref: '271892907'
+gallery:
+  - src: /content/media/events/271892907-outdoor-meetup-returns/gallery/539020.webp
+  - src: /content/media/events/271892907-outdoor-meetup-returns/gallery/539021.webp
+  - src: /content/media/events/271892907-outdoor-meetup-returns/gallery/539023.webp
+  - src: /content/media/events/271892907-outdoor-meetup-returns/gallery/539025.webp
 ---
 
 Welcome back web developers and designers!

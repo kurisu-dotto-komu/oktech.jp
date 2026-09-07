@@ -14,6 +14,8 @@ topics:
 channels:
   - type: meetup
     ref: '289641703'
+gallery:
+  - src: /content/media/events/289641703-november-web-systems/gallery/737655.webp
 ---
 
 Good Autumn, Friends! 🍁

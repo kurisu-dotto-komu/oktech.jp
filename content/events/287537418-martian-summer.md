@@ -14,6 +14,22 @@ topics:
 channels:
   - type: meetup
     ref: '287537418'
+gallery:
+  - src: /content/media/events/287537418-martian-summer/gallery/203837.webp
+  - src: /content/media/events/287537418-martian-summer/gallery/203907.webp
+  - src: /content/media/events/287537418-martian-summer/gallery/213596.webp
+  - src: /content/media/events/287537418-martian-summer/gallery/213686.webp
+  - src: /content/media/events/287537418-martian-summer/gallery/230038.webp
+  - src: /content/media/events/287537418-martian-summer/gallery/235627.webp
+  - src: /content/media/events/287537418-martian-summer/gallery/389348.webp
+  - src: /content/media/events/287537418-martian-summer/gallery/389368.webp
+  - src: /content/media/events/287537418-martian-summer/gallery/436699.webp
+  - src: /content/media/events/287537418-martian-summer/gallery/449260.webp
+  - src: /content/media/events/287537418-martian-summer/gallery/489099.webp
+  - src: /content/media/events/287537418-martian-summer/gallery/712040.webp
+  - src: /content/media/events/287537418-martian-summer/gallery/712180.webp
+  - src: /content/media/events/287537418-martian-summer/gallery/712230.webp
+  - src: /content/media/events/287537418-martian-summer/gallery/924391.webp
 ---
 
 The new space worked out well last time! As it was providing a big space to escape the summer sun we will be meeting there in August again. 😎

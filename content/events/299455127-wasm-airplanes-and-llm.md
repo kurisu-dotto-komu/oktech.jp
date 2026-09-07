@@ -14,6 +14,20 @@ topics:
 channels:
   - type: meetup
     ref: '299455127'
+gallery:
+  - src: /content/media/events/299455127-wasm-airplanes-and-llm/gallery/963424.webp
+  - src: /content/media/events/299455127-wasm-airplanes-and-llm/gallery/963425.webp
+  - src: /content/media/events/299455127-wasm-airplanes-and-llm/gallery/963426.webp
+  - src: /content/media/events/299455127-wasm-airplanes-and-llm/gallery/963428.webp
+  - src: /content/media/events/299455127-wasm-airplanes-and-llm/gallery/963431.webp
+  - src: /content/media/events/299455127-wasm-airplanes-and-llm/gallery/IMG_9636.webp
+  - src: /content/media/events/299455127-wasm-airplanes-and-llm/gallery/IMG_9657.webp
+  - src: /content/media/events/299455127-wasm-airplanes-and-llm/gallery/IMG_9659.webp
+  - src: /content/media/events/299455127-wasm-airplanes-and-llm/gallery/IMG_9663.webp
+  - src: /content/media/events/299455127-wasm-airplanes-and-llm/gallery/IMG_9674.webp
+  - src: /content/media/events/299455127-wasm-airplanes-and-llm/gallery/IMG_9690.webp
+  - src: /content/media/events/299455127-wasm-airplanes-and-llm/gallery/IMG_9693.webp
+  - src: /content/media/events/299455127-wasm-airplanes-and-llm/gallery/IMG_9696.webp
 ---
 
 More React in March, but this time with a twist and more 😱. Join us for this month, for a longer evening with two smaller workshops!

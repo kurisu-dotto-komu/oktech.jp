@@ -14,6 +14,13 @@ topics:
 channels:
   - type: meetup
     ref: '301456905'
+gallery:
+  - src: /content/media/events/301456905-intro-to-aws-connect/gallery/IMG_20240629_170825-01.webp
+  - src: /content/media/events/301456905-intro-to-aws-connect/gallery/IMG_20240629_174414.webp
+  - src: /content/media/events/301456905-intro-to-aws-connect/gallery/IMG_20240629_174432.webp
+  - src: /content/media/events/301456905-intro-to-aws-connect/gallery/IMG_20240629_175238.webp
+  - src: /content/media/events/301456905-intro-to-aws-connect/gallery/IMG_20240629_175239.webp
+  - src: /content/media/events/301456905-intro-to-aws-connect/gallery/IMG_20240629_183126.webp
 ---
 
 Hello friends,

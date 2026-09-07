@@ -8,6 +8,9 @@ venue: 24213835-aiming-inc
 channels:
   - type: meetup
     ref: '249381736'
+gallery:
+  - src: /content/media/events/249381736-golden-week-golden-web-meetup/gallery/580480.webp
+  - src: /content/media/events/249381736-golden-week-golden-web-meetup/gallery/580483.webp
 ---
 
 What better way to start your Golden Week than with exciting talks about the web.

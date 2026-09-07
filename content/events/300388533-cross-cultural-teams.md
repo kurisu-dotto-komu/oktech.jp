@@ -15,6 +15,13 @@ topics:
 channels:
   - type: meetup
     ref: '300388533'
+gallery:
+  - src: /content/media/events/300388533-cross-cultural-teams/gallery/IMG_20240518_185959-01.webp
+  - src: /content/media/events/300388533-cross-cultural-teams/gallery/IMG_20240518_1910182.webp
+  - src: /content/media/events/300388533-cross-cultural-teams/gallery/IMG_20240518_191935-01.webp
+  - src: /content/media/events/300388533-cross-cultural-teams/gallery/IMG_20240518_1938122.webp
+  - src: /content/media/events/300388533-cross-cultural-teams/gallery/IMG_20240518_2017042.webp
+  - src: /content/media/events/300388533-cross-cultural-teams/gallery/IMG_20240518_2030412.webp
 ---
 
 Hello Friends, its not quite summer yet. Join us for a chill Saturday evening talking about working with other people.

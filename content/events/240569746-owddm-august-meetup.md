@@ -7,6 +7,8 @@ venue: 24213835-aiming-inc
 channels:
   - type: meetup
     ref: '240569746'
+gallery:
+  - src: /content/media/events/240569746-owddm-august-meetup/gallery/000011.webp
 ---
 
 Join us in August for another great meetup with topics on web design and web programming. For those of you who won't be escaping the summer heat at end of the month, we have the opportunity to meet again on August 26 at 6PM, at Aiming Inc.’s Osaka Studio.

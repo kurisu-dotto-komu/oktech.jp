@@ -14,6 +14,15 @@ topics:
 channels:
   - type: meetup
     ref: '290682636'
+gallery:
+  - src: /content/media/events/290682636-gamepad-kpis/gallery/432010.webp
+  - src: /content/media/events/290682636-gamepad-kpis/gallery/432045.webp
+  - src: /content/media/events/290682636-gamepad-kpis/gallery/432070.webp
+  - src: /content/media/events/290682636-gamepad-kpis/gallery/432075.webp
+  - src: /content/media/events/290682636-gamepad-kpis/gallery/497068.webp
+  - src: /content/media/events/290682636-gamepad-kpis/gallery/499732.webp
+  - src: /content/media/events/290682636-gamepad-kpis/gallery/499772.webp
+  - src: /content/media/events/290682636-gamepad-kpis/gallery/997206.webp
 ---
 
 Happy New Year! 🎊 明けましておめでとうございます！

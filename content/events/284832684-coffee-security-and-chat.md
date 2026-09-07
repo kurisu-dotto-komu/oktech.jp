@@ -20,6 +20,8 @@ topics:
 channels:
   - type: meetup
     ref: '284832684'
+gallery:
+  - src: /content/media/events/284832684-coffee-security-and-chat/gallery/084941.webp
 ---
 
 We will be very happy to see you at the next Meetup, our first meeting of the year.

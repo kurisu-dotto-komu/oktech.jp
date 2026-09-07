@@ -14,6 +14,14 @@ topics:
 channels:
   - type: meetup
     ref: '292526286'
+gallery:
+  - src: /content/media/events/292526286-surveys-and-keyboards/gallery/IMG_20230415_171900.webp
+  - src: /content/media/events/292526286-surveys-and-keyboards/gallery/IMG_20230415_171903.webp
+  - src: /content/media/events/292526286-surveys-and-keyboards/gallery/IMG_20230415_173559.webp
+  - src: /content/media/events/292526286-surveys-and-keyboards/gallery/IMG_20230421_182055.webp
+  - src: /content/media/events/292526286-surveys-and-keyboards/gallery/IMG_20230421_192322.webp
+  - src: /content/media/events/292526286-surveys-and-keyboards/gallery/IMG_20230421_192327.webp
+  - src: /content/media/events/292526286-surveys-and-keyboards/gallery/IMG_6947.webp
 ---
 
 Hello Everyone, 👋

@@ -14,6 +14,15 @@ topics:
 channels:
   - type: meetup
     ref: '308580120'
+gallery:
+  - src: /content/media/events/308580120-agentic-sentiments/gallery/PXL_20250719_0823103382.webp
+  - src: /content/media/events/308580120-agentic-sentiments/gallery/PXL_20250719_0823281232.webp
+  - src: /content/media/events/308580120-agentic-sentiments/gallery/PXL_20250719_0823393602.webp
+  - src: /content/media/events/308580120-agentic-sentiments/gallery/PXL_20250719_0858250392.webp
+  - src: /content/media/events/308580120-agentic-sentiments/gallery/PXL_20250719_0859050512.webp
+  - src: /content/media/events/308580120-agentic-sentiments/gallery/PXL_20250719_0946272152.webp
+  - src: /content/media/events/308580120-agentic-sentiments/gallery/PXL_20250719_0946379792.webp
+  - src: /content/media/events/308580120-agentic-sentiments/gallery/PXL_20250719_0957297562.webp
 ---
 
 Big buzzwords are on the menu for this Summer where we are happy to invite both techy and non-techy people.

@@ -15,6 +15,39 @@ topics:
 channels:
   - type: meetup
     ref: '302995505'
+gallery:
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0839.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0847.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0851.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0858.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0862.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0866.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0868.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0873.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0877.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0882.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0885.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0891.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0898.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0904.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0912.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0920.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0922.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0930.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0933.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0936.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0941.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/DSCF0944.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/IMG_0422.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/IMG_0425.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/IMG_0427.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/IMG_0429.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/IMG_0431.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/IMG_0437.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/IMG_0438.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/IMG_0449.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/IMG_0451.webp
+  - src: /content/media/events/302995505-how-to-present-and-sql/gallery/IMG_0452.webp
 ---
 
 Hello Friends 👋

@@ -19,6 +19,20 @@ channels:
     ref: https://www.linkedin.com/events/7388281894481793025/
   - type: discord
     ref: https://discord.gg/5aTWzJvJ?event=1432075755373859037
+gallery:
+  - src: /content/media/events/308667063-alpine-javascript-numbers-and-business-cards/gallery/IMG_20251122_185641.webp
+  - src: /content/media/events/308667063-alpine-javascript-numbers-and-business-cards/gallery/IMG_20251122_185656.webp
+  - src: /content/media/events/308667063-alpine-javascript-numbers-and-business-cards/gallery/IMG_20251122_190207.webp
+  - src: /content/media/events/308667063-alpine-javascript-numbers-and-business-cards/gallery/IMG_20251122_191015.webp
+  - src: /content/media/events/308667063-alpine-javascript-numbers-and-business-cards/gallery/IMG_20251122_192258.webp
+  - src: /content/media/events/308667063-alpine-javascript-numbers-and-business-cards/gallery/PXL_20251122_0826496062.webp
+  - src: /content/media/events/308667063-alpine-javascript-numbers-and-business-cards/gallery/PXL_20251122_0827157522.webp
+  - src: /content/media/events/308667063-alpine-javascript-numbers-and-business-cards/gallery/PXL_20251122_0827480372.webp
+  - src: /content/media/events/308667063-alpine-javascript-numbers-and-business-cards/gallery/PXL_20251122_0853240442.webp
+  - src: /content/media/events/308667063-alpine-javascript-numbers-and-business-cards/gallery/PXL_20251122_0858047052.webp
+  - src: /content/media/events/308667063-alpine-javascript-numbers-and-business-cards/gallery/PXL_20251122_0902002502.webp
+  - src: /content/media/events/308667063-alpine-javascript-numbers-and-business-cards/gallery/PXL_20251122_0954375632.webp
+  - src: /content/media/events/308667063-alpine-javascript-numbers-and-business-cards/gallery/PXL_20251122_0954437002.webp
 ---
 
 Right after the [jsconf](https://jsconf.jp/2025/en) and wedged around TC39 and TPAC meetings we are having a JavaScript-ey Saturday evening and you are welcome to join us!

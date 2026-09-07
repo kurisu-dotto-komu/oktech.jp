@@ -8,6 +8,8 @@ venue: 24529555-cybozu-osaka-office
 channels:
   - type: meetup
     ref: '242802082'
+gallery:
+  - src: /content/media/events/242802082-november-code-talks/gallery/409923.webp
 ---
 
 Dear all,

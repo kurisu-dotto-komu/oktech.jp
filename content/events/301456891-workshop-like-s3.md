@@ -14,6 +14,33 @@ topics:
 channels:
   - type: meetup
     ref: '301456891'
+gallery:
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/20240628_055427.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/20240628_055428.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/20240628_055430.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7656.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7657.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7658.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7659.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7660.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7662.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7663.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7664.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7666.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7667.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7668.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7669.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7670.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7671.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7672.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7673.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7674.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7675.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7677.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7678.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7679.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7681.webp
+  - src: /content/media/events/301456891-workshop-like-s3/gallery/IMG_7682.webp
 ---
 
 Hello Everyone!

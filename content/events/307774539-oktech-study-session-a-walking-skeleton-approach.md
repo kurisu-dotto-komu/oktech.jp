@@ -15,6 +15,13 @@ topics:
 channels:
   - type: meetup
     ref: '307774539'
+gallery:
+  - src: /content/media/events/307774539-oktech-study-session-a-walking-skeleton-approach/gallery/PXL_20250720_0955503162.webp
+  - src: /content/media/events/307774539-oktech-study-session-a-walking-skeleton-approach/gallery/PXL_20250720_0958291473.webp
+  - src: /content/media/events/307774539-oktech-study-session-a-walking-skeleton-approach/gallery/PXL_20250720_1159016552.webp
+  - src: /content/media/events/307774539-oktech-study-session-a-walking-skeleton-approach/gallery/WhatsA_9g0_fSKl7caBs4cO8CCKEcB.webp
+  - src: /content/media/events/307774539-oktech-study-session-a-walking-skeleton-approach/gallery/WhatsA_PlbOJtH8NB7_yOxAEbx2bSU.webp
+  - src: /content/media/events/307774539-oktech-study-session-a-walking-skeleton-approach/gallery/WhatsA_pTkVCaAA7wVtQsrRWW4LVzT.webp
 ---
 
 Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next **OKTech Study Session** a gathering for engineers who don’t just code, but want to understand the *why* and *how* behind solid software design.

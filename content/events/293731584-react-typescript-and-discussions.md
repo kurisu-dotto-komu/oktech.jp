@@ -15,6 +15,12 @@ topics:
 channels:
   - type: meetup
     ref: '293731584'
+gallery:
+  - src: /content/media/events/293731584-react-typescript-and-discussions/gallery/IMG_2164.webp
+  - src: /content/media/events/293731584-react-typescript-and-discussions/gallery/IMG_2166.webp
+  - src: /content/media/events/293731584-react-typescript-and-discussions/gallery/IMG_2167.webp
+  - src: /content/media/events/293731584-react-typescript-and-discussions/gallery/IMG_4423.webp
+  - src: /content/media/events/293731584-react-typescript-and-discussions/gallery/IMG_4427.webp
 ---
 
 Hi Friends, 👋

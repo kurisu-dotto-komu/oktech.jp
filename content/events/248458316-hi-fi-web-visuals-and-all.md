@@ -9,6 +9,11 @@ howToFindUs: From JR Osaka station walk north past the Grand Front South Tower. 
 channels:
   - type: meetup
     ref: '248458316'
+gallery:
+  - src: /content/media/events/248458316-hi-fi-web-visuals-and-all/gallery/718552.webp
+  - src: /content/media/events/248458316-hi-fi-web-visuals-and-all/gallery/718580.webp
+  - src: /content/media/events/248458316-hi-fi-web-visuals-and-all/gallery/721122.webp
+  - src: /content/media/events/248458316-hi-fi-web-visuals-and-all/gallery/721123.webp
 ---
 
 Cherry blossoms are coming to town and so is another special presenter in March.

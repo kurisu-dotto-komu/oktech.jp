@@ -9,6 +9,20 @@ howToFindUs: Directly beside the JR Station, Sakura Internet is in the Grandfron
 channels:
   - type: meetup
     ref: '254342508'
+gallery:
+  - src: /content/media/events/254342508-lessons-learned/gallery/786809.webp
+    caption: This space is gorgeous!!!
+  - src: /content/media/events/254342508-lessons-learned/gallery/786961.webp
+    caption: If you see this, you are correct
+  - src: /content/media/events/254342508-lessons-learned/gallery/788700.webp
+  - src: /content/media/events/254342508-lessons-learned/gallery/788702.webp
+  - src: /content/media/events/254342508-lessons-learned/gallery/788705.webp
+  - src: /content/media/events/254342508-lessons-learned/gallery/897999.webp
+    caption: |-
+      'Everything that can be automated should be automated'
+      - Christian Oliff
+  - src: /content/media/events/254342508-lessons-learned/gallery/898005.webp
+    caption: Our host, Martin Heidegger, kicks things off
 ---
 
 Wow, this summer was hot! We plan to keep it chilled at this months OWDDM by breaking a bit out of our usual format.

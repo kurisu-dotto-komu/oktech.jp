@@ -9,6 +9,8 @@ howToFindUs: Take the elevator 北3 (no other!) to the 7th floor of the GrandFro
 channels:
   - type: meetup
     ref: '216341542'
+gallery:
+  - src: /content/media/events/216341542-monthly-meetup-in-november/gallery/169979.webp
 ---
 
 The cold winds creep closer but they will not be able to stop our passion for the web!

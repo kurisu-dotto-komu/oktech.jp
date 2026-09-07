@@ -15,6 +15,23 @@ topics:
 channels:
   - type: meetup
     ref: '301574205'
+gallery:
+  - src: /content/media/events/301574205-the-state-of-js/gallery/IMG_0349.webp
+  - src: /content/media/events/301574205-the-state-of-js/gallery/IMG_0350.webp
+  - src: /content/media/events/301574205-the-state-of-js/gallery/IMG_0351.webp
+  - src: /content/media/events/301574205-the-state-of-js/gallery/IMG_0352.webp
+  - src: /content/media/events/301574205-the-state-of-js/gallery/IMG_0353.webp
+  - src: /content/media/events/301574205-the-state-of-js/gallery/IMG_0354.webp
+  - src: /content/media/events/301574205-the-state-of-js/gallery/IMG_0355.webp
+  - src: /content/media/events/301574205-the-state-of-js/gallery/IMG_0356.webp
+  - src: /content/media/events/301574205-the-state-of-js/gallery/IMG_0357.webp
+  - src: /content/media/events/301574205-the-state-of-js/gallery/IMG_0358.webp
+  - src: /content/media/events/301574205-the-state-of-js/gallery/IMG_0359.webp
+  - src: /content/media/events/301574205-the-state-of-js/gallery/IMG_0360.webp
+  - src: /content/media/events/301574205-the-state-of-js/gallery/IMG_0361.webp
+  - src: /content/media/events/301574205-the-state-of-js/gallery/IMG_0362.webp
+  - src: /content/media/events/301574205-the-state-of-js/gallery/IMG_0363.webp
+  - src: /content/media/events/301574205-the-state-of-js/gallery/IMG_0364.webp
 ---
 
 Hello there fellow OWDDMers 👾

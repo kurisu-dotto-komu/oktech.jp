@@ -8,6 +8,10 @@ howToFindUs: In the first floor of the Hankyu Department Building take the busin
 channels:
   - type: meetup
     ref: '239372174'
+gallery:
+  - src: /content/media/events/239372174-early-summer-night-in-june-meetup/gallery/208507.webp
+  - src: /content/media/events/239372174-early-summer-night-in-june-meetup/gallery/208515.webp
+  - src: /content/media/events/239372174-early-summer-night-in-june-meetup/gallery/208529.webp
 ---
 
 Summer is upon us soon and we have a cool early summer night meetup event for all of you aspiring web designers and developers this month.

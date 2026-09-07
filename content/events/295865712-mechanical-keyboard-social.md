@@ -15,6 +15,27 @@ topics:
 channels:
   - type: meetup
     ref: '295865712'
+gallery:
+  - src: /content/media/events/295865712-mechanical-keyboard-social/gallery/038490.webp
+    caption: Just a few of the DIY keyboards i've made. I'll be bringing these plus a switch tester, and more.
+  - src: /content/media/events/295865712-mechanical-keyboard-social/gallery/179349.webp
+  - src: /content/media/events/295865712-mechanical-keyboard-social/gallery/179350.webp
+  - src: /content/media/events/295865712-mechanical-keyboard-social/gallery/219224.webp
+  - src: /content/media/events/295865712-mechanical-keyboard-social/gallery/219225.webp
+  - src: /content/media/events/295865712-mechanical-keyboard-social/gallery/219226.webp
+  - src: /content/media/events/295865712-mechanical-keyboard-social/gallery/219227.webp
+  - src: /content/media/events/295865712-mechanical-keyboard-social/gallery/822324.webp
+    caption: Some example of what I will bring
+  - src: /content/media/events/295865712-mechanical-keyboard-social/gallery/822336.webp
+    caption: low profile Keychrone with wood wrist rest
+  - src: /content/media/events/295865712-mechanical-keyboard-social/gallery/822337.webp
+    caption: My current fleet of Keychron keyboards
+  - src: /content/media/events/295865712-mechanical-keyboard-social/gallery/840905.webp
+  - src: /content/media/events/295865712-mechanical-keyboard-social/gallery/IMG_6059.webp
+  - src: /content/media/events/295865712-mechanical-keyboard-social/gallery/IMG_6060.webp
+  - src: /content/media/events/295865712-mechanical-keyboard-social/gallery/IMG_6061.webp
+  - src: /content/media/events/295865712-mechanical-keyboard-social/gallery/IMG_6066.webp
+  - src: /content/media/events/295865712-mechanical-keyboard-social/gallery/IMG_6068.webp
 ---
 
 BRING OUT YOUR KEYBOARDS! ⌨️ 🙌

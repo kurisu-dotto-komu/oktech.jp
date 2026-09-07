@@ -9,6 +9,9 @@ howToFindUs: The meetup is on the 3rd floor. Enter the building from the parking
 channels:
   - type: meetup
     ref: '260439556'
+gallery:
+  - src: /content/media/events/260439556-may-osaka-web-dev-and-design-meetup/gallery/624649.webp
+  - src: /content/media/events/260439556-may-osaka-web-dev-and-design-meetup/gallery/624654.webp
 ---
 
 Golden Week is behind us, and the weather is heating up, so why not chill out with some cool web talks and meet designers and developers from around the Osaka area?

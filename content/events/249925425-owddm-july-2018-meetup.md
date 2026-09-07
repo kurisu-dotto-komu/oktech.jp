@@ -8,6 +8,8 @@ venue: 25630979-gvh5
 channels:
   - type: meetup
     ref: '249925425'
+gallery:
+  - src: /content/media/events/249925425-owddm-july-2018-meetup/gallery/267261.webp
 ---
 
 We hope you're enjoying the summer and are ready for the 46th Osaka Web Designer/Developer Meetup.

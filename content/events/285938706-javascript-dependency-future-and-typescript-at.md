@@ -15,6 +15,13 @@ topics:
 channels:
   - type: meetup
     ref: '285938706'
+gallery:
+  - src: /content/media/events/285938706-javascript-dependency-future-and-typescript-at/gallery/198455.webp
+  - src: /content/media/events/285938706-javascript-dependency-future-and-typescript-at/gallery/198510.webp
+  - src: /content/media/events/285938706-javascript-dependency-future-and-typescript-at/gallery/340142.webp
+  - src: /content/media/events/285938706-javascript-dependency-future-and-typescript-at/gallery/371558.webp
+  - src: /content/media/events/285938706-javascript-dependency-future-and-typescript-at/gallery/692726.webp
+  - src: /content/media/events/285938706-javascript-dependency-future-and-typescript-at/gallery/963739.webp
 ---
 
 Hello there,

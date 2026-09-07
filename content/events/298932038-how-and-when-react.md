@@ -14,6 +14,9 @@ topics:
 channels:
   - type: meetup
     ref: '298932038'
+gallery:
+  - src: /content/media/events/298932038-how-and-when-react/gallery/IMG_20240217_1901002.webp
+  - src: /content/media/events/298932038-how-and-when-react/gallery/ba7036dd2f0233a2.webp
 ---
 
 Woohoo, January at C2 Kyoto was awesome, Let's do that in February again!

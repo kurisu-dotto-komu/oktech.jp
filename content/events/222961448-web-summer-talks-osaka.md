@@ -9,6 +9,9 @@ howToFindUs: 7th Floor, North Building  Grand Front Umeda (Take the North 北 3 
 channels:
   - type: meetup
     ref: '222961448'
+gallery:
+  - src: /content/media/events/222961448-web-summer-talks-osaka/gallery/364625.webp
+    caption: Things that people found interesting. A question at the meeting.
 ---
 
 Summer is here! Eat some ice-cream and then join us for some summer talks!

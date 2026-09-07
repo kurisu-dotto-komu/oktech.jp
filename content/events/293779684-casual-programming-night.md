@@ -14,6 +14,10 @@ topics:
 channels:
   - type: meetup
     ref: '293779684'
+gallery:
+  - src: /content/media/events/293779684-casual-programming-night/gallery/IMG_2412.webp
+  - src: /content/media/events/293779684-casual-programming-night/gallery/IMG_2413.webp
+  - src: /content/media/events/293779684-casual-programming-night/gallery/IMG_2414.webp
 ---
 
 Join us for our first _"Programming night"_: a smaller and more casual event. Talk and work together on code in a relaxed environment.

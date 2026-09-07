@@ -8,6 +8,9 @@ venue: 25630979-gvh5
 channels:
   - type: meetup
     ref: '249925417'
+gallery:
+  - src: /content/media/events/249925417-talking-bootcamps-and-freelance/gallery/478071.webp
+  - src: /content/media/events/249925417-talking-bootcamps-and-freelance/gallery/478074.webp
 ---
 
 Summer fun dev-time. What better way to escape the heat than an evening in a beautifully air conditioned room with fine folks talking about web development?

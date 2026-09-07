@@ -15,6 +15,12 @@ topics:
 channels:
   - type: meetup
     ref: '310707456'
+gallery:
+  - src: /content/media/events/310707456-oktech-study-session-breaking-boundaries-with/gallery/PXL_20251005_1038377192.webp
+  - src: /content/media/events/310707456-oktech-study-session-breaking-boundaries-with/gallery/PXL_20251005_1111241532.webp
+  - src: /content/media/events/310707456-oktech-study-session-breaking-boundaries-with/gallery/PXL_20251005_1117309642.webp
+  - src: /content/media/events/310707456-oktech-study-session-breaking-boundaries-with/gallery/PXL_20251005_1138068632.webp
+  - src: /content/media/events/310707456-oktech-study-session-breaking-boundaries-with/gallery/PXL_20251005_1204129162.webp
 ---
 
 ***Notice:*** *The event time has changed.*

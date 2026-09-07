@@ -15,6 +15,11 @@ topics:
 channels:
   - type: meetup
     ref: '302750416'
+gallery:
+  - src: /content/media/events/302750416-key-to-resume/gallery/IMG_20240907_1732152.webp
+  - src: /content/media/events/302750416-key-to-resume/gallery/IMG_20240907_1732282.webp
+  - src: /content/media/events/302750416-key-to-resume/gallery/IMG_20240907_1834393.webp
+  - src: /content/media/events/302750416-key-to-resume/gallery/IMG_20240907_1834482.webp
 ---
 
 Hello friends,

@@ -14,6 +14,14 @@ topics:
 channels:
   - type: meetup
     ref: '299829131'
+gallery:
+  - src: /content/media/events/299829131-secure-cross-platform-apps/gallery/IMG_20240420_170301.webp
+  - src: /content/media/events/299829131-secure-cross-platform-apps/gallery/IMG_20240420_171648.webp
+  - src: /content/media/events/299829131-secure-cross-platform-apps/gallery/IMG_20240420_171705.webp
+  - src: /content/media/events/299829131-secure-cross-platform-apps/gallery/IMG_20240420_175159.webp
+  - src: /content/media/events/299829131-secure-cross-platform-apps/gallery/IMG_20240420_185449.webp
+  - src: /content/media/events/299829131-secure-cross-platform-apps/gallery/IMG_20240420_185454.webp
+  - src: /content/media/events/299829131-secure-cross-platform-apps/gallery/IMG_20240420_190213.webp
 ---
 
 Hello friends,

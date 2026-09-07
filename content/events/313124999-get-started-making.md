@@ -13,6 +13,13 @@ channels:
     ref: https://www.linkedin.com/events/7433148089852502016
   - type: discord
     ref: https://discord.com/events/1034792577293094972/1476941874924359692
+gallery:
+  - src: /content/media/events/313124999-get-started-making/gallery/PXL_20260314_0812379342.webp
+  - src: /content/media/events/313124999-get-started-making/gallery/PXL_20260314_0915057322.webp
+  - src: /content/media/events/313124999-get-started-making/gallery/PXL_20260314_0915152312.webp
+  - src: /content/media/events/313124999-get-started-making/gallery/PXL_20260314_0927440002.webp
+  - src: /content/media/events/313124999-get-started-making/gallery/PXL_20260314_0949368862.webp
+  - src: /content/media/events/313124999-get-started-making/gallery/PXL_20260314_101418238.NIGHT2.webp
 ---
 
 Spring is knocking at the door and before this fiscal year ends we are having a special event.

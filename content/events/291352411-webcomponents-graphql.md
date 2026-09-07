@@ -14,6 +14,14 @@ topics:
 channels:
   - type: meetup
     ref: '291352411'
+gallery:
+  - src: /content/media/events/291352411-webcomponents-graphql/gallery/IMG_0005.webp
+  - src: /content/media/events/291352411-webcomponents-graphql/gallery/IMG_0006.webp
+  - src: /content/media/events/291352411-webcomponents-graphql/gallery/IMG_0008.webp
+  - src: /content/media/events/291352411-webcomponents-graphql/gallery/IMG_0024.webp
+  - src: /content/media/events/291352411-webcomponents-graphql/gallery/IMG_0026.webp
+  - src: /content/media/events/291352411-webcomponents-graphql/gallery/IMG_1002.webp
+  - src: /content/media/events/291352411-webcomponents-graphql/gallery/IMG_1006.webp
 ---
 
 Hello Everyone!

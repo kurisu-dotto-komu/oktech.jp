@@ -9,6 +9,11 @@ howToFindUs: The nearest station is Honmachi on the Yotsubashi line. From Exit 2
 channels:
   - type: meetup
     ref: '264574361'
+gallery:
+  - src: /content/media/events/264574361-osaka-web-developer-and-designer-meetup-september/gallery/276238.webp
+  - src: /content/media/events/264574361-osaka-web-developer-and-designer-meetup-september/gallery/276274.webp
+  - src: /content/media/events/264574361-osaka-web-developer-and-designer-meetup-september/gallery/276275.webp
+  - src: /content/media/events/264574361-osaka-web-developer-and-designer-meetup-september/gallery/276278.webp
 ---
 
 After the great event last month, we're back at AmidA (near Honmachi station) again.

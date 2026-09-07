@@ -14,6 +14,8 @@ topics:
 channels:
   - type: meetup
     ref: '288755079'
+gallery:
+  - src: /content/media/events/288755079-ui-culture-and-airplanes/gallery/153361.webp
 ---
 
 Dear web enthusiasts, we're in a busy autumn! 🔥

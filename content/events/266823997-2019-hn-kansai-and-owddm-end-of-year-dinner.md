@@ -8,6 +8,12 @@ venue: 25620385-galleria-pizza
 channels:
   - type: meetup
     ref: '266823997'
+gallery:
+  - src: /content/media/events/266823997-2019-hn-kansai-and-owddm-end-of-year-dinner/gallery/379363.webp
+  - src: /content/media/events/266823997-2019-hn-kansai-and-owddm-end-of-year-dinner/gallery/379365.webp
+  - src: /content/media/events/266823997-2019-hn-kansai-and-owddm-end-of-year-dinner/gallery/379366.webp
+  - src: /content/media/events/266823997-2019-hn-kansai-and-owddm-end-of-year-dinner/gallery/379367.webp
+  - src: /content/media/events/266823997-2019-hn-kansai-and-owddm-end-of-year-dinner/gallery/379369.webp
 ---
 
 Hi Everyone!

@@ -17,6 +17,11 @@ channels:
     ref: https://www.linkedin.com/events/7439271776125202433/
   - type: discord
     ref: https://discord.com/events/1034792577293094972/1483062764602920994
+gallery:
+  - src: /content/media/events/313789241-ai-coding-night-collab/gallery/1774447253595.webp
+  - src: /content/media/events/313789241-ai-coding-night-collab/gallery/IMG_20260325_194639-01.webp
+  - src: /content/media/events/313789241-ai-coding-night-collab/gallery/IMG_20260325_194858-01.webp
+  - src: /content/media/events/313789241-ai-coding-night-collab/gallery/IMG_5695.webp
 ---
 
 Join us for a get-together with friends from [CreatorLabo](https://luma.com/creatorlabo) as we are collaborating in hosting **🚀 AI-Native Coding Night**!

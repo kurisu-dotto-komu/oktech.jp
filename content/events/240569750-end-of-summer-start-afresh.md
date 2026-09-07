@@ -8,6 +8,12 @@ howToFindUs: From JR Osaka station walk north past the Grand Front South Tower. 
 channels:
   - type: meetup
     ref: '240569750'
+gallery:
+  - src: /content/media/events/240569750-end-of-summer-start-afresh/gallery/560079.webp
+  - src: /content/media/events/240569750-end-of-summer-start-afresh/gallery/560084.webp
+  - src: /content/media/events/240569750-end-of-summer-start-afresh/gallery/576597.webp
+  - src: /content/media/events/240569750-end-of-summer-start-afresh/gallery/590529.webp
+  - src: /content/media/events/240569750-end-of-summer-start-afresh/gallery/590548.webp
 ---
 
 Hello Developers and Designers!

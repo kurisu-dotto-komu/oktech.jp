@@ -8,6 +8,13 @@ venue: 27585838-helpfeel
 channels:
   - type: meetup
     ref: '302886855'
+gallery:
+  - src: /content/media/events/302886855-llms-genai-in-practice/gallery/IMG_20240921_1733422.webp
+  - src: /content/media/events/302886855-llms-genai-in-practice/gallery/IMG_20240921_1733592.webp
+  - src: /content/media/events/302886855-llms-genai-in-practice/gallery/IMG_20240921_1815012.webp
+  - src: /content/media/events/302886855-llms-genai-in-practice/gallery/IMG_20240921_1832232.webp
+  - src: /content/media/events/302886855-llms-genai-in-practice/gallery/IMG_20240921_1908092.webp
+  - src: /content/media/events/302886855-llms-genai-in-practice/gallery/IMG_20240921_1908212.webp
 ---
 
 Hello friends,

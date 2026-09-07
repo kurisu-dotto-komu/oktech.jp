@@ -19,6 +19,14 @@ channels:
     ref: https://www.linkedin.com/event/manage/7438400984252592128/
   - type: discord
     ref: https://discord.com/events/1034792577293094972/1482192480815415296
+gallery:
+  - src: /content/media/events/313203893-measure-development-experience/gallery/PXL_20260404_0825325813.webp
+  - src: /content/media/events/313203893-measure-development-experience/gallery/PXL_20260404_0835285962.webp
+  - src: /content/media/events/313203893-measure-development-experience/gallery/PXL_20260404_0836532512.webp
+  - src: /content/media/events/313203893-measure-development-experience/gallery/PXL_20260404_0906375342.webp
+  - src: /content/media/events/313203893-measure-development-experience/gallery/PXL_20260404_0923236262.webp
+  - src: /content/media/events/313203893-measure-development-experience/gallery/PXL_20260404_0950422462.webp
+  - src: /content/media/events/313203893-measure-development-experience/gallery/PXL_20260404_1015504442.webp
 ---
 
 April is here and the cherry trees might still be blooming before this event! We hope you still join us for a nice evening.

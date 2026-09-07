@@ -17,6 +17,72 @@ channels:
     ref: https://www.linkedin.com/events/7378244133271846913/
   - type: discord
     ref: https://discord.gg/Ab94zz28?event=1422044821530476724
+gallery:
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1419.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1422.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1427.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1429.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1430.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1431.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1438.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1443.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1444.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1451.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1457.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1458.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1461.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1474.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1476.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1481.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1484.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1487.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1488.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1490.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1491.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1492.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1495.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1496.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1497.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1498.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1501.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1503.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1504.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1507.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1509.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1510.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1511.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1515.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1516.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1524.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1525.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1528.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1529.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1532.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1533.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1539.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1540.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1554.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1555.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1558.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1564.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1568.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1569.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1570.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1571.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1573.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1574.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1575.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1576.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1577.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1581.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1582.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1584.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/IMG_1585.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/PXL_20251101_0938371112.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/PXL_20251101_0941543222.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/PXL_20251101_0941586342.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/PXL_20251101_1031171962.webp
+  - src: /content/media/events/311083074-hello-oktech/gallery/PXL_20251101_1127064612.webp
 ---
 
 OK... *What*? 🙀 Save the date! We celebrate! OK... **Tech**! 😎

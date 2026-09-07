@@ -14,6 +14,23 @@ topics:
 channels:
   - type: meetup
     ref: '297610678'
+gallery:
+  - src: /content/media/events/297610678-rust-for-the-web/gallery/484623.webp
+  - src: /content/media/events/297610678-rust-for-the-web/gallery/484631.webp
+  - src: /content/media/events/297610678-rust-for-the-web/gallery/484635.webp
+  - src: /content/media/events/297610678-rust-for-the-web/gallery/484636.webp
+  - src: /content/media/events/297610678-rust-for-the-web/gallery/484641.webp
+  - src: /content/media/events/297610678-rust-for-the-web/gallery/484642.webp
+  - src: /content/media/events/297610678-rust-for-the-web/gallery/484643.webp
+  - src: /content/media/events/297610678-rust-for-the-web/gallery/484916.webp
+  - src: /content/media/events/297610678-rust-for-the-web/gallery/484917.webp
+  - src: /content/media/events/297610678-rust-for-the-web/gallery/484918.webp
+  - src: /content/media/events/297610678-rust-for-the-web/gallery/484919.webp
+  - src: /content/media/events/297610678-rust-for-the-web/gallery/484920.webp
+  - src: /content/media/events/297610678-rust-for-the-web/gallery/484921.webp
+  - src: /content/media/events/297610678-rust-for-the-web/gallery/484922.webp
+  - src: /content/media/events/297610678-rust-for-the-web/gallery/484923.webp
+  - src: /content/media/events/297610678-rust-for-the-web/gallery/484971.webp
 ---
 
 Hello Friends, and a Happy New Year to all!

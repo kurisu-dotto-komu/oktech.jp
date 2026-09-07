@@ -11,6 +11,19 @@ channels:
     ref: '310102122'
   - type: linkedIn
     ref: https://www.linkedin.com/events/7354435879374897152/
+gallery:
+  - src: /content/media/events/310102122-omega-programming-and-fonts/gallery/IMG_2220.webp
+  - src: /content/media/events/310102122-omega-programming-and-fonts/gallery/IMG_2222.webp
+  - src: /content/media/events/310102122-omega-programming-and-fonts/gallery/IMG_2224.webp
+  - src: /content/media/events/310102122-omega-programming-and-fonts/gallery/IMG_2227.webp
+  - src: /content/media/events/310102122-omega-programming-and-fonts/gallery/IMG_2228.webp
+  - src: /content/media/events/310102122-omega-programming-and-fonts/gallery/IMG_2230.webp
+  - src: /content/media/events/310102122-omega-programming-and-fonts/gallery/IMG_3978.webp
+  - src: /content/media/events/310102122-omega-programming-and-fonts/gallery/IMG_3979.webp
+  - src: /content/media/events/310102122-omega-programming-and-fonts/gallery/IMG_3981.webp
+  - src: /content/media/events/310102122-omega-programming-and-fonts/gallery/IMG_3982.webp
+  - src: /content/media/events/310102122-omega-programming-and-fonts/gallery/event-image-2.webp
+  - src: /content/media/events/310102122-omega-programming-and-fonts/gallery/event-view.webp
 ---
 
 Come escape the summer heat with Eduardo & Jake at the MoneyForward office in Kyoto!

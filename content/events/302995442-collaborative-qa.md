@@ -14,6 +14,10 @@ topics:
 channels:
   - type: meetup
     ref: '302995442'
+gallery:
+  - src: /content/media/events/302995442-collaborative-qa/gallery/PXL_20241012_0919228922.webp
+  - src: /content/media/events/302995442-collaborative-qa/gallery/PXL_20241012_0919332152.webp
+  - src: /content/media/events/302995442-collaborative-qa/gallery/PXL_20241012_0944160172.webp
 ---
 
 Hello friends,

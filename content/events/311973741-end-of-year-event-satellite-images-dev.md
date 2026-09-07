@@ -19,6 +19,16 @@ channels:
     ref: https://www.linkedin.com/events/7397440701023776768/
   - type: discord
     ref: https://discord.gg/Qag6XuKM?event=1441230404743860386
+gallery:
+  - src: /content/media/events/311973741-end-of-year-event-satellite-images-dev/gallery/PXL_20251220_0800320132.webp
+  - src: /content/media/events/311973741-end-of-year-event-satellite-images-dev/gallery/PXL_20251220_0812382482.webp
+  - src: /content/media/events/311973741-end-of-year-event-satellite-images-dev/gallery/PXL_20251220_0818453162.webp
+  - src: /content/media/events/311973741-end-of-year-event-satellite-images-dev/gallery/PXL_20251220_0828383422.webp
+  - src: /content/media/events/311973741-end-of-year-event-satellite-images-dev/gallery/PXL_20251220_0900364062.webp
+  - src: /content/media/events/311973741-end-of-year-event-satellite-images-dev/gallery/PXL_20251220_0915429712.webp
+  - src: /content/media/events/311973741-end-of-year-event-satellite-images-dev/gallery/PXL_20251220_0915579342.webp
+  - src: /content/media/events/311973741-end-of-year-event-satellite-images-dev/gallery/PXL_20251220_0917446132.webp
+  - src: /content/media/events/311973741-end-of-year-event-satellite-images-dev/gallery/PXL_20251220_0920572302.webp
 ---
 
 Our last event this year is just before christmas🥂🎄with lovely presentations!

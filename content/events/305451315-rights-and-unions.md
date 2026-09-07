@@ -14,6 +14,17 @@ topics:
 channels:
   - type: meetup
     ref: '305451315'
+gallery:
+  - src: /content/media/events/305451315-rights-and-unions/gallery/IMG_1910.webp
+  - src: /content/media/events/305451315-rights-and-unions/gallery/IMG_1912.webp
+  - src: /content/media/events/305451315-rights-and-unions/gallery/IMG_1913.webp
+  - src: /content/media/events/305451315-rights-and-unions/gallery/IMG_20250419_172240.webp
+  - src: /content/media/events/305451315-rights-and-unions/gallery/PXL_20250419_084015210.webp
+  - src: /content/media/events/305451315-rights-and-unions/gallery/PXL_20250419_090235721.webp
+  - src: /content/media/events/305451315-rights-and-unions/gallery/PXL_20250419_0930442362.webp
+  - src: /content/media/events/305451315-rights-and-unions/gallery/PXL_20250419_1017510383.webp
+  - src: /content/media/events/305451315-rights-and-unions/gallery/PXL_20_FHoGGIPcU-wE4X6JoA6qXgV.webp
+  - src: /content/media/events/305451315-rights-and-unions/gallery/PXL_20_JYFa0vwDoAWbBWhVuv5b9Yn.webp
 ---
 
 In April, many start their new jobs and we figure its a great time to talk about something a little different.

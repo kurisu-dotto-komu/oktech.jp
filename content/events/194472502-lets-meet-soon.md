@@ -8,6 +8,11 @@ venue: 21427172-caffe-pascucci
 channels:
   - type: meetup
     ref: '194472502'
+gallery:
+  - src: /content/media/events/194472502-lets-meet-soon/gallery/059082.webp
+    caption: 'Dave and His notes :). '
+  - src: /content/media/events/194472502-lets-meet-soon/gallery/059762.webp
+    caption: "The Host's Bear Designed Cappuccino "
 ---
 
 We arrange our first get together and make it fun.

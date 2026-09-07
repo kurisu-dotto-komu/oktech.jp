@@ -14,6 +14,27 @@ topics:
 channels:
   - type: meetup
     ref: '305451259'
+gallery:
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/IMG_20250322_173103.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/IMG_20250322_173123.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/IMG_20250322_173131.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/IMG_20250322_173212.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/IMG_20250322_173727.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/IMG_20250322_174604.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/IMG_20250322_175516.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/IMG_20250322_181620.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/IMG_20250322_183338.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/IMG_20250322_183350.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/PXL_20250322_0828295152.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/PXL_20250322_0831447252.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/PXL_20250322_0832086162.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/PXL_20250322_0832280612.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/PXL_20250322_0901132552.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/PXL_20250322_0918552742.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/PXL_20250322_0919006342.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/PXL_20250322_0936242982.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/PXL_20250322_0936296772.webp
+  - src: /content/media/events/305451259-ruby-trends-and-python-parsing/gallery/PXL_20250322_1013161662.webp
 ---
 
 The March is on!

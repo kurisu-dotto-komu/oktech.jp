@@ -15,6 +15,11 @@ topics:
 channels:
   - type: meetup
     ref: '310853037'
+gallery:
+  - src: /content/media/events/310853037-fear-in-the-software-industry/gallery/IMG_20250920_171122-01.webp
+  - src: /content/media/events/310853037-fear-in-the-software-industry/gallery/IMG_20250920_172032-01.webp
+  - src: /content/media/events/310853037-fear-in-the-software-industry/gallery/IMG_20250920_181104-01-01.webp
+  - src: /content/media/events/310853037-fear-in-the-software-industry/gallery/IMG_20250920_182419-01.webp
 ---
 
 Summer break - in case you had one - is over and the heat is still on! ☀️😎

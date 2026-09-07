@@ -9,6 +9,25 @@ howToFindUs: 🚉 Accessible from the Tsurumi-ryokuchi Station on the Nagahori T
 channels:
   - type: meetup
     ref: '274629089'
+gallery:
+  - src: /content/media/events/274629089-outdoor-meetup-november/gallery/623701.webp
+  - src: /content/media/events/274629089-outdoor-meetup-november/gallery/623714.webp
+  - src: /content/media/events/274629089-outdoor-meetup-november/gallery/623975.webp
+  - src: /content/media/events/274629089-outdoor-meetup-november/gallery/623979.webp
+  - src: /content/media/events/274629089-outdoor-meetup-november/gallery/623981.webp
+  - src: /content/media/events/274629089-outdoor-meetup-november/gallery/624576.webp
+  - src: /content/media/events/274629089-outdoor-meetup-november/gallery/624580.webp
+  - src: /content/media/events/274629089-outdoor-meetup-november/gallery/624581.webp
+  - src: /content/media/events/274629089-outdoor-meetup-november/gallery/624583.webp
+  - src: /content/media/events/274629089-outdoor-meetup-november/gallery/624584.webp
+  - src: /content/media/events/274629089-outdoor-meetup-november/gallery/624585.webp
+  - src: /content/media/events/274629089-outdoor-meetup-november/gallery/624586.webp
+  - src: /content/media/events/274629089-outdoor-meetup-november/gallery/624588.webp
+  - src: /content/media/events/274629089-outdoor-meetup-november/gallery/624589.webp
+  - src: /content/media/events/274629089-outdoor-meetup-november/gallery/624591.webp
+  - src: /content/media/events/274629089-outdoor-meetup-november/gallery/624595.webp
+  - src: /content/media/events/274629089-outdoor-meetup-november/gallery/624596.webp
+  - src: /content/media/events/274629089-outdoor-meetup-november/gallery/624598.webp
 ---
 
 Welcome back web developers and designers!

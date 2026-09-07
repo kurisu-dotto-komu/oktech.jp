@@ -15,6 +15,14 @@ topics:
 channels:
   - type: meetup
     ref: '292146517'
+gallery:
+  - src: /content/media/events/292146517-astrobuild-workshop-by-tamas-piros/gallery/966303.webp
+  - src: /content/media/events/292146517-astrobuild-workshop-by-tamas-piros/gallery/979393.webp
+    caption: Exercise time!
+  - src: /content/media/events/292146517-astrobuild-workshop-by-tamas-piros/gallery/IMG_20230519_1906383.webp
+  - src: /content/media/events/292146517-astrobuild-workshop-by-tamas-piros/gallery/IMG_20230519_1906472.webp
+  - src: /content/media/events/292146517-astrobuild-workshop-by-tamas-piros/gallery/IMG_20230519_1908272.webp
+  - src: /content/media/events/292146517-astrobuild-workshop-by-tamas-piros/gallery/IMG_20230519_2011242.webp
 ---
 
 Hello Everyone! 👋

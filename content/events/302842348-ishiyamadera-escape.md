@@ -12,6 +12,26 @@ topics:
 channels:
   - type: meetup
     ref: '302842348'
+gallery:
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_1521.webp
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_1523.webp
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_1525.webp
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_1526.webp
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_1527.webp
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_1529.webp
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_1531.webp
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_1535.webp
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_1538.webp
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_5357.webp
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_5359.webp
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_5360.webp
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_5361.webp
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_5362.webp
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_5363.webp
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_5371.webp
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_5372.webp
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_5377.webp
+  - src: /content/media/events/302842348-ishiyamadera-escape/gallery/IMG_5380.webp
 ---
 
 Hello Friends,

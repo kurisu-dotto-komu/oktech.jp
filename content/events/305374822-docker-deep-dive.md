@@ -15,6 +15,10 @@ topics:
 channels:
   - type: meetup
     ref: '305374822'
+gallery:
+  - src: /content/media/events/305374822-docker-deep-dive/gallery/PXL_20250215_0825340842.webp
+  - src: /content/media/events/305374822-docker-deep-dive/gallery/PXL_20250215_0829208522.webp
+  - src: /content/media/events/305374822-docker-deep-dive/gallery/PXL_20250215_1002175792.webp
 ---
 
 Let's use the cold time to stack up on tools!

@@ -8,6 +8,12 @@ venue: 24213835-aiming-inc
 channels:
   - type: meetup
     ref: '239372163'
+gallery:
+  - src: /content/media/events/239372163-may-friendly-talks/gallery/342605.webp
+  - src: /content/media/events/239372163-may-friendly-talks/gallery/342614.webp
+  - src: /content/media/events/239372163-may-friendly-talks/gallery/344712.webp
+  - src: /content/media/events/239372163-may-friendly-talks/gallery/359160.webp
+    caption: Another view of the sunbeams (same floor as Aiming - other side windows)
 ---
 
 Spring is still in the air, but summer is now just around the corner. We hope that you enjoyed your holidays and had a truly golden week. With a little delay, we are happy to announce the next Designers and Developers meetup taking place on May 27 at the usual location, kindly provided by Aiming Inc.

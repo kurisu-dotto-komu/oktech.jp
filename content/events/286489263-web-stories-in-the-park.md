@@ -15,6 +15,11 @@ topics:
 channels:
   - type: meetup
     ref: '286489263'
+gallery:
+  - src: /content/media/events/286489263-web-stories-in-the-park/gallery/078918.webp
+  - src: /content/media/events/286489263-web-stories-in-the-park/gallery/078933.webp
+  - src: /content/media/events/286489263-web-stories-in-the-park/gallery/408764.webp
+  - src: /content/media/events/286489263-web-stories-in-the-park/gallery/563190.webp
 ---
 
 **Important Note**: The Weather forecast looks like it should hold with a light chance for rain. We will still be at the meeting point but maybe we need to divert the meetup later on.

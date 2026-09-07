@@ -15,6 +15,15 @@ topics:
 channels:
   - type: meetup
     ref: '299335103'
+gallery:
+  - src: /content/media/events/299335103-arashiyama-hanami-2024/gallery/IMG_1732.webp
+  - src: /content/media/events/299335103-arashiyama-hanami-2024/gallery/IMG_1733.webp
+  - src: /content/media/events/299335103-arashiyama-hanami-2024/gallery/IMG_20240324_141623.webp
+  - src: /content/media/events/299335103-arashiyama-hanami-2024/gallery/IMG_20240324_141629.webp
+  - src: /content/media/events/299335103-arashiyama-hanami-2024/gallery/IMG_20240324_164515.webp
+  - src: /content/media/events/299335103-arashiyama-hanami-2024/gallery/IMG_3176.webp
+  - src: /content/media/events/299335103-arashiyama-hanami-2024/gallery/IMG_3341.webp
+  - src: /content/media/events/299335103-arashiyama-hanami-2024/gallery/IMG_3342.webp
 ---
 
 **IN CASE OF RAIN** 🌧️

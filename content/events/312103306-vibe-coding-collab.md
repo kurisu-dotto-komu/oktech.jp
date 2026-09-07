@@ -19,6 +19,38 @@ channels:
     ref: https://www.linkedin.com/events/7398895953509957632/
   - type: discord
     ref: https://discord.com/events/1034792577293094972/1442686465363410955
+gallery:
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/73.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/75.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/85.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05430.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05433.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05434.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05436.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05439.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05441.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05442.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05443.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05444.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05448.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05450.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05451.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05454.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05455.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05461.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05467.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05469.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05471.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05473.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05484.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/DSC05486.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/PXL_20251202_1010174112.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/PXL_20251202_1010577272.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/PXL_20251202_1012141292.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/PXL_20251202_1015121882.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/PXL_20251202_1032569012.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/PXL_20251202_1049152902.webp
+  - src: /content/media/events/312103306-vibe-coding-collab/gallery/PXL_20251202_1151369462.webp
 ---
 
 The [Live Coding Collective](https://www.meetup.com/vibe-coders-collective/) from the UK is visiting Osaka and we are happy to join this [social coding jam](https://www.meetup.com/vibe-coders-collective/events/312063796/) where we use AI to quickly turn fun ideas into functional prototype.

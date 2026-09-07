@@ -8,6 +8,10 @@ howToFindUs: In the GrandFront north tower take the Business elevator to the 9th
 channels:
   - type: meetup
     ref: '239073556'
+gallery:
+  - src: /content/media/events/239073556-comfortable-javascript-talks-in-april/gallery/234138.webp
+  - src: /content/media/events/239073556-comfortable-javascript-talks-in-april/gallery/234147.webp
+  - src: /content/media/events/239073556-comfortable-javascript-talks-in-april/gallery/234151.webp
 ---
 
 The cold days are over, and before we rush into Golden Week we have another nice Meetup in April while the last Cherry trees bloom. I would like to invite you to meet like-minded Web Designers and Developers and join us for two nice presentations and optionally some drinks afterwards.

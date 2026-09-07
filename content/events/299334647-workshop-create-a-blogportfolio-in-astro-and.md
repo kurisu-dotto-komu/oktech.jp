@@ -15,6 +15,14 @@ topics:
 channels:
   - type: meetup
     ref: '299334647'
+gallery:
+  - src: /content/media/events/299334647-workshop-create-a-blogportfolio-in-astro-and/gallery/IMG_8203.webp
+  - src: /content/media/events/299334647-workshop-create-a-blogportfolio-in-astro-and/gallery/IMG_9751.webp
+  - src: /content/media/events/299334647-workshop-create-a-blogportfolio-in-astro-and/gallery/IMG_9799.webp
+  - src: /content/media/events/299334647-workshop-create-a-blogportfolio-in-astro-and/gallery/IMG_9823.webp
+  - src: /content/media/events/299334647-workshop-create-a-blogportfolio-in-astro-and/gallery/IMG_9847.webp
+  - src: /content/media/events/299334647-workshop-create-a-blogportfolio-in-astro-and/gallery/IMG_9858.webp
+  - src: /content/media/events/299334647-workshop-create-a-blogportfolio-in-astro-and/gallery/IMG_9863.webp
 ---
 
 Happy March Osaka tech lovers! 👾

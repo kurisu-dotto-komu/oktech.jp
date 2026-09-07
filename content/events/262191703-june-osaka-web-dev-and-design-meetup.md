@@ -9,6 +9,9 @@ howToFindUs: The meetup is on the 3rd floor. Enter the building from the parking
 channels:
   - type: meetup
     ref: '262191703'
+gallery:
+  - src: /content/media/events/262191703-june-osaka-web-dev-and-design-meetup/gallery/750651.webp
+  - src: /content/media/events/262191703-june-osaka-web-dev-and-design-meetup/gallery/771026.webp
 ---
 
 The rainy season is upon us, as the rain grants us brief reprieve from the heat of summer. However, this is not the only gift we are given this month, as we forecast a shower of great web talks, too!

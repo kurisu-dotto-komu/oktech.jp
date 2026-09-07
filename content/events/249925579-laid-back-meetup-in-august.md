@@ -8,6 +8,9 @@ venue: 24213835-aiming-inc
 channels:
   - type: meetup
     ref: '249925579'
+gallery:
+  - src: /content/media/events/249925579-laid-back-meetup-in-august/gallery/022501.webp
+  - src: /content/media/events/249925579-laid-back-meetup-in-august/gallery/022505.webp
 ---
 
 Dear all, we hope you are fully enjoying the summer holidays. For those of you who didn't make any plans for the end of the month, no worries. We booked the room at Aiming Inc for a new designers & devs meetup, on Saturday August 25th between 6PM - 8PM.

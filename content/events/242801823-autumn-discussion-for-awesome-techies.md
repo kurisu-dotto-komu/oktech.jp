@@ -9,6 +9,15 @@ howToFindUs: Please come to the 8th Floor (Rakuten Office)
 channels:
   - type: meetup
     ref: '242801823'
+gallery:
+  - src: /content/media/events/242801823-autumn-discussion-for-awesome-techies/gallery/475231.webp
+  - src: /content/media/events/242801823-autumn-discussion-for-awesome-techies/gallery/475999.webp
+  - src: /content/media/events/242801823-autumn-discussion-for-awesome-techies/gallery/478578.webp
+  - src: /content/media/events/242801823-autumn-discussion-for-awesome-techies/gallery/478579.webp
+  - src: /content/media/events/242801823-autumn-discussion-for-awesome-techies/gallery/478580.webp
+  - src: /content/media/events/242801823-autumn-discussion-for-awesome-techies/gallery/478581.webp
+  - src: /content/media/events/242801823-autumn-discussion-for-awesome-techies/gallery/478582.webp
+  - src: /content/media/events/242801823-autumn-discussion-for-awesome-techies/gallery/478583.webp
 ---
 
 Location: https://global.rakuten.com/corp/about/map/index__p6.html

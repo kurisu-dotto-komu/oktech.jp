@@ -15,6 +15,25 @@ topics:
 channels:
   - type: meetup
     ref: '298753297'
+gallery:
+  - src: /content/media/events/298753297-how-to-get-into-tech-part-2/gallery/193038.webp
+  - src: /content/media/events/298753297-how-to-get-into-tech-part-2/gallery/193040.webp
+  - src: /content/media/events/298753297-how-to-get-into-tech-part-2/gallery/IMG_3828.webp
+  - src: /content/media/events/298753297-how-to-get-into-tech-part-2/gallery/IMG_3829.webp
+  - src: /content/media/events/298753297-how-to-get-into-tech-part-2/gallery/IMG_3830.webp
+  - src: /content/media/events/298753297-how-to-get-into-tech-part-2/gallery/IMG_3831.webp
+  - src: /content/media/events/298753297-how-to-get-into-tech-part-2/gallery/IMG_3832.webp
+  - src: /content/media/events/298753297-how-to-get-into-tech-part-2/gallery/IMG_3833.webp
+  - src: /content/media/events/298753297-how-to-get-into-tech-part-2/gallery/IMG_3835.webp
+  - src: /content/media/events/298753297-how-to-get-into-tech-part-2/gallery/IMG_3837.webp
+  - src: /content/media/events/298753297-how-to-get-into-tech-part-2/gallery/IMG_3840.webp
+  - src: /content/media/events/298753297-how-to-get-into-tech-part-2/gallery/IMG_3842.webp
+  - src: /content/media/events/298753297-how-to-get-into-tech-part-2/gallery/IMG_3843.webp
+  - src: /content/media/events/298753297-how-to-get-into-tech-part-2/gallery/IMG_7769.webp
+  - src: /content/media/events/298753297-how-to-get-into-tech-part-2/gallery/IMG_7770.webp
+  - src: /content/media/events/298753297-how-to-get-into-tech-part-2/gallery/IMG_7852.webp
+  - src: /content/media/events/298753297-how-to-get-into-tech-part-2/gallery/IMG_7854.webp
+  - src: /content/media/events/298753297-how-to-get-into-tech-part-2/gallery/IMG_7856.webp
 ---
 
 We want to thank everyone for coming to hang out with us at our [last event](https://www.meetup.com/osaka-web-designers-and-developers-meetup/events/297676223). It was a hit! This month, join us again for part 2.

@@ -14,6 +14,11 @@ topics:
 channels:
   - type: meetup
     ref: '286728584'
+gallery:
+  - src: /content/media/events/286728584-talk-at-the-cafe/gallery/198670.webp
+  - src: /content/media/events/286728584-talk-at-the-cafe/gallery/692786.webp
+  - src: /content/media/events/286728584-talk-at-the-cafe/gallery/716448.webp
+  - src: /content/media/events/286728584-talk-at-the-cafe/gallery/964004.webp
 ---
 
 Hello there, You may be confused seeing this event. 😅

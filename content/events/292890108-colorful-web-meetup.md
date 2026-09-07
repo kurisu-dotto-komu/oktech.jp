@@ -15,6 +15,17 @@ topics:
 channels:
   - type: meetup
     ref: '292890108'
+gallery:
+  - src: /content/media/events/292890108-colorful-web-meetup/gallery/724308.webp
+  - src: /content/media/events/292890108-colorful-web-meetup/gallery/IMG_1624.webp
+  - src: /content/media/events/292890108-colorful-web-meetup/gallery/IMG_1625.webp
+  - src: /content/media/events/292890108-colorful-web-meetup/gallery/IMG_1632.webp
+  - src: /content/media/events/292890108-colorful-web-meetup/gallery/IMG_1633.webp
+  - src: /content/media/events/292890108-colorful-web-meetup/gallery/IMG_1634.webp
+  - src: /content/media/events/292890108-colorful-web-meetup/gallery/IMG_20230617_1710352.webp
+  - src: /content/media/events/292890108-colorful-web-meetup/gallery/IMG_20230617_1731252.webp
+  - src: /content/media/events/292890108-colorful-web-meetup/gallery/IMG_20230617_1731332.webp
+  - src: /content/media/events/292890108-colorful-web-meetup/gallery/IMG_20230617_1756322.webp
 ---
 
 Good Summer everyone! 👋

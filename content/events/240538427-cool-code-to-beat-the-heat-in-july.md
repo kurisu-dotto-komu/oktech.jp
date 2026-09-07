@@ -8,6 +8,8 @@ howToFindUs: To get to Aiming Inc.'s Osaka Studio, go to the Grand Front North b
 channels:
   - type: meetup
     ref: '240538427'
+gallery:
+  - src: /content/media/events/240538427-cool-code-to-beat-the-heat-in-july/gallery/039806.webp
 ---
 
 Join us at air-conditioned Aiming Inc. to have a refreshing time of learning from each other.

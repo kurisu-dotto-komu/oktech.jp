@@ -10,6 +10,12 @@ topics:
 channels:
   - type: meetup
     ref: '294290340'
+gallery:
+  - src: /content/media/events/294290340-summer-night-dinner/gallery/IMG_20230722_1731313.webp
+  - src: /content/media/events/294290340-summer-night-dinner/gallery/IMG_20230722_1746372.webp
+  - src: /content/media/events/294290340-summer-night-dinner/gallery/IMG_20230722_1747423.webp
+  - src: /content/media/events/294290340-summer-night-dinner/gallery/IMG_20230722_1810042.webp
+  - src: /content/media/events/294290340-summer-night-dinner/gallery/IMG_20230722_1859192.webp
 ---
 
 Hi everyone!

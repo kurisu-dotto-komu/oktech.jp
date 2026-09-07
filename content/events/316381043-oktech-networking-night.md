@@ -18,6 +18,9 @@ channels:
     ref: https://www.linkedin.com/events/7502038321536172032/
   - type: discord
     ref: https://discord.com/events/1034792577293094972/1545778736559947777
+gallery:
+  - src: /content/media/events/316381043-oktech-networking-night/gallery/008164.webp
+  - src: /content/media/events/316381043-oktech-networking-night/gallery/990093.webp
 ---
 
 **OKTech Year two networking!** 😎

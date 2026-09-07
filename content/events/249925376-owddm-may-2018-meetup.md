@@ -9,6 +9,9 @@ howToFindUs: 530-0003 Dojima-Avanza 21F, 1-6-20 Dojima, Kita-ku, Osaka | Follow 
 channels:
   - type: meetup
     ref: '249925376'
+gallery:
+  - src: /content/media/events/249925376-owddm-may-2018-meetup/gallery/429699.webp
+  - src: /content/media/events/249925376-owddm-may-2018-meetup/gallery/429709.webp
 ---
 
 Dear Developers and Designers, May the Web be with you.

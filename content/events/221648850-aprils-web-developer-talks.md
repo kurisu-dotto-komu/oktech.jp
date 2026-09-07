@@ -9,6 +9,11 @@ howToFindUs: 7th Floor, North Building  Grand Front Umeda (Take the North 北 3 
 channels:
   - type: meetup
     ref: '221648850'
+gallery:
+  - src: /content/media/events/221648850-aprils-web-developer-talks/gallery/689625.webp
+    caption: Human $h%t
+  - src: /content/media/events/221648850-aprils-web-developer-talks/gallery/718395.webp
+  - src: /content/media/events/221648850-aprils-web-developer-talks/gallery/718396.webp
 ---
 
 Spring is here, the cherry blossom is about to finish blooming and we shall meet again!

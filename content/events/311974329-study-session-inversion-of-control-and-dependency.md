@@ -19,6 +19,12 @@ channels:
     ref: https://www.linkedin.com/events/7394388461472034816/
   - type: discord
     ref: https://discord.com/events/1034792577293094972/1438179735094952196
+gallery:
+  - src: /content/media/events/311974329-study-session-inversion-of-control-and-dependency/gallery/PXL_20251123_102606352.NIGHT2.webp
+  - src: /content/media/events/311974329-study-session-inversion-of-control-and-dependency/gallery/PXL_20251123_102620612.NIGHT2.webp
+  - src: /content/media/events/311974329-study-session-inversion-of-control-and-dependency/gallery/PXL_20251123_1114495212.webp
+  - src: /content/media/events/311974329-study-session-inversion-of-control-and-dependency/gallery/PXL_20251123_114319493.NIGHT3.webp
+  - src: /content/media/events/311974329-study-session-inversion-of-control-and-dependency/gallery/PXL_20251123_115405110.NIGHT3.webp
 ---
 
 Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next **OKTech Study Session**, a gathering for engineers who don’t just code, but want to understand the _why_ and _how_ behind solid software design.

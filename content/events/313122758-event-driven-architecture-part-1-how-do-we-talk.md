@@ -19,6 +19,14 @@ channels:
     ref: https://www.linkedin.com/events/7424844264032854017/
   - type: discord
     ref: https://discord.com/events/1034792577293094972/1468634188105384129
+gallery:
+  - src: /content/media/events/313122758-event-driven-architecture-part-1-how-do-we-talk/gallery/PXL_20260215_1031083282.webp
+  - src: /content/media/events/313122758-event-driven-architecture-part-1-how-do-we-talk/gallery/PXL_20260215_1034349712.webp
+  - src: /content/media/events/313122758-event-driven-architecture-part-1-how-do-we-talk/gallery/PXL_20260215_1047035782.webp
+  - src: /content/media/events/313122758-event-driven-architecture-part-1-how-do-we-talk/gallery/PXL_20260215_1048390062.webp
+  - src: /content/media/events/313122758-event-driven-architecture-part-1-how-do-we-talk/gallery/PXL_20260215_1050243702.webp
+  - src: /content/media/events/313122758-event-driven-architecture-part-1-how-do-we-talk/gallery/PXL_20260215_1057272602.webp
+  - src: /content/media/events/313122758-event-driven-architecture-part-1-how-do-we-talk/gallery/PXL_20260215_1057341992.webp
 ---
 
 **Event-Driven Architecture: From Communication to Reality (3-Part Workshop Series)**

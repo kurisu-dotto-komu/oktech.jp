@@ -9,6 +9,12 @@ howToFindUs: The nearest station is Honmachi on the Yotsubashi line,  from Exit 
 channels:
   - type: meetup
     ref: '263532260'
+gallery:
+  - src: /content/media/events/263532260-hot-summer-hot-topics-osaka-web-dev-and-design/gallery/183576.webp
+    caption: 'Please wait outside of the FamilyMart. '
+  - src: /content/media/events/263532260-hot-summer-hot-topics-osaka-web-dev-and-design/gallery/183592.webp
+    caption: Exit 28
+  - src: /content/media/events/263532260-hot-summer-hot-topics-osaka-web-dev-and-design/gallery/255202.webp
 ---
 
 Don't you have enough of the hot summer? Now you can join us to discuss hot topics on web design and development at a new cool place.

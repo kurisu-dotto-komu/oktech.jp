@@ -1,7 +1,7 @@
 import { type CollectionEntry, getCollection, getEntry } from "astro:content";
 
 import { FALLBACK_COVER, SHOW_DEV_ENTRIES } from "@/constants";
-import { type GalleryImage, getGalleryImages } from "@/content/gallery";
+import { type GalleryImage, resolveGallery } from "@/content/queries/gallery";
 import { type ProcessedVenue, processVenue } from "@/content/queries/venues";
 import { isEventUpcoming, seriesKey } from "@/utils/eventFilters";
 import { resolveEntryImage } from "@/utils/images";
@@ -64,7 +64,7 @@ export const getEvent = memoize(async (eventSlug: string): Promise<EventEnriched
   const [venue, galleryImages, coverCompact, coverPolaroid, coverBig, coverPage, coverProjector] =
     await Promise.all([
       venueEntry ? processVenue(venueEntry) : undefined,
-      getGalleryImages(entry.id),
+      resolveGallery(entry.data.gallery),
       getResponsiveImage(cover, "eventCompact"),
       getResponsiveImage(cover, "eventPolaroid"),
       getResponsiveImage(cover, "eventBig"),

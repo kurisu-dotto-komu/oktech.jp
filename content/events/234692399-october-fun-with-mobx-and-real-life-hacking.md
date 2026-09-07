@@ -7,6 +7,8 @@ venue: 24213835-aiming-inc
 channels:
   - type: meetup
     ref: '234692399'
+gallery:
+  - src: /content/media/events/234692399-october-fun-with-mobx-and-real-life-hacking/gallery/309934.webp
 ---
 
 Dear designers and developers,

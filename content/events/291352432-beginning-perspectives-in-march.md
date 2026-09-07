@@ -14,6 +14,18 @@ topics:
 channels:
   - type: meetup
     ref: '291352432'
+gallery:
+  - src: /content/media/events/291352432-beginning-perspectives-in-march/gallery/IMG_0254.webp
+  - src: /content/media/events/291352432-beginning-perspectives-in-march/gallery/IMG_0266.webp
+  - src: /content/media/events/291352432-beginning-perspectives-in-march/gallery/IMG_0295.webp
+  - src: /content/media/events/291352432-beginning-perspectives-in-march/gallery/IMG_0308.webp
+  - src: /content/media/events/291352432-beginning-perspectives-in-march/gallery/P1450813.webp
+  - src: /content/media/events/291352432-beginning-perspectives-in-march/gallery/P1450825.webp
+  - src: /content/media/events/291352432-beginning-perspectives-in-march/gallery/P1450856.webp
+  - src: /content/media/events/291352432-beginning-perspectives-in-march/gallery/P1450857.webp
+  - src: /content/media/events/291352432-beginning-perspectives-in-march/gallery/P1450858.webp
+  - src: /content/media/events/291352432-beginning-perspectives-in-march/gallery/P1450864.webp
+  - src: /content/media/events/291352432-beginning-perspectives-in-march/gallery/P1450874.webp
 ---
 
 Hello Friends, 👋

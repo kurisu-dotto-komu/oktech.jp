@@ -14,6 +14,9 @@ topics:
 channels:
   - type: meetup
     ref: '305361716'
+gallery:
+  - src: /content/media/events/305361716-data-with-pandas/gallery/7F07D9_peBY1XwbfGmWL2reMQJzg1I.webp
+  - src: /content/media/events/305361716-data-with-pandas/gallery/D959A1_g-sbvVVvq5GOCwq9rg-WCSl.webp
 ---
 
 Happy new year!

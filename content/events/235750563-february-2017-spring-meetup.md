@@ -7,6 +7,10 @@ venue: 24213835-aiming-inc
 channels:
   - type: meetup
     ref: '235750563'
+gallery:
+  - src: /content/media/events/235750563-february-2017-spring-meetup/gallery/427784.webp
+  - src: /content/media/events/235750563-february-2017-spring-meetup/gallery/427790.webp
+  - src: /content/media/events/235750563-february-2017-spring-meetup/gallery/427806.webp
 ---
 
 Dear all,
