@@ -9,14 +9,18 @@ const ENTRY_FILE_NAMES = { events: "event", venues: "venue", articles: "index" }
 
 export type CmsCollection = keyof typeof ENTRY_FILE_NAMES;
 
-/** `path` template for an entry collection, e.g. `{{slug}}/event`. */
-export function cmsEntryPath(collection: CmsCollection): string {
+/** `path` template for a page-bundle entry collection, e.g. `{{slug}}/venue`. */
+export function cmsEntryPath(collection: Exclude<CmsCollection, "events">): string {
   return `{{slug}}/${ENTRY_FILE_NAMES[collection]}`;
 }
 
-/** Deep link into the Sveltia editor for the entry stored under `<slug>/`. */
+/**
+ * Deep link into the Sveltia editor. Events are flat files (`content/events/<slug>.md`)
+ * and have no collection `path`, so their entry id is the slug on its own.
+ */
 export function cmsEditHref(collection: CmsCollection, slug: string): string {
-  return `${CMS_PATH}/#/collections/${collection}/entries/${slug}/${ENTRY_FILE_NAMES[collection]}`;
+  const entry = collection === "events" ? slug : `${slug}/${ENTRY_FILE_NAMES[collection]}`;
+  return `${CMS_PATH}/#/collections/${collection}/entries/${entry}`;
 }
 
 /** Deep link derived from a content path like `articles/<slug>/index.md`. */

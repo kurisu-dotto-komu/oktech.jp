@@ -48,6 +48,14 @@ const config: KnipConfig = {
     // Used by satori
     "satori-html",
     "@fontsource/lexend",
+    // Loaded by the CMS markdown body widget, which lands with the CMS config phase.
+    "@codemirror/commands",
+    "@codemirror/lang-markdown",
+    "@codemirror/language",
+    "@codemirror/state",
+    "@codemirror/theme-one-dark",
+    "@codemirror/view",
+    "@lezer/highlight",
   ],
 
   // Ignore specific exports (common false positives)

@@ -62,7 +62,7 @@ const cmsHref = event.data.bodySlug ? undefined : cmsEditHref("events", eventSlu
         {event.data.title}
       </h1>
       <EventTags tags={event.data.topics} />
-      <MarkdownContent markdown={`events/${event.data.bodySlug ?? eventSlug}/event.md`} />
+      <MarkdownContent markdown={`events/${event.data.bodySlug ?? eventSlug}.md`} />
     </div>
   </Fragment>
 

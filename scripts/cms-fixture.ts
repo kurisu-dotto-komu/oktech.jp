@@ -18,6 +18,12 @@ const SPEC = "test/e2e/cms-crud.spec.ts";
 
 const entryFile = (contentPath: string) => path.join(ROOT, "content", contentPath);
 
+/** What `clean` deletes: the bundle folder for page bundles, the file itself for flat entries. */
+const fixtureRoot = (contentPath: string) => {
+  const segments = contentPath.split("/");
+  return entryFile(segments.length > 2 ? segments.slice(0, -1).join("/") : contentPath);
+};
+
 function write() {
   for (const fixture of CMS_FIXTURES) {
     const file = entryFile(fixture.contentPath);
@@ -29,9 +35,9 @@ function write() {
 
 function clean() {
   for (const fixture of CMS_FIXTURES) {
-    const directory = path.dirname(entryFile(fixture.contentPath));
-    fs.rmSync(directory, { recursive: true, force: true });
-    console.log(`[cms-fixture] removed ${path.relative(ROOT, directory)}`);
+    const target = fixtureRoot(fixture.contentPath);
+    fs.rmSync(target, { recursive: true, force: true });
+    console.log(`[cms-fixture] removed ${path.relative(ROOT, target)}`);
   }
 }
 

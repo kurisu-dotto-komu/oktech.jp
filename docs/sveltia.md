@@ -81,10 +81,10 @@ uploaded cover is committed into the entry folder and referenced as `./cover.web
 converted to WebP (quality 85, max 1920px wide) and capped at 10 MB. Slugs are lowercased,
 accent-stripped and truncated to 59 characters.
 
-### Events — `content/events/<slug>/event.md`
+### Events — `content/events/<slug>.md`
 
 Slug template `{{fields.dateTime | date('YYMMDD')}}-{{title}}`. Fields: `title`, `description`, `dateTime`,
-`duration`, `cover`, `group`, `venue`, `space`, `howToFindUs`, `meetupId`, `topics`, `links`,
+`duration`, `cover`, `venue`, `space`, `howToFindUs`, `meetupId`, `topics`, `links`,
 `attachments`, `recurringLabel`, `recurredFrom` (read-only), `isCancelled`, `devOnly`, body.
 
 - **`dateTime` is Japan Standard Time.** The widget is pinned to `Asia/Tokyo` with
@@ -162,7 +162,7 @@ placeholder dimensions.
 
 ## What stays out of the CMS
 
-- **Event galleries** (`content/events/<slug>/gallery/`) and their `.yaml` captions.
+- **Event galleries** (`content/media/events/<slug>/gallery/`) and their `.yaml` captions.
 - **Venue maps** (`map.jpg`, `map-dark.jpg`) — committed alongside the venue, not editable here.
 - **Recurring parents**, as described above.
 - **Derived fields — never add these to a collection.** They are computed by the loaders in

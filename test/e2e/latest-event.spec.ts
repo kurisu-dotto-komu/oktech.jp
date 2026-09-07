@@ -17,15 +17,13 @@ interface EventData {
 
 function getLatestEvent(): EventData | null {
   const eventsDir = path.join(process.cwd(), "content", "events");
-  const eventFolders = fs.readdirSync(eventsDir);
+  const eventFiles = fs.readdirSync(eventsDir).filter((file) => file.endsWith(".md"));
 
   let latestEvent: EventData | null = null;
   let latestTime = 0;
 
-  for (const folder of eventFolders) {
-    const eventPath = path.join(eventsDir, folder, "event.md");
-    if (!fs.existsSync(eventPath)) continue;
-
+  for (const file of eventFiles) {
+    const eventPath = path.join(eventsDir, file);
     const content = fs.readFileSync(eventPath, "utf-8");
     const { data } = matter(content);
 
@@ -44,7 +42,7 @@ function getLatestEvent(): EventData | null {
         dateTime: eventDate.toISOString(), // Store as ISO string for consistent handling
         duration: data.duration,
         meetupId: data.meetupId,
-        slug: folder,
+        slug: path.basename(file, ".md"),
       };
     }
   }

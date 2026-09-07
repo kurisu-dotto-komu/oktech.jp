@@ -8,13 +8,14 @@
 import { CMS_FIXTURE_SLUGS } from "../../helpers/url";
 
 /** Reused from another event so the fixture never adds a binary to the repo. */
-const SHARED_COVER = "../207109452-presentations-discussions-and-connections/506739.webp";
+const SHARED_COVER =
+  "/content/media/events/207109452-presentations-discussions-and-connections/506739.webp";
 
 const FIXTURE_MEETUP_ID = 999999900;
 
 export type CmsFixture = {
   label: string;
-  /** Written to `content/<contentPath>`; the containing folder is removed on clean. */
+  /** Written to `content/<contentPath>`; flat entries are removed on clean, bundles folder and all. */
   contentPath: string;
   /** Served path, also used to derive the built file under `dist/`. */
   pagePath: string;
@@ -28,7 +29,7 @@ export type CmsFixture = {
 
 const eventFixture: CmsFixture = {
   label: "event",
-  contentPath: `events/${CMS_FIXTURE_SLUGS.EVENT}/event.md`,
+  contentPath: `events/${CMS_FIXTURE_SLUGS.EVENT}.md`,
   pagePath: `/events/${CMS_FIXTURE_SLUGS.EVENT}`,
   distPath: `dist/events/${CMS_FIXTURE_SLUGS.EVENT}.html`,
   listingPath: "/events",
@@ -39,7 +40,6 @@ const eventFixture: CmsFixture = {
     dateTime: "2020-01-02 19:00",
     duration: 120,
     cover: SHARED_COVER,
-    group: 15632202,
     venue: FIXTURE_MEETUP_ID,
     space: "Fixture Room",
     howToFindUs: "Follow the fixture signs to the round-trip test room.",

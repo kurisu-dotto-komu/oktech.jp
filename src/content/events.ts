@@ -36,7 +36,6 @@ type EventFrontmatter = {
   space?: string;
   howToFindUs?: string;
   meetupId?: number | string;
-  group?: number;
   links?: Record<string, string>;
   isCancelled?: boolean;
   attachments?: EventAttachment[];
@@ -82,7 +81,6 @@ function eventsSchema() {
     space: z.string().optional(),
     howToFindUs: z.string().optional(),
     meetupId: z.union([z.number(), z.string()]).optional(),
-    group: z.number().optional(),
     links: z.record(z.string()).optional(),
     isCancelled: z.boolean().optional(),
     attachments: z
@@ -104,6 +102,9 @@ function eventsSchema() {
 }
 
 type LoadedEvent = ReturnType<typeof buildEntry>;
+
+/** Events are flat files, so the entry id is the file name without its extension. */
+const entrySlug = (filePath: string) => path.basename(filePath, ".md");
 
 function buildRepeatInstances(
   filePath: string,
@@ -162,7 +163,7 @@ function buildEntry(
   } = {},
 ) {
   const directory = path.dirname(filePath);
-  const id = overrides.id ?? path.basename(directory);
+  const id = overrides.id ?? entrySlug(filePath);
   const dateTime = overrides.dateTime ?? parseEventDateTime(frontmatter.dateTime, filePath, id);
   const cover = frontmatter.cover ? resolveEntryImage(id, directory, frontmatter.cover) : undefined;
   return {
@@ -179,7 +180,6 @@ function buildEntry(
     space: frontmatter.space,
     howToFindUs: frontmatter.howToFindUs,
     meetupId: frontmatter.meetupId,
-    group: frontmatter.group,
     links: frontmatter.links,
     isCancelled: overrides.isCancelled ?? frontmatter.isCancelled,
     attachments: frontmatter.attachments,
@@ -193,7 +193,7 @@ function buildEntry(
 
 export async function eventsLoader() {
   const files = Object.entries(
-    import.meta.glob<MarkdownInstance<EventFrontmatter>>("/content/events/**/event.md", {
+    import.meta.glob<MarkdownInstance<EventFrontmatter>>("/content/events/*.md", {
       eager: true,
     }),
   );
@@ -205,7 +205,7 @@ export async function eventsLoader() {
 
   for (const [filePath, mod] of files) {
     const { frontmatter } = mod;
-    const parentSlug = path.basename(path.dirname(filePath));
+    const parentSlug = entrySlug(filePath);
     if (frontmatter.repeat) {
       repeatParents.push({ filePath, frontmatter, parentSlug });
       continue;

@@ -11,8 +11,6 @@ import {
   titleField,
 } from "@/cms/fields/common";
 import type { CmsEntryCollection, CmsField } from "@/cms/types";
-import { EVENT_GROUPS } from "@/content/eventTaxonomy";
-import { cmsEntryPath } from "@/utils/cms";
 
 const dateTimeField: CmsField = {
   name: "dateTime",
@@ -23,14 +21,6 @@ const dateTimeField: CmsField = {
   output_utc: false,
   required: true,
   hint: "Start time in Japan Standard Time.",
-};
-
-const groupField: CmsField = {
-  name: "group",
-  label: "Group",
-  widget: "select",
-  required: false,
-  options: EVENT_GROUPS.map(({ id, label }) => ({ label, value: id })),
 };
 
 const venueField: CmsField = {
@@ -98,7 +88,6 @@ function eventFields(): CmsField[] {
     coverField(false, {
       hint: "16:9 works best; other shapes are centre-cropped to 16:9 on the site. Upload a file or paste an image URL; falls back to the default cover when empty.",
     }),
-    groupField,
     venueField,
     stringField("space", "Space", {
       required: false,
@@ -129,9 +118,8 @@ export function buildEventsCollection(): CmsEntryCollection {
     label: "Events",
     label_singular: "Event",
     folder: "/content/events",
-    path: cmsEntryPath("events"),
-    media_folder: "",
-    public_folder: ".",
+    media_folder: "/content/media/events",
+    public_folder: "/content/media/events",
     preview_path: "events/{{slug}}",
     create: true,
     // Recurring parents carry a `repeat` map that Sveltia cannot round-trip, so they must stay
