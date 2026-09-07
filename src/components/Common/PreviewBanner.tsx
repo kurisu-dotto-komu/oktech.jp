@@ -15,18 +15,18 @@ export default function PreviewBanner({ cmsHref }: PreviewBannerProps) {
 
   const branch = import.meta.env.PUBLIC_PREVIEW_BRANCH;
   const prUrl = `https://github.com/${cmsRepo()}/pull/${pr}`;
-  const linkClass = "btn btn-sm btn-outline border-error-content/40 text-error-content";
+  const linkClass = "btn btn-sm border-white/40 bg-red-700 text-white hover:bg-red-800";
 
   return (
     <>
       <div
-        className="bg-error text-error-content pointer-events-none fixed top-0 left-0 z-[60] w-full py-0.5 text-center text-xs font-semibold tracking-wide uppercase"
+        className="pointer-events-none fixed top-0 left-0 z-[60] w-full bg-red-600 py-0.5 text-center text-xs font-semibold tracking-wide text-white uppercase"
         role="status"
       >
         Preview build — pull request #{pr}
         {branch && <span className="ml-2 font-normal normal-case opacity-80">({branch})</span>}
       </div>
-      <div className="bg-error text-error-content fixed bottom-4 left-4 z-[60] flex flex-col gap-2 rounded-lg p-3 shadow-lg">
+      <div className="fixed bottom-4 left-4 z-[60] flex flex-col gap-2 rounded-lg bg-red-600 p-3 text-white shadow-lg">
         <span className="text-xs font-semibold tracking-wide uppercase">
           This is a preview, not the live site
         </span>
