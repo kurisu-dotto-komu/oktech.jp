@@ -2,12 +2,12 @@
 
 The site, the CMS auth proxy and media storage can all run on Cloudflare. This describes how to recreate that setup on any Cloudflare account and zone; placeholders in `<angle brackets>` are yours to fill in. Nothing here contains secrets.
 
-| Piece                | Cloudflare product         | Example hostname                               |
-| -------------------- | -------------------------- | ---------------------------------------------- |
-| Site (static assets) | Workers                    | `<site-host>` e.g. `staging.example.com`       |
-| Sveltia GitHub OAuth | Workers (sveltia-cms-auth) | `auth.<site-host>`                             |
-| Source images        | R2 bucket                  | `images.<site-host>`                           |
-| PR previews          | Workers versions           | `<hash>-<worker-name>.<subdomain>.workers.dev` |
+| Piece                | Cloudflare product         | Example hostname                         |
+| -------------------- | -------------------------- | ---------------------------------------- |
+| Site (static assets) | Workers                    | `<site-host>` e.g. `staging.example.com` |
+| Sveltia GitHub OAuth | Workers (sveltia-cms-auth) | `auth.<site-host>`                       |
+| Source images        | R2 bucket                  | `images.<site-host>`                     |
+| PR previews          | Workers (one per PR)       | `pr-<n>-preview.<site-host>`             |
 
 Hostnames must belong to a zone on the same Cloudflare account. The site hostname is configured in exactly one place: the `STAGING_HOST` environment variable (a GitHub Actions **repository variable** in CI, a shell variable locally). The auth Worker's route and the R2 custom domain are set when those are deployed.
 

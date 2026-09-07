@@ -14,7 +14,7 @@ A high-level handover of how the site is built, edited and deployed, and where i
 
 1. An editor opens `/admin` and signs in with GitHub. Access is governed by GitHub repository permissions — there is no separate CMS user list. A GitHub App scoped to this single repository handles sign-in.
 2. Saving an entry opens a **pull request** (Sveltia's _editorial workflow_). Entries move across a board: **Drafts → In Review → Ready → Publish**. Publishing merges the PR.
-3. Every PR automatically gets a **preview site** at its own hostname (`pr-<n>.preview.<staging host>`), and the CMS shows a **View Preview** button linking straight to the edited page.
+3. Every PR automatically gets a **preview site** at its own hostname (`pr-<n>-preview.<staging host>`), and the CMS shows a **View Preview** button linking straight to the edited page.
 4. People without write access can still propose changes: Sveltia forks the repository for them (_open authoring_) and their edits arrive as PRs for maintainers to review.
 5. Merging to the staging branch redeploys the staging site within about two minutes. Each site page has a **CMS** link in the footer that opens that exact entry in the editor.
 
@@ -59,7 +59,7 @@ Not yet done (see plans): the legacy content-import pipeline is still present, n
 
 - **Cloudflare Images** instead of build-time optimisation: images would be resized on Cloudflare's edge on demand, removing image processing from the build entirely (builds become seconds, no image cache to manage). It is a paid add-on (a few dollars a month at this volume); the current design keeps the option open because the site already references images by URL.
 - **Production on Cloudflare instead of GitHub Pages:** the staging setup (Workers static assets, custom domain, per-PR previews, cached builds) could serve production as-is. Benefits: one hosting platform, faster and better-cached builds, preview deployments for production PRs, and hosting decoupled from GitHub should that ever be needed. The build could also move to Cloudflare's own git-connected builds. Cost is within the free tier at current traffic.
-- **Media in the bucket, not the repo:** once existing images move to R2 the repository shrinks from ~400 MB to a few MB, which makes cloning, CMS sessions and CI faster.
+- **Media in the bucket, not the repo:** once existing images move to R2 the repository shrinks from ~400 MB to a few MB, which makes cloning, CMS sessions and CI faster. Simply deleting the files is not enough — they stay in Git history and every full clone still downloads them. The move needs a history rewrite (e.g. `git filter-repo` to strip the image paths, then a force-push and fresh clones for everyone) or an agreed pruning approach; this is a one-off, coordinated step, so it is planned separately from the restructure.
 
 ## Where to look
 

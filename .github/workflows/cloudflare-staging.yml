@@ -78,7 +78,7 @@ jobs:
         env:
           PR: ${{ github.event.pull_request.number }}
         run: |
-          host="pr-$PR.preview.$STAGING_HOST"
+          host="pr-$PR-preview.$STAGING_HOST"
           npx wrangler deploy --name "oktech-pr-$PR" --domain "$host"
           echo "url=https://$host" >> "$GITHUB_OUTPUT"
 
