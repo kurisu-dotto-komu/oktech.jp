@@ -13,11 +13,11 @@ function scale(scale: number, type: "icon" | "text"): { width: number; height: n
   };
 }
 
-export default function OGLogo() {
+export default function OGLogo({ size = 2.35 }: { size?: number }) {
   return (
     <div style={twj("flex justify-start items-center")}>
-      <OKTechLogoIcon active noStyle style={scale(2.35, "icon")} />
-      <OKTechLogoText style={scale(2.35, "text")} />
+      <OKTechLogoIcon active noStyle style={scale(size, "icon")} />
+      <OKTechLogoText style={scale(size, "text")} />
     </div>
   );
 }

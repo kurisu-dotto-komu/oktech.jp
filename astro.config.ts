@@ -7,6 +7,7 @@ import remarkBreaks from "remark-breaks";
 import { visualizer } from "rollup-plugin-visualizer";
 import svgr from "vite-plugin-svgr";
 
+import venueMaps from "./src/utils/maps/integration";
 import { rehypeTableWrapper, rehypeTaskListCheckbox } from "./src/utils/rehypePlugins";
 import relativeStaticAssets from "./src/utils/relativeStaticAssets";
 import {
@@ -81,7 +82,7 @@ export default defineConfig({
       exclude: ["@resvg/resvg-js"],
     },
   },
-  integrations: [react(), relativeStaticAssets()],
+  integrations: [react(), relativeStaticAssets(), venueMaps()],
   redirects: {
     discord: "https://discord.com/invite/k8xj8d75f6",
     // Legacy long event slugs → truncated slugs (84-char URL limit)

@@ -1,7 +1,7 @@
 import { SITE } from "@/constants";
 import { getEvent } from "@/content";
-import { isLegacyEvent } from "@/utils/eventFilters";
 import { getOGImageWithFallback } from "@/utils/og";
+import { shouldGenerateEventOG } from "@/utils/og/eligibility";
 
 import type { SEOMetadata } from ".";
 
@@ -21,7 +21,7 @@ export async function decorateEventSEO(
         : "Join us for this exciting tech meetup event!";
     }
 
-    const isLegacy = isLegacyEvent(event);
+    const isLegacy = !shouldGenerateEventOG(event);
     const ogImage =
       isLegacy && event.data.coverPage?.src
         ? event.data.coverPage.src

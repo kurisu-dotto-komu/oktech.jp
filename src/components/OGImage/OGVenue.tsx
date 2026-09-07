@@ -1,4 +1,6 @@
-import OGLayout from "./OGLayout";
+import { twj } from "tw-to-css";
+
+import OGLayout, { titleCase } from "./OGLayout";
 
 interface VenueData {
   id: string;
@@ -18,9 +20,16 @@ interface OGVenueProps {
   venue: VenueData;
 }
 
-export default function OGVenue({}: OGVenueProps) {
-  // const locationParts = [venue.data.city, venue.data.country].filter(Boolean);
-  // const location = locationParts.join(", ");
+export default function OGVenue({ venue }: OGVenueProps) {
+  const { title, address, city, country } = venue.data;
+  const location = [city, country]
+    .filter((part): part is string => Boolean(part))
+    .map(titleCase)
+    .join(", ");
 
-  return <OGLayout>TODO</OGLayout>;
+  return (
+    <OGLayout title={title} subtitle={location || undefined}>
+      {address ? <span style={{ ...twj("text-[22px]"), opacity: 0.7 }}>{address}</span> : null}
+    </OGLayout>
+  );
 }

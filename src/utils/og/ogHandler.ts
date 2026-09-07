@@ -4,6 +4,7 @@ import { Resvg } from "@resvg/resvg-js";
 import type { APIContext } from "astro";
 import satori from "satori";
 
+import { loadFonts } from "./fonts";
 import type { CacheKeyData } from "./ogCache";
 import { OGImageCache } from "./ogCache";
 
@@ -20,82 +21,8 @@ export interface OGHandlerOptions {
 }
 
 // ============================================================================
-// Font Management (Memoized)
-// ============================================================================
-
-interface FontData {
-  name: string;
-  data: Buffer;
-  weight: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
-  style: "normal" | "italic";
-}
-
-let cachedFonts: FontData[] | null = null;
-
-/**
- * Load fonts once and cache them for all subsequent requests
- */
-async function loadFonts(): Promise<FontData[]> {
-  if (cachedFonts) {
-    return cachedFonts;
-  }
-
-  // NOTE: OG rendering still consumes the legacy @fontsource assets until OG routes ship.
-  const fs = await import("fs/promises");
-  const path = await import("path");
-  const fontsDir = path.join(process.cwd(), "node_modules/@fontsource");
-
-  const [lexendLight, lexendSemiBold, lexendExtraBold] = await Promise.all([
-    fs.readFile(path.join(fontsDir, "lexend/files/lexend-latin-300-normal.woff")),
-    fs.readFile(path.join(fontsDir, "lexend/files/lexend-latin-600-normal.woff")),
-    fs.readFile(path.join(fontsDir, "lexend/files/lexend-latin-800-normal.woff")),
-  ]);
-
-  cachedFonts = [
-    { name: "Lexend", data: lexendLight, weight: 300 as const, style: "normal" as const },
-    { name: "Lexend", data: lexendSemiBold, weight: 600 as const, style: "normal" as const },
-    { name: "Lexend", data: lexendExtraBold, weight: 800 as const, style: "normal" as const },
-  ];
-
-  return cachedFonts;
-}
-
-// ============================================================================
 // Image Utilities
 // ============================================================================
-
-/**
- * Load an image file as base64 data URL
- * Handles WebP conversion for better Satori compatibility
- */
-export async function loadImageAsBase64(imagePath: string): Promise<string | null> {
-  try {
-    const fs = await import("fs/promises");
-    const imageBuffer = await fs.readFile(imagePath);
-    const extension = imagePath.split(".").pop()?.toLowerCase();
-
-    // Convert WebP to JPEG for better compatibility with Satori
-    if (extension === "webp") {
-      const sharp = await import("sharp");
-      const convertedBuffer = await sharp
-        .default(imageBuffer)
-        .resize(1024, 1024, {
-          fit: "inside",
-          withoutEnlargement: true,
-        })
-        .jpeg({ quality: 85 })
-        .toBuffer();
-      return `data:image/jpeg;base64,${convertedBuffer.toString("base64")}`;
-    }
-
-    // For other formats, use as-is
-    const mimeType = extension === "png" ? "image/png" : "image/jpeg";
-    return `data:${mimeType};base64,${imageBuffer.toString("base64")}`;
-  } catch (error) {
-    console.error("Error loading image:", error);
-    return null;
-  }
-}
 
 function bufferToArrayBuffer(buffer: Buffer): ArrayBuffer {
   const { buffer: underlying, byteOffset, byteLength } = buffer;

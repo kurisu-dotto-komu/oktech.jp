@@ -3,7 +3,7 @@ import { twj } from "tw-to-css";
 import { formatDate, formatTime } from "@/utils/formatDate";
 import { themeColorsHex } from "@/utils/og/theme-colors";
 
-import OGLayout, { CalendarIcon, IconWrapper, LocationIcon } from "./OGLayout";
+import OGLayout, { CalendarIcon, IconWrapper, LocationIcon, titleCase } from "./OGLayout";
 
 interface EventData {
   data: {
@@ -12,7 +12,6 @@ interface EventData {
     topics?: string[];
   };
   venue?: {
-    id: string;
     title: string;
     city?: string;
   };
@@ -32,7 +31,7 @@ export default function OGEvent({ event }: OGEventProps) {
 
   // Get venue info
   const venueLocation = event.venue
-    ? `${event.venue.title}${event.venue.city ? `, ${event.venue.city}` : ""}`
+    ? `${event.venue.title}${event.venue.city ? `, ${titleCase(event.venue.city)}` : ""}`
     : "Location TBD";
 
   // Determine subtitle based on event data
@@ -43,7 +42,6 @@ export default function OGEvent({ event }: OGEventProps) {
 
   return (
     <OGLayout title={event.data.title} subtitle={subtitle}>
-      {/* note - this is not rendered currently as OGLayout does not use children */}
       <div style={twj("flex flex-col gap-6")}>
         <div style={twj("flex items-center gap-4")}>
           <IconWrapper>
