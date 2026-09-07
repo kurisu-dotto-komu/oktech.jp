@@ -7,8 +7,8 @@ const CHANNEL_HINT =
   "Reference on that platform: the numeric Meetup event id, the Luma slug, or a full URL for anything else.";
 
 /**
- * Where an entry is published. Replaces the old `meetupId` plus free-form `links` map:
- * adding a platform is one row in src/content/channels.ts and no schema change.
+ * Where an entry is published. Adding a platform is one row in src/content/channels.ts
+ * and no schema change, which is what `type` being a plain string rather than an enum buys.
  */
 export function channelsField(label: string): CmsField {
   return {

@@ -100,7 +100,9 @@ test.describe("Latest Event Visibility", () => {
     if (latestEvent!.meetupRef) {
       const meetupUrl = `${MEETUP_EVENT_URL}/${latestEvent!.meetupRef}`;
       const meetupLink = page.locator(`a[href="${meetupUrl}"]`);
-      await expect(meetupLink).toHaveCount(2); // Should be present in both desktop and mobile views
+      // Twice for the social buttons (desktop and mobile), plus twice more for the RSVP
+      // alert when the event is still upcoming.
+      expect(await meetupLink.count()).toBeGreaterThanOrEqual(2);
     }
   });
 });

@@ -15,10 +15,7 @@ import { cmsEntryPath } from "@/utils/cms";
 /** Roughly central Osaka, so the picker opens somewhere useful for a new venue. */
 const DEFAULT_CENTER: [number, number] = [135.5023, 34.6937];
 
-/**
- * Stored as a stringified GeoJSON point. The legacy `coordinates: {lat, lng}` shape is
- * still read by the site, so existing venues keep working until they are edited here.
- */
+/** Stored as a stringified GeoJSON point, which is the only position shape the site reads. */
 const locationField: CmsField = {
   name: "location",
   label: "Location",
