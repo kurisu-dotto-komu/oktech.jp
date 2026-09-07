@@ -25,8 +25,8 @@ env:
   PUBLIC_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
   PUBLIC_R2_ACCESS_KEY_ID: ${{ vars.R2_ACCESS_KEY_ID }}
   PUBLIC_R2_BUCKET: ${{ vars.R2_BUCKET }}
-  # Set to the upload Worker origin to route CMS uploads through its maintainer whitelist;
-  # leave the variable unset to sign uploads straight against R2.
+  # Set to the upload Worker origin to route CMS uploads through the credential derived from
+  # each editor's GitHub account; leave the variable unset to sign uploads straight against R2.
   PUBLIC_MEDIA_UPLOAD_ENDPOINT: ${{ vars.MEDIA_UPLOAD_ENDPOINT }}
   # Read at build time to stitch venue map tiles for venues with no committed bitmap
   STADIA_MAPS_API_KEY: ${{ secrets.STADIA_MAPS_API_KEY }}

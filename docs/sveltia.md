@@ -14,17 +14,18 @@ version) and served from our own `/admin` page — no CDN, no `config.yml`.
 `CMS.init({ config: buildCmsConfig() })`. The config itself is TypeScript under
 [`src/cms/`](../src/cms/), type-checked against the types `@sveltia/cms` ships:
 
-| File               | Contents                                                             |
-| ------------------ | -------------------------------------------------------------------- |
-| `config.ts`        | `buildCmsConfig()` — assembles everything below                      |
-| `backend.ts`       | GitHub backend (repo, branch, OAuth origin)                          |
-| `media.ts`         | Global media folder, upload transformations, per-field bucket target |
-| `output.ts`        | Slug rules and markdown output options                               |
-| `parity.ts`        | Which schema keys are allowed to have no CMS field, and vice versa   |
-| `types.ts`         | Local aliases for the `@sveltia/cms` types                           |
-| `collections/*.ts` | `events`, `series`, `venues`, `articles`, `pages`                    |
-| `fields/*.ts`      | Shared field builders (`titleField`, `coverField`, `channelsField`…) |
-| `widgets/*`        | The `pull_request` link and the `markdown_code` body editor          |
+| File               | Contents                                                              |
+| ------------------ | --------------------------------------------------------------------- |
+| `config.ts`        | `buildCmsConfig()` — assembles everything below                       |
+| `backend.ts`       | GitHub backend (repo, branch, OAuth origin)                           |
+| `media.ts`         | Global media folder, upload transformations, per-field bucket target  |
+| `bootstrap/`       | Exchanges the GitHub token for an upload credential before `CMS.init` |
+| `output.ts`        | Slug rules and markdown output options                                |
+| `parity.ts`        | Which schema keys are allowed to have no CMS field, and vice versa    |
+| `types.ts`         | Local aliases for the `@sveltia/cms` types                            |
+| `collections/*.ts` | `events`, `series`, `venues`, `articles`, `pages`                     |
+| `fields/*.ts`      | Shared field builders (`titleField`, `coverField`, `channelsField`…)  |
+| `widgets/*`        | The `pull_request` link and the `markdown_code` body editor           |
 
 Event, venue and article pages carry a **CMS** footer link that opens that entry in the editor.
 Venues and articles are folder bundles, so Sveltia addresses them by their whole sub path
@@ -65,6 +66,7 @@ bundle, so none of them is a secret.
 | `IMAGES_HOST`                      | `images.<STAGING_HOST>` when set       | Media bucket host (build-time)       |
 | `PUBLIC_R2_*`, `PUBLIC_IMAGES_URL` | unset                                  | Bucket the CMS uploads to            |
 | `PUBLIC_MEDIA_UPLOAD_ENDPOINT`     | unset                                  | Upload Worker origin, if one is used |
+| `PUBLIC_R2_ACCESS_KEY_ID`          | unset                                  | Only for the direct-to-R2 route      |
 | `STADIA_MAPS_API_KEY`              | unset                                  | Build-time key for venue map tiles   |
 
 The staging workflow sets `PUBLIC_CMS_REPO`/`PUBLIC_CMS_BRANCH` to the repository and branch it
@@ -168,9 +170,19 @@ path in the repository — `/content/media/events/<slug>/x.webp` for events, `./
 article bundle.
 
 New uploads go to the R2 media bucket rather than into Git, and the entry stores the public URL.
-Which route the browser takes is one environment variable; both routes, the per-editor R2 secret and
-the maintainer-whitelist Worker, are documented in **[docs/media-upload.md](./media-upload.md)**.
-Uploads are prefixed per field (`events/covers/`, `events/gallery/`, `venues/`, `series/`).
+Which route the browser takes is one environment variable; both routes — pasting a shared R2 secret,
+or the pair of Workers that derive a credential per editor — are documented in
+**[docs/media-upload.md](./media-upload.md)**. Uploads are prefixed per field (`events/covers/`,
+`events/gallery/`, `venues/`, `series/`).
+
+When the upload service is configured (`PUBLIC_MEDIA_UPLOAD_ENDPOINT` **and**
+`PUBLIC_CMS_AUTH_BASE_URL`), **there is nothing for an editor to paste.** After sign-in,
+[`src/cms/bootstrap/`](../src/cms/bootstrap/) swaps the GitHub token Sveltia already stores for a
+30-day upload credential and writes it into Sveltia's own preferences before `CMS.init` runs — which
+is why [`admin.astro`](../src/pages/admin.astro) imports `@sveltia/cms` dynamically, after the
+bootstrap: the CMS reads those preferences once, as its modules evaluate. The very first sign-in in
+a browser reloads the page once, because the derived access key id has to be in the config the CMS
+is initialised with.
 
 Image widgets have `choose_url: true`, so an editor without upload access can always paste a public
 URL instead. Resolution fails soft: a missing local file logs `[images] <entry-id>: …` and falls

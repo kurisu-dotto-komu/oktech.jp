@@ -4,10 +4,10 @@ Images created in the CMS go to the R2 media bucket rather than into Git, and en
 the public URL (`https://images.<site-host>/<key>`). There are two ways for the browser to
 reach the bucket, and the CMS picks between them from one environment variable.
 
-| Mode               | `PUBLIC_MEDIA_UPLOAD_ENDPOINT` | Who can upload                                        |
-| ------------------ | ------------------------------ | ----------------------------------------------------- |
-| Direct to R2       | unset                          | anyone holding the shared R2 Secret Access Key        |
-| Through the Worker | `https://uploads.<site-host>`  | only the maintainers listed in the Worker's whitelist |
+| Mode               | `PUBLIC_MEDIA_UPLOAD_ENDPOINT` | Who can upload                                 |
+| ------------------ | ------------------------------ | ---------------------------------------------- |
+| Direct to R2       | unset                          | anyone holding the shared R2 Secret Access Key |
+| Through the Worker | `https://uploads.<site-host>`  | anyone with write access to the content repo   |
 
 Both use the same Sveltia machinery — an S3-compatible library that signs each request with
 AWS Signature V4 — so switching is a config change and the editor experience is identical.
@@ -23,57 +23,88 @@ every editor to paste a new one.
 
 ## Through the upload Worker (target)
 
-[`workers/media-upload`](../workers/media-upload/README.md) is a Worker that implements
-`ListObjectsV2`, `PutObject` and `HeadObject` against an R2 binding. Because the bucket is
-reached through the binding, **no R2 token exists in any browser**. The Worker authenticates
-by recomputing the SigV4 signature against a whitelist of maintainers, each with their own
-generated key pair, and additionally enforces a key-prefix, content-type, size and
-no-overwrite policy that R2 itself cannot express.
+Two Workers, sharing one secret that never leaves Cloudflare:
 
-Sveltia takes the access key id from the site config and the secret from each editor's
-settings, so the usual arrangement is one shared `accessKeyId` with a **different
-`secretAccessKey` per maintainer**. The Worker tries every whitelist row carrying that id,
-which is what makes per-person revocation possible.
+- [`workers/cms-auth`](../workers/cms-auth/README.md) — the GitHub OAuth proxy the CMS
+  already signs in through, plus `GET /media-credentials`
+- [`workers/media-upload`](../workers/media-upload/README.md) — `ListObjectsV2`,
+  `PutObject` and `HeadObject` against an R2 binding
+
+**Nobody is handed a key.** After signing in, `/admin` swaps the GitHub token Sveltia
+already holds for an upload credential: the auth Worker checks with GitHub that the caller
+can push to the content repository, and returns
+
+```
+accessKeyId     <github-login>.<YYYYMMDD>
+secretAccessKey base64(first 30 bytes of HMAC-SHA256(SERVER_SECRET, accessKeyId))
+```
+
+The access key id is public and travels in every `Authorization` header, so the upload
+Worker reads the login and the expiry off the request and recomputes the secret to verify
+the signature. There is no list of editors on either side and nothing to keep in sync — the
+signature verifying _is_ the proof that the credential was minted for that login, and the
+expiry bounds how long that lasts. Because the bucket is reached through an R2 binding,
+**no R2 token exists in any browser**, and the Worker additionally enforces a key-prefix,
+content-type, size and no-overwrite policy that R2 itself cannot express.
+
+The 40-character secret is not arbitrary: Sveltia's `apiKeyPattern` for `aws_s3` is
+`/^[A-Za-z0-9/+=]{40}$/`, so the derived value is also something an editor could paste by
+hand if the automatic exchange ever fails.
+
+### Revoking and rotating
+
+| Situation                    | Do this                                                               |
+| ---------------------------- | --------------------------------------------------------------------- |
+| Someone leaves the project   | remove their repository write access; they can mint no new credential |
+| …and it has to stop **now**  | add their login to the upload Worker's `DENYLIST` var and redeploy    |
+| A secret is suspected leaked | change `SERVER_SECRET` on **both** Workers; everyone re-signs in      |
+
+Credentials last 30 days and the CMS renews them silently two days before they lapse, so the
+worst case for a forgotten revocation is 30 days — or nothing at all, if the optional live
+re-check (`GITHUB_APP_ID` + `GITHUB_APP_PRIVATE_KEY` on the upload Worker) is configured.
 
 ### Setting it up
 
-1. Mint one key pair per maintainer:
+1. Generate the shared secret once and keep it out of the repository:
 
    ```bash
-   cd workers/media-upload && npm run keygen
+   openssl rand -base64 32
    ```
 
-   The secret must stay exactly 40 characters — Sveltia validates the shape and silently
-   discards anything else.
-
-2. Fill in `bucket_name` and `ALLOWED_ORIGINS` in
-   [`workers/media-upload/wrangler.jsonc`](../workers/media-upload/wrangler.jsonc), then
-   deploy and set the whitelist:
+2. Copy each Worker's `wrangler.jsonc` to `wrangler.local.jsonc` (gitignored) and fill in
+   your bucket, hostnames and `REPO`, then deploy both and give them the secret:
 
    ```bash
-   cd workers/media-upload
-   npx wrangler deploy --domain uploads.<site-host>
-   npx wrangler secret put MAINTAINERS   # JSON array, see the Worker README
+   cd workers/cms-auth
+   npx wrangler deploy -c wrangler.local.jsonc --domain auth.<site-host>
+   npx wrangler secret put SERVER_SECRET
+   npx wrangler secret put GITHUB_CLIENT_ID
+   npx wrangler secret put GITHUB_CLIENT_SECRET
+
+   cd ../media-upload
+   npx wrangler deploy -c wrangler.local.jsonc --domain uploads.<site-host>
+   npx wrangler secret put SERVER_SECRET   # the same value
    ```
 
-3. Point the CMS at it. Locally, in `.env.local`; in CI, as the repository **variable**
-   `MEDIA_UPLOAD_ENDPOINT`, which `cloudflare-staging.yml` passes through as
-   `PUBLIC_MEDIA_UPLOAD_ENDPOINT`:
+3. Point the CMS at both. Locally, in `.env.local`; in CI, as the repository **variables**
+   `MEDIA_UPLOAD_ENDPOINT` and the auth base URL, which `cloudflare-staging.yml` passes
+   through:
 
    ```
    PUBLIC_MEDIA_UPLOAD_ENDPOINT=https://uploads.<site-host>
+   PUBLIC_CMS_AUTH_BASE_URL=https://auth.<site-host>
    ```
 
-4. Give each maintainer their secret. In `/admin` → settings → media libraries, they paste
-   it once. Removing their row from `MAINTAINERS` (and re-running `wrangler secret put`)
-   revokes them; nothing else changes.
+   Both are required: without the auth Worker there is nothing to mint a credential.
 
 No R2 bucket CORS rule is needed in this mode: the browser talks to the Worker, which
-answers the preflight itself from `ALLOWED_ORIGINS`. Per-PR preview hosts are deliberately
-not allowlisted — previews are for reviewing, authoring happens on the stable `/admin`.
+answers the preflight itself from `ALLOWED_ORIGINS`. That list takes `*` as a wildcard, so
+`https://*.<site-host>` covers the per-PR preview hosts too.
 
 ## For editors
 
+- **Nothing to paste.** Sign in to `/admin` with GitHub and uploads work. The first sign-in
+  on a new browser reloads the page once, which is the CMS picking up the credential.
 - **Name the file after the entry** (`260919-agentic-cover.webp`, never `cover.webp`).
   Uploads are refused when the key already exists, so a generic name will eventually fail
   for someone.
@@ -83,14 +114,17 @@ not allowlisted — previews are for reviewing, authoring happens on the stable 
 
 ## Troubleshooting
 
-| Symptom                              | Cause                                                               |
-| ------------------------------------ | ------------------------------------------------------------------- |
-| `403 Signature does not match…`      | wrong or revoked secret; re-paste it in the CMS settings            |
-| `403 Request date is outside…`       | the editor's clock is more than five minutes off                    |
-| `409 … already exists`               | the file name is already taken; rename it after the entry           |
-| `415` / `400 … extension`            | not an allowed image type, or the extension disagrees with the type |
-| Upload button does nothing           | the editor has not entered their Secret Access Key yet              |
-| Browser console shows a CORS failure | the `/admin` origin is missing from the Worker's `ALLOWED_ORIGINS`  |
+| Symptom                                | Cause                                                               |
+| -------------------------------------- | ------------------------------------------------------------------- |
+| `403 Signature does not match…`        | the credential predates a `SERVER_SECRET` rotation; sign out and in |
+| `403 Credential has expired…`          | more than 30 days since the last sign-in; reload `/admin`           |
+| `403 … upload access has been revoked` | the login is on the Worker's `DENYLIST`                             |
+| `403 Request date is outside…`         | the editor's clock is more than five minutes off                    |
+| `409 … already exists`                 | the file name is already taken; rename it after the entry           |
+| `415` / `400 … extension`              | not an allowed image type, or the extension disagrees with the type |
+| Upload button does nothing             | no credential: check the console for `[cms] no upload credential`   |
+| Browser console shows a CORS failure   | the `/admin` origin is missing from the Worker's `ALLOWED_ORIGINS`  |
 
-The Worker's own checks are covered by `npm test` inside `workers/media-upload`, which runs
-offline against a fake R2 binding. Live logs: `npx wrangler tail oktech-media-upload`.
+Each Worker's own checks are covered by `npm test` inside its directory, which runs offline
+against a fake R2 binding and a stubbed GitHub. Live logs:
+`npx wrangler tail <worker-name>`.
