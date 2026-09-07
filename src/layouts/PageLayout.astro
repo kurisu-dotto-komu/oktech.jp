@@ -2,14 +2,22 @@
 import RootLayout from "./RootLayout.astro";
 import TopBar from "@/components/Common/TopBar";
 import Footer from "@/components/Common/Footer";
-import PreviewBanner from "@/components/Common/PreviewBanner";
+import PreviewBanner, {
+  PREVIEW_BAR_HEIGHT,
+  isPreviewBuild,
+} from "@/components/Common/PreviewBanner";
 import clsx from "clsx";
 
 const { flush, className, footerEvent, cmsHref } = Astro.props;
+// On preview builds the fixed top bar and the page move down by the height of the preview bar
+const previewOffset = isPreviewBuild ? PREVIEW_BAR_HEIGHT : "0px";
 ---
 
 <RootLayout>
-  <div class="flex min-h-screen flex-col">
+  <div
+    class="flex min-h-screen flex-col"
+    style={`--preview-offset: ${previewOffset}; padding-top: ${previewOffset}`}
+  >
     <header>
       <TopBar client:load transition:persist="topbar" />
     </header>

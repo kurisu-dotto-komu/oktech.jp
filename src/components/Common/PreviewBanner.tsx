@@ -8,45 +8,43 @@ interface PreviewBannerProps {
   cmsHref?: string;
 }
 
-/** Overlay shown only on pull-request preview builds (PUBLIC_PREVIEW_PR is set by CI). */
+export const isPreviewBuild = Boolean(import.meta.env.PUBLIC_PREVIEW_PR);
+
+/** Height of the bar; PageLayout offsets the fixed top bar and page by the same amount. */
+export const PREVIEW_BAR_HEIGHT = "2rem";
+
+/** Bar shown only on pull-request preview builds (PUBLIC_PREVIEW_PR is set by CI). */
 export default function PreviewBanner({ cmsHref }: PreviewBannerProps) {
   const pr = import.meta.env.PUBLIC_PREVIEW_PR;
   if (!pr) return null;
 
   const branch = import.meta.env.PUBLIC_PREVIEW_BRANCH;
   const prUrl = `https://github.com/${cmsRepo()}/pull/${pr}`;
-  const linkClass = "btn btn-sm border-white/40 bg-red-700 text-white hover:bg-red-800";
+  const linkClass = "btn btn-xs join-item border-0 bg-rose-900/60 text-white hover:bg-rose-950";
 
   return (
-    <>
-      <div
-        className="pointer-events-none fixed top-0 left-0 z-[60] w-full bg-red-600 py-0.5 text-center text-xs font-semibold tracking-wide text-white uppercase"
-        role="status"
-      >
-        Preview build — pull request #{pr}
-        {branch && <span className="ml-2 font-normal normal-case opacity-80">({branch})</span>}
-      </div>
-      <div className="fixed bottom-4 left-4 z-[60] flex flex-col gap-2 rounded-lg bg-red-600 p-3 text-white shadow-lg">
-        <span className="text-xs font-semibold tracking-wide uppercase">
-          This is a preview, not the live site
+    <div
+      className="fixed top-0 left-0 z-[60] flex h-8 w-full items-center justify-between gap-4 bg-rose-700 px-3 text-xs text-white"
+      role="status"
+    >
+      <span className="truncate">
+        <span className="font-semibold tracking-wide uppercase">Preview build</span>
+        <span className="ml-2 opacity-80">
+          pull request #{pr}
+          {branch && ` · ${branch}`} — not the live site
         </span>
-        <div className="flex flex-wrap gap-2">
-          <a href={prUrl} className={linkClass} target="_blank" rel="noopener noreferrer">
-            <LuGitPullRequest /> Open PR #{pr}
-          </a>
-          <a href={cmsHref ?? CMS_PATH} className={linkClass}>
-            <LuPencil /> {cmsHref ? "Edit this page" : "Open CMS"}
-          </a>
-          <a
-            href={`${prUrl}/files`}
-            className={linkClass}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <LuExternalLink /> Changes
-          </a>
-        </div>
-      </div>
-    </>
+      </span>
+      <span className="join shrink-0">
+        <a href={prUrl} className={linkClass} target="_blank" rel="noopener noreferrer">
+          <LuGitPullRequest /> PR #{pr}
+        </a>
+        <a href={cmsHref ?? CMS_PATH} className={linkClass}>
+          <LuPencil /> {cmsHref ? "Edit this page" : "Open CMS"}
+        </a>
+        <a href={`${prUrl}/files`} className={linkClass} target="_blank" rel="noopener noreferrer">
+          <LuExternalLink /> Changes
+        </a>
+      </span>
+    </div>
   );
 }

@@ -15,7 +15,10 @@ export default function TopBar() {
   const logoActive = useFocus();
 
   return (
-    <div data-testid="top-bar" className="text-base-800 fixed top-0 z-50 w-full">
+    <div
+      data-testid="top-bar"
+      className="text-base-800 fixed top-[var(--preview-offset,0px)] z-50 w-full"
+    >
       <ShrinkingNavbar>
         <Link href="/" className={clsx(BUTTON_CLASS)} prefetch>
           <div className="-mr-1 -ml-2">
