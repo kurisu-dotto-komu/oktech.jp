@@ -9,6 +9,7 @@ const config: KnipConfig = {
     // Reached only through the inline <script> in src/pages/admin.astro, which the
     // Astro plugin does not follow.
     "src/cms/config.ts",
+    "src/cms/bootstrap/index.ts",
     "src/cms/widgets/*.tsx",
   ],
 

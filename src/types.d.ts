@@ -16,7 +16,8 @@ interface ImportMetaEnv {
   readonly PUBLIC_IMAGES_URL?: string;
   /**
    * Origin of the upload Worker. When set, CMS uploads are signed against this endpoint
-   * (which enforces the maintainer whitelist) instead of R2's own S3 endpoint.
+   * with a credential derived from the editor's GitHub account, instead of against R2's
+   * own S3 endpoint with a shared bucket key.
    */
   readonly PUBLIC_MEDIA_UPLOAD_ENDPOINT?: string;
   /** Set by CI on pull-request preview builds; shows the preview overlay. */

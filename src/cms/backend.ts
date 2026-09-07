@@ -4,8 +4,9 @@ const DEFAULT_REPO = "oktechjp/oktech.jp";
 const DEFAULT_BRANCH = "main";
 
 /**
- * GitHub backend. Without PUBLIC_CMS_AUTH_BASE_URL (the sveltia-cms-auth worker origin)
- * browser sign-in is unavailable and only token sign-in or local-repository mode work.
+ * GitHub backend. Without PUBLIC_CMS_AUTH_BASE_URL (the workers/cms-auth origin) browser
+ * sign-in is unavailable and only token sign-in or local-repository mode work; media
+ * uploads through the upload Worker need it too, to mint their credential.
  */
 /** `owner/repo` the CMS commits to. */
 export const cmsRepo = (): string => import.meta.env.PUBLIC_CMS_REPO || DEFAULT_REPO;

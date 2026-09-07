@@ -14,16 +14,25 @@ import { SITE } from "@/constants";
   </head>
   <body>
     <script>
-      import CMS from "@sveltia/cms";
-
+      import { bootstrapMediaUploads } from "@/cms/bootstrap";
       import { buildCmsConfig } from "@/cms/config";
       import MarkdownEditorControl from "@/cms/widgets/markdownEditor";
       import { MARKDOWN_WIDGET, PULL_REQUEST_WIDGET } from "@/cms/widgets/names";
       import PullRequestControl from "@/cms/widgets/pullRequest";
 
+      const config = buildCmsConfig();
+
+      // Before the import below, not after: @sveltia/cms reads the stored preferences into
+      // reactive state as its modules evaluate, so the upload credential has to be in
+      // `localStorage` by then. The widgets are safe to import statically — they only take
+      // types from the CMS package.
+      await bootstrapMediaUploads(config);
+
+      const { default: CMS } = await import("@sveltia/cms");
+
       CMS.registerWidget(PULL_REQUEST_WIDGET, PullRequestControl);
       CMS.registerWidget(MARKDOWN_WIDGET, MarkdownEditorControl);
-      CMS.init({ config: buildCmsConfig() });
+      CMS.init({ config });
     </script>
   </body>
 </html>

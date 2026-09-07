@@ -22,38 +22,55 @@ export const R2_PREFIX = {
 type MediaLibraries = NonNullable<CmsMediaConfig["media_libraries"]>;
 
 /**
+ * Stand-in `access_key_id` for the upload-Worker mode. Sveltia reads the access key id from
+ * the site config and only the secret from the editor's own settings, but a derived
+ * credential's id is `<github-login>.<expiry>` — different per editor and not knowable at
+ * build time. The bootstrap in `src/cms/bootstrap/` replaces every occurrence of this value
+ * before `CMS.init`, so the config still has to carry *something* (an empty id would make
+ * Sveltia treat the library as disabled).
+ */
+export const MEDIA_ACCESS_KEY_PLACEHOLDER = "pending-sign-in";
+
+/**
  * Where CMS uploads go. Two shapes, selected by env:
  *
- * - `cloudflare_r2` (interim): editors sign requests themselves with a per-editor R2
- *   secret access key entered once in the CMS settings.
- * - `aws_s3` (target): the same SigV4 request, but pointed at the upload Worker, which
- *   verifies the signature against its maintainer whitelist before writing. Only the
- *   `aws_s3` key honours a custom `endpoint`; `cloudflare_r2` overwrites it with the
- *   account's own R2 host, which is why the switch changes the library key.
+ * - `cloudflare_r2` (interim): editors sign requests themselves with a shared R2 secret
+ *   access key entered once in the CMS settings.
+ * - `aws_s3` (target): the same SigV4 request, but pointed at the upload Worker, signed
+ *   with a credential derived from the editor's GitHub account. Only the `aws_s3` key
+ *   honours a custom `endpoint`; `cloudflare_r2` overwrites it with the account's own R2
+ *   host, which is why the switch changes the library key.
  */
 function uploadLibrary(prefix: string): MediaLibraries {
   const env = import.meta.env;
   const publicUrl = env.PUBLIC_IMAGES_URL;
-  if (
-    !env.PUBLIC_R2_ACCOUNT_ID ||
-    !env.PUBLIC_R2_ACCESS_KEY_ID ||
-    !env.PUBLIC_R2_BUCKET ||
-    !publicUrl
-  ) {
-    return {};
-  }
+  const bucket = env.PUBLIC_R2_BUCKET;
+  if (!bucket || !publicUrl) return {};
 
-  const shared = {
-    access_key_id: env.PUBLIC_R2_ACCESS_KEY_ID,
-    bucket: env.PUBLIC_R2_BUCKET,
-    prefix,
-    public_url: publicUrl,
-  };
+  const shared = { bucket, prefix, public_url: publicUrl };
   const endpoint = env.PUBLIC_MEDIA_UPLOAD_ENDPOINT;
 
-  return endpoint
-    ? { aws_s3: { ...shared, endpoint, region: "auto", force_path_style: true } }
-    : { cloudflare_r2: { ...shared, account_id: env.PUBLIC_R2_ACCOUNT_ID } };
+  if (endpoint) {
+    return {
+      aws_s3: {
+        ...shared,
+        access_key_id: MEDIA_ACCESS_KEY_PLACEHOLDER,
+        endpoint,
+        region: "auto",
+        force_path_style: true,
+      },
+    };
+  }
+
+  if (!env.PUBLIC_R2_ACCOUNT_ID || !env.PUBLIC_R2_ACCESS_KEY_ID) return {};
+
+  return {
+    cloudflare_r2: {
+      ...shared,
+      access_key_id: env.PUBLIC_R2_ACCESS_KEY_ID,
+      account_id: env.PUBLIC_R2_ACCOUNT_ID,
+    },
+  };
 }
 
 /**
