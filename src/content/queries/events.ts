@@ -16,6 +16,8 @@ export type EventEnriched = {
   data: Omit<EventData, "cover"> & {
     id: string;
     cover: string;
+    /** Cadence text of the event's series, e.g. "Recurring every other Saturday". */
+    seriesLabel?: string;
     isNextRecurringOccurrence?: boolean;
     coverCompact: ResponsiveImageData;
     coverPolaroid: ResponsiveImageData;
@@ -52,10 +54,11 @@ export const getEvent = memoize(async (eventSlug: string): Promise<EventEnriched
   if (!entry) throw new Error(`No event found for slug ${eventSlug}`);
 
   const venueEntry = entry.data.venue ? await getVenueByRef(entry.data.venue.id) : undefined;
+  const series = entry.data.series ? await getEntry("series", entry.data.series.id) : undefined;
+  const coverRef = entry.data.cover ?? series?.data.cover;
   const cover =
-    (entry.data.cover
-      ? resolveEntryImage(entry.id, "/content/events", entry.data.cover)
-      : undefined) ?? FALLBACK_COVER;
+    (coverRef ? resolveEntryImage(entry.id, "/content/events", coverRef) : undefined) ??
+    FALLBACK_COVER;
   const isNext = (await nextSeriesOccurrences()).has(entry.id);
 
   const [venue, galleryImages, coverCompact, coverPolaroid, coverBig, coverPage, coverProjector] =
@@ -75,6 +78,7 @@ export const getEvent = memoize(async (eventSlug: string): Promise<EventEnriched
       id: entry.id,
       ...entry.data,
       cover,
+      ...(series?.data.label ? { seriesLabel: series.data.label } : {}),
       ...(isNext ? { isNextRecurringOccurrence: true } : {}),
       coverCompact,
       coverPolaroid,

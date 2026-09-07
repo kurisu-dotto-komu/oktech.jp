@@ -5,6 +5,7 @@ dateTime: 2026-08-15 10:00
 duration: 120
 cover: /content/media/series/agentic-assembly/cover_biweekly.webp
 venue: 27009944
+series: agentic-assembly
 howToFindUs: Enter The DECK, 1st floor on the left, immediately inside 本町サザンビル. Direct access from Exit 14, Sakaisujihommachi Station (Osaka Metro Sakaisuji / Chuo Line). Exit 7 of Hommachi Station on the Midosuji Line might be quicker if you don't mind a short walk.
 meetupId: '315817019'
 topics:
@@ -13,8 +14,6 @@ topics:
   - New Technology
 links:
   website: https://a13y.org/
-recurringLabel: Recurring every other Saturday
-recurredFrom: agentic-assembly
 ---
 
 A meetup for engineers, vibe coders, and the curious, working at the bleeding edge of agentic engineering. A casual round table discussion every other Saturday morning, somewhere in Osaka.

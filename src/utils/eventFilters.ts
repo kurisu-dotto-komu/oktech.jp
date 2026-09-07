@@ -11,9 +11,9 @@ interface EventWithDateTime {
   };
 }
 
-/** Anything carrying a series, either as a reference or as the front matter it replaces. */
+/** Anything carrying a series, either as a resolved reference or as the plain entry id. */
 interface SeriesMember {
-  data: { series?: { id: string } | string; recurredFrom?: string; devOnly?: boolean };
+  data: { series?: { id: string } | string; devOnly?: boolean };
 }
 
 /**
@@ -65,11 +65,11 @@ export function filterRecentEvents<T extends EventWithDateTime>(
   return events.filter((event) => isEventRecent(event, currentTime));
 }
 
-/** An event's series, from the reference or from the front matter it is migrating away from. */
+/** An event's series id, whether the caller holds a resolved reference or the raw value. */
 export function seriesKey(event: SeriesMember): string | undefined {
-  const { series, recurredFrom } = event.data;
+  const { series } = event.data;
   if (typeof series === "string") return series;
-  return series?.id ?? recurredFrom;
+  return series?.id;
 }
 
 /**

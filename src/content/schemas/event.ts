@@ -17,8 +17,8 @@ const galleryImage = z.object({ src: z.string(), caption: z.string().optional() 
  * `content/events/<id>.md`. `venue` and `series` are plain strings here so the schema stays
  * importable outside an Astro build; `src/content.config.ts` upgrades both to real references.
  *
- * `meetupId`, `links`, `recurredFrom` and `recurringLabel` are the pre-`channels`/`series`
- * shape and disappear once the content migration rewrites them.
+ * `meetupId` and `links` are the pre-`channels` shape and disappear once the content
+ * migration rewrites them.
  */
 export const eventSchema = z.object({
   title: z.string(),
@@ -35,8 +35,6 @@ export const eventSchema = z.object({
   links: z.record(z.string()).optional(),
   isCancelled: z.boolean().optional(),
   attachments: z.array(attachment).optional(),
-  recurredFrom: z.string().optional(),
-  recurringLabel: z.string().optional(),
   channels,
   gallery: z.array(galleryImage).optional(),
   series: z.preprocess(entryRef, z.string().optional()),

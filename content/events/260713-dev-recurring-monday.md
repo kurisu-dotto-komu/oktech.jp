@@ -4,9 +4,9 @@ description: Development-mode test event used to verify the recurring-event feat
 dateTime: 2026-07-13 11:00
 duration: 60
 venue: 22577042
+series: dev-recurring-monday
 links:
   discord: https://discord.example/dev-recurring-discord
-recurredFrom: dev-recurring-monday
 devOnly: true
 ---
 

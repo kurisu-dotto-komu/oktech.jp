@@ -103,7 +103,7 @@ export default function EventCardInfo({
       )}
       {event.data.isNextRecurringOccurrence && (
         <InfoItem Icon={LuRefreshCw} {...{ noWrap, variant }}>
-          {event.data.recurringLabel ??
+          {event.data.seriesLabel ??
             `Recurring every ${formatDate(event.data.dateTime, "weekday")}`}
         </InfoItem>
       )}
