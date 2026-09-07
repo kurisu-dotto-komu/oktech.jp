@@ -33,7 +33,8 @@ export default memo(function EventCardImage({ event, variant }: EventCardImagePr
         "relative overflow-hidden !rounded-br-none",
         variant === "compact" &&
           "rounded-box-inner-tight aspect-[4/3] h-full w-24 sm:aspect-video sm:w-32 md:w-42",
-        variant !== "compact" && "rounded-box-inner",
+        // Safety net for covers the build could not crop (remote hosts outside the media bucket)
+        variant !== "compact" && "rounded-box-inner aspect-video",
       )}
     >
       {variant !== "compact" && (isCancelled || isUpcoming) && (
