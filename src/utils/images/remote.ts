@@ -46,7 +46,7 @@ export function resolveRemoteImage(
         return { url: optimized.src, width };
       }),
     );
-    return toSources(variants, source);
+    return toSources(variants, source, variant);
   });
   variantCache.set(cacheKey, pending);
   return pending;

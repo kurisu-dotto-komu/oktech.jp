@@ -47,14 +47,17 @@ export function transformOptions(
   return options;
 }
 
+/** Dimensions consumers see: the source's, or the crop's when a variant enforces a ratio. */
 export function toSources(
   variants: { url: string; width: number }[],
   source: { width: number; height: number },
+  variant: ImageVariant | undefined,
 ): ImageSources {
+  const ratio = variant?.cropAspectRatio;
   return {
     src: variants[variants.length - 1].url,
     srcSet: variants.map((item) => `${item.url} ${item.width}w`).join(", "),
     width: source.width,
-    height: source.height,
+    height: ratio ? Math.round(source.width / ratio) : source.height,
   };
 }

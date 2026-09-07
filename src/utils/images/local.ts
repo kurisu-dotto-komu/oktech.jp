@@ -43,7 +43,7 @@ async function buildVariantSources(
       return { url: optimized.src, width };
     }),
   );
-  return toSources(variants, image);
+  return toSources(variants, image, variant);
 }
 
 const variantCache = new Map<string, Promise<ImageSources>>();

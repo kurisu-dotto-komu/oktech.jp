@@ -2,31 +2,38 @@ import { FALLBACK_COVER } from "@/constants";
 import { resolveImage } from "@/utils/images";
 import type { ImageSources, ImageVariant } from "@/utils/images";
 
+// Event covers are cropped to 16:9 so layouts that size themselves from the image
+// (landing cards, hero) stay consistent whatever an editor uploads.
+const COVER_ASPECT_RATIO = 16 / 9;
+
 const IMAGE_VARIANTS = {
   thumbnail: { widths: [96, 144, 216] },
   galleryThumb: { widths: [320, 640, 960] },
   card: { widths: [360, 540, 960] },
   cardCropped: { widths: [480, 960, 1440], cropAspectRatio: 4 / 3 },
   hero: { widths: [480, 960, 1440, 1920] },
+  coverThumbnail: { widths: [96, 144, 216], cropAspectRatio: COVER_ASPECT_RATIO },
+  coverCard: { widths: [360, 540, 960], cropAspectRatio: COVER_ASPECT_RATIO },
+  coverHero: { widths: [480, 960, 1440, 1920], cropAspectRatio: COVER_ASPECT_RATIO },
 } satisfies Record<string, ImageVariant>;
 type ImageVariantKey = keyof typeof IMAGE_VARIANTS;
 type ImageConfig = { sizes: string; variantKey: ImageVariantKey };
 
 const IMAGE_CONFIGS = {
-  sidebarLayoutHero: { sizes: "(max-width: 900px) 100vw, 70vw", variantKey: "hero" },
+  sidebarLayoutHero: { sizes: "(max-width: 900px) 100vw, 70vw", variantKey: "coverHero" },
   eventPolaroid: {
     sizes:
       "(max-width: 480px) min(100vw, 360px), (max-width: 900px) 50vw, (min-width: 901px) 33vw, 33vw",
-    variantKey: "card",
+    variantKey: "coverCard",
   },
   eventBig: {
     sizes:
       "(max-width: 480px) min(100vw, 420px), (max-width: 900px) 60vw, (min-width: 901px) 45vw, 45vw",
-    variantKey: "card",
+    variantKey: "coverCard",
   },
   eventCompact: {
     sizes: "(max-width: 420px) 64px, (max-width: 480px) 96px, (max-width: 700px) 128px, 168px",
-    variantKey: "thumbnail",
+    variantKey: "coverThumbnail",
   },
   galleryThumbnail: {
     sizes: "(max-width: 480px) 100vw, (max-width: 900px) 50vw, (min-width: 901px) 25vw, 25vw",

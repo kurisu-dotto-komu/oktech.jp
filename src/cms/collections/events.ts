@@ -96,7 +96,7 @@ function eventFields(): CmsField[] {
     dateTimeField,
     numberField("duration", "Duration (minutes)", { required: false, min: 15, default: 120 }),
     coverField(false, {
-      hint: "Upload a file or paste an image URL. Falls back to the default cover when empty.",
+      hint: "16:9 works best; other shapes are centre-cropped to 16:9 on the site. Upload a file or paste an image URL; falls back to the default cover when empty.",
     }),
     groupField,
     venueField,
