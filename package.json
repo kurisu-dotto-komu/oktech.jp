@@ -85,5 +85,8 @@
     "vite-plugin-svgr": "^4.5.0",
     "yaml": "^2.8.2",
     "yet-another-react-lightbox": "^3.32.0"
+  },
+  "dependencies": {
+    "@sveltia/cms": "^0.129.5"
   }
 }

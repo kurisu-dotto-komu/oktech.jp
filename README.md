@@ -34,6 +34,10 @@ npm run test # runs the tests (playwright)
 
 See [./AGENTS.md](./AGENTS.md) for automation tips, code-style expectations, and task-specific checklists.
 
+## Content Manager (Sveltia CMS)
+
+A local-first CMS is available at [/admin](http://localhost:4321/admin) for editing events, venues, and articles. See [docs/sveltia.md](./docs/sveltia.md) for setup and configuration details.
+
 ## Content
 
 Primary content lives in `content/` and syncs with upstream data from [oktechjp/public](https://github.com/oktechjp/public).
