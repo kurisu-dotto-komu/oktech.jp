@@ -2,6 +2,7 @@
 import RootLayout from "./RootLayout.astro";
 import TopBar from "@/components/Common/TopBar";
 import Footer from "@/components/Common/Footer";
+import PreviewBanner from "@/components/Common/PreviewBanner";
 import clsx from "clsx";
 
 const { flush, className, footerEvent, cmsHref } = Astro.props;
@@ -20,5 +21,6 @@ const { flush, className, footerEvent, cmsHref } = Astro.props;
       <Footer event={footerEvent} cmsHref={cmsHref} client:visible />
     </footer>
   </div>
+  <PreviewBanner cmsHref={cmsHref} />
   <!-- <DevInfo client:visible /> -->
 </RootLayout>

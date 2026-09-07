@@ -14,6 +14,9 @@ interface ImportMetaEnv {
   readonly PUBLIC_R2_BUCKET?: string;
   /** Public base URL of the media bucket, e.g. https://images.<STAGING_HOST>. */
   readonly PUBLIC_IMAGES_URL?: string;
+  /** Set by CI on pull-request preview builds; shows the preview overlay. */
+  readonly PUBLIC_PREVIEW_PR?: string;
+  readonly PUBLIC_PREVIEW_BRANCH?: string;
   /** Commit metadata injected by CI for the build footer. */
   readonly PUBLIC_SOURCE_COMMIT_HASH?: string;
   readonly PUBLIC_SOURCE_COMMIT_URL?: string;

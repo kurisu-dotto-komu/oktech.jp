@@ -25,6 +25,9 @@ env:
   PUBLIC_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
   PUBLIC_R2_ACCESS_KEY_ID: ${{ vars.R2_ACCESS_KEY_ID }}
   PUBLIC_R2_BUCKET: ${{ vars.R2_BUCKET }}
+  # Preview overlay (empty on branch deploys)
+  PUBLIC_PREVIEW_PR: ${{ github.event.pull_request.number }}
+  PUBLIC_PREVIEW_BRANCH: ${{ github.head_ref }}
   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
   CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
   # Bump to invalidate the Astro image cache
