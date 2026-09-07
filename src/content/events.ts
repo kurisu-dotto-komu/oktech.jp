@@ -28,7 +28,7 @@ type EventFrontmatter = {
   cover?: string;
   dateTime: string;
   devOnly?: boolean;
-  venue?: number;
+  venue?: number | string;
   title: string;
   description: string;
   duration?: number;
@@ -169,7 +169,8 @@ function buildEntry(
     id,
     dateTime,
     cover: cover ?? FALLBACK_COVER,
-    venue: frontmatter.venue ? String(frontmatter.venue) : undefined,
+    // Sveltia's relation widget writes numeric ids locale-formatted ("24,213,835")
+    venue: frontmatter.venue ? String(frontmatter.venue).replace(/,/g, "") : undefined,
     devOnly: Boolean(frontmatter.devOnly),
     title: frontmatter.title,
     description: frontmatter.description,
