@@ -9,7 +9,7 @@ The site, the CMS auth proxy and media storage can all run on Cloudflare. This d
 | Source images        | R2 bucket                  | `images.<site-host>`                           |
 | PR previews          | Workers versions           | `<hash>-<worker-name>.<subdomain>.workers.dev` |
 
-Hostnames must belong to a zone on the same Cloudflare account. They are set in `routes[].pattern` in [`wrangler.jsonc`](../wrangler.jsonc), the auth Worker's route, the R2 custom domain and `SITE_URL` in [`.github/workflows/cloudflare-staging.yml`](../.github/workflows/cloudflare-staging.yml).
+Hostnames must belong to a zone on the same Cloudflare account. The site hostname is configured in exactly one place: the `STAGING_HOST` environment variable (a GitHub Actions **repository variable** in CI, a shell variable locally). The auth Worker's route and the R2 custom domain are set when those are deployed.
 
 ## 1. API token
 
@@ -39,13 +39,13 @@ Keep them outside the repo (e.g. `~/.cloudflare.env`, `chmod 600`). Never commit
 
 ## 2. Site Worker
 
-[`wrangler.jsonc`](../wrangler.jsonc) deploys `dist/` as Workers static assets with a custom domain. Set `name` and `routes[].pattern` for your Worker and hostname. The custom domain and its DNS record are created automatically on first deploy.
+[`wrangler.jsonc`](../wrangler.jsonc) deploys `dist/` as Workers static assets; set `name` for your Worker. The custom domain is passed at deploy time and its DNS record is created automatically on first deploy.
 
 ```bash
-SITE_URL=https://<site-host> npx astro build && npx wrangler deploy
+STAGING_HOST=<site-host> npm run deploy:staging
 ```
 
-`npm run deploy:staging` does the same with the hostname configured in `package.json`. `SITE_URL` must match the hostname so canonical/OG URLs point at this deployment rather than production.
+This runs [`scripts/deploy-staging.ts`](../scripts/deploy-staging.ts): `astro build` with `SITE_URL=https://<site-host>` (so canonical/OG URLs point at this deployment rather than production) followed by `wrangler deploy --domain <site-host>`.
 
 If the site redirects to `*.cloudflareaccess.com`, a Zero Trust Access application covers the hostname — remove it under **Zero Trust → Access controls → Applications**.
 
@@ -56,7 +56,7 @@ If the site redirects to `*.cloudflareaccess.com`, a Zero Trust Access applicati
 - push to the staging branch → `wrangler deploy` (updates `<site-host>`)
 - pull request → `wrangler versions upload` → sticky PR comment with a preview URL
 
-Add the token and account ID as repository **Actions secrets** named `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` (Settings → Secrets and variables → Actions). Previews need `workers_dev` and `preview_urls` enabled in `wrangler.jsonc` (they are).
+Under Settings → Secrets and variables → Actions add the **secrets** `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`, and the **variable** `STAGING_HOST` (e.g. `staging.example.com`). Previews need `workers_dev` and `preview_urls` enabled in `wrangler.jsonc` (they are).
 
 ## 4. Sveltia auth Worker (GitHub OAuth)
 

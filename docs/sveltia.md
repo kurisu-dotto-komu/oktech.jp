@@ -1,101 +1,191 @@
 # Sveltia CMS
 
-[Sveltia CMS](https://github.com/sveltia/sveltia-cms) is a Git-based headless CMS used for managing content locally. It is installed as an npm package (`@sveltia/cms`) and served entirely from the local dev server — no CDN required.
+[Sveltia CMS](https://github.com/sveltia/sveltia-cms) is a Git-based headless CMS for editing the
+markdown in `content/`. It is installed as an npm package (`@sveltia/cms`, pinned to an exact
+version) and served from our own `/admin` page — no CDN, no `config.yml`.
 
-## Getting Started
+- Local: <http://localhost:4321/admin>
+- Staging: <https://oktech.doo.boo/admin>
 
-1. Start the dev server:
+## Where the config lives
 
-   ```bash
-   npm run dev
-   ```
+[`src/pages/admin.astro`](../src/pages/admin.astro) is a bare HTML shell (plus
+`<meta name="robots" content="noindex, nofollow">`) that calls `CMS.init({ config: buildCmsConfig() })`.
+The config itself is TypeScript under [`src/cms/`](../src/cms/), type-checked against the types
+`@sveltia/cms` ships:
 
-2. Open [http://localhost:4321/admin](http://localhost:4321/admin) in your browser.
+| File               | Contents                                              |
+| ------------------ | ----------------------------------------------------- |
+| `config.ts`        | `buildCmsConfig()` — assembles everything below       |
+| `backend.ts`       | GitHub backend (repo, branch, OAuth origin)           |
+| `media.ts`         | Global media folders + upload transformations         |
+| `output.ts`        | Slug rules and markdown output options                |
+| `types.ts`         | Local aliases for the `@sveltia/cms` types            |
+| `collections/*.ts` | `events`, `venues`, `articles`, and the singletons    |
+| `fields/common.ts` | Shared field builders (`titleField`, `coverField`, …) |
 
-3. Click **"Work with Local Repository"**.
+Event, venue and article pages carry a **CMS** footer link that opens that entry in the editor.
+Sveltia addresses an entry by its whole sub path (`<slug>/event`, not `<slug>`), so both those links
+and each collection's `path` template come from `cmsEntryPath()` / `cmsEditHref()` in
+[`src/utils/cms.ts`](../src/utils/cms.ts). Occurrences of a recurring event fall back to plain
+`/admin`, because their parent is not editable in the CMS.
 
-4. When the browser prompts for file system access, select the root directory of this repository.
+## Editing modes
 
-You can now browse and edit events, venues, and articles directly. Changes are saved to your local `content/` folder and picked up by the dev server via HMR.
+### Local (recommended for development)
 
-> **Note:** The File System Access API requires a Chromium-based browser (Chrome, Edge, Brave). Firefox and Safari are not supported. In Brave you may need to enable the API manually at `brave://flags/#file-system-access-api`.
+1. `npm run dev`
+2. Open <http://localhost:4321/admin> and click **Work with Local Repository**.
+3. Grant access to the root of this repository when prompted.
 
-## Authentication
+Edits are written straight to your working tree and hot-reloaded by the dev server. There is no
+`local_backend` proxy — Sveltia uses the browser's File System Access API directly, which means
+**a Chromium-based browser is required** (Chrome, Edge, Brave). Firefox and Safari cannot do this.
+In Brave you may also need `brave://flags/#file-system-access-api`.
 
-For **local development**, no authentication is needed — use the "Work with Local Repository" button.
+### Remote (commits to GitHub)
 
-For **remote editing** (committing directly via GitHub), use "Sign In with GitHub" or "Sign In with GitHub Using Token". This requires a GitHub account with write access to `oktechjp/oktech.jp`.
+**Sign In with GitHub** runs the OAuth handshake through the
+[sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth) Worker at
+<https://auth.oktech.doo.boo>, then commits directly to the configured branch. If the Worker is
+down or you are not in the OAuth app's allow-list, **Sign In with GitHub Using Token** accepts a
+personal access token with `repo` scope as a fallback.
 
-## Configuration
+## Environment variables
 
-The CMS configuration lives entirely in [`src/pages/admin.astro`](../src/pages/admin.astro) as a JavaScript object passed to `CMS.init()`. There is no separate `config.yml` file.
+All are optional `PUBLIC_*` values (inlined into the client bundle, so never secrets). See
+[`.env.local.example`](../.env.local.example).
 
-### Backend
+| Variable                   | Default                                | Purpose                         |
+| -------------------------- | -------------------------------------- | ------------------------------- |
+| `PUBLIC_CMS_REPO`          | `oktechjp/oktech.jp`                   | `owner/repo` the CMS commits to |
+| `PUBLIC_CMS_BRANCH`        | `main`                                 | Branch the CMS commits to       |
+| `PUBLIC_CMS_AUTH_BASE_URL` | `https://auth.<STAGING_HOST>` when set | Origin of the auth Worker       |
+| `IMAGES_HOST`              | `images.<STAGING_HOST>` when set       | Media bucket host (build-time)  |
 
-```js
-backend: {
-  name: "github",
-  repo: "oktechjp/oktech.jp",
-  branch: "main",
-}
+The staging workflow sets `PUBLIC_CMS_REPO`/`PUBLIC_CMS_BRANCH` to the repository and branch it
+deploys from, so a fork's `/admin` edits that fork.
+
+## Staging deployment
+
+`STAGING_HOST=<host> npm run deploy:staging` builds with `SITE_URL=https://<host>` and deploys the
+Worker to that custom domain (see [`wrangler.jsonc`](../wrangler.jsonc) and
+[`docs/cloudflare.md`](./cloudflare.md)). Pushes to `sveltia-cms` deploy automatically and pull
+requests get a Worker preview URL commented on the PR, via
+[`.github/workflows/cloudflare-staging.yml`](../.github/workflows/cloudflare-staging.yml).
+
+## Collections
+
+Entry collections store media next to the entry (`media_folder: ""`, `public_folder: "."`), so an
+uploaded cover is committed into the entry folder and referenced as `./cover.webp`. Uploads are
+converted to WebP (quality 85, max 1920px wide) and capped at 10 MB. Slugs are lowercased,
+accent-stripped and truncated to 59 characters.
+
+### Events — `content/events/<slug>/event.md`
+
+Slug template `{{fields.dateTime | date('YYMMDD')}}-{{title}}`. Fields: `title`, `description`, `dateTime`,
+`duration`, `cover`, `group`, `venue`, `space`, `howToFindUs`, `meetupId`, `topics`, `links`,
+`attachments`, `recurringLabel`, `recurredFrom` (read-only), `isCancelled`, `devOnly`, body.
+
+- **`dateTime` is Japan Standard Time.** The widget is pinned to `Asia/Tokyo` with
+  `output_utc: false` and writes the exact wall-clock string `YYYY-MM-DD HH:mm`, regardless of the
+  editor's own timezone. `parseEventDateTime()` in [`src/utils/recurringDates.ts`](../src/utils/recurringDates.ts)
+  rejects any other shape, so never hand-edit this into an ISO timestamp.
+- **`group`** is a select over `EVENT_GROUPS` in [`src/content/eventTaxonomy.ts`](../src/content/eventTaxonomy.ts)
+  (OWDDM `15632202`, KWDDM `36450361`). Add new groups there and the CMS picks them up; the zod
+  schema only checks that `group` is a number.
+- **`topics`** is a free-form string list, not a curated vocabulary.
+- **`meetupId`** is a string field because Meetup now issues alphanumeric ids as well as numeric ones.
+- **`venue`** is a relation into the venues collection, storing the venue's `meetupId`.
+
+### Venues — `content/venues/<slug>/venue.md`
+
+Slug template `{{fields.meetupId}}-{{fields.title | slugify}}`. Fields: `title`, `meetupId`, `city`, `country`,
+`address`, `state`, `space`, `url`, `gmaps`, `coordinates` (`lat`/`lng` floats), `description`,
+`hasPage`, `devOnly`, `cover`, body.
+
+Setting `coordinates` does **not** generate a map: `map.jpg` / `map-dark.jpg` are produced by the
+import script and committed to the repository, so a venue created in the CMS has no map until those
+are added.
+
+### Articles — `content/articles/<slug>/index.md`
+
+Each article is a folder bundle (`path: "{{slug}}/index"`) so images can live beside it. Fields:
+`title`, `description`, `keywords`, `author` (`Full Name <github-handle>`), `date` (`YYYY-MM-DD`),
+`unlisted`, body.
+
+### Singletons
+
+`content/code-of-conduct.md` is exposed as a singleton (`src/cms/collections/pages.ts`) — editable,
+but it cannot be created or deleted from the CMS.
+
+## Recurring events
+
+A recurring series is a single "parent" entry whose frontmatter carries a `repeat` map keyed by
+`YYMMDD`, with optional per-occurrence overrides:
+
+```yaml
+repeat:
+  "260919":
+    meetupId: ngkqztyjcmbzb
 ```
 
-### Collections
+The events loader expands each key into a virtual event (`<yymmdd>-<parent-slug>`) that inherits the
+parent's fields and gets `recurredFrom` set. To give one occurrence real content, create a normal
+event folder with that exact slug and a `recurredFrom` pointing at the parent — the materialised
+entry then wins over the virtual one.
 
-Three collections are configured:
+**Repeat parents are excluded from the CMS.** Sveltia flattens frontmatter, so it cannot round-trip
+the nested `repeat` map without destroying it. The events collection therefore carries
+`filter: { field: "slug", pattern: "^\\d" }`, and parents (`agentic-assembly`,
+`dev-recurring-monday`) are the only event folders whose name does not start with a digit. Edit them
+in Git. **A new recurring parent must be given a non-numeric folder name**, or it will show up in
+the CMS and be corrupted on save.
 
-#### Events (`/content/events/{id}/event.md`)
+## Images
 
-| Field       | Widget   | Notes                         |
-| ----------- | -------- | ----------------------------- |
-| title       | string   | Required                      |
-| dateTime    | datetime | Format: `YYYY-MM-DD HH:mm`    |
-| duration    | number   | Minutes, default 120          |
-| cover       | image    | Required, stored in entry dir |
-| meetupId    | number   | Required                      |
-| venue       | number   | Meetup venue ID               |
-| group       | number   | Group ID                      |
-| topics      | list     | String list                   |
-| howToFindUs | string   |                               |
-| links       | object   | meetup URL, connpass URL      |
-| isCancelled | boolean  | Default false                 |
-| devOnly     | boolean  | Hidden in production          |
-| body        | markdown | Event description             |
+`cover` accepts two forms, in events and venues alike:
 
-#### Venues (`/content/venues/{id}/venue.md`)
+| Form                    | Resolution                                                              |
+| ----------------------- | ----------------------------------------------------------------------- |
+| `./cover.webp`          | Local file in the entry folder, processed by Astro                      |
+| `https://<host>/x.webp` | Remote file (the media bucket), fetched and processed by Astro at build |
 
-| Field       | Widget   | Notes                        |
-| ----------- | -------- | ---------------------------- |
-| title       | string   | Required                     |
-| meetupId    | number   | Required                     |
-| city        | string   |                              |
-| country     | string   | Default "Japan"              |
-| address     | string   |                              |
-| state       | string   | Prefecture                   |
-| postalCode  | string   |                              |
-| url         | string   | Website URL                  |
-| gmaps       | string   | Google Maps URL              |
-| coordinates | object   | `lat` (float), `lng` (float) |
-| hasPage     | boolean  | Has dedicated page           |
-| devOnly     | boolean  | Hidden in production         |
-| cover       | image    | Stored in entry dir          |
-| body        | markdown | Venue description            |
+Image widgets have `choose_url: true`, so an editor can either upload a file or paste an image URL.
+Remote images are only optimised when their host is listed in `image.remotePatterns`
+([`astro.config.ts`](../astro.config.ts), driven by `IMAGES_HOST`); other hosts are served as-is.
+The provider abstraction lives in [`src/utils/images/`](../src/utils/images/).
 
-#### Articles (`/content/articles/*.md`)
+Resolution fails soft: a missing local file logs `[images] <entry-id>: …` and falls back to the
+default cover rather than breaking the build; a remote file whose size cannot be read falls back to
+placeholder dimensions.
 
-| Field       | Widget   | Notes    |
-| ----------- | -------- | -------- |
-| title       | string   | Required |
-| description | text     |          |
-| keywords    | list     | Strings  |
-| body        | markdown | Required |
+## What stays out of the CMS
 
-### Media Storage
+- **Event galleries** (`content/events/<slug>/gallery/`) and their `.yaml` captions.
+- **Venue maps** (`map.jpg`, `map-dark.jpg`) — generated by `npm run import`.
+- **Recurring parents**, as described above.
+- **Derived fields — never add these to a collection.** They are computed by the loaders in
+  `src/content/` and writing them into frontmatter will be silently ignored or will conflict:
+  `id`/`slug` (the folder name), `readingTime`, `bodySlug`, `isNextRecurringOccurrence`,
+  `calendarOnly`, `mapImage`/`mapDarkImage`, and every `cover*` variant (`coverCompact`,
+  `coverPolaroid`, `coverBig`, `coverPage`, `coverProjector`). `recurredFrom` is exposed read-only
+  for context only.
 
-Events and venues use per-entry media folders (images stored alongside the markdown file). Articles use the global `/content` media folder.
+## Changing the config
 
-## Adding or Modifying Fields
+1. Edit the relevant file in `src/cms/` — the `@sveltia/cms` types are the source of truth, and
+   `npm run typecheck` will reject options that do not exist.
+2. Keep the matching schema in `src/content/` in sync; the CMS validates nothing at build time, the
+   zod schema does.
+3. Run the checks:
 
-To add or change fields, edit the collections array in `src/pages/admin.astro`. Refer to the [Sveltia CMS field documentation](https://sveltiacms.app/en/docs/fields) for available widget types and options.
+   ```bash
+   npm run check:cms     # validates the generated config against Sveltia's JSON schema
+   npm run test:cms-crud # writes the files the CMS would commit, builds, asserts, deletes, rebuilds
+   npm run checks        # format, typecheck, knip, check:cms
+   ```
 
-After changing the CMS config, also update the corresponding Astro content schema in `src/content/` to keep them in sync.
+Field reference: <https://sveltiacms.app/en/docs/fields>. The authoritative schema is bundled at
+`node_modules/@sveltia/cms/schema/sveltia-cms.json` — prefer it over blog posts, which are usually
+describing Decap/Netlify CMS instead.

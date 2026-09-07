@@ -36,7 +36,12 @@ See [./AGENTS.md](./AGENTS.md) for automation tips, code-style expectations, and
 
 ## Content Manager (Sveltia CMS)
 
-A local-first CMS is available at [/admin](http://localhost:4321/admin) for editing events, venues, and articles. See [docs/sveltia.md](./docs/sveltia.md) for setup and configuration details.
+[Sveltia CMS](https://github.com/sveltia/sveltia-cms) is available at `/admin` for editing events, venues, articles, and the code of conduct.
+
+- **Locally**, run `npm run dev` and open [/admin](http://localhost:4321/admin), then click _Work with Local Repository_ to edit `content/` directly. This uses the File System Access API, so a Chromium-based browser is required.
+- **On staging** ([oktech.doo.boo/admin](https://oktech.doo.boo/admin)), sign in with GitHub to commit changes. Deploy with `STAGING_HOST=<host> npm run deploy:staging`.
+
+The configuration is TypeScript in [src/cms/](./src/cms/), not a `config.yml`. See [docs/sveltia.md](./docs/sveltia.md) for the collections, environment variables, image handling, and what deliberately stays out of the CMS.
 
 ## Content
 
