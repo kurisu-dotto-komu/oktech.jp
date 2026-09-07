@@ -1,37 +1,73 @@
+import { Component } from "react";
+
 import type { CustomFieldControlProps } from "@sveltia/cms";
 
-import { cmsRepo } from "@/cms/backend";
+import { type PullRequestInfo, findPullRequest } from "@/cms/github/pullRequests";
 
-/** Sveltia names the editorial-workflow branch `cms/<collection>/<slug>`. */
-function pullRequestSearchUrl(collection: string, slug: string): string {
-  const query = encodeURIComponent(`is:pr head:cms/${collection}/${slug}`);
-  return `https://github.com/${cmsRepo()}/pulls?q=${query}`;
+type Status = "loading" | "none" | "found";
+
+interface State {
+  status: Status;
+  pull?: PullRequestInfo;
 }
 
-// Rendered inside Sveltia's own UI, where the site's Tailwind styles are not loaded.
 /**
- * Read-only control linking to the entry's pull request on GitHub. Sveltia has no
- * built-in PR link, and the branch name is deterministic, so a search by head branch
- * lands on the right PR without an API call.
+ * Read-only control linking to the entry's open pull request.
+ *
+ * It asks GitHub rather than guessing, so an entry with no pull request says so instead of
+ * offering a search link that lands on an empty result page. A class component: Sveltia
+ * mounts custom widgets with its own bundled React, where hooks have no dispatcher.
  */
-export default function PullRequestControl({ entry, forID }: CustomFieldControlProps) {
-  const slug = entry?.get("slug") as string | undefined;
-  const collection = entry?.get("collection") as string | undefined;
-  const isNew = Boolean(entry?.get("newRecord"));
+export default class PullRequestControl extends Component<CustomFieldControlProps, State> {
+  state: State = { status: "loading" };
+  private mounted = false;
 
-  if (!slug || !collection || isNew) {
+  componentDidMount() {
+    this.mounted = true;
+    const { collection, slug, isNew } = this.identity();
+    if (isNew || !collection || !slug) {
+      this.setState({ status: "none" });
+      return;
+    }
+    void findPullRequest(collection, slug).then((pull) => {
+      if (!this.mounted) return;
+      this.setState(pull ? { status: "found", pull } : { status: "none" });
+    });
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
+  }
+
+  private identity() {
+    const { entry } = this.props;
+    return {
+      slug: entry?.get("slug") as string | undefined,
+      collection: entry?.get("collection") as string | undefined,
+      isNew: Boolean(entry?.get("newRecord")),
+    };
+  }
+
+  render() {
+    const { status, pull } = this.state;
+    // Nothing at all while the lookup is in flight, so the field never flashes a wrong answer.
+    if (status === "loading") return null;
+
+    // Rendered inside Sveltia's own UI, where the site's Tailwind styles are not loaded.
+    if (status === "none" || !pull) {
+      return (
+        <p id={this.props.forID} style={{ margin: 0, opacity: 0.7 }}>
+          No open pull request.
+        </p>
+      );
+    }
+
     return (
-      <p id={forID} style={{ margin: 0, opacity: 0.7 }}>
-        A pull request is created when you save this entry.
+      <p id={this.props.forID} style={{ margin: 0 }}>
+        <a href={pull.url} target="_blank" rel="noopener noreferrer">
+          Open pull request #{pull.number} on GitHub ↗
+        </a>
       </p>
     );
   }
-
-  return (
-    <p id={forID} style={{ margin: 0 }}>
-      <a href={pullRequestSearchUrl(collection, slug)} target="_blank" rel="noopener noreferrer">
-        Open the pull request for this entry on GitHub ↗
-      </a>
-    </p>
-  );
 }

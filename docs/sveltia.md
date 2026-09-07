@@ -27,6 +27,9 @@ version) and served from our own `/admin` page — no CDN, no `config.yml`.
 | `fields/*.ts`      | Shared field builders (`titleField`, `coverField`, `channelsField`…)  |
 | `widgets/*`        | The `pull_request` link and the `markdown_code` body editor           |
 | `previews/*`       | The preview-pane templates, rendered with the site's own components   |
+| `github/*`         | Looks an entry's pull request and its deploy preview up on GitHub     |
+| `events.ts`        | `postSave` / `postPublish` listeners behind the pull request notice   |
+| `notice.ts`        | The dismissible bar at the bottom of `/admin`                         |
 | `colorScheme.ts`   | Reads and watches the CMS light/dark choice, shared by both of those  |
 
 Event, venue and article pages carry a **CMS** footer link that opens that entry in the editor.
@@ -230,6 +233,29 @@ It is declared in the zod schemas and listed as `derived` in `src/cms/parity.ts`
 
 Redirects are HTML only — a `.ics` URL never gets a redirect stub, because under
 `build.format: "file"` that would put a meta-refresh HTML body at a calendar URL.
+
+## Pull requests
+
+Every entry has a **Pull request** field, and every save happens on the editorial-workflow
+branch `cms/<collection>/<slug>`. Two things surface the pull request that comes out of that:
+
+- **The field itself** asks GitHub — `GET /repos/<repo>/pulls?state=open&head=<owner>:<branch>` —
+  with the token Sveltia already stores, and only renders a link when a pull request actually
+  exists. An entry without one says "No open pull request." rather than offering a search link to
+  an empty result page, and a new draft makes no request at all. `open_authoring` pushes the branch
+  to a contributor's fork, so the lookup falls back to `head=<login>:<branch>`. Answers are cached
+  per entry for the editor's session.
+- **A bar at the bottom of the page** after a save or a publish, from `postSave` / `postPublish`
+  listeners. Sveltia opens the pull request just after the commit, so the lookup is retried over
+  about ten seconds; once the `cloudflare preview` commit status turns green the bar gains a **View
+  preview** link. It is plain DOM with a handful of scoped rules in `admin.astro` — the site's
+  Tailwind build is not loaded on `/admin`.
+
+Neither of these can be put on the **editorial workflow board** cards. Those are Sveltia's own
+Svelte components with no extension point: the card markup carries no slug, no collection id and no
+pull request reference, only the visible title and a build-specific Svelte scope class. Anything
+injected there would have to re-derive the slug from the rendered title and would break on the next
+release, so the board keeps Sveltia's own deploy-status badge and preview button and nothing more.
 
 ## The preview pane
 

@@ -28,12 +28,46 @@ import { SITE } from "@/constants";
       .field-wrapper .timezone {
         display: none;
       }
+
+      /* The post-save pull request bar. The site's Tailwind build is not loaded here, so
+         these are the only styles src/cms/notice.ts has to work with. */
+      .cms-notice {
+        position: fixed;
+        inset-inline: 0;
+        bottom: 0;
+        z-index: 100;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 16px;
+        background: var(--sui-secondary-background-color, #222);
+        color: var(--sui-primary-foreground-color, #fff);
+        font-family: var(--sui-font-family-default, system-ui, sans-serif);
+        font-size: var(--sui-font-size-small, 14px);
+      }
+
+      .cms-notice a {
+        color: inherit;
+      }
+
+      .cms-notice button {
+        border: 1px solid currentColor;
+        border-radius: 4px;
+        padding: 2px 10px;
+        background: none;
+        color: inherit;
+        cursor: pointer;
+        font: inherit;
+      }
     </style>
   </head>
   <body>
     <script>
       import { bootstrapMediaUploads } from "@/cms/bootstrap";
       import { buildCmsConfig } from "@/cms/config";
+      import { registerCmsEvents } from "@/cms/events";
       import { registerPreviews } from "@/cms/previews";
       import MarkdownEditorControl from "@/cms/widgets/markdownEditor";
       import { MARKDOWN_WIDGET, PULL_REQUEST_WIDGET } from "@/cms/widgets/names";
@@ -52,6 +86,7 @@ import { SITE } from "@/constants";
       CMS.registerWidget(PULL_REQUEST_WIDGET, PullRequestControl);
       CMS.registerWidget(MARKDOWN_WIDGET, MarkdownEditorControl);
       registerPreviews(CMS);
+      registerCmsEvents(CMS);
       CMS.init({ config });
     </script>
   </body>
