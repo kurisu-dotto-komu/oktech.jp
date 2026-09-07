@@ -20,6 +20,8 @@ gallery:
   - src: /content/media/events/313124999-get-started-making/gallery/PXL_20260314_0927440002.webp
   - src: /content/media/events/313124999-get-started-making/gallery/PXL_20260314_0949368862.webp
   - src: /content/media/events/313124999-get-started-making/gallery/PXL_20260314_101418238.NIGHT2.webp
+aliases:
+  - /events/313124999-march-event-tbd
 ---
 
 Spring is knocking at the door and before this fiscal year ends we are having a special event.

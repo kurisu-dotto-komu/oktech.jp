@@ -27,6 +27,8 @@ gallery:
   - src: /content/media/events/313203893-measure-development-experience/gallery/PXL_20260404_0923236262.webp
   - src: /content/media/events/313203893-measure-development-experience/gallery/PXL_20260404_0950422462.webp
   - src: /content/media/events/313203893-measure-development-experience/gallery/PXL_20260404_1015504442.webp
+aliases:
+  - /events/313203893-april-event-tbd
 ---
 
 April is here and the cherry trees might still be blooming before this event! We hope you still join us for a nice evening.

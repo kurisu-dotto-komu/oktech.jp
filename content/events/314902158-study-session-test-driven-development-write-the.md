@@ -19,6 +19,8 @@ channels:
     ref: https://www.linkedin.com/events/7470831251424440320/
   - type: discord
     ref: https://discord.com/events/1034792577293094972/1514618926468956292
+aliases:
+  - /events/314902158-study-session-tdd-write-the-test-first
 ---
 
 Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next **OKTech Study Session**, a gathering for engineers who don't just code, but want to understand the _why_ and _how_ behind solid software design.

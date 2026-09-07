@@ -21,6 +21,8 @@ channels:
     ref: https://discord.gg/Vbf8Mrz2?event=1424614326102261790
 gallery:
   - src: /content/media/events/311323383-study-session-elephant-carpaccio-exercise-part-1/gallery/PXL_20251019_1007202224.webp
+aliases:
+  - /events/311323383-study-session-elephant-carpaccio-exercise-part-1-slicing-it-up
 ---
 
 Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next **Study Session**, a gathering for engineers who don’t just code, but want to understand the *why* and *how* behind solid software design.

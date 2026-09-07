@@ -19,6 +19,8 @@ channels:
     ref: https://www.linkedin.com/events/7473205330844352512/
   - type: discord
     ref: https://discord.com/events/1034792577293094972/1516994737230446806
+aliases:
+  - /events/314843745-august-event-tbd
 ---
 
 Grab your laptop and join us to stay cool this August while leveling up your skills! ❄️

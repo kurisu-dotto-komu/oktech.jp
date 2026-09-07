@@ -8,6 +8,8 @@ howToFindUs: Aiming Inc., Grand Front North tower. Use this entrance http://bit.
 channels:
   - type: meetup
     ref: '233957080'
+aliases:
+  - /events/233957080-september-web-talks-scope-optimization-and-creative-coding
 ---
 
 Welcome back, dear Web enthusiasts!

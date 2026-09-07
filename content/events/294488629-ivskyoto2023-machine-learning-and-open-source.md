@@ -15,6 +15,8 @@ topics:
 channels:
   - type: meetup
     ref: '294488629'
+aliases:
+  - /events/294488629-ivskyoto2023-machine-learning-and-open-source-funding
 ---
 
 For this month's gathering of webdevs and designers in Kyoto we have 3 short talks and plenty of discussion. Come out to meet fellow professionals and practitioners, and share your experiences.

@@ -11,6 +11,8 @@ channels:
     ref: '264050187'
 gallery:
   - src: /content/media/events/264050187-autumn-the-beautiful-season-of-colors-osaka-web/gallery/578454.webp
+aliases:
+  - /events/264050187-autumn-the-beautiful-season-of-colors-osaka-web-dev-and-design-meetup-in-october
 ---
 
 Hi Everyone.

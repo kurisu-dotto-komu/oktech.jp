@@ -22,6 +22,8 @@ gallery:
   - src: /content/media/events/285938706-javascript-dependency-future-and-typescript-at/gallery/371558.webp
   - src: /content/media/events/285938706-javascript-dependency-future-and-typescript-at/gallery/692726.webp
   - src: /content/media/events/285938706-javascript-dependency-future-and-typescript-at/gallery/963739.webp
+aliases:
+  - /events/285938706-javascript-dependency-future-and-typescript-at-the-cafe
 ---
 
 Hello there,

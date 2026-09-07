@@ -23,6 +23,8 @@ gallery:
   - src: /content/media/events/299334647-workshop-create-a-blogportfolio-in-astro-and/gallery/IMG_9847.webp
   - src: /content/media/events/299334647-workshop-create-a-blogportfolio-in-astro-and/gallery/IMG_9858.webp
   - src: /content/media/events/299334647-workshop-create-a-blogportfolio-in-astro-and/gallery/IMG_9863.webp
+aliases:
+  - /events/299334647-workshop-create-a-blogportfolio-in-astro-and-hygraph
 ---
 
 Happy March Osaka tech lovers! 👾

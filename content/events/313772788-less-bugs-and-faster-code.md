@@ -19,6 +19,8 @@ channels:
     ref: https://www.linkedin.com/events/7461960038052691968/
   - type: discord
     ref: https://discord.com/events/1034792577293094972/1505750004759793745
+aliases:
+  - /events/313772788-june-event-tbd
 ---
 
 The heat is on in June! 😎

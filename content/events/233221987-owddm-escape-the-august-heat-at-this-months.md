@@ -7,6 +7,8 @@ venue: 24213835-aiming-inc
 channels:
   - type: meetup
     ref: '233221987'
+aliases:
+  - /events/233221987-owddm-escape-the-august-heat-at-this-months-summer-meetup-in-osaka
 ---
 
 Web developers and designers from Kansai: you are welcome to join us for this month's summer meetup. All you need to bring is an open mind and an interest in the web, regardless of experience and background. Yes, we welcome you even if you are a total beginner and you want to have an insight into web design or development!

@@ -57,6 +57,8 @@ gallery:
   - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_0934556342.webp
   - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_0938414872.webp
   - src: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/gallery/PXL_20260228_1026208242.webp
+aliases:
+  - /events/313110200-communicate-ux-and-ai-experiments
 ---
 
 Join us for this February we are coping with the trends of the last year and look at AI through two different lenses.

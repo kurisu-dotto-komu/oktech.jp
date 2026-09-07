@@ -10,6 +10,8 @@ channels:
     ref: '255569433'
 gallery:
   - src: /content/media/events/255569433-introduction-how-to-hack-your-website-and-make/gallery/603800.webp
+aliases:
+  - /events/255569433-introduction-how-to-hack-your-website-and-make-continuous-integration-from-it
 ---
 
 The meetup will be host at GVH#5 on Sunday, Topic will be Web Security and How to make continuous integration of your WebSite.

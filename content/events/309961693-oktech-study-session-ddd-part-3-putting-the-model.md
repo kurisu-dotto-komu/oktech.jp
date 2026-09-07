@@ -15,6 +15,8 @@ topics:
 channels:
   - type: meetup
     ref: '309961693'
+aliases:
+  - /events/309961693-oktech-study-session-ddd-part-3-putting-the-model-into-practice
 ---
 
 ***Notice:*** *The event time changed. Robert is feeling under the weather and we had to shift the schedule by one event.*

@@ -19,6 +19,8 @@ channels:
     ref: https://www.linkedin.com/events/7449428508952641538/
   - type: discord
     ref: https://discord.com/events/1034792577293094972/1493221834223784077
+aliases:
+  - /events/313772796-may-event-tbd
 ---
 
 Beep Boop. Join us for an evening of techy robot topics!

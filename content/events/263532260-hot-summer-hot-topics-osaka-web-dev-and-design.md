@@ -15,6 +15,8 @@ gallery:
   - src: /content/media/events/263532260-hot-summer-hot-topics-osaka-web-dev-and-design/gallery/183592.webp
     caption: Exit 28
   - src: /content/media/events/263532260-hot-summer-hot-topics-osaka-web-dev-and-design/gallery/255202.webp
+aliases:
+  - /events/263532260-hot-summer-hot-topics-osaka-web-dev-and-design-meetup-in-august
 ---
 
 Don't you have enough of the hot summer? Now you can join us to discuss hot topics on web design and development at a new cool place.

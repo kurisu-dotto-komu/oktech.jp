@@ -19,6 +19,8 @@ channels:
     ref: https://www.linkedin.com/events/7425158045363789824/
   - type: discord
     ref: https://discord.com/events/1034792577293094972/1468951733530001595
+aliases:
+  - /events/313122762-event-driven-architecture-part-3-how-do-we-live-with-this-long-term
 ---
 
 **Event-Driven Architecture: From Communication to Reality (3-Part Workshop Series)**

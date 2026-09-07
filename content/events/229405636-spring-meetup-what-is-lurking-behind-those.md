@@ -12,6 +12,8 @@ gallery:
   - src: /content/media/events/229405636-spring-meetup-what-is-lurking-behind-those/gallery/968192.webp
   - src: /content/media/events/229405636-spring-meetup-what-is-lurking-behind-those/gallery/968270.webp
   - src: /content/media/events/229405636-spring-meetup-what-is-lurking-behind-those/gallery/968271.webp
+aliases:
+  - /events/229405636-spring-meetup-what-is-lurking-behind-those-laptops
 ---
 
 Hello Osaka (and Kansai) web designers and developers, spring is arriving and we have some exciting speakers for the next Meetup on 19th March. We welcome new-comers, experienced developers and designers.

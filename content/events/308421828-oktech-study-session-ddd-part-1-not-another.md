@@ -15,6 +15,8 @@ topics:
 channels:
   - type: meetup
     ref: '308421828'
+aliases:
+  - /events/308421828-oktech-study-session-ddd-part-1-not-another-acronym
 ---
 
 Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next **OKTech Study Session**, a gathering for engineers who don’t just code, but want to understand the *why* and *how* behind solid software design.

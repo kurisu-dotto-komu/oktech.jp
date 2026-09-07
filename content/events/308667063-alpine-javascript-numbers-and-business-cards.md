@@ -33,6 +33,8 @@ gallery:
   - src: /content/media/events/308667063-alpine-javascript-numbers-and-business-cards/gallery/PXL_20251122_0902002502.webp
   - src: /content/media/events/308667063-alpine-javascript-numbers-and-business-cards/gallery/PXL_20251122_0954375632.webp
   - src: /content/media/events/308667063-alpine-javascript-numbers-and-business-cards/gallery/PXL_20251122_0954437002.webp
+aliases:
+  - /events/308667063-trust-in-javascript-numbers
 ---
 
 Right after the [jsconf](https://jsconf.jp/2025/en) and wedged around TC39 and TPAC meetings we are having a JavaScript-ey Saturday evening and you are welcome to join us!
