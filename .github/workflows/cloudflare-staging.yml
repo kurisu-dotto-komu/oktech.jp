@@ -9,6 +9,7 @@ on:
 permissions:
   contents: read
   pull-requests: write
+  statuses: write
 
 concurrency:
   group: cloudflare-${{ github.event.pull_request.number || github.ref }}
@@ -75,12 +76,21 @@ jobs:
           npx wrangler versions upload --message "PR #${{ github.event.pull_request.number }} ${{ github.sha }}" | tee upload.log
           echo "url=$(grep -oE 'https://[a-z0-9-]+\.[a-z0-9-]+\.workers\.dev' upload.log | head -1)" >> "$GITHUB_OUTPUT"
 
-      - name: Comment preview URL
+      # The commit status is what Sveltia CMS reads to offer a "View Preview" link in the editor
+      - name: Publish preview URL
         if: github.event_name == 'pull_request' && steps.preview.outputs.url != ''
         uses: actions/github-script@v8
         with:
           script: |
             const url = "${{ steps.preview.outputs.url }}";
+            await github.rest.repos.createCommitStatus({
+              ...context.repo,
+              sha: context.payload.pull_request.head.sha,
+              state: "success",
+              context: "Cloudflare Preview",
+              description: "Preview deployment ready",
+              target_url: url,
+            });
             const marker = "<!-- cloudflare-preview -->";
             const body = `${marker}\n🔎 Preview for ${context.sha.slice(0, 7)}: ${url}\n\nCMS: ${url}/admin`;
             const { data: comments } = await github.rest.issues.listComments({ ...context.repo, issue_number: context.issue.number });

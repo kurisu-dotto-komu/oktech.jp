@@ -130,6 +130,7 @@ export function buildEventsCollection(): CmsEntryCollection {
     path: cmsEntryPath("events"),
     media_folder: "",
     public_folder: ".",
+    preview_path: "events/{{slug}}",
     create: true,
     // Recurring parents carry a `repeat` map that Sveltia cannot round-trip, so they must stay
     // out of the CMS. Sveltia flattens frontmatter before filtering, so `repeat` is only visible

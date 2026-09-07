@@ -38,6 +38,7 @@ export function buildVenuesCollection(): CmsEntryCollection {
     path: cmsEntryPath("venues"),
     media_folder: "",
     public_folder: ".",
+    preview_path: "venue/{{slug}}",
     create: true,
     slug: "{{fields.meetupId}}-{{fields.title | slugify}}",
     summary: "{{title}} - {{city}}",
