@@ -7,6 +7,7 @@ The site, the CMS auth proxy and media storage can all run on Cloudflare. This d
 | Site (static assets) | Workers                    | `<site-host>` e.g. `staging.example.com` |
 | Sveltia GitHub OAuth | Workers (sveltia-cms-auth) | `auth.<site-host>`                       |
 | Source images        | R2 bucket                  | `images.<site-host>`                     |
+| CMS image uploads    | Workers (media-upload)     | `uploads.<site-host>`                    |
 | PR previews          | Workers (one per PR)       | `pr-<n>-preview.<site-host>`             |
 
 Hostnames must belong to a zone on the same Cloudflare account. The site hostname is configured in exactly one place: the `STAGING_HOST` environment variable (a GitHub Actions **repository variable** in CI, a shell variable locally). The auth Worker's route and the R2 custom domain are set when those are deployed.
@@ -59,7 +60,13 @@ If the site redirects to `*.cloudflareaccess.com`, a Zero Trust Access applicati
 
 Hostnames and certificates: no wildcard DNS is needed. Each Workers custom domain creates its own proxied DNS record and provisions its own certificate (about a minute). Keep preview hostnames **one label below the site host** (`pr-<n>-preview.<site-host>`): Universal SSL only covers the zone's first level, and deeper names such as `pr-<n>.preview.<site-host>` were not issued certificates in testing (TLS handshake failures). A pre-existing wildcard record on the zone (e.g. `*.example.com`) does not interfere, because the per-hostname records are more specific.
 
-Under Settings → Secrets and variables → Actions add the **secrets** `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`, and the **variable** `STAGING_HOST` (e.g. `staging.example.com`). Previews need `workers_dev` and `preview_urls` enabled in `wrangler.jsonc` (they are).
+Under Settings → Secrets and variables → Actions add the **secrets** `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` and `STADIA_MAPS_API_KEY`, and the **variable** `STAGING_HOST` (e.g. `staging.example.com`). Previews need `workers_dev` and `preview_urls` enabled in `wrangler.jsonc` (they are).
+
+`STADIA_MAPS_API_KEY` is a **build** secret, not a runtime one: the build fetches map tiles for venues that have no committed map image, stitches them with `sharp` and emits ordinary optimised assets, so the key never reaches the published site. A free key from <https://client.stadiamaps.com/signup/> is enough. Without it the build still succeeds — those venues just render without a map, with a warning. It is set in both [`astro.yml`](../.github/workflows/astro.yml) and [`cloudflare-staging.yml`](../.github/workflows/cloudflare-staging.yml).
+
+### Rebuilding when an event ends
+
+An event moves from "upcoming" to "past" purely by the passage of time, so a static build goes stale on its own. [`rebuild-when-event-ends.yml`](../.github/workflows/rebuild-when-event-ends.yml) runs daily, checks out the repository, computes the next event's end time from `content/` with `tsx scripts/next-event-end.ts` (the same helper the site's pages use) and dispatches the deploy workflow once it has passed. It makes no network call to the site and needs no secret beyond the default `GITHUB_TOKEN`. GitHub disables `schedule:` triggers after 60 days of repository inactivity; `workflow_dispatch` is the manual escape hatch, and any merge rebuilds anyway.
 
 ## 4. Sveltia auth Worker (GitHub OAuth)
 
@@ -106,10 +113,26 @@ New images are stored in R2 and referenced by URL; Astro fetches and optimises t
    curl -X POST "$A/domains/custom" -H "$H" -H 'Content-Type: application/json' \
      -d '{"domain":"images.<site-host>","zoneId":"<zone-id>","enabled":true,"minTLS":"1.2"}'
    curl -X PUT "$A/cors" -H "$H" -H 'Content-Type: application/json' \
-     -d '{"rules":[{"allowed":{"origins":["https://<site-host>","http://localhost:4321"],"methods":["GET","HEAD"],"headers":["*"]},"maxAgeSeconds":3600}]}'
+     -d '{"rules":[{"allowed":{"origins":["https://<site-host>","http://localhost:4321"],"methods":["GET","PUT","HEAD"],"headers":["*"]},"maxAgeSeconds":3600}]}'
    ```
 
+   The CORS rule is only needed while the CMS uploads **directly** to R2. Once uploads go through the upload Worker (section 6) the browser never talks to the bucket, and `GET`/`HEAD` are all that remain.
+
 3. Test: `npx wrangler r2 object put <bucket>/test/x.webp --file some.webp --content-type image/webp --remote`, then open `https://images.<site-host>/test/x.webp`.
+
+## 6. Upload Worker (optional, recommended)
+
+[`workers/media-upload`](../workers/media-upload) is a Worker that accepts the CMS's S3-compatible upload requests, verifies each signature against a maintainer whitelist, and writes to the bucket through an R2 binding — so no bucket credential exists in any browser. The full rationale, key generation and editor instructions are in **[docs/media-upload.md](./media-upload.md)**; the deploy is:
+
+```bash
+cd workers/media-upload
+npm run keygen                      # one key pair per maintainer
+# set bucket_name and the real /admin origins in ALLOWED_ORIGINS in wrangler.jsonc
+npx wrangler deploy --domain uploads.<site-host>
+npx wrangler secret put MAINTAINERS # JSON array of the whitelist
+```
+
+Then set the repository **variable** `MEDIA_UPLOAD_ENDPOINT` to `https://uploads.<site-host>` (origin only, no trailing slash and no bucket segment — the CMS appends the bucket itself); `cloudflare-staging.yml` passes it through as `PUBLIC_MEDIA_UPLOAD_ENDPOINT`. Leaving it unset keeps the direct-to-R2 path.
 
 ## Useful commands
 

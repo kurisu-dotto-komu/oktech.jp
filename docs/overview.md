@@ -29,46 +29,51 @@ A high-level handover of how the site is built, edited and deployed, and where i
 
 Done on the `sveltia-cms` branch, deployed on staging:
 
-- Sveltia CMS integrated with full create/read/update/delete for events, venues, articles and the code-of-conduct page, with field parity to the site's content schemas.
+- Sveltia CMS integrated with full create/read/update/delete for events, series, venues, articles and standalone pages, with field parity to the site's content schemas enforced by a check.
 - Editorial workflow, open authoring, repo-scoped GitHub App sign-in, per-PR preview sites, footer deep links.
 - Cloudflare Workers hosting, R2 media bucket, build caching, env-driven configuration (nothing account-specific in the repo).
-- Data clean-up: duplicate venue entries merged, articles normalised to one folder shape, build made resilient to a bad image reference (falls back and warns instead of failing).
+- **The restructure ("CMS as the source of truth") is complete.** The content-import pipeline and its scheduled workflows are gone; the site is built from Astro's own content collections rather than five hand-written loaders; every URL the old site served is still served.
+- Recurring events are now ordinary events that reference a _series_ entry. Every future occurrence is a real, listed, editable event — editors create the next one with **Duplicate**.
+- A generic _channels_ list (Meetup, Luma, LinkedIn, Discord, a website) replaces the old Meetup-specific fields; adding a platform is one registry row and no schema change.
+- Photo galleries are editable, orderable and captionable in the CMS.
+- Venue maps are produced at build time from a pin the editor drops on a map widget; the existing committed map images are still used where they exist.
+- Renaming an entry records the old URL and the build emits a redirect for it, so an editor cannot break an inbound link.
+- CMS uploads go to the media bucket, either directly or through an upload Worker with a maintainer whitelist ([docs/media-upload.md](./media-upload.md)).
+- Markdown bodies are edited in a CodeMirror editor with syntax highlighting instead of a rich-text control.
+- Because a static build goes stale when an event passes, a daily workflow computes the next event's end time from the content and triggers a rebuild once it has passed.
 
-Not yet done (see plans): the legacy content-import pipeline is still present, new CMS uploads still land in the repository rather than the media bucket, venue map images are still only produced by the import script, gallery photos are not editable in the CMS.
+Not yet done: the ~350 MB of legacy images still live in Git, the upload Worker is written and tested but not deployed, and there is no image cropping in the CMS.
 
 ## Plans
 
-**Next: the restructure ("CMS as the source of truth").** A design pass is producing a plan for:
+**Next:**
 
-- removing the content import scripts and scheduled workflows entirely — content is only what editors put in the CMS;
-- replacing auto-generated recurring events with ordinary events carrying a _series_ label (editors duplicate an event in the CMS);
-- a generic _channels_ model (Meetup today, Luma or others later) without schema changes;
-- existing URLs preserved (redirects where needed), a friendlier id/URL scheme for new content;
-- CMS uploads going straight to the media bucket, with a plan to migrate the existing images out of the repository later;
-- venue maps generated without the import script;
-- a simpler, more obvious codebase for future contributors (Astro built-ins over bespoke loaders, small files, one way to do each thing).
+- **Deploy the upload Worker** and switch the CMS over to it, so no bucket credential sits in an editor's browser. Steps are in [docs/media-upload.md](./media-upload.md).
+- **In-CMS cropping for cover images.** Covers are displayed 16:9 and are currently centre-cropped by the site, which is wrong for some images. Nothing in the current design blocks this: the cover value is a plain URL string, so a custom crop widget can be added without a schema or content change.
+- **Move the legacy images out of the repository.** Once every image reference is a bucket URL this is a single commit of string rewrites — but deleting the files is not enough, they stay in Git history and every clone still downloads them. That needs a coordinated history rewrite, so it is planned as its own step (see below).
 
 **Later:**
 
 - a Discord notification whenever content is published;
 - a "media kit" view to copy event details/assets for cross-posting to external sites;
 - streamlined publishing for trusted admins (auto-merge, branch rules);
-- tailoring the CMS itself: site branding (logo, title, colours), only the fields and collections editors actually need, custom widgets where the defaults are awkward (e.g. venue picker, series, channels), and a preview pane rendered with the site's own components.
+- tailoring the CMS itself: site branding (logo, title, colours), only the fields and collections editors actually need, custom widgets where the defaults are awkward (e.g. venue picker), and a preview pane rendered with the site's own components.
 
 ## Future considerations
 
 - **Cloudflare Images** instead of build-time optimisation: images would be resized on Cloudflare's edge on demand, removing image processing from the build entirely (builds become seconds, no image cache to manage). It is a paid add-on (a few dollars a month at this volume); the current design keeps the option open because the site already references images by URL.
 - **Production on Cloudflare instead of GitHub Pages:** the staging setup (Workers static assets, custom domain, per-PR previews, cached builds) could serve production as-is. Benefits: one hosting platform, faster and better-cached builds, preview deployments for production PRs, and hosting decoupled from GitHub should that ever be needed. The build could also move to Cloudflare's own git-connected builds. Cost is within the free tier at current traffic.
-- **Media in the bucket, not the repo:** once existing images move to R2 the repository shrinks from ~400 MB to a few MB, which makes cloning, CMS sessions and CI faster. Simply deleting the files is not enough — they stay in Git history and every full clone still downloads them. The move needs a history rewrite (e.g. `git filter-repo` to strip the image paths, then a force-push and fresh clones for everyone) or an agreed pruning approach; this is a one-off, coordinated step, so it is planned separately from the restructure.
+- **Media history rewrite:** once existing images move to R2 the repository shrinks from ~400 MB to a few MB, which makes cloning, CMS sessions and CI faster. Simply deleting the files is not enough — they stay in Git history and every full clone still downloads them. The move needs a history rewrite (e.g. `git filter-repo` to strip the image paths, then a force-push and fresh clones for everyone) or an agreed pruning approach. It rewrites every commit hash, so it is a one-off, coordinated step to be scheduled on its own, deliberately kept out of the restructure.
 
 ## Where to look
 
-| Topic                              | Document                                     |
-| ---------------------------------- | -------------------------------------------- |
-| Editing content, CMS configuration | [docs/sveltia.md](./sveltia.md)              |
-| Hosting, previews, media bucket    | [docs/cloudflare.md](./cloudflare.md)        |
-| Developer setup and scripts        | [README.md](../README.md)                    |
-| Code conventions                   | [AGENTS.md](../AGENTS.md)                    |
-| CI/CD definition                   | [`.github/workflows/`](../.github/workflows) |
-| CMS configuration source           | [`src/cms/`](../src/cms)                     |
-| Content schemas                    | [`src/content/`](../src/content)             |
+| Topic                               | Document                                     |
+| ----------------------------------- | -------------------------------------------- |
+| Editing content, CMS configuration  | [docs/sveltia.md](./sveltia.md)              |
+| Hosting, previews, media bucket     | [docs/cloudflare.md](./cloudflare.md)        |
+| Image uploads and the upload Worker | [docs/media-upload.md](./media-upload.md)    |
+| Developer setup and scripts         | [README.md](../README.md)                    |
+| Code conventions                    | [AGENTS.md](../AGENTS.md)                    |
+| CI/CD definition                    | [`.github/workflows/`](../.github/workflows) |
+| CMS configuration source            | [`src/cms/`](../src/cms)                     |
+| Content schemas                     | [`src/content/`](../src/content)             |

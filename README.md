@@ -36,19 +36,22 @@ See [./AGENTS.md](./AGENTS.md) for automation tips, code-style expectations, and
 
 ## Content Manager (Sveltia CMS)
 
-[Sveltia CMS](https://github.com/sveltia/sveltia-cms) is available at `/admin` for editing events, venues, articles, and the code of conduct.
+[Sveltia CMS](https://github.com/sveltia/sveltia-cms) is available at `/admin` for editing events, series, venues, articles and standalone pages.
 
 - **Locally**, run `npm run dev` and open [/admin](http://localhost:4321/admin), then click _Work with Local Repository_ to edit `content/` directly. This uses the File System Access API, so a Chromium-based browser is required.
-- **On staging** ([oktech.doo.boo/admin](https://oktech.doo.boo/admin)), sign in with GitHub to commit changes. Deploy with `STAGING_HOST=<host> npm run deploy:staging`.
+- **On staging** (`https://<staging-host>/admin`), sign in with GitHub; saving opens a pull request. Deploy with `STAGING_HOST=<host> npm run deploy:staging`.
 
-The configuration is TypeScript in [src/cms/](./src/cms/), not a `config.yml`. See [docs/sveltia.md](./docs/sveltia.md) for the collections, environment variables, image handling, and what deliberately stays out of the CMS.
+The configuration is TypeScript in [src/cms/](./src/cms/), not a `config.yml`. See [docs/sveltia.md](./docs/sveltia.md) for the collections, environment variables, image handling, and what deliberately stays out of the CMS; [docs/media-upload.md](./docs/media-upload.md) covers image uploads; [docs/overview.md](./docs/overview.md) is the high-level tour.
 
 ## Content
 
-Primary content lives in `content/` and is edited in this repository, either through the CMS or by hand.
+Primary content lives in `content/` and is edited in this repository, either through the CMS or by hand. Astro loads it with the built-in content collections defined in [src/content.config.ts](./src/content.config.ts); the schemas live in [src/content/schemas/](./src/content/schemas/).
 
-- [./content/events](./content/events) — one folder per event, with its cover and gallery images.
-- [./content/venues](./content/venues) and [./content/articles](./content/articles) — added the same way.
+- [./content/events](./content/events) — one flat markdown file per event.
+- [./content/series](./content/series) — recurrence labels that events reference; no page of their own.
+- [./content/venues](./content/venues) and [./content/articles](./content/articles) — one folder per entry, with its local images.
+- [./content/pages](./content/pages) — standalone markdown pages served at `/<slug>`.
+- [./content/media](./content/media) — event covers and gallery photos, referenced by absolute path. New uploads go to the media bucket instead.
 
 ## Workflows
 
