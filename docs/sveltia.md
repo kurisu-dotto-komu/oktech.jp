@@ -58,16 +58,17 @@ accepts a personal access token with `repo` scope as a fallback.
 See [`.env.local.example`](../.env.local.example). `PUBLIC_*` values are inlined into the client
 bundle, so none of them is a secret.
 
-| Variable                           | Default                                | Purpose                              |
-| ---------------------------------- | -------------------------------------- | ------------------------------------ |
-| `PUBLIC_CMS_REPO`                  | `oktechjp/oktech.jp`                   | `owner/repo` the CMS commits to      |
-| `PUBLIC_CMS_BRANCH`                | `main`                                 | Branch the CMS commits to            |
-| `PUBLIC_CMS_AUTH_BASE_URL`         | `https://auth.<STAGING_HOST>` when set | Origin of the auth Worker            |
-| `IMAGES_HOST`                      | `images.<STAGING_HOST>` when set       | Media bucket host (build-time)       |
-| `PUBLIC_R2_*`, `PUBLIC_IMAGES_URL` | unset                                  | Bucket the CMS uploads to            |
-| `PUBLIC_MEDIA_UPLOAD_ENDPOINT`     | unset                                  | Upload Worker origin, if one is used |
-| `PUBLIC_R2_ACCESS_KEY_ID`          | unset                                  | Only for the direct-to-R2 route      |
-| `STADIA_MAPS_API_KEY`              | unset                                  | Build-time key for venue map tiles   |
+| Variable                           | Default                                | Purpose                                                                              |
+| ---------------------------------- | -------------------------------------- | ------------------------------------------------------------------------------------ |
+| `PUBLIC_CMS_REPO`                  | `oktechjp/oktech.jp`                   | `owner/repo` the CMS commits to                                                      |
+| `PUBLIC_CMS_BRANCH`                | `main`                                 | Branch the CMS commits to                                                            |
+| `PUBLIC_CMS_BACKEND`               | _(unset)_                              | `test-repo` runs the editor against a browser-local sandbox (no GitHub) for UI tests |
+| `PUBLIC_CMS_AUTH_BASE_URL`         | `https://auth.<STAGING_HOST>` when set | Origin of the auth Worker                                                            |
+| `IMAGES_HOST`                      | `images.<STAGING_HOST>` when set       | Media bucket host (build-time)                                                       |
+| `PUBLIC_R2_*`, `PUBLIC_IMAGES_URL` | unset                                  | Bucket the CMS uploads to                                                            |
+| `PUBLIC_MEDIA_UPLOAD_ENDPOINT`     | unset                                  | Upload Worker origin, if one is used                                                 |
+| `PUBLIC_R2_ACCESS_KEY_ID`          | unset                                  | Only for the direct-to-R2 route                                                      |
+| `STADIA_MAPS_API_KEY`              | unset                                  | Build-time key for venue map tiles                                                   |
 
 The staging workflow sets `PUBLIC_CMS_REPO`/`PUBLIC_CMS_BRANCH` to the repository and branch it
 deploys from, so a fork's `/admin` edits that fork.
