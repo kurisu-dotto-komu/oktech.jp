@@ -27,7 +27,15 @@ const siteUrl = process.env.SITE_URL || `http://localhost:${process.env.DEV_PORT
 const vercelUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
 const site = !!vercelUrl ? `https://${vercelUrl}` : siteUrl;
 
-console.log(`URL: ${site}${base}`);
+// Staging: STAGING_HOST is the single knob for the deploy hostname; the CMS auth worker
+// and the media bucket hang off it unless overridden explicitly.
+const stagingHost = process.env.STAGING_HOST;
+const imagesHost = process.env.IMAGES_HOST || (stagingHost ? `images.${stagingHost}` : "");
+if (stagingHost && !process.env.PUBLIC_CMS_AUTH_BASE_URL) {
+  process.env.PUBLIC_CMS_AUTH_BASE_URL = `https://auth.${stagingHost}`;
+}
+
+console.log(`URL: ${site}${base}${imagesHost ? ` (remote images: ${imagesHost})` : ""}`);
 
 // https://astro.build/config
 export default defineConfig({
@@ -154,6 +162,8 @@ export default defineConfig({
     defaultStrategy: "viewport",
   },
   image: {
+    // Remote images (the media bucket) are fetched and optimised at build time
+    remotePatterns: imagesHost ? [{ protocol: "https", hostname: imagesHost }] : [],
     // layout: "constrained",
     // objectFit: "contain",
     // objectPosition: "center",

@@ -1,0 +1,60 @@
+import type { ImageMetadata, UnresolvedImageTransform } from "astro";
+
+import { MAX_IMAGE_WIDTH } from "@/constants";
+
+import type { ImageSources, ImageVariant } from "./types";
+
+const DEFAULT_WIDTHS = [420, 1198] as const;
+
+/** Runs Astro's image service; falls back to the raw source when it cannot (dev, unknown host). */
+export async function safeGetImage(options: UnresolvedImageTransform): Promise<{ src: string }> {
+  // In dev mode, bypass image optimization to avoid proxy/fetch issues
+  if (import.meta.env.DEV) {
+    const src = options.src as ImageMetadata;
+    return { src: src?.src || (options.src as string) || "" };
+  }
+  try {
+    const { getImage } = await import("astro:assets");
+    return await getImage(options);
+  } catch (error) {
+    console.warn(`[images] optimisation failed for ${String(options.src)}: ${String(error)}`);
+    return { src: (options.src as string) || "" };
+  }
+}
+
+/** Target widths for a variant, capped at the source width and MAX_IMAGE_WIDTH. */
+export function planWidths(sourceWidth: number, variant: ImageVariant | undefined): number[] {
+  const widths = Array.from(
+    new Set(
+      (variant?.widths ?? DEFAULT_WIDTHS)
+        .map((width) => Math.min(width, MAX_IMAGE_WIDTH, sourceWidth))
+        .filter((width) => width > 0),
+    ),
+  ).sort((a, b) => a - b);
+  return widths.length > 0 ? widths : [Math.min(sourceWidth, MAX_IMAGE_WIDTH)];
+}
+
+export function transformOptions(
+  src: UnresolvedImageTransform["src"],
+  width: number,
+  variant: ImageVariant | undefined,
+): UnresolvedImageTransform {
+  const options: UnresolvedImageTransform = { src, width, format: "webp", quality: 80 };
+  if (variant?.cropAspectRatio) {
+    options.height = Math.round(width / variant.cropAspectRatio);
+    options.fit = "cover";
+  }
+  return options;
+}
+
+export function toSources(
+  variants: { url: string; width: number }[],
+  source: { width: number; height: number },
+): ImageSources {
+  return {
+    src: variants[variants.length - 1].url,
+    srcSet: variants.map((item) => `${item.url} ${item.width}w`).join(", "),
+    width: source.width,
+    height: source.height,
+  };
+}
