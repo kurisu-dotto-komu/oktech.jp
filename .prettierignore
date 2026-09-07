@@ -21,3 +21,5 @@ dist/
 
 # Agent tooling state (nested worktrees would otherwise be reformatted by `prettier .`)
 .claude/
+# Vendored upstream, kept byte-for-byte so it can be diffed against the source repo
+workers/cms-auth/src/upstream/

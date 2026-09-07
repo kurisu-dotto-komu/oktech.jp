@@ -48,3 +48,6 @@ test/screenshots/output/
 
 # venue maps stitched at build time (committed map.jpg bitmaps are kept)
 src/assets/map-*.jpg
+
+# per-account wrangler overrides for the CMS workers (bucket names, hostnames)
+workers/*/wrangler.local.jsonc

@@ -1,0 +1,29 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "oktech-cms-auth",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-01",
+  "workers_dev": false,
+  "observability": { "enabled": true },
+
+  // The custom domain is passed at deploy time: `npx wrangler deploy --domain auth.<site-host>`,
+  // so no hostname is committed here.
+  "vars": {
+    // Every origin the CMS is served from, as hostnames; `*` is a wildcard. Gates both the
+    // OAuth popup and CORS on /media-credentials.
+    "ALLOWED_DOMAINS": "localhost",
+    // `owner/repo` whose write access decides who may upload.
+    "REPO": "change-me/change-me",
+    // Optional: logins granted upload access regardless of their repository permission.
+    "ALLOWED_LOGINS": "",
+    // Echoed back in the credential response so the CMS has one source of truth.
+    "MEDIA_ENDPOINT": "https://uploads.change-me.example",
+    "MEDIA_BUCKET": "change-me-media-bucket",
+    // Optional: credential lifetime in days. Defaults to 30.
+    "CREDENTIAL_TTL_DAYS": "",
+  },
+  // Secrets, set with `npx wrangler secret put <name>`:
+  //   GITHUB_CLIENT_ID       OAuth app client id
+  //   GITHUB_CLIENT_SECRET   OAuth app client secret
+  //   SERVER_SECRET          the same value the media-upload Worker holds
+}

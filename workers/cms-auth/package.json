@@ -1,0 +1,13 @@
+{
+  "name": "oktech-cms-auth-worker",
+  "private": true,
+  "type": "module",
+  "description": "Sveltia CMS GitHub OAuth proxy, plus derived media upload credentials",
+  "scripts": {
+    "test": "npx tsx test/credentials.test.ts",
+    "dev": "npx wrangler dev",
+    "deploy": "npx wrangler deploy",
+    "secret:server": "npx wrangler secret put SERVER_SECRET",
+    "keygen": "node -e \"console.log(require('crypto').randomBytes(32).toString('base64'))\""
+  }
+}
