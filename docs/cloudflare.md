@@ -53,8 +53,11 @@ If the site redirects to `*.cloudflareaccess.com`, a Zero Trust Access applicati
 
 [`cloudflare-staging.yml`](../.github/workflows/cloudflare-staging.yml):
 
-- push to the staging branch → `wrangler deploy` (updates `<site-host>`)
-- pull request → `wrangler versions upload` → sticky PR comment with a preview URL
+- push to the staging branch → `wrangler deploy --domain <site-host>` (updates the site)
+- pull request opened/updated → a dedicated Worker `oktech-pr-<n>` deployed to `pr-<n>-preview.<site-host>`; the URL is posted as a sticky PR comment and as a **commit status** named `Cloudflare Preview`, which Sveltia CMS turns into a **View Preview** button in the editor
+- pull request closed → the `cleanup` job deletes that Worker and its hostname via the Workers API
+
+Hostnames and certificates: no wildcard DNS is needed. Each Workers custom domain creates its own proxied DNS record and provisions its own certificate (about a minute). Keep preview hostnames **one label below the site host** (`pr-<n>-preview.<site-host>`): Universal SSL only covers the zone's first level, and deeper names such as `pr-<n>.preview.<site-host>` were not issued certificates in testing (TLS handshake failures). A pre-existing wildcard record on the zone (e.g. `*.example.com`) does not interfere, because the per-hostname records are more specific.
 
 Under Settings → Secrets and variables → Actions add the **secrets** `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`, and the **variable** `STAGING_HOST` (e.g. `staging.example.com`). Previews need `workers_dev` and `preview_urls` enabled in `wrangler.jsonc` (they are).
 
@@ -78,7 +81,7 @@ Sveltia's "Sign in with GitHub" needs an OAuth proxy. Run [sveltia-cms-auth](htt
      "compatibility_date": "2026-09-01",
      "routes": [{ "pattern": "auth.<site-host>", "custom_domain": true }],
      "workers_dev": false,
-     "vars": { "ALLOWED_DOMAINS": "<site-host>, *.<subdomain>.workers.dev" }
+     "vars": { "ALLOWED_DOMAINS": "<site-host>, *.<site-host>, *.<subdomain>.workers.dev" }
    }
    EOF
    npx wrangler deploy
@@ -86,7 +89,7 @@ Sveltia's "Sign in with GitHub" needs an OAuth proxy. Run [sveltia-cms-auth](htt
    printf '%s' "$CLIENT_SECRET" | npx wrangler secret put GITHUB_CLIENT_SECRET
    ```
 
-   `ALLOWED_DOMAINS` must list every origin the CMS is served from (site + preview URLs); find `<subdomain>` with `npx wrangler whoami` or under Compute (Workers) → Overview.
+   `ALLOWED_DOMAINS` must list every origin the CMS is served from: the site, the per-PR previews (`*.<site-host>`) and `workers.dev` if used; find `<subdomain>` with `npx wrangler whoami` or under Compute (Workers) → Overview.
 
 3. Point the CMS at it with `PUBLIC_CMS_AUTH_BASE_URL=https://auth.<site-host>` (see [sveltia.md](./sveltia.md)).
 
@@ -113,7 +116,7 @@ New images are stored in R2 and referenced by URL; Astro fetches and optimises t
 ```bash
 npx wrangler whoami                      # token + account check
 npx wrangler deployments list            # site worker history
-npx wrangler versions list               # preview versions
+npx wrangler deployments list --name oktech-pr-<n>   # a PR preview worker
 npx wrangler r2 bucket list
 npx wrangler tail <auth-worker-name>     # live logs from the auth worker
 ```
