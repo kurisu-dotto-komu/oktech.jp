@@ -9,6 +9,7 @@ import type { ImageVariant, LocalImageRef } from "./types";
 const imageLoaders: Record<string, () => Promise<{ default: ImageMetadata }>> = {
   ...import.meta.glob<{ default: ImageMetadata }>("/content/events/**/*.{jpg,jpeg,png,webp,svg}"),
   ...import.meta.glob<{ default: ImageMetadata }>("/content/venues/**/*.{jpg,jpeg,png,webp,svg}"),
+  ...import.meta.glob<{ default: ImageMetadata }>("/content/media/**/*.{jpg,jpeg,png,webp,svg}"),
   ...import.meta.glob<{ default: ImageMetadata }>("/src/assets/*.{jpg,jpeg,png,webp,svg}"),
 };
 

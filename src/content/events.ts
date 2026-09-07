@@ -12,7 +12,7 @@ import path from "path";
 import { FALLBACK_COVER, SHOW_DEV_ENTRIES } from "@/constants";
 import { type GalleryImage, getGalleryImages } from "@/content/gallery";
 import { type ProcessedVenue, processVenue } from "@/content/venues";
-import { isEventUpcoming } from "@/utils/eventFilters";
+import { isEventUpcoming, markNextRecurringOccurrences } from "@/utils/eventFilters";
 import { resolveEntryImage } from "@/utils/images";
 import { memoize } from "@/utils/memoize";
 import {
@@ -219,7 +219,7 @@ export async function eventsLoader() {
     buildRepeatInstances(filePath, frontmatter, parentSlug, materializedChildSlugs, now),
   );
 
-  return [...standalone, ...ephemeral];
+  return markNextRecurringOccurrences([...standalone, ...ephemeral], now);
 }
 
 export const getEvent = memoize(async (eventSlug: string) => {

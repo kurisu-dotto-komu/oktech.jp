@@ -100,6 +100,31 @@ export function dedupeRecurringInstances<T extends { data: { recurredFrom?: stri
   return result;
 }
 
+type RecurringOccurrence = {
+  dateTime: Date;
+  recurredFrom?: string;
+  isNextRecurringOccurrence?: boolean;
+};
+
+/**
+ * Flags the soonest still-upcoming occurrence of each recurring series, which is what
+ * `EventCardInfo` renders the "recurring every …" badge from. Derived at load time so
+ * occurrences never carry a hand-maintained flag that goes stale as dates pass.
+ */
+export function markNextRecurringOccurrences<T extends RecurringOccurrence>(
+  events: T[],
+  now: Date,
+): T[] {
+  const nextPerSeries = new Map<string, T>();
+  for (const event of events) {
+    if (!event.recurredFrom || event.dateTime.getTime() <= now.getTime()) continue;
+    const current = nextPerSeries.get(event.recurredFrom);
+    if (!current || event.dateTime < current.dateTime) nextPerSeries.set(event.recurredFrom, event);
+  }
+  for (const event of nextPerSeries.values()) event.isNextRecurringOccurrence = true;
+  return events;
+}
+
 /**
  * Checks if an event is a "legacy" event (OG images are not generated for them)
  */

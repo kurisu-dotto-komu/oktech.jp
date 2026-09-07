@@ -27,9 +27,10 @@ export function resolveImageDimensions(value: string): Promise<ImageDimensions> 
 }
 
 /**
- * Resolves a frontmatter image against its entry directory. Local paths are
- * joined onto the directory and checked; remote URLs are kept verbatim. Returns
- * null (after a warning naming the entry) when a local image cannot be found.
+ * Resolves a frontmatter image against its entry directory. Repo-root-absolute
+ * paths (`/content/media/…`) are used as-is, other local paths are joined onto
+ * the directory, and remote URLs are kept verbatim. Returns null (after a
+ * warning naming the entry) when a local image cannot be found.
  */
 export function resolveEntryImage(
   entryId: string,
@@ -37,7 +38,7 @@ export function resolveEntryImage(
   image: string,
 ): string | null {
   if (parseImageRef(image).kind === "remote") return image;
-  const resolved = path.join(directory, image);
+  const resolved = image.startsWith("/") ? image : path.join(directory, image);
   if (hasLocalImage(resolved)) return resolved;
   console.warn(`[images] ${entryId}: image not found at "${resolved}", using fallback`);
   return null;
