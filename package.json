@@ -16,14 +16,15 @@
     "build": "astro build",
     "build:preview-test": "npx playwright install && npm run test:build",
     "preview": "astro preview --host",
-    "deploy:staging": "SITE_URL=https://oktech.doo.boo astro build && wrangler deploy",
+    "deploy:staging": "tsx scripts/deploy-staging.ts",
     "start": "npm run build && npm run preview",
     "knip": "knip",
+    "check:cms": "tsx scripts/check-cms-config.ts",
     "format": "prettier --write . --log-level warn",
     "typecheck": "npm-run-all -p typecheck:astro typecheck:tsc",
     "typecheck:tsc": "tsc --noEmit",
     "typecheck:astro": "astro check",
-    "checks": "npm-run-all format typecheck knip",
+    "checks": "npm-run-all format typecheck knip check:cms",
     "import": "tsx ./scripts/import-data",
     "og-cache": "tsx scripts/manage-og-cache.ts",
     "extract-themes": "tsx scripts/extract-theme-colors.ts",
@@ -31,8 +32,9 @@
     "test": "npm run test:dev",
     "test:dev": "playwright test",
     "test:screenshots": "rm -rf test/screenshots/output && TEST_TYPE=screenshots playwright test",
-    "test:build": "npm run build && npm run knip && npm run typecheck && TEST_BUILD=true playwright test",
-    "test:dist": "TEST_BUILD=true playwright test"
+    "test:build": "npm run build && npm run knip && npm run typecheck && npm run check:cms && TEST_BUILD=true playwright test",
+    "test:dist": "TEST_BUILD=true playwright test",
+    "test:cms-crud": "tsx scripts/cms-fixture.ts run"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
@@ -89,6 +91,6 @@
     "yet-another-react-lightbox": "^3.32.0"
   },
   "dependencies": {
-    "@sveltia/cms": "^0.129.5"
+    "@sveltia/cms": "0.207.1"
   }
 }
