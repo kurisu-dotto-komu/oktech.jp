@@ -1,54 +1,17 @@
 import type { GetStaticPaths } from "astro";
 
-import OGEvent from "@/components/OGImage/OGEvent";
 import { getEvents } from "@/content";
-import { readLocation } from "@/utils/maps/location";
-import { getVenueMaps } from "@/utils/maps/venueMaps";
-import { createOGImageRoute, loadSourceImage } from "@/utils/og";
-import { shouldGenerateEventOG } from "@/utils/og/eligibility";
+import { createOGImageRoute } from "@/utils/og";
 
-export const GET = createOGImageRoute(async ({ params }) => {
-  const eventSlug = params.eventSlug;
-
-  if (!eventSlug) {
-    return null; // Will return 404
-  }
-
-  const events = await getEvents();
-  const event = events.find((e) => e.id === eventSlug);
-
-  if (!event || !shouldGenerateEventOG(event)) {
-    return null; // Will return 404
-  }
-
-  const { venue, venueSlug } = event;
-  const mapRef =
-    venue && venueSlug ? getVenueMaps(readLocation(venue), venueSlug).mapImage : undefined;
-  const [mapImageBase64, coverImageBase64] = await Promise.all([
-    loadSourceImage(mapRef),
-    loadSourceImage(event.data.cover),
-  ]);
-
-  return {
-    component: OGEvent,
-    props: {
-      event,
-      mapImageBase64,
-      coverImageBase64,
-    },
-    cacheKeyData: {
-      id: event.id,
-      title: event.data.title,
-      dateTime: event.data.dateTime,
-      topics: event.data.topics,
-      venueId: venueSlug,
-      venueTitle: venue?.title,
-      venueCity: venue?.city,
-      hasMapImage: !!mapImageBase64,
-      hasCoverImage: !!coverImageBase64,
-    },
-  };
-});
+/**
+ * Events do not get a generated social card: `decorateEventSEO` points `og:image` at the
+ * event's own cover instead. The route stays so the URL keeps resolving — it answers 404,
+ * which is what it already did for every event before the (now removed) cutoff date.
+ *
+ * There is deliberately no condition here. A rendered card was previously gated on the
+ * event's date, which meant it would switch itself back on as time passed.
+ */
+export const GET = createOGImageRoute(async () => null);
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const events = await getEvents();

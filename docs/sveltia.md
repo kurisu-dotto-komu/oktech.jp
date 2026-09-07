@@ -318,6 +318,9 @@ them into front matter is at best ignored:
 - `id` / `slug` — the file or folder name.
 - `aliases` — written by Sveltia itself, as described above.
 - `readingTime` and article/page `description` — derived from the body by the remark plugins.
+- The social card. An event's `og:image` is always its own cover; `/events/<slug>/og.png` exists but
+  answers 404 and no card is rendered. A venue uses its cover when it has one and a generated card
+  when it does not.
 - `mapImage` / `mapDarkImage` — the committed bitmaps or the stitched tiles.
 - `seriesLabel` and the "next occurrence" badge — read from the referenced series and the calendar.
 - Every `cover*` variant (`coverCompact`, `coverPolaroid`, `coverBig`, `coverPage`,

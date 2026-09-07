@@ -1,7 +1,6 @@
 import { SITE } from "@/constants";
 import { getEvent } from "@/content";
 import { getOGImageWithFallback } from "@/utils/og";
-import { shouldGenerateEventOG } from "@/utils/og/eligibility";
 
 import type { SEOMetadata } from ".";
 
@@ -21,11 +20,12 @@ export async function decorateEventSEO(
         : "Join us for this exciting tech meetup event!";
     }
 
-    const isLegacy = !shouldGenerateEventOG(event);
+    // An event's social card is always its own cover image — never a generated one.
+    // `getEvent` falls back to FALLBACK_COVER, so `coverPage` is only missing if the image
+    // pipeline itself failed.
     const ogImage =
-      isLegacy && event.data.coverPage?.src
-        ? event.data.coverPage.src
-        : getOGImageWithFallback(pathname, { eventId, title: event.data.title });
+      event.data.coverPage?.src ??
+      getOGImageWithFallback(pathname, { eventId, title: event.data.title });
 
     const baseKeywords = ["Event", "Technology", "Meetup"];
     const additionalKeywords = topics.filter((keyword): keyword is string => Boolean(keyword));
@@ -47,8 +47,8 @@ export async function decorateEventSEO(
       entity: {
         type: "event",
         data: event,
-        isLegacy,
-        shouldGenerateOG: !isLegacy,
+        isLegacy: true,
+        shouldGenerateOG: false,
       },
     };
   } catch (error) {

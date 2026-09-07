@@ -26,11 +26,6 @@ export const MAX_IMAGE_WIDTH = 1920;
 // Fallback cover image for events without a cover
 export const FALLBACK_COVER = "/src/assets/fallback-cover.png";
 
-// Events starting on or after this instant get a generated OG card; earlier ones keep their
-// cover image as the social preview. Kept as an ISO string rather than a Date so the unused
-// export tree-shakes cleanly out of the client bundle.
-export const OG_GENERATION_START = "2026-10-01T00:00:00+09:00";
-
 // Meetup.com URLs
 export const MEETUP_BASE_URL = "https://www.meetup.com/oktech";
 export const MEETUP_EVENT_URL = `${MEETUP_BASE_URL}/events`;
