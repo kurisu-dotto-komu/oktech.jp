@@ -31,6 +31,14 @@ export const PAGE_PATHS = {
   VENUE_DETAIL: `/venue/${TEST_VENUES.REAL_VENUE}`,
 } as const;
 
+// CMS round-trip fixture slugs. These entries only exist while `npm run test:cms-crud`
+// is running (see scripts/cms-fixture.ts), so they are deliberately kept out of PAGE_PATHS.
+export const CMS_FIXTURE_SLUGS = {
+  EVENT: "200102-cms-fixture-event",
+  VENUE: "999999900-cms-fixture-venue",
+  ARTICLE: "cms-fixture-article",
+} as const;
+
 // Special page paths (non-HTML content)
 export const SPECIAL_PAGE_PATHS = {
   RSS_FEED: "/rss.xml",
