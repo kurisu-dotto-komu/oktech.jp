@@ -10,6 +10,7 @@ import {
 import path from "path";
 
 import { SHOW_DEV_ENTRIES } from "@/constants";
+import { resolveEntryImage } from "@/utils/images";
 import { memoize } from "@/utils/memoize";
 import { type ResponsiveImageData, getResponsiveImage } from "@/utils/responsiveImage";
 
@@ -53,10 +54,11 @@ export async function venuesLoader() {
     }),
   ).map(([filePath, { frontmatter }]) => {
     const directory = path.dirname(filePath);
+    const id = path.basename(directory);
     const mapImagePath = path.join(directory, "map.jpg");
     const mapDarkImagePath = path.join(directory, "map-dark.jpg");
     return {
-      id: path.basename(directory),
+      id,
       title: frontmatter.title,
       city: frontmatter.city,
       country: frontmatter.country,
@@ -72,7 +74,9 @@ export async function venuesLoader() {
       description: frontmatter.description,
       readingTime: frontmatter.readingTime,
       devOnly: Boolean(frontmatter.devOnly),
-      cover: frontmatter.cover ? path.join(directory, frontmatter.cover) : undefined,
+      cover: frontmatter.cover
+        ? (resolveEntryImage(id, directory, frontmatter.cover) ?? undefined)
+        : undefined,
       mapImage: mapImages[mapImagePath] ? mapImagePath : undefined,
       mapDarkImage: mapDarkImages[mapDarkImagePath] ? mapDarkImagePath : undefined,
     };

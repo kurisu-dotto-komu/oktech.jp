@@ -10,7 +10,7 @@ meetupId: 27553394
 hasPage: true
 space: Rm. 1605
 cover: ./r3-logo.svg
-website: https://www.r3it.com/
+url: https://www.r3it.com/
 gmaps: https://maps.app.goo.gl/MJb1aqGsnXqXgqMQ7
 ---
 

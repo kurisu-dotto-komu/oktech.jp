@@ -13,6 +13,7 @@ import { FALLBACK_COVER, SHOW_DEV_ENTRIES } from "@/constants";
 import { type GalleryImage, getGalleryImages } from "@/content/gallery";
 import { type ProcessedVenue, processVenue } from "@/content/venues";
 import { isEventUpcoming } from "@/utils/eventFilters";
+import { resolveEntryImage } from "@/utils/images";
 import { memoize } from "@/utils/memoize";
 import {
   type RepeatOverride,
@@ -35,6 +36,7 @@ type EventFrontmatter = {
   space?: string;
   howToFindUs?: string;
   meetupId?: number | string;
+  group?: number;
   links?: Record<string, string>;
   isCancelled?: boolean;
   attachments?: EventAttachment[];
@@ -80,6 +82,7 @@ function eventsSchema() {
     space: z.string().optional(),
     howToFindUs: z.string().optional(),
     meetupId: z.union([z.number(), z.string()]).optional(),
+    group: z.number().optional(),
     links: z.record(z.string()).optional(),
     isCancelled: z.boolean().optional(),
     attachments: z
@@ -111,7 +114,12 @@ function buildRepeatInstances(
 ): LoadedEvent[] {
   if (!frontmatter.repeat) return [];
 
-  const entries = expandRepeatEntries(frontmatter.repeat, frontmatter.dateTime, filePath);
+  const entries = expandRepeatEntries(
+    frontmatter.repeat,
+    frontmatter.dateTime,
+    filePath,
+    parentSlug,
+  );
 
   const baseFrontmatter: EventFrontmatter = {
     ...frontmatter,
@@ -154,11 +162,13 @@ function buildEntry(
   } = {},
 ) {
   const directory = path.dirname(filePath);
-  const dateTime = overrides.dateTime ?? parseEventDateTime(frontmatter.dateTime, filePath);
+  const id = overrides.id ?? path.basename(directory);
+  const dateTime = overrides.dateTime ?? parseEventDateTime(frontmatter.dateTime, filePath, id);
+  const cover = frontmatter.cover ? resolveEntryImage(id, directory, frontmatter.cover) : undefined;
   return {
-    id: overrides.id ?? path.basename(directory),
+    id,
     dateTime,
-    cover: frontmatter.cover ? path.join(directory, frontmatter.cover) : FALLBACK_COVER,
+    cover: cover ?? FALLBACK_COVER,
     venue: frontmatter.venue ? String(frontmatter.venue) : undefined,
     devOnly: Boolean(frontmatter.devOnly),
     title: frontmatter.title,
@@ -168,6 +178,7 @@ function buildEntry(
     space: frontmatter.space,
     howToFindUs: frontmatter.howToFindUs,
     meetupId: frontmatter.meetupId,
+    group: frontmatter.group,
     links: frontmatter.links,
     isCancelled: overrides.isCancelled ?? frontmatter.isCancelled,
     attachments: frontmatter.attachments,

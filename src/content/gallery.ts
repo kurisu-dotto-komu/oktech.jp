@@ -1,13 +1,9 @@
 import { defineCollection, getCollection, reference, z } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
+import { type ImageDimensions, resolveImageDimensions } from "@/utils/images";
 import { memoize } from "@/utils/memoize";
-import {
-  type ImageDimensions,
-  type ResponsiveImageData,
-  getImageDimensions,
-  getResponsiveImage,
-} from "@/utils/responsiveImage";
+import { type ResponsiveImageData, getResponsiveImage } from "@/utils/responsiveImage";
 
 export type GalleryImage = CollectionEntry<"eventGalleryImage"> & {
   thumbnail: ResponsiveImageData;
@@ -22,7 +18,7 @@ export const eventGalleryImageCollection = defineCollection({
 
 export async function eventGalleryImageLoader() {
   const [images, metadata] = await Promise.all([
-    import.meta.glob("/content/events/**/gallery/*.{webp,jpg,jpeg,png,gif,svg}"),
+    import.meta.glob("/content/events/**/gallery/*.{webp,jpg,jpeg,png,svg}"),
     import.meta.glob("/content/events/**/gallery/*.yaml", { eager: true }),
   ]);
   return Object.entries(images).map(([id]) => {
@@ -54,7 +50,7 @@ export const getGalleryImages = memoize(async (eventId: string): Promise<Gallery
       const [thumbnail, full, dimensions] = await Promise.all([
         getResponsiveImage(img.data.image, "galleryThumbnail"),
         getResponsiveImage(img.data.image, "galleryLightbox"),
-        getImageDimensions(img.data.image),
+        resolveImageDimensions(img.data.image),
       ]);
 
       return {

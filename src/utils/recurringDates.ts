@@ -1,11 +1,17 @@
-export function parseEventDateTime(value: string, filePath: string): Date {
+/** Identifies the offending entry in parse errors: "<id> (<path>)" when known. */
+function describeSource(filePath: string, entryId?: string): string {
+  return entryId ? `${entryId} (${filePath})` : filePath;
+}
+
+export function parseEventDateTime(value: string, filePath: string, entryId?: string): Date {
+  const source = describeSource(filePath, entryId);
   if (!/^(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2})$/.test(value)) {
-    throw new Error(`Invalid date/time format for ${filePath}: ${value}`);
+    throw new Error(`Invalid date/time format for ${source}: ${value}`);
   }
   const [date, time] = value.split(" ");
   const dateTime = new Date(`${date}T${time}:00+09:00`);
   if (Number.isNaN(dateTime.getTime())) {
-    throw new Error(`Invalid date/time for ${filePath}: ${value}`);
+    throw new Error(`Invalid date/time for ${source}: ${value}`);
   }
   return dateTime;
 }
@@ -19,9 +25,13 @@ export function toYMD(date: Date): string {
   }).format(date);
 }
 
-export function extractTimeOfDay(dateTime: string, filePath: string): string {
+export function extractTimeOfDay(dateTime: string, filePath: string, entryId?: string): string {
   const match = /^\d{4}-\d{2}-\d{2} (\d{2}:\d{2})$/.exec(dateTime);
-  if (!match) throw new Error(`Cannot extract time from dateTime in ${filePath}: ${dateTime}`);
+  if (!match) {
+    throw new Error(
+      `Cannot extract time from dateTime in ${describeSource(filePath, entryId)}: ${dateTime}`,
+    );
+  }
   return match[1];
 }
 
@@ -29,18 +39,20 @@ export function parseRepeatKey(
   rawKey: unknown,
   time: string,
   filePath: string,
+  entryId?: string,
 ): { date: Date; slugPrefix: string } {
+  const source = describeSource(filePath, entryId);
   const key = String(rawKey);
   if (!/^\d{6}$/.test(key)) {
-    throw new Error(`Invalid repeat key in ${filePath}: ${key} (expected YYMMDD, e.g. 260530)`);
+    throw new Error(`Invalid repeat key in ${source}: ${key} (expected YYMMDD, e.g. 260530)`);
   }
   if (!/^\d{2}:\d{2}$/.test(time)) {
-    throw new Error(`Invalid time for repeat ${key} in ${filePath}: ${time}`);
+    throw new Error(`Invalid time for repeat ${key} in ${source}: ${time}`);
   }
   const isoDate = `20${key.slice(0, 2)}-${key.slice(2, 4)}-${key.slice(4, 6)}`;
   const date = new Date(`${isoDate}T${time}:00+09:00`);
   if (Number.isNaN(date.getTime())) {
-    throw new Error(`Invalid repeat date in ${filePath}: ${key} ${time}`);
+    throw new Error(`Invalid repeat date in ${source}: ${key} ${time}`);
   }
   return { date, slugPrefix: key };
 }
@@ -70,13 +82,14 @@ export function expandRepeatEntries(
   repeat: Record<string, RepeatOverride | null | undefined> | undefined,
   parentDateTime: string,
   filePath: string,
+  entryId?: string,
 ): ExpandedRepeatEntry[] {
   if (!repeat) return [];
   return Object.entries(repeat)
     .map(([rawKey, raw]) => {
       const override = raw ?? {};
-      const time = override.time ?? extractTimeOfDay(parentDateTime, filePath);
-      const { date, slugPrefix } = parseRepeatKey(rawKey, time, filePath);
+      const time = override.time ?? extractTimeOfDay(parentDateTime, filePath, entryId);
+      const { date, slugPrefix } = parseRepeatKey(rawKey, time, filePath, entryId);
       return { date, slugPrefix, rawKey, time, override };
     })
     .sort((a, b) => a.date.getTime() - b.date.getTime());
