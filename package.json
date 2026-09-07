@@ -16,6 +16,7 @@
     "build": "astro build",
     "build:preview-test": "npx playwright install && npm run test:build",
     "preview": "astro preview --host",
+    "deploy:staging": "SITE_URL=https://oktech.doo.boo astro build && wrangler deploy",
     "start": "npm run build && npm run preview",
     "knip": "knip",
     "format": "prettier --write . --log-level warn",
@@ -83,6 +84,7 @@
     "unist-util-visit": "^5.1.0",
     "vite": "^6.4.1",
     "vite-plugin-svgr": "^4.5.0",
+    "wrangler": "^4.129.0",
     "yaml": "^2.8.2",
     "yet-another-react-lightbox": "^3.32.0"
   },

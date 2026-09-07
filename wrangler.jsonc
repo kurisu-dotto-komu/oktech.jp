@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "oktech-sveltia-staging",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "html_handling": "drop-trailing-slash",
+  },
+  "routes": [{ "pattern": "oktech.doo.boo", "custom_domain": true }],
+  "workers_dev": true,
+  "preview_urls": true,
+  "observability": { "enabled": true },
+}

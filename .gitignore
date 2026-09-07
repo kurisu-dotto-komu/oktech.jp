@@ -42,3 +42,6 @@ test/screenshots/output/
 # TODO ignore SOME events so they aren't committed (perhaps change this in the future)
 # content/events/*
 # !content/events/999999*
+
+# cloudflare wrangler
+.wrangler/
