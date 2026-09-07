@@ -52,8 +52,8 @@ Not yet done (see plans): the legacy content-import pipeline is still present, n
 
 - a Discord notification whenever content is published;
 - a "media kit" view to copy event details/assets for cross-posting to external sites;
-- CMS preview panes rendered with the site's own components;
-- streamlined publishing for trusted admins (auto-merge, branch rules).
+- streamlined publishing for trusted admins (auto-merge, branch rules);
+- tailoring the CMS itself: site branding (logo, title, colours), only the fields and collections editors actually need, custom widgets where the defaults are awkward (e.g. venue picker, series, channels), and a preview pane rendered with the site's own components.
 
 ## Future considerations
 
