@@ -1,7 +1,6 @@
-import type { JsonSchema } from "./jsonSchema";
+import { CUSTOM_WIDGETS } from "@/cms/widgets/names";
 
-/** Widgets registered in src/pages/admin.astro via CMS.registerWidget. */
-export const CUSTOM_WIDGETS = ["pull_request"];
+import type { JsonSchema } from "./jsonSchema";
 
 /**
  * The schema lets any unknown widget name through as a `CustomField`, so the

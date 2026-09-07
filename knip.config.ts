@@ -6,6 +6,10 @@ const config: KnipConfig = {
     "src/pages/**/*.{astro,tsx,ts}",
     "src/layouts/**/*.{astro,tsx,ts}",
     "scripts/**/*.{ts,js}",
+    // Reached only through the inline <script> in src/pages/admin.astro, which the
+    // Astro plugin does not follow.
+    "src/cms/config.ts",
+    "src/cms/widgets/*.tsx",
   ],
 
   // Project files to analyze
@@ -18,7 +22,7 @@ const config: KnipConfig = {
 
   // Astro plugin configuration
   astro: {
-    entry: ["src/pages/**/*.{astro,tsx,ts}", "src/content/config.ts"],
+    entry: ["src/pages/**/*.{astro,tsx,ts}", "src/content.config.ts"],
   },
 
   // TypeScript configuration
@@ -48,14 +52,6 @@ const config: KnipConfig = {
     // Used by satori
     "satori-html",
     "@fontsource/lexend",
-    // Loaded by the CMS markdown body widget, which lands with the CMS config phase.
-    "@codemirror/commands",
-    "@codemirror/lang-markdown",
-    "@codemirror/language",
-    "@codemirror/state",
-    "@codemirror/theme-one-dark",
-    "@codemirror/view",
-    "@lezer/highlight",
   ],
 
   // Ignore specific exports (common false positives)

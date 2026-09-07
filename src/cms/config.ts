@@ -1,7 +1,8 @@
 import { buildBackend } from "@/cms/backend";
 import { buildArticlesCollection } from "@/cms/collections/articles";
 import { buildEventsCollection } from "@/cms/collections/events";
-import { buildSingletons } from "@/cms/collections/pages";
+import { buildPagesCollection } from "@/cms/collections/pages";
+import { buildSeriesCollection } from "@/cms/collections/series";
 import { buildVenuesCollection } from "@/cms/collections/venues";
 import { buildMediaConfig } from "@/cms/media";
 import { buildOutputOptions, buildSlugOptions } from "@/cms/output";
@@ -11,8 +12,10 @@ import { SITE } from "@/constants";
 export function buildCmsConfig(): CmsConfig {
   const collections: CmsCollection[] = [
     buildEventsCollection(),
+    buildSeriesCollection(),
     buildVenuesCollection(),
     buildArticlesCollection(),
+    buildPagesCollection(),
   ];
 
   return {
@@ -27,6 +30,5 @@ export function buildCmsConfig(): CmsConfig {
     slug: buildSlugOptions(),
     output: buildOutputOptions(),
     collections,
-    singletons: buildSingletons(),
   };
 }

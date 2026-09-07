@@ -1,9 +1,11 @@
+import { r2Field } from "@/cms/media";
 import type { CmsField } from "@/cms/types";
-import { PULL_REQUEST_WIDGET } from "@/cms/widgets/pullRequest";
+import { MARKDOWN_WIDGET, PULL_REQUEST_WIDGET } from "@/cms/widgets/names";
 
 type StringOptions = { required?: boolean; default?: string; hint?: string };
 type NumberOptions = { required?: boolean; default?: number; min?: number };
 type HintOptions = { hint?: string };
+type CoverOptions = HintOptions & { prefix: string };
 
 export function stringField(name: string, label: string, options: StringOptions = {}): CmsField {
   return { name, label, widget: "string", ...options };
@@ -47,24 +49,23 @@ export function titleField(label: string): CmsField {
   return stringField("title", label, { required: true });
 }
 
-export function meetupIdField(label: string): CmsField {
-  return numberField("meetupId", label, { required: true });
-}
-
-export function coverField(required: boolean, options: HintOptions = {}): CmsField {
+/** Image field whose uploads go to the media bucket under `options.prefix`. */
+export function coverField(required: boolean, options: CoverOptions): CmsField {
+  const { prefix, ...rest } = options;
   return {
     name: "cover",
     label: "Cover Image",
     widget: "image",
     required,
     choose_url: true,
-    ...options,
+    ...r2Field(prefix),
+    ...rest,
   };
 }
 
-/** Markdown body; raw mode first so the editor opens in plain markdown (toggle in the toolbar). */
+/** Markdown body, edited with the CodeMirror widget registered in src/pages/admin.astro. */
 export function bodyField(label: string, required: boolean): CmsField {
-  return { name: "body", label, widget: "markdown", required, modes: ["raw", "rich_text"] };
+  return { name: "body", label, widget: MARKDOWN_WIDGET, required };
 }
 
 export function devOnlyField(): CmsField {

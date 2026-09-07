@@ -41,6 +41,8 @@ export function buildArticlesCollection(): CmsEntryCollection {
     create: true,
     slug: "{{slug}}",
     summary: "{{title}}",
+    // Written by Sveltia when a slug changes; the build turns it into a redirect.
+    aliases_field: "aliases",
     fields: [
       pullRequestField(),
       titleField("Title"),

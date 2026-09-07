@@ -1,17 +1,15 @@
 /**
  * Field-name parity contract between the CMS collections and the zod schemas in
- * `src/content`. Enforced by `npm run check:cms`.
+ * `src/content/schemas`. Enforced by `npm run check:cms`.
  */
 export type ParityTarget = {
   /** CMS collection name, which is also the content collection name. */
   collection: string;
-  /** Module holding the zod schema, relative to the repository root. */
+  /** Module holding the zod schema, named for error messages only - see `scripts/cms-check/schemaKeys.ts`. */
   schemaModule: string;
-  /** Function in that module returning the `z.object({ ... })` shape. */
-  schemaFunction: string;
   /** CMS fields with no frontmatter counterpart. */
   cmsOnly: readonly string[];
-  /** Schema keys the loader derives, so they are never authored in the CMS. */
+  /** Schema keys that are never authored in the CMS: loader-derived, or legacy content shape. */
   derived: readonly string[];
 };
 
@@ -19,43 +17,52 @@ export type ParityTarget = {
 const BODY = "body";
 /** Read-only link widget; never written to frontmatter. */
 const PULL_REQUEST = "pullRequest";
+/**
+ * Written by Sveltia's `aliases_field` when a slug changes, never a CMS field: declaring
+ * a field called `aliases` makes Sveltia silently stop recording them.
+ */
+const ALIASES = "aliases";
+
+const CMS_ONLY = [BODY, PULL_REQUEST] as const;
+
+/**
+ * Pre-`channels`/`series` frontmatter still present in `content/`. The site renders them, so
+ * they stay in the schemas; delete them from both lists together once the content is migrated.
+ */
+const LEGACY_EVENT_KEYS = ["meetupId", "links", "recurredFrom", "recurringLabel"] as const;
+const LEGACY_VENUE_KEYS = ["coordinates", "meetupId"] as const;
 
 export const PARITY_TARGETS: readonly ParityTarget[] = [
   {
     collection: "events",
-    schemaModule: "src/content/events.ts",
-    schemaFunction: "eventsSchema",
-    cmsOnly: [BODY, PULL_REQUEST],
-    derived: [
-      "id",
-      "readingTime",
-      "bodySlug",
-      "isNextRecurringOccurrence",
-      "calendarOnly",
-      // `repeat` is expanded into standalone entries by the loader and is
-      // deliberately not editable in the CMS (see the events collection filter).
-    ],
+    schemaModule: "src/content/schemas/event.ts",
+    cmsOnly: CMS_ONLY,
+    derived: [ALIASES, ...LEGACY_EVENT_KEYS],
+  },
+  {
+    collection: "series",
+    schemaModule: "src/content/schemas/series.ts",
+    cmsOnly: CMS_ONLY,
+    derived: [],
   },
   {
     collection: "venues",
-    schemaModule: "src/content/venues.ts",
-    schemaFunction: "venuesSchema",
-    cmsOnly: [BODY, PULL_REQUEST],
-    derived: [
-      "id",
-      "readingTime",
-      "mapImage",
-      "mapDarkImage",
-      // Imported from Meetup, never edited by hand.
-      "postalCode",
-    ],
+    schemaModule: "src/content/schemas/venue.ts",
+    cmsOnly: CMS_ONLY,
+    // Map images come from the committed bitmaps or the stitched tiles; readingTime from remark.
+    derived: [ALIASES, "mapImage", "mapDarkImage", "readingTime", ...LEGACY_VENUE_KEYS],
   },
   {
     collection: "articles",
-    schemaModule: "src/content/articles.ts",
-    schemaFunction: "articlesSchema",
-    cmsOnly: [BODY, PULL_REQUEST],
-    derived: ["id", "filePath"],
+    schemaModule: "src/content/schemas/article.ts",
+    cmsOnly: CMS_ONLY,
+    derived: [ALIASES],
+  },
+  {
+    collection: "pages",
+    schemaModule: "src/content/schemas/page.ts",
+    cmsOnly: CMS_ONLY,
+    derived: [ALIASES],
   },
 ];
 

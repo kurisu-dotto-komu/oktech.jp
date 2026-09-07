@@ -17,9 +17,12 @@ import { SITE } from "@/constants";
       import CMS from "@sveltia/cms";
 
       import { buildCmsConfig } from "@/cms/config";
-      import PullRequestControl, { PULL_REQUEST_WIDGET } from "@/cms/widgets/pullRequest";
+      import MarkdownEditorControl from "@/cms/widgets/markdownEditor";
+      import { MARKDOWN_WIDGET, PULL_REQUEST_WIDGET } from "@/cms/widgets/names";
+      import PullRequestControl from "@/cms/widgets/pullRequest";
 
       CMS.registerWidget(PULL_REQUEST_WIDGET, PullRequestControl);
+      CMS.registerWidget(MARKDOWN_WIDGET, MarkdownEditorControl);
       CMS.init({ config: buildCmsConfig() });
     </script>
   </body>

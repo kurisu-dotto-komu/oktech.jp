@@ -2,8 +2,6 @@ import type { CustomFieldControlProps } from "@sveltia/cms";
 
 import { cmsRepo } from "@/cms/backend";
 
-export const PULL_REQUEST_WIDGET = "pull_request";
-
 /** Sveltia names the editorial-workflow branch `cms/<collection>/<slug>`. */
 function pullRequestSearchUrl(collection: string, slug: string): string {
   const query = encodeURIComponent(`is:pr head:cms/${collection}/${slug}`);

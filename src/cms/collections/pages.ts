@@ -1,20 +1,35 @@
-import type { CollectionFile } from "@sveltia/cms";
+import {
+  bodyField,
+  keywordsField,
+  pullRequestField,
+  textField,
+  titleField,
+} from "@/cms/fields/common";
+import type { CmsEntryCollection } from "@/cms/types";
 
-import { bodyField, keywordsField, textField, titleField } from "@/cms/fields/common";
-
-/** Standalone markdown pages that live directly under /content. */
-export function buildSingletons(): CollectionFile[] {
-  return [
-    {
-      name: "code-of-conduct",
-      label: "Code of Conduct",
-      file: "/content/code-of-conduct.md",
-      fields: [
-        titleField("Title"),
-        textField("description", "Description", false),
-        keywordsField(),
-        bodyField("Content", true),
-      ],
-    },
-  ];
+/**
+ * Standalone markdown pages, served at `/<slug>`. Previously a Sveltia singleton for
+ * the code of conduct alone; a folder collection instead, so the page gets the same
+ * `aliases_field` rename protection as every other public URL.
+ */
+export function buildPagesCollection(): CmsEntryCollection {
+  return {
+    name: "pages",
+    label: "Pages",
+    label_singular: "Page",
+    folder: "/content/pages",
+    preview_path: "{{slug}}",
+    create: true,
+    slug: "{{title}}",
+    summary: "{{title}}",
+    sortable_fields: ["title"],
+    aliases_field: "aliases",
+    fields: [
+      pullRequestField(),
+      titleField("Title"),
+      textField("description", "Description", false),
+      keywordsField(),
+      bodyField("Content", true),
+    ],
+  };
 }
