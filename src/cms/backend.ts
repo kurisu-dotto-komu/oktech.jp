@@ -15,6 +15,8 @@ export function buildBackend(): CmsBackend {
     repo: env.PUBLIC_CMS_REPO || DEFAULT_REPO,
     branch: env.PUBLIC_CMS_BRANCH || DEFAULT_BRANCH,
     base_url: env.PUBLIC_CMS_AUTH_BASE_URL || undefined,
+    // Public repo: ask contributors for the narrowest GitHub grant (no private repo access)
+    auth_scope: "public_repo",
     // Contributors without write access propose changes from a fork (needs editorial workflow)
     open_authoring: true,
   };
