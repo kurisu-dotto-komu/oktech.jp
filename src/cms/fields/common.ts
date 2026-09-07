@@ -62,8 +62,9 @@ export function coverField(required: boolean, options: HintOptions = {}): CmsFie
   };
 }
 
+/** Markdown body; raw mode first so the editor opens in plain markdown (toggle in the toolbar). */
 export function bodyField(label: string, required: boolean): CmsField {
-  return { name: "body", label, widget: "markdown", required };
+  return { name: "body", label, widget: "markdown", required, modes: ["raw", "rich_text"] };
 }
 
 export function devOnlyField(): CmsField {
