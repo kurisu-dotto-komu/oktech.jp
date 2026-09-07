@@ -8,4 +8,5 @@ export const seriesSchema = z.object({
   title: z.string(),
   label: z.string().optional(),
   cover: z.string().optional(),
+  devOnly: z.boolean().default(false),
 });

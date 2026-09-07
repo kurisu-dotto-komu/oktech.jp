@@ -1,6 +1,7 @@
 import {
   bodyField,
   coverField,
+  devOnlyField,
   pullRequestField,
   stringField,
   titleField,
@@ -26,6 +27,8 @@ export function buildSeriesCollection(): CmsEntryCollection {
     summary: "{{title}}",
     sortable_fields: ["title"],
     thumbnail: "cover",
+    // Dev fixtures carry devOnly: true and stay out of the editors' list
+    filter: { field: "devOnly", value: false },
     fields: [
       pullRequestField(),
       titleField("Title"),
@@ -37,6 +40,7 @@ export function buildSeriesCollection(): CmsEntryCollection {
         prefix: R2_PREFIX.series,
         hint: "Default cover for occurrences that do not set their own.",
       }),
+      devOnlyField(),
       bodyField("Description", false),
     ],
   };

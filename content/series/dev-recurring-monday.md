@@ -1,5 +1,6 @@
 ---
 title: Dev Recurring Monday
+devOnly: true
 ---
 
 Development-only series, referenced by the `dev-recurring-monday` fixture event so the
