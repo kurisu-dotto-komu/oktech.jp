@@ -4,7 +4,7 @@ description: We will be very happy to see you at the next Meetup, our first meet
 dateTime: 2022-04-02 10:30
 duration: 90
 cover: /content/media/events/284832684-coffee-security-and-chat/904983.webp
-venue: 26459185
+venue: 26459185-mainichi-plaza-umeda
 howToFindUs: |
   For clarity regarding the location, here is the:
 

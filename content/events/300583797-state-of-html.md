@@ -4,7 +4,7 @@ description: Hello Friends,
 dateTime: 2024-05-11 17:00
 duration: 120
 cover: /content/media/events/300583797-state-of-html/598643.webp
-venue: 27585838
+venue: 27585838-helpfeel
 topics:
   - HTML & CSS
   - New Technology

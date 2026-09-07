@@ -4,7 +4,7 @@ description: Approaching Autumn, we are using September to look into how we can 
 dateTime: 2026-09-12 17:00
 duration: 150
 cover: /content/media/events/315815216-magical-command-line/464940.webp
-venue: 24529555
+venue: 24529555-cybozu-osaka-office
 howToFindUs: In the Hankyu main building take the (huge) business elevator to the 15th floor Skylobby. Then take the far-back elevator to the 35th floor to join us in the Cybozu Office.
 topics:
   - Linux Server

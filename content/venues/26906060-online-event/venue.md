@@ -1,8 +1,8 @@
 ---
 title: Online event
-meetupId: 26906060
-coordinates:
-  lat: 34.71123
-  lng: 135.57222
+location: '{"type":"Point","coordinates":[135.57222,34.71123]}'
+channels:
+  - type: meetup
+    ref: '26906060'
 ---
 

@@ -1,7 +1,7 @@
 import { z } from "astro/zod";
 
 import { aliases, channels } from "./common";
-import { coordinates, location } from "./geo";
+import { location } from "./geo";
 
 /**
  * `content/venues/<id>/venue.md`, still a page bundle so its local assets keep resolving.
@@ -17,9 +17,7 @@ export const venueSchema = z.object({
   state: z.string().optional(),
   url: z.string().optional(),
   gmaps: z.string().optional(),
-  coordinates: coordinates.optional(),
   location: location.optional(),
-  meetupId: z.number().optional(),
   hasPage: z.boolean().optional(),
   space: z.string().optional(),
   description: z.string().default(""),

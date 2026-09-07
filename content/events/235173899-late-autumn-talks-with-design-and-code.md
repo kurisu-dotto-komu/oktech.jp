@@ -3,7 +3,7 @@ title: Late autumn talks with design and code
 description: Dear Web enthusiasts and developers,
 dateTime: 2016-11-26 19:00
 cover: /content/media/events/235173899-late-autumn-talks-with-design-and-code/506739.webp
-venue: 24870768
+venue: 24870768-synergy-marketing
 howToFindUs: 530-0003 Dojima-Avanza 21F, 1-6-20 Dojima, Kita-ku, Osaka | Follow this URL http://tinyurl.com/grh6try for directions to this month’s venue
 channels:
   - type: meetup

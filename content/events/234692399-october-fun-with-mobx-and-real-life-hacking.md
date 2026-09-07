@@ -3,7 +3,7 @@ title: October fun with MobX and Real life hacking
 description: Dear designers and developers,
 dateTime: 2016-10-22 18:00
 cover: /content/media/events/234692399-october-fun-with-mobx-and-real-life-hacking/506739.webp
-venue: 24213835
+venue: 24213835-aiming-inc
 channels:
   - type: meetup
     ref: '234692399'

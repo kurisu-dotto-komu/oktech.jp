@@ -4,7 +4,7 @@ description: What better way to start your Golden Week than with exciting talks 
 dateTime: 2018-04-28 18:00
 duration: 120
 cover: /content/media/events/249381736-golden-week-golden-web-meetup/506739.webp
-venue: 24213835
+venue: 24213835-aiming-inc
 channels:
   - type: meetup
     ref: '249381736'

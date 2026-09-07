@@ -4,7 +4,7 @@ description: Dear all, even as I write these lines I realize it’s been quite a
 dateTime: 2018-02-24 18:00
 duration: 120
 cover: /content/media/events/247246264-owddm-lets-start-off-the-new-year-right/506739.webp
-venue: 24213835
+venue: 24213835-aiming-inc
 howToFindUs: From JR Osaka station walk north past the Grand Front South Tower. In the Grand Front North Tower take the business elevator or the elevator 4 to the Sky Lobby (9th floor) and from there take the elevator to the 18th floor.
 channels:
   - type: meetup

@@ -3,7 +3,7 @@ title: February 2015 Meetup
 description: Charging right into 2015 we will have our next month web-bashing. We are not sure who will catch next times big
 dateTime: 2015-02-28 16:00
 cover: /content/media/events/220314026-february-2015-meetup/506739.webp
-venue: 22577042
+venue: 22577042-knowledge-salon
 howToFindUs: http://kc-i.jp/en/facilities/salon/
 channels:
   - type: meetup

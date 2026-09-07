@@ -2,13 +2,13 @@
 title: Aiming Inc
 city: osaka
 address: Kita-ku Ofuka-chō 3-1, Grand Front Bld. 18F
-gmaps: https://maps.app.goo.gl/qqYJ2aQjYTCDvxnRA
-coordinates:
-  lat: 34.703922
-  lng: 135.49338
-meetupId: 24213835
-hasPage: true
 url: https://aiming-inc.com
+gmaps: https://maps.app.goo.gl/qqYJ2aQjYTCDvxnRA
+location: '{"type":"Point","coordinates":[135.49338,34.703922]}'
+channels:
+  - type: meetup
+    ref: '24213835'
+hasPage: true
 cover: ./aiming-logo.png
 ---
 

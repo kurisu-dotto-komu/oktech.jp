@@ -4,7 +4,7 @@ description: Hello Friends, 👋
 dateTime: 2022-07-16 15:00
 duration: 120
 cover: /content/media/events/287159257-hello-world-meet-and-greet-at-space-kante/516520.webp
-venue: 27370201
+venue: 27370201-space-kante
 topics:
   - New Technology
   - Open Source

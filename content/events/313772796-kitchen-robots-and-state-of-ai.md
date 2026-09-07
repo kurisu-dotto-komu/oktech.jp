@@ -4,7 +4,7 @@ description: Beep Boop. Join us for an evening of techy robot topics!
 dateTime: 2026-05-30 17:00
 duration: 150
 cover: /content/media/events/313772796-kitchen-robots-and-state-of-ai/686052.webp
-venue: 24529555
+venue: 24529555-cybozu-osaka-office
 howToFindUs: In the Hankyu main building take the (huge) business elevator to the 15th floor Skylobby. Then take the far-back elevator to the 35th floor to join us in the Cybozu Office.
 topics:
   - Technology

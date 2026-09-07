@@ -4,7 +4,7 @@ description: Hello Web Enthusiasts,
 dateTime: 2016-02-27 18:00
 duration: 120
 cover: /content/media/events/228676008-february-web-talks/506739.webp
-venue: 24213835
+venue: 24213835-aiming-inc
 howToFindUs: Take the Grandfront North building to the 9th floor (the glass elevator next to the bridge from the south tower goes up there) and use the elevator in the big hall to the 18th floor.
 channels:
   - type: meetup

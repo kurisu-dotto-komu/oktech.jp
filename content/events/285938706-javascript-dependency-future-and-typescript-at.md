@@ -4,7 +4,7 @@ description: Hello there,
 dateTime: 2022-05-28 17:30
 duration: 90
 cover: /content/media/events/285938706-javascript-dependency-future-and-typescript-at/531734.webp
-venue: 27310813
+venue: 27310813-laugh-rough-laugh
 howToFindUs: 子供の遊び場 親子カフェ Laugh Rough Laugh (ラフラフラフ) Cafe
 topics:
   - Computer Programming

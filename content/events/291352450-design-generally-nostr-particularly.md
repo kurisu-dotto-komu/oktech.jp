@@ -4,7 +4,7 @@ description: Hello everyone,
 dateTime: 2023-04-15 17:00
 duration: 120
 cover: /content/media/events/291352450-design-generally-nostr-particularly/794415.webp
-venue: 27370028
+venue: 27370028-kai-share-office-shin-osaka
 topics:
   - Computer Programming
   - Decentralized Systems & Applications

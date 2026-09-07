@@ -4,7 +4,7 @@ description: Dear web enthusiasts, we’re in a busy autumn! 🔥
 dateTime: 2022-10-15 16:45
 duration: 150
 cover: /content/media/events/288595894-ui-culture-and-airplanes/382348.webp
-venue: 27370028
+venue: 27370028-kai-share-office-shin-osaka
 topics:
   - Computer Programming
   - Internet Professionals

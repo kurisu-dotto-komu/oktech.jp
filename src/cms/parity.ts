@@ -25,12 +25,6 @@ const ALIASES = "aliases";
 
 const CMS_ONLY = [BODY, PULL_REQUEST] as const;
 
-/**
- * Pre-`channels` venue frontmatter still present in `content/`. The site reads it, so it
- * stays in the schema; delete it from both lists together once the content is migrated.
- */
-const LEGACY_VENUE_KEYS = ["coordinates", "meetupId"] as const;
-
 export const PARITY_TARGETS: readonly ParityTarget[] = [
   {
     collection: "events",
@@ -49,7 +43,7 @@ export const PARITY_TARGETS: readonly ParityTarget[] = [
     schemaModule: "src/content/schemas/venue.ts",
     cmsOnly: CMS_ONLY,
     // Map images come from the committed bitmaps or the stitched tiles; readingTime from remark.
-    derived: [ALIASES, "mapImage", "mapDarkImage", "readingTime", ...LEGACY_VENUE_KEYS],
+    derived: [ALIASES, "mapImage", "mapDarkImage", "readingTime"],
   },
   {
     collection: "articles",

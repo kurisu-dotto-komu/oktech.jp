@@ -4,7 +4,7 @@ description: Hello Friends,
 dateTime: 2022-12-30 20:00
 duration: 120
 cover: /content/media/events/290151616-end-of-web-year-party-2022/475265.webp
-venue: 27479006
+venue: 27479006-masamune-first-tenshin
 topics:
   - Computer Programming
   - Internet Professionals

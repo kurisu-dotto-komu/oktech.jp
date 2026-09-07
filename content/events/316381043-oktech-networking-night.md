@@ -4,7 +4,7 @@ description: OKTech Year two networking! 😎
 dateTime: 2026-10-30 18:30
 duration: 150
 cover: /content/media/events/316381043-oktech-networking-night/008497.webp
-venue: 27398802
+venue: 27398802-hue-coffee-roaster
 howToFindUs: Tanimachi 4-chome Station Exit 7 and you will be almost there already!
 topics:
   - Community Building

@@ -4,7 +4,7 @@ description: Spring is here, the cherry blossom is about to finish blooming and 
 dateTime: 2015-04-25 16:00
 duration: 120
 cover: /content/media/events/221648850-aprils-web-developer-talks/506739.webp
-venue: 22577042
+venue: 22577042-knowledge-salon
 howToFindUs: 7th Floor, North Building  Grand Front Umeda (Take the North 北 3 elevator!)
 channels:
   - type: meetup

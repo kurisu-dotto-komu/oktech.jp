@@ -4,7 +4,7 @@ description: Did you know there’s a hidden fifth season hiding in plain sight 
 dateTime: 2025-10-26 10:00
 duration: 300
 cover: /content/media/events/311083115-autumn-adventure-in-uji/743451.webp
-venue: 27879454
+venue: 27879454-keihan-uji-station
 howToFindUs: |-
   We'll meet in front of the Uji sightseeing guide map in front of the Uji Keihan Station. 
 

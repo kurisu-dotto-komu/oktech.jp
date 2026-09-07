@@ -4,7 +4,7 @@ description: Wow, this summer was hot! We plan to keep it chilled at this months
 dateTime: 2018-09-22 18:00
 duration: 120
 cover: /content/media/events/254342508-lessons-learned/280682.webp
-venue: 25928725
+venue: 25928725-sakura-internet
 howToFindUs: Directly beside the JR Station, Sakura Internet is in the Grandfront South Tower (A) - not the same as Aiming! Take the business elevator in 1F/2F to the SkyLobby and take the Elevator to 35F!
 channels:
   - type: meetup

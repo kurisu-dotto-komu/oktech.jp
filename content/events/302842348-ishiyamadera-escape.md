@@ -4,7 +4,7 @@ description: Hello Friends,
 dateTime: 2024-08-18 11:30
 duration: 390
 cover: /content/media/events/302842348-ishiyamadera-escape/931967.webp
-venue: 27563617
+venue: 27563617-ishiyamadera-station
 topics:
   - Onsen
   - Technology

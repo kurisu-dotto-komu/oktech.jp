@@ -4,7 +4,7 @@ description: Dear web enthusiasts, we’re in a busy autumn! 🔥
 dateTime: 2022-10-29 17:00
 duration: 120
 cover: /content/media/events/288755079-ui-culture-and-airplanes/382924.webp
-venue: 27423406
+venue: 27423406-terahaus
 howToFindUs: 'More about the place here: https://business-park-618.business.site/'
 topics:
   - Culture

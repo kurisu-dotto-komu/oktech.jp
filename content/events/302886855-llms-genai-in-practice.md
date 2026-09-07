@@ -4,7 +4,7 @@ description: Hello friends,
 dateTime: 2024-09-21 17:00
 duration: 120
 cover: /content/media/events/302886855-llms-genai-in-practice/034595.webp
-venue: 27585838
+venue: 27585838-helpfeel
 channels:
   - type: meetup
     ref: '302886855'

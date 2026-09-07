@@ -4,7 +4,7 @@ description: April is here and the cherry trees might still be blooming before t
 dateTime: 2026-04-04 17:00
 duration: 150
 cover: /content/media/events/313203893-measure-development-experience/143211.webp
-venue: 27553394
+venue: 27553394-r3-institute-ltd-gusuku-ashibinaa-osaka
 howToFindUs: 1. Go to Grand Front NORTH Tower in the 1F(!). In the big space, behind Tully's go to Tower C (business area) and enter the Elevator to 16F. From there, go towards the end of the hall.
 topics:
   - Leadership

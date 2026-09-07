@@ -4,7 +4,7 @@ description: Let’s turn over a fresh green leaf! 🥬 In this year of the hors
 dateTime: 2026-01-24 17:00
 duration: 150
 cover: /content/media/events/312249468-work-spinach-and-dev-containers/571041.webp
-venue: 24529555
+venue: 24529555-cybozu-osaka-office
 howToFindUs: In the Hankyu main building take the (huge) business elevator to the 15th floor Skylobby. Then take the far-back elevator to the 35th floor to join us in the Cybozu Office.
 topics:
   - Business

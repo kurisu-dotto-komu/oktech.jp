@@ -3,7 +3,7 @@ title: Autumn Web Exchange
 description: Hello Webweavers,
 dateTime: 2015-10-31 18:00
 cover: /content/media/events/225647457-autumn-web-exchange/506739.webp
-venue: 22577042
+venue: 22577042-knowledge-salon
 howToFindUs: Take the North 3(北3!) elevator of the Grandfront North building to the 7th floor and tell the entrance lady of Knowledge Salon that you registered here.
 channels:
   - type: meetup

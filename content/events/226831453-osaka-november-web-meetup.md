@@ -3,7 +3,7 @@ title: Osaka November Web Meetup
 description: Hello Web creatives,
 dateTime: 2015-11-28 16:00
 cover: /content/media/events/226831453-osaka-november-web-meetup/506739.webp
-venue: 24213835
+venue: 24213835-aiming-inc
 howToFindUs: Take the Tower B (タワー B!) elevator of the Grandfront North building to the 9th floor and take the elevator up to the 18th floor
 channels:
   - type: meetup

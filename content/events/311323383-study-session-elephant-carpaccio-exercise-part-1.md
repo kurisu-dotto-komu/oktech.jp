@@ -4,7 +4,7 @@ description: Are you a software engineer who enjoys digging into new ideas, prac
 dateTime: 2025-10-19 19:00
 duration: 120
 cover: /content/media/events/311323383-study-session-elephant-carpaccio-exercise-part-1/502481.webp
-venue: 25963776
+venue: 25963776-kokoplaza
 howToFindUs: We are in room 701 of the Kokoplaza.
 topics:
   - Design Patterns

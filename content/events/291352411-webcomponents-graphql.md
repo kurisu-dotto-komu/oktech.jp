@@ -4,7 +4,7 @@ description: Hello Everyone!It’s February o’month. Time is flying!
 dateTime: 2023-02-18 17:00
 duration: 120
 cover: /content/media/events/291352411-webcomponents-graphql/439755.webp
-venue: 27370028
+venue: 27370028-kai-share-office-shin-osaka
 topics:
   - Computer Programming
   - Internet Professionals

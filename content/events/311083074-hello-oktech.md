@@ -4,7 +4,7 @@ description: OK… What? 🙀 Save the date! We celebrate! OK… Tech! 😎
 dateTime: 2025-11-01 18:30
 duration: 180
 cover: /content/media/events/311083074-hello-oktech/438931.webp
-venue: 27398802
+venue: 27398802-hue-coffee-roaster
 topics:
   - Community Building
   - Computer Programming

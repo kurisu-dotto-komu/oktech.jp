@@ -4,7 +4,7 @@ description: Hello friends,
 dateTime: 2024-06-29 17:00
 duration: 120
 cover: /content/media/events/301456905-intro-to-aws-connect/613174.webp
-venue: 27513738
+venue: 27513738-c2-kyoto
 topics:
   - Internet Professionals
   - Open Source

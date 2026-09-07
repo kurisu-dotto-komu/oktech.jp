@@ -4,7 +4,7 @@ description: Have you heard? Judging from the weather, its a bit hard to to gues
 dateTime: 2023-10-28 17:00
 duration: 180
 cover: /content/media/events/296487079-all-hallows-eve-social/796490.webp
-venue: 27585838
+venue: 27585838-helpfeel
 howToFindUs: In the 5F of above the Coco Ichibanya - Hard to miss.
 topics:
   - Database Backends

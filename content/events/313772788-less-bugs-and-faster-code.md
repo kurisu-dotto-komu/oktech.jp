@@ -4,7 +4,7 @@ description: The heat is on in June! 😎This month’s event we will be having 
 dateTime: 2026-06-20 17:00
 duration: 150
 cover: /content/media/events/313772788-less-bugs-and-faster-code/288904.webp
-venue: 27553394
+venue: 27553394-r3-institute-ltd-gusuku-ashibinaa-osaka
 howToFindUs: 1. Go to Grand Front NORTH Tower in the 1F(!). In the big space, behind Tully's go to Tower C (business area) and enter the Elevator to 16F. From there, go towards the end of the hall.
 topics:
   - New Technology

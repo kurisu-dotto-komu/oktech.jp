@@ -4,7 +4,7 @@ description: Summer is here! Eat some ice-cream and then join us for some summer
 dateTime: 2015-06-27 18:30
 duration: 120
 cover: /content/media/events/222961448-web-summer-talks-osaka/506739.webp
-venue: 22577042
+venue: 22577042-knowledge-salon
 howToFindUs: 7th Floor, North Building  Grand Front Umeda (Take the North 北 3 elevator!)
 channels:
   - type: meetup

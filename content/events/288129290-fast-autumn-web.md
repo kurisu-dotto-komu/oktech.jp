@@ -4,7 +4,7 @@ description: We survived this summer!And this months meeting will be all about s
 dateTime: 2022-09-17 16:15
 duration: 150
 cover: /content/media/events/288129290-fast-autumn-web/659715.webp
-venue: 27370028
+venue: 27370028-kai-share-office-shin-osaka
 topics:
   - Computer Programming
   - Internet Professionals

@@ -4,7 +4,7 @@ description: Hello Everyone,
 dateTime: 2023-12-10 18:00
 duration: 180
 cover: /content/media/events/297504081-light-december-talks/812304.webp
-venue: 27705586
+venue: 27705586-kamogawa-creative-base
 topics:
   - New Technology
   - Open Source

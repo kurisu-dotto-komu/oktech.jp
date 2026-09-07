@@ -4,7 +4,7 @@ description: It is July and Osaka is hot! Both literally and figuratively. So ma
 dateTime: 2015-07-25 18:00
 duration: 120
 cover: /content/media/events/223691814-web-talks-in-july/506739.webp
-venue: 22577042
+venue: 22577042-knowledge-salon
 howToFindUs: Go to GrandFront North tower (north of the south tower which is north of JR Osaka station) get into the 北3 elevator and get to the 7th floor.
 channels:
   - type: meetup

@@ -4,7 +4,7 @@ description: This is a test event that only appears in development mode.
 dateTime: 2027-03-15 18:00
 duration: 120
 cover: /content/media/events/999999998-example-dev-event-2/test2.webp
-venue: 999999996
+venue: 999999996-test-venue-2
 howToFindUs: Enter through the main entrance and follow the neon arrows to the Innovation Hub on the 7th floor. The venue is located right next to the coffee bar. Look for the OK Tech signs and friendly volunteers wearing bright orange t-shirts!
 topics:
   - Testing

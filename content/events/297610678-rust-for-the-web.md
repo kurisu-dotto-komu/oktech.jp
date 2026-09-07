@@ -4,7 +4,7 @@ description: Hello Friends, and a Happy New Year to all!
 dateTime: 2024-01-13 17:00
 duration: 120
 cover: /content/media/events/297610678-rust-for-the-web/354252.webp
-venue: 27513738
+venue: 27513738-c2-kyoto
 topics:
   - New Technology
   - Open Source

@@ -4,7 +4,7 @@ description: Woohoo, January at C2 Kyoto was awesome, Let’s do that in Februar
 dateTime: 2024-02-17 17:00
 duration: 180
 cover: /content/media/events/298932038-how-and-when-react/848552.webp
-venue: 27513738
+venue: 27513738-c2-kyoto
 topics:
   - Open Source
   - ReactJS

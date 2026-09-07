@@ -4,7 +4,7 @@ description: IN CASE OF RAIN 🌧️We will pack up our stuff and move it over t
 dateTime: 2024-03-24 13:00
 duration: 240
 cover: /content/media/events/299335103-arashiyama-hanami-2024/888292.webp
-venue: 27764496
+venue: 27764496-river-square
 howToFindUs: We will share the GPS location on the day.
 topics:
   - New Technology

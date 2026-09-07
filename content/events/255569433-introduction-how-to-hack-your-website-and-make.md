@@ -4,7 +4,7 @@ description: The meetup will be host at GVH#5 on Sunday, Topic will be Web Secur
 dateTime: 2018-11-25 18:00
 duration: 120
 cover: /content/media/events/255569433-introduction-how-to-hack-your-website-and-make/506739.webp
-venue: 25630979
+venue: 25630979-gvh5
 channels:
   - type: meetup
     ref: '255569433'

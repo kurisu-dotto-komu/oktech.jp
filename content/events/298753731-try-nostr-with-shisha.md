@@ -4,7 +4,7 @@ description: Calling for all are curious about Web3 and distributed protocols!
 dateTime: 2024-01-31 18:00
 duration: 120
 cover: /content/media/events/298753731-try-nostr-with-shisha/680898.webp
-venue: 27739757
+venue: 27739757-homura-no-ka-shisha-cafeandbar
 topics:
   - Decentralized Systems & Applications
   - Internet Communication Technology

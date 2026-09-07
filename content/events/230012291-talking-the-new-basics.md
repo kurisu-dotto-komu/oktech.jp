@@ -4,7 +4,7 @@ description: Welcome back, dear Web enthusiasts!
 dateTime: 2016-04-23 18:00
 duration: 120
 cover: /content/media/events/230012291-talking-the-new-basics/506739.webp
-venue: 24213835
+venue: 24213835-aiming-inc
 howToFindUs: 'From JR Station: pass through the GrandFront South Tower and take elevator next to the bridge to the 9th floor. Then take the elevator in the sky lobby to the 18th floor.'
 channels:
   - type: meetup

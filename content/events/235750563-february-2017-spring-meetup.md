@@ -3,7 +3,7 @@ title: February 2017 Spring Meetup
 description: Dear all,
 dateTime: 2017-02-18 18:00
 cover: /content/media/events/235750563-february-2017-spring-meetup/506739.webp
-venue: 24213835
+venue: 24213835-aiming-inc
 channels:
   - type: meetup
     ref: '235750563'

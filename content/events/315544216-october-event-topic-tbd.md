@@ -4,7 +4,7 @@ description: Save the date! Our monthly meetup is set for 17th October.
 dateTime: 2026-10-17 17:00
 duration: 150
 cover: /content/media/events/315544216-october-event-topic-tbd/886924.webp
-venue: 27553394
+venue: 27553394-r3-institute-ltd-gusuku-ashibinaa-osaka
 howToFindUs: 1. Go to Grand Front NORTH Tower in the 1F(!). In the big space, behind Tully's go to Tower C (business area) and enter the Elevator to 16F. From there, go towards the end of the hall.
 channels:
   - type: meetup

@@ -4,7 +4,7 @@ description: Right after the Gion Festival, join us as we tackle one of the grea
 dateTime: 2026-07-18 17:00
 duration: 150
 cover: /content/media/events/314843644-manage-dependencies-with-nix-and-co/792486.webp
-venue: 24529555
+venue: 24529555-cybozu-osaka-office
 howToFindUs: In the Hankyu main building take the (huge) business elevator to the 15th floor Skylobby. Then take the far-back elevator to the 35th floor to join us in the Cybozu Office.
 topics:
   - Computer Security

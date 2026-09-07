@@ -4,7 +4,7 @@ description: Hello Everyone!
 dateTime: 2024-06-22 17:00
 duration: 180
 cover: /content/media/events/301456891-workshop-like-s3/656528.webp
-venue: 27009944
+venue: 27009944-the-deck
 topics:
   - Computer Programming
   - Internet Professionals

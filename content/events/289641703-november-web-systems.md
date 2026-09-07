@@ -4,7 +4,7 @@ description: Good Autumn, Friends! 🍁
 dateTime: 2022-11-19 17:00
 duration: 120
 cover: /content/media/events/289641703-november-web-systems/470361.webp
-venue: 27370028
+venue: 27370028-kai-share-office-shin-osaka
 topics:
   - Computer Programming
   - Internet Professionals

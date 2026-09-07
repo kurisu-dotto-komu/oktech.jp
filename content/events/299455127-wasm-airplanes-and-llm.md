@@ -4,7 +4,7 @@ description: More React in March, but this time with a twist and more 😱. Join
 dateTime: 2024-03-16 17:00
 duration: 180
 cover: /content/media/events/299455127-wasm-airplanes-and-llm/463552.webp
-venue: 27513738
+venue: 27513738-c2-kyoto
 topics:
   - Open Source
   - ReactJS

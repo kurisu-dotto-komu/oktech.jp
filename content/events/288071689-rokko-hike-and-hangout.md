@@ -4,7 +4,7 @@ description: 'RSVP ClosedHello friends, RSVP is currently closed as we need to f
 dateTime: 2022-10-01 08:10
 duration: 575
 cover: /content/media/events/288071689-rokko-hike-and-hangout/209916.webp
-venue: 27024215
+venue: 27024215-rokko-cable-shita-station
 howToFindUs: |
   We'll start our hike at Rokko Ropeway Ground station at 8:00 AM.
   To get to the ropeway using public transportation, you can take a bus  (１６系統, 神戸市) from Rokko Station (Hankyu) at 7:44 AM.

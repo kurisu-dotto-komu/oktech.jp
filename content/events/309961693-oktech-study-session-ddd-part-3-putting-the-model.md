@@ -4,7 +4,7 @@ description: 'Notice: The event time changed. Robert is feeling under the weathe
 dateTime: 2025-09-14 19:00
 duration: 120
 cover: /content/media/events/309961693-oktech-study-session-ddd-part-3-putting-the-model/580731.webp
-venue: 25963776
+venue: 25963776-kokoplaza
 howToFindUs: We are in room 801 of the Kokoplaza.
 topics:
   - Design Patterns

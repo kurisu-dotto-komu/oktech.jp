@@ -4,7 +4,7 @@ description: Hello Friends, 👋
 dateTime: 2023-03-18 17:00
 duration: 120
 cover: /content/media/events/291352432-beginning-perspectives-in-march/142821.webp
-venue: 27370028
+venue: 27370028-kai-share-office-shin-osaka
 topics:
   - Computer Programming
   - Internet Professionals

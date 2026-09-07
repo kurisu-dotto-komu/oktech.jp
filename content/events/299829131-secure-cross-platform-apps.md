@@ -4,7 +4,7 @@ description: Hello friends,
 dateTime: 2024-04-20 17:00
 duration: 180
 cover: /content/media/events/299829131-secure-cross-platform-apps/757256.webp
-venue: 27513738
+venue: 27513738-c2-kyoto
 topics:
   - Open Source
   - ReactJS

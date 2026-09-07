@@ -4,7 +4,7 @@ description: Hello Everyone!
 dateTime: 2025-01-10 12:00
 duration: 120
 cover: /content/media/events/305142313-year-start-lunch/277879.webp
-venue: 27929005
+venue: 27929005-hyssop
 channels:
   - type: meetup
     ref: '305142313'

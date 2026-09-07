@@ -4,7 +4,7 @@ description: Finally, Spring is here and the warm days are starting! Before the 
 dateTime: 2019-04-27 18:00
 duration: 120
 cover: /content/media/events/260877986-owddm-april-2019-meetup/712718.webp
-venue: 26378946
+venue: 26378946-idc
 howToFindUs: Please follow the map in the featured picture
 channels:
   - type: meetup

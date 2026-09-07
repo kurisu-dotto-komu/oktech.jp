@@ -4,7 +4,7 @@ description: A small weekly gathering for engineers working at the bleeding edge
 dateTime: 2026-05-16 10:00
 duration: 120
 cover: /content/media/series/agentic-assembly/cover_weekly.webp
-venue: 27009944
+venue: 27009944-the-deck
 series: agentic-assembly
 howToFindUs: Direct access from Exit 14, Sakaisujihommachi Station (Osaka Metro Sakaisuji / Chuo Line). Exit 7 of Hommachi Station on the Midosuji Line might be quicker if you don't mind a short walk.
 topics:

@@ -3,7 +3,7 @@ title: "OWDDM: Escape the August heat at this month's summer meetup in Osaka"
 description: 'Web developers and designers from Kansai: you are welcome to join us for this month’s summer meetup. All you need to bring is an open mind and an interest in...'
 dateTime: 2016-08-27 18:00
 cover: /content/media/events/233221987-owddm-escape-the-august-heat-at-this-months/506739.webp
-venue: 24213835
+venue: 24213835-aiming-inc
 channels:
   - type: meetup
     ref: '233221987'

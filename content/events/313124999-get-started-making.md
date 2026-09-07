@@ -4,7 +4,7 @@ description: Spring is knocking at the door and before this fiscal year ends we 
 dateTime: 2026-03-14 17:00
 duration: 150
 cover: /content/media/events/313124999-get-started-making/879627.webp
-venue: 24529555
+venue: 24529555-cybozu-osaka-office
 howToFindUs: In the Hankyu main building take the (huge) business elevator to the 15th floor Skylobby. Then take the far-back elevator to the 35th floor to join us in the Cybozu Office.
 channels:
   - type: meetup

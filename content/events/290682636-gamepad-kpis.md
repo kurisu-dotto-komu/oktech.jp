@@ -4,7 +4,7 @@ description: Happy New Year! 🎊 明けましておめでとうございます�
 dateTime: 2023-01-21 17:00
 duration: 120
 cover: /content/media/events/290682636-gamepad-kpis/762650.webp
-venue: 27370028
+venue: 27370028-kai-share-office-shin-osaka
 topics:
   - Computer Programming
   - Internet Professionals

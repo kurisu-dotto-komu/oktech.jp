@@ -4,7 +4,7 @@ description: Happy New Year Websters!
 dateTime: 2016-01-23 12:30
 duration: 360
 cover: /content/media/events/228102170-new-year-hacking-day/506739.webp
-venue: 24213835
+venue: 24213835-aiming-inc
 howToFindUs: Take the Tower B (タワー B!) elevator of the Grandfront North building to the 9th floor and take the elevator up to the 18th floor
 channels:
   - type: meetup

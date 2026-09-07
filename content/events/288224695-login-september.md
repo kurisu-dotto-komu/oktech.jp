@@ -4,7 +4,7 @@ description: Welcome to September, Friends! 👋
 dateTime: 2022-09-24 16:00
 duration: 120
 cover: /content/media/events/288224695-login-september/745086.webp
-venue: 27382018
+venue: 27382018-67-diner
 howToFindUs: The restaurant is closed but will open for us. 😉
 topics:
   - Software Development

@@ -1,10 +1,7 @@
 export type MapLocation = { lat: number; lng: number };
 
-/** Either the legacy `coordinates: {lat,lng}` pair or a GeoJSON Point string from the CMS map widget. */
-export type LocationSource = {
-  coordinates?: { lat?: number; lng?: number } | null;
-  location?: string | null;
-};
+/** A venue's position, stored as the GeoJSON Point string the CMS map widget reads and writes. */
+export type LocationSource = { location?: string | null };
 
 function finite(lat: unknown, lng: unknown): MapLocation | undefined {
   if (typeof lat !== "number" || typeof lng !== "number") return undefined;
@@ -24,12 +21,8 @@ function readGeoJsonPoint(value: string): MapLocation | undefined {
   }
 }
 
-/** Reads a venue's position from either supported front-matter shape. */
+/** Reads a venue's position from its front matter. */
 export function readLocation(source: LocationSource | undefined): MapLocation | undefined {
-  if (!source) return undefined;
-  if (typeof source.location === "string" && source.location.trim()) {
-    const point = readGeoJsonPoint(source.location);
-    if (point) return point;
-  }
-  return finite(source.coordinates?.lat, source.coordinates?.lng);
+  const value = source?.location;
+  return typeof value === "string" && value.trim() ? readGeoJsonPoint(value) : undefined;
 }

@@ -4,7 +4,7 @@ description: 'Event-Driven Architecture: From Communication to Reality (3-Part W
 dateTime: 2026-02-15 19:00
 duration: 120
 cover: /content/media/events/313122758-event-driven-architecture-part-1-how-do-we-talk/580042.webp
-venue: 25963776
+venue: 25963776-kokoplaza
 howToFindUs: We are in room 801 of the Kokoplaza.
 topics:
   - Engineering Leadership

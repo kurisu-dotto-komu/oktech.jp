@@ -4,7 +4,7 @@ description: Come escape the summer heat with Eduardo & Jake at the MoneyForward
 dateTime: 2025-08-23 13:00
 duration: 120
 cover: /content/media/events/310102122-omega-programming-and-fonts/222484.webp
-venue: 28095701
+venue: 28095701-moneyforward-kyoto-office
 howToFindUs: Find us in the 4th floor of the Meiji-ya Kyoto building
 channels:
   - type: meetup

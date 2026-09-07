@@ -4,7 +4,7 @@ description: For this month’s gathering of webdevs and designers in Kyoto we h
 dateTime: 2023-07-29 17:30
 duration: 120
 cover: /content/media/events/294488629-ivskyoto2023-machine-learning-and-open-source/506744.webp
-venue: 27621042
+venue: 27621042-coworkinginfinitylab-kyososha
 howToFindUs: 'South of Goichi Pizza on Takatsuji. Here is a visual guide: https://kyososha.jp/access/index.html'
 topics:
   - Business Funding

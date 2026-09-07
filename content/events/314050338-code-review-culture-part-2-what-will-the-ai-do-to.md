@@ -4,7 +4,7 @@ description: Are you a software engineer who enjoys digging into new ideas, prac
 dateTime: 2026-05-10 19:00
 duration: 120
 cover: /content/media/events/314050338-code-review-culture-part-2-what-will-the-ai-do-to/515379.webp
-venue: 25963776
+venue: 25963776-kokoplaza
 howToFindUs: We are in room 701 of the Kokoplaza.
 topics:
   - Engineering Leadership

@@ -4,7 +4,7 @@ description: We have managed to invite Google Product Manager of Firebase Michae
 dateTime: 2019-03-23 18:00
 duration: 120
 cover: /content/media/events/259644459-spring-time-march-meetup-rekindle-your-passion/506739.webp
-venue: 26378946
+venue: 26378946-idc
 howToFindUs: Firstserver is on the 3rd floor
 channels:
   - type: meetup

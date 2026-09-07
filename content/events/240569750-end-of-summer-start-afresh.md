@@ -3,7 +3,7 @@ title: End-of-summer start afresh
 description: Hello Developers and Designers!
 dateTime: 2017-09-16 18:00
 cover: /content/media/events/240569750-end-of-summer-start-afresh/506739.webp
-venue: 24213835
+venue: 24213835-aiming-inc
 howToFindUs: From JR Osaka station walk north past the Grand Front South Tower. In the Grand Front North Tower take the business elevator or the elevator 4 to the Sky Lobby (9th floor) and from there take the elevator to the 18th floor.
 channels:
   - type: meetup

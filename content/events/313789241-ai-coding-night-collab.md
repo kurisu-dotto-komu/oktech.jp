@@ -4,7 +4,7 @@ description: Join us for a get-together with friends from CreatorLabo as we are 
 dateTime: 2026-03-25 18:30
 duration: 120
 cover: /content/media/events/313789241-ai-coding-night-collab/229797.webp
-venue: 28215604
+venue: 28215604-okini-kaigishitsu
 howToFindUs: 2nd Floor, Middle Meeting Room
 topics:
   - AI/ML

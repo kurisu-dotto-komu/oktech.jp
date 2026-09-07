@@ -4,7 +4,7 @@ description: The cicada’s chirp, the typhoons whirl and web developers meet up
 dateTime: 2015-08-29 18:00
 duration: 120
 cover: /content/media/events/224252563-relaxed-web-talks/506739.webp
-venue: 23994174
+venue: 23994174-c7-coworking
 howToFindUs: Right below the DropInn Osaka is the C7coworking space. The door will be opened with a OWDDM sign next to the street!
 channels:
   - type: meetup

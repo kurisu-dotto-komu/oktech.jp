@@ -3,7 +3,9 @@ title: Test Venue (No Map)
 city: osaka
 address: Test Address, No Map District, Osaka
 gmaps: https://maps.app.goo.gl/test-no-map
-meetupId: 999999995
+channels:
+  - type: meetup
+    ref: '999999995'
 devOnly: true
 ---
 

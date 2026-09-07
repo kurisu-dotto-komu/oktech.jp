@@ -3,7 +3,7 @@ title: Comfortable JavaScript Talks in April
 description: The cold days are over, and before we rush into Golden Week we have another nice Meetup in April while the last Cherry trees bloom. I would like to invite yo...
 dateTime: 2017-04-22 18:00
 cover: /content/media/events/239073556-comfortable-javascript-talks-in-april/506739.webp
-venue: 24213835
+venue: 24213835-aiming-inc
 howToFindUs: In the GrandFront north tower take the Business elevator to the 9th floor (sky lobby) and continue to the Aiming Office in the 18th floor
 channels:
   - type: meetup

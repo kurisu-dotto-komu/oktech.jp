@@ -4,7 +4,7 @@ description: Hello Everyone, this is an unexpected event! Surprise
 dateTime: 2022-09-07 19:00
 duration: 120
 cover: /content/media/events/288045345-creative-combo-mixer/572066.webp
-venue: 27398802
+venue: 27398802-hue-coffee-roaster
 topics:
   - Web Design
 channels:

@@ -4,7 +4,7 @@ description: Golden Week is behind us, and the weather is heating up, so why not
 dateTime: 2019-05-25 18:00
 duration: 120
 cover: /content/media/events/260439556-may-osaka-web-dev-and-design-meetup/506739.webp
-venue: 26378946
+venue: 26378946-idc
 howToFindUs: The meetup is on the 3rd floor. Enter the building from the parking entrance at the North side. If you arrive at the West entrance and see the map printed on the shuttered door, you'll need to head North and turn right.
 channels:
   - type: meetup

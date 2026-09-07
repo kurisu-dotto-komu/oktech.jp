@@ -4,7 +4,7 @@ description: Hello Everyone! 👋
 dateTime: 2023-05-19 19:00
 duration: 150
 cover: /content/media/events/292146517-astrobuild-workshop-by-tamas-piros/830928.webp
-venue: 27553394
+venue: 27553394-r3-institute-ltd-gusuku-ashibinaa-osaka
 howToFindUs: In the Grandfront North Tower, behind the Tully's on the 1F, take the Business Entrance to Tower C. Use the elevator to the 16F. We are in the R³ Institute Community Room at the very end of the north corridor.
 topics:
   - Computer Programming

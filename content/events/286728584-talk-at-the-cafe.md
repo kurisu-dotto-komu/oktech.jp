@@ -4,7 +4,7 @@ description: Hello there, You may be confused seeing this event. 😅
 dateTime: 2022-06-25 17:30
 duration: 90
 cover: /content/media/events/286728584-talk-at-the-cafe/036038.webp
-venue: 27310813
+venue: 27310813-laugh-rough-laugh
 howToFindUs: 子供の遊び場 親子カフェ Laugh Rough Laugh (ラフラフラフ) Cafe
 topics:
   - Computer Programming

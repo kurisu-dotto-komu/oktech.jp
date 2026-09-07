@@ -2,7 +2,7 @@ import { type CollectionEntry, getCollection, getEntry } from "astro:content";
 
 import { FALLBACK_COVER, SHOW_DEV_ENTRIES } from "@/constants";
 import { type GalleryImage, getGalleryImages } from "@/content/gallery";
-import { type ProcessedVenue, getVenueByRef, processVenue } from "@/content/queries/venues";
+import { type ProcessedVenue, processVenue } from "@/content/queries/venues";
 import { isEventUpcoming, seriesKey } from "@/utils/eventFilters";
 import { resolveEntryImage } from "@/utils/images";
 import { memoize } from "@/utils/memoize";
@@ -53,7 +53,7 @@ export const getEvent = memoize(async (eventSlug: string): Promise<EventEnriched
   const entry = await getEntry("events", eventSlug);
   if (!entry) throw new Error(`No event found for slug ${eventSlug}`);
 
-  const venueEntry = entry.data.venue ? await getVenueByRef(entry.data.venue.id) : undefined;
+  const venueEntry = entry.data.venue ? await getEntry("venues", entry.data.venue.id) : undefined;
   const series = entry.data.series ? await getEntry("series", entry.data.series.id) : undefined;
   const coverRef = entry.data.cover ?? series?.data.cover;
   const cover =

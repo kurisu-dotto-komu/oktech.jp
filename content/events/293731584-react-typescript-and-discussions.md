@@ -4,7 +4,7 @@ description: Hi Friends, 👋
 dateTime: 2023-06-24 17:00
 duration: 180
 cover: /content/media/events/293731584-react-typescript-and-discussions/801628.webp
-venue: 27585838
+venue: 27585838-helpfeel
 howToFindUs: In the 5F of above the Coco Ichibanya - Hard to miss.
 topics:
   - Database Backends

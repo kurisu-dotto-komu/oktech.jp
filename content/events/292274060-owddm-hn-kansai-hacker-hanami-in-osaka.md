@@ -4,7 +4,7 @@ description: Happy Spring!👋
 dateTime: 2023-04-01 12:00
 duration: 420
 cover: /content/media/events/292274060-owddm-hn-kansai-hacker-hanami-in-osaka/334029.webp
-venue: 27394125
+venue: 27394125-osaka-waterfront-park-sakuranomiya-beach
 howToFindUs: We secured a spot under a nice tree, see the photos for a a more detailed location.
 topics:
   - Computer Programming

@@ -4,7 +4,7 @@ description: Join us for our first JavaScript Hands-on in Kyoto.
 dateTime: 2026-05-16 15:00
 duration: 180
 cover: /content/media/events/313723903-javascript-in-kyoto-1/130498.webp
-venue: 28095701
+venue: 28095701-moneyforward-kyoto-office
 howToFindUs: Find us in the 4th floor of the Meiji-ya Kyoto building
 topics:
   - JavaScript

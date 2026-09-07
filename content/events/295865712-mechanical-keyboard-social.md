@@ -4,7 +4,7 @@ description: BRING OUT YOUR KEYBOARDS! ⌨️ 🙌
 dateTime: 2023-09-30 17:00
 duration: 180
 cover: /content/media/events/295865712-mechanical-keyboard-social/822720.webp
-venue: 27585838
+venue: 27585838-helpfeel
 howToFindUs: In the 5F of above the Coco Ichibanya - Hard to miss.
 topics:
   - Database Backends

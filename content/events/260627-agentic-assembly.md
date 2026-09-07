@@ -4,7 +4,7 @@ description: A small weekly gathering for engineers working at the bleeding edge
 dateTime: 2026-06-27 10:00
 duration: 120
 cover: /content/media/series/agentic-assembly/cover_weekly.webp
-venue: 900000703
+venue: 900000703-office-park-hommachi
 series: agentic-assembly
 howToFindUs: Same building as The DECK, 7th Floor.
 topics:

@@ -1,4 +1,5 @@
 import type { ProcessedVenue } from "@/content";
+import { readLocation } from "@/utils/maps/location";
 
 import LocationMapImage from "./LocationMapImage";
 
@@ -18,8 +19,9 @@ export default function LocationMap({ venue, marker, link = false, className }: 
     if (venue.gmaps) {
       return venue.gmaps;
     }
-    if (venue.coordinates?.lat && venue.coordinates?.lng) {
-      return `https://www.google.com/maps/search/?api=1&query=${venue.coordinates.lat},${venue.coordinates.lng}`;
+    const location = readLocation(venue);
+    if (location) {
+      return `https://www.google.com/maps/search/?api=1&query=${location.lat},${location.lng}`;
     }
 
     if (venue.address) {

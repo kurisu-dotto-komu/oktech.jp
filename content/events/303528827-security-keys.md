@@ -4,7 +4,7 @@ description: Hello friends,
 dateTime: 2024-11-02 17:00
 duration: 120
 cover: /content/media/events/303528827-security-keys/594991.webp
-venue: 27513738
+venue: 27513738-c2-kyoto
 topics:
   - Internet Professionals
   - Open Source

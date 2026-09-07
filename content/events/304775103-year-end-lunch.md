@@ -4,7 +4,7 @@ description: Hello Everyone!
 dateTime: 2024-12-20 12:00
 duration: 120
 cover: /content/media/events/304775103-year-end-lunch/010473.webp
-venue: 27929005
+venue: 27929005-hyssop
 channels:
   - type: meetup
     ref: '304775103'

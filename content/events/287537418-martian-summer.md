@@ -4,7 +4,7 @@ description: The new space worked out well last time! As it was providing a big 
 dateTime: 2022-08-20 16:45
 duration: 150
 cover: /content/media/events/287537418-martian-summer/968216.webp
-venue: 27370028
+venue: 27370028-kai-share-office-shin-osaka
 topics:
   - Front-end Development
   - User Experience

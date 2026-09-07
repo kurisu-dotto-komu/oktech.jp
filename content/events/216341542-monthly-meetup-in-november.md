@@ -4,7 +4,7 @@ description: The cold winds creep closer but they will not be able to stop our p
 dateTime: 2014-11-29 16:00
 duration: 120
 cover: /content/media/events/216341542-monthly-meetup-in-november/506739.webp
-venue: 22577042
+venue: 22577042-knowledge-salon
 howToFindUs: Take the elevator 北3 (no other!) to the 7th floor of the GrandFront north tower next to JR Osaka Station! Tell the lady at the entrance of the Knowledge Salon that you are a Web-designers/developers attendee! We will be in the C-D presentation room.
 channels:
   - type: meetup

@@ -4,7 +4,7 @@ description: 'Important Note: The Weather forecast looks like it should hold wit
 dateTime: 2022-07-09 15:00
 duration: 120
 cover: /content/media/events/286489263-web-stories-in-the-park/734800.webp
-venue: 26936190
+venue: 26936190-tsurumi-ryokuchi-park-large-lawn-area
 howToFindUs: 🚉 Accessible from the Tsurumi-ryokuchi Station on the Nagahori Tsurumi-ryokuchi line of the Osaka Metro.
 topics:
   - Computer Programming

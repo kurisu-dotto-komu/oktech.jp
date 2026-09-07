@@ -4,7 +4,7 @@ description: Hello everyone! 👋
 dateTime: 2023-05-20 17:00
 duration: 120
 cover: /content/media/events/293291174-with-no-code-to-business/760988.webp
-venue: 27573606
+venue: 27573606-share-karasuma
 howToFindUs: The No8 Hase Building is located in the same building as the drug store "Welcia". To reach the event venue, please go upstairs to the 2nd floor. Once you arrive at the second floor, you'll find the entrance to the event venue right in front of the elevator.
 topics:
   - New Technology

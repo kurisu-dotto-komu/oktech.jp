@@ -4,7 +4,7 @@ description: Happy new year!
 dateTime: 2025-01-11 17:00
 duration: 120
 cover: /content/media/events/305361716-data-with-pandas/481747.webp
-venue: 24529555
+venue: 24529555-cybozu-osaka-office
 howToFindUs: In the Hankyu main building take the (huge) business elevator to the 15th floor Skylobby. Then take the far-back elevator to the 35th floor to join us in the Cybozu Office.
 topics:
   - Data Science using Python

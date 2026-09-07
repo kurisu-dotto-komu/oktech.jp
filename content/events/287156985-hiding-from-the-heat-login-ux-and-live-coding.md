@@ -4,7 +4,7 @@ description: Summer heat in Osaka, and we meet to escape the blistering sun and 
 dateTime: 2022-07-23 17:00
 duration: 120
 cover: /content/media/events/287156985-hiding-from-the-heat-login-ux-and-live-coding/704122.webp
-venue: 27370028
+venue: 27370028-kai-share-office-shin-osaka
 topics:
   - Computer Programming
   - Internet Professionals

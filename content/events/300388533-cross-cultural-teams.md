@@ -4,7 +4,7 @@ description: Hello Friends, its not quite summer yet. Join us for a chill Saturd
 dateTime: 2024-05-18 19:00
 duration: 120
 cover: /content/media/events/300388533-cross-cultural-teams/093695.webp
-venue: 24529555
+venue: 24529555-cybozu-osaka-office
 howToFindUs: In the Hankyu main building take the (huge) business elevator to the 15th floor Skylobby. Then take the far-back elevator to the 35th floor to join us in the Cybozu Office.
 topics:
   - Culture

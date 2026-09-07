@@ -4,7 +4,7 @@ description: 'Location: https://global.rakuten.com/corp/about/map/index__p6.html
 dateTime: 2017-10-21 18:00
 duration: 120
 cover: /content/media/events/242801823-autumn-discussion-for-awesome-techies/506739.webp
-venue: 25511520
+venue: 25511520-sumitomo-nakanoshima-bld
 howToFindUs: Please come to the 8th Floor (Rakuten Office)
 channels:
   - type: meetup

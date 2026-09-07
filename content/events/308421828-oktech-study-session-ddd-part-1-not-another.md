@@ -4,7 +4,7 @@ description: Are you a software engineer who enjoys digging into new ideas, prac
 dateTime: 2025-08-03 19:00
 duration: 120
 cover: /content/media/events/308421828-oktech-study-session-ddd-part-1-not-another/122169.webp
-venue: 25963776
+venue: 25963776-kokoplaza
 howToFindUs: We are in room 801 of the Kokoplaza.
 topics:
   - Design Patterns

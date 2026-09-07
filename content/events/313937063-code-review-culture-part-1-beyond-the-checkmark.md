@@ -4,7 +4,7 @@ description: Are you a software engineer who enjoys digging into new ideas, prac
 dateTime: 2026-04-12 19:00
 duration: 120
 cover: /content/media/events/313937063-code-review-culture-part-1-beyond-the-checkmark/458969.webp
-venue: 25963776
+venue: 25963776-kokoplaza
 howToFindUs: We are in room 701 of the Kokoplaza.
 topics:
   - Engineering Leadership

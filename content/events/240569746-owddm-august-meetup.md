@@ -3,7 +3,7 @@ title: OWDDM August Meetup
 description: Join us in August for another great meetup with topics on web design and web programming. For those of you who won’t be escaping the summer heat at end of th...
 dateTime: 2017-08-26 18:00
 cover: /content/media/events/240569746-owddm-august-meetup/506739.webp
-venue: 24213835
+venue: 24213835-aiming-inc
 channels:
   - type: meetup
     ref: '240569746'

@@ -4,7 +4,7 @@ description: Hello aspiring developers, professional developers and hobbyist dev
 dateTime: 2016-06-18 18:00
 duration: 120
 cover: /content/media/events/231734870-june-meetup-cool-web-stuff-to-stave-off-the-heat/506739.webp
-venue: 24213835
+venue: 24213835-aiming-inc
 howToFindUs: 'From JR Station: pass through the GrandFront South Tower and take elevator next to the bridge to the 9th floor. Then take the elevator in the sky lobby to the 18th floor.'
 channels:
   - type: meetup

@@ -3,7 +3,7 @@ title: Weekly Recurring Test Event
 description: Development-mode test event used to verify the recurring-event feature.
 dateTime: 2026-07-13 11:00
 duration: 60
-venue: 22577042
+venue: 22577042-knowledge-salon
 series: dev-recurring-monday
 channels:
   - type: discord

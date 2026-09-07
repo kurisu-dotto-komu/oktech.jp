@@ -4,7 +4,7 @@ description: Season’s greetings
 dateTime: 2020-12-31 22:00
 duration: 120
 cover: /content/media/events/275387371-2020-end-of-year-virtual-party/121224.webp
-venue: 26906060
+venue: 26906060-online-event
 howToFindUs: https://spatial.chat/s/owddm?sp=0wddm
 channels:
   - type: meetup

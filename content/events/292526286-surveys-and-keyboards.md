@@ -4,7 +4,7 @@ description: Hello Everyone, 👋
 dateTime: 2023-04-21 18:00
 duration: 150
 cover: /content/media/events/292526286-surveys-and-keyboards/506744.webp
-venue: 27544400
+venue: 27544400-oinai-karasuma
 topics:
   - New Technology
   - Surveying

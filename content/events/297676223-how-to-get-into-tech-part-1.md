@@ -4,7 +4,7 @@ description: Are you thinking about getting into tech? Here is your chance to le
 dateTime: 2024-01-27 17:00
 duration: 150
 cover: /content/media/events/297676223-how-to-get-into-tech-part-1/457344.webp
-venue: 24529555
+venue: 24529555-cybozu-osaka-office
 howToFindUs: In the Hankyu main building take the (huge) business elevator to the 15th floor Skylobby. Then take the far-back elevator to the 35th floor to join us in the Cybozu Office.
 topics:
   - Computer Programming

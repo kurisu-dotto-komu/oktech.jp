@@ -4,7 +4,7 @@ description: Are you a software engineer who enjoys digging into new ideas, prac
 dateTime: 2025-11-23 19:00
 duration: 120
 cover: /content/media/events/311974329-study-session-inversion-of-control-and-dependency/265681.webp
-venue: 25963776
+venue: 25963776-kokoplaza
 howToFindUs: We are in room 701 of the Kokoplaza.
 topics:
   - Engineering Leadership

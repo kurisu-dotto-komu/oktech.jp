@@ -4,7 +4,7 @@ description: 'Join us for our first “Programming night”: a smaller and more 
 dateTime: 2023-05-30 17:00
 duration: 240
 cover: /content/media/events/293779684-casual-programming-night/506739.webp
-venue: 27584681
+venue: 27584681-co-ba-nakanoshima
 topics:
   - Cloud Computing
   - Computer Programming

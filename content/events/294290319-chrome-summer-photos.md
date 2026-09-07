@@ -4,7 +4,7 @@ description: Hello awesome people! 🤩
 dateTime: 2023-07-22 17:00
 duration: 150
 cover: /content/media/events/294290319-chrome-summer-photos/196039.webp
-venue: 27553394
+venue: 27553394-r3-institute-ltd-gusuku-ashibinaa-osaka
 topics:
   - Computer Programming
   - Internet Professionals

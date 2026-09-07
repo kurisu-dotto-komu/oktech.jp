@@ -4,7 +4,7 @@ description: Big buzzwords are on the menu for this Summer where we are happy to
 dateTime: 2025-07-19 17:00
 duration: 120
 cover: /content/media/events/308580120-agentic-sentiments/651843.webp
-venue: 24529555
+venue: 24529555-cybozu-osaka-office
 howToFindUs: In the Hankyu main building take the (huge) business elevator to the 15th floor Skylobby. Then take the far-back elevator to the 35th floor to join us in the Cybozu Office.
 topics:
   - Data Science using Python

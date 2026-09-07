@@ -4,7 +4,7 @@ description: Dear all, we hope you are fully enjoying the summer holidays. For t
 dateTime: 2018-08-25 18:00
 duration: 120
 cover: /content/media/events/249925579-laid-back-meetup-in-august/506739.webp
-venue: 24213835
+venue: 24213835-aiming-inc
 channels:
   - type: meetup
     ref: '249925579'

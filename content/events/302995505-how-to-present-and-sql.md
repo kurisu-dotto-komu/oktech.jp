@@ -4,7 +4,7 @@ description: Hello Friends 👋
 dateTime: 2024-11-16 17:00
 duration: 150
 cover: /content/media/events/302995505-how-to-present-and-sql/394023.webp
-venue: 27553394
+venue: 27553394-r3-institute-ltd-gusuku-ashibinaa-osaka
 howToFindUs: 1. Go to Grand Front NORTH Tower in the 1F(!). In the big space, behind Tully's go to Tower C (business area) and enter the Elevator to 16F. From there, go towards the end of the hall.
 topics:
   - Computer Programming

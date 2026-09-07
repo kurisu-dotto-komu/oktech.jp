@@ -4,7 +4,7 @@ description: The first cool nights have arrived, and typhoons seem to be a dista
 dateTime: 2015-09-26 18:00
 duration: 120
 cover: /content/media/events/225330671-early-autumn-web-talks/506739.webp
-venue: 23994174
+venue: 23994174-c7-coworking
 howToFindUs: We are on the 2nd floor above Tenkaippin (1st floor) and below DropInn Osaka (3rd floor), there is a dedicated floor stating "c7 coworking" right next on the street that will be lit and open (with an OWDDM sign)
 channels:
   - type: meetup

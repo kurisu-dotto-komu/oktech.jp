@@ -4,7 +4,7 @@ description: This is a test event that only appears in development mode.
 dateTime: 2027-04-15 18:00
 duration: 120
 cover: /content/media/events/999999999-example-dev-event/test1.webp
-venue: 999999997
+venue: 999999997-test-venue-1
 howToFindUs: Take the quantum elevator to floor 42. Look for the holographic OK Tech banner floating near the neural interface lounge. If you get lost, just think about the venue and our AI guide will telepathically direct you!
 topics:
   - Testing

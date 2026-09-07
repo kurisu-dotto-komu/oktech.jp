@@ -4,7 +4,7 @@ description: Summer is coming!
 dateTime: 2015-05-30 18:00
 duration: 120
 cover: /content/media/events/222203849-web-summer-kick-off-osaka/506739.webp
-venue: 22577042
+venue: 22577042-knowledge-salon
 howToFindUs: 7th Floor, North Building  Grand Front Umeda (Take the North 北 3 elevator!)
 channels:
   - type: meetup

@@ -4,7 +4,7 @@ description: Welcome back web developers and designers!
 dateTime: 2020-09-26 15:00
 duration: 120
 cover: /content/media/events/271892907-outdoor-meetup-returns/901481.webp
-venue: 26936190
+venue: 26936190-tsurumi-ryokuchi-park-large-lawn-area
 howToFindUs: 🚉 Accessible from the Tsurumi-ryokuchi Station on the Nagahori Tsurumi-ryokuchi line of the Osaka Metro.
 channels:
   - type: meetup

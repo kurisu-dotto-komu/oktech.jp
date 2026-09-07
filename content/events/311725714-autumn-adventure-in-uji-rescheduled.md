@@ -4,7 +4,7 @@ description: Now that complaining-about-the-heat season (a.k.a. summer) is over,
 dateTime: 2025-11-24 10:00
 duration: 300
 cover: /content/media/events/311725714-autumn-adventure-in-uji-rescheduled/117564.webp
-venue: 27879454
+venue: 27879454-keihan-uji-station
 howToFindUs: |-
   We'll meet in front of the Uji sightseeing guide map in front of the Uji Keihan Station. 
 

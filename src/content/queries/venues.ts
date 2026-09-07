@@ -26,26 +26,6 @@ export const getVenues = memoize(async (): Promise<VenueEntry[]> => {
   return relevant.filter((venue) => venue.data.hasPage).sort((a, b) => a.id.localeCompare(b.id));
 });
 
-const venueIndex = memoize(async () => {
-  const byId = new Map<string, VenueEntry>();
-  const byMeetupId = new Map<string, VenueEntry>();
-  for (const venue of await getCollection("venues")) {
-    byId.set(venue.id, venue);
-    const meetupId = venue.data.meetupId?.toString();
-    if (meetupId && !byMeetupId.has(meetupId)) byMeetupId.set(meetupId, venue);
-  }
-  return { byId, byMeetupId };
-});
-
-/**
- * Resolves a `venue:` value: an entry id first, then the legacy Meetup id that events still
- * carry until the content migration rewrites them.
- */
-export async function getVenueByRef(ref: string): Promise<VenueEntry | undefined> {
-  const { byId, byMeetupId } = await venueIndex();
-  return byId.get(ref) ?? byMeetupId.get(ref);
-}
-
 async function loadOptionalImage(
   imagePath: string | undefined,
   preset: Parameters<typeof getResponsiveImage>[1],

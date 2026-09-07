@@ -3,7 +3,7 @@ title: OWDDM ✕ HNKansai − End of Year Party
 description: Hi everybody! This month, we’re skipping our usual event and instead teaming up with the HN Kansai (http://hnkansai.org) meetup for one giant, awesome end of...
 dateTime: 2016-12-16 19:30
 cover: /content/media/events/236107100-owddm-hnkansai-end-of-year-party/506739.webp
-venue: 24945450
+venue: 24945450-maharaja
 channels:
   - type: meetup
     ref: '236107100'

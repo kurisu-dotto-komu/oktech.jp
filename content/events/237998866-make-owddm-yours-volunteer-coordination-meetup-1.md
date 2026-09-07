@@ -4,7 +4,7 @@ description: Hello Osaka Web Developers & Designers,
 dateTime: 2017-03-06 20:30
 duration: 60
 cover: /content/media/events/237998866-make-owddm-yours-volunteer-coordination-meetup-1/506739.webp
-venue: 25085262
+venue: 25085262-juso-coworking
 howToFindUs: http://juso-coworking.com/contact/access.html
 channels:
   - type: meetup
