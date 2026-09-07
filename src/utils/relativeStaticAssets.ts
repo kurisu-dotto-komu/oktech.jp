@@ -13,10 +13,7 @@ import type { Connect } from "vite";
 
 type Section = { routePrefix: string; sourceDir: string };
 
-const CONTENT_SECTIONS: Section[] = [
-  { routePrefix: "/articles/", sourceDir: "content/articles" },
-  { routePrefix: "/events/", sourceDir: "content/events" },
-];
+const CONTENT_SECTIONS: Section[] = [{ routePrefix: "/articles/", sourceDir: "content/articles" }];
 
 const SKIP_EXTENSIONS = new Set([
   ".md",

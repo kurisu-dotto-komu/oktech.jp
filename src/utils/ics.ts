@@ -1,7 +1,9 @@
 import { SITE } from "@/constants";
 import type { EventEnriched } from "@/content";
 
+import { readLocation } from "./maps/location";
 import { urls } from "./urls";
+import { eventUrl } from "./urls/entries";
 
 export function formatICSDate(date: Date): string {
   return date
@@ -18,7 +20,7 @@ function buildLocation(event: EventEnriched): string {
   return parts.join(", ");
 }
 
-function buildDescription(event: EventEnriched, eventUrl: string): string {
+function buildDescription(event: EventEnriched, url: string): string {
   const lines = [`${event.data.title} - ${SITE.longName}`];
 
   if (event.data.howToFindUs) {
@@ -29,7 +31,7 @@ function buildDescription(event: EventEnriched, eventUrl: string): string {
     lines.push("", `Google Maps: ${event.venue.gmaps}`);
   }
 
-  lines.push("", `Event page: ${eventUrl}`);
+  lines.push("", `Event page: ${url}`);
 
   return lines.join("\\n");
 }
@@ -45,9 +47,9 @@ export function generateEventICS(event: EventEnriched): string {
   // const status = event.data.isCancelled ? "CANCELLED" : "CONFIRMED";
   const status = "CONFIRMED";
 
-  const eventUrl = urls.toAbsolute(`/events/${event.id}`);
+  const url = urls.toAbsolute(eventUrl(event.id));
   const location = buildLocation(event);
-  const description = buildDescription(event, eventUrl);
+  const description = buildDescription(event, url);
 
   const fields = [
     "BEGIN:VEVENT",
@@ -58,12 +60,13 @@ export function generateEventICS(event: EventEnriched): string {
     `SUMMARY:${summary}`,
     `DESCRIPTION:${description}`,
     `LOCATION:${location}`,
-    `URL:${eventUrl}`,
+    `URL:${url}`,
     `STATUS:${status}`,
   ];
 
-  if (event.venue?.coordinates) {
-    fields.push(`GEO:${event.venue.coordinates.lat};${event.venue.coordinates.lng}`);
+  const geo = readLocation(event.venue);
+  if (geo) {
+    fields.push(`GEO:${geo.lat};${geo.lng}`);
   }
 
   fields.push("END:VEVENT");

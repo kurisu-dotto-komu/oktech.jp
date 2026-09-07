@@ -5,6 +5,7 @@ import { getEvents } from "@/content";
 
 import { formatDate } from "../utils/formatDate";
 import { urls } from "../utils/urls";
+import { eventUrl } from "../utils/urls/entries";
 
 export async function GET() {
   const events = await getEvents();
@@ -25,7 +26,7 @@ export async function GET() {
       title: event.data.title,
       description: `Event on ${formatDate(event.data.dateTime, "long")}`,
       pubDate: new Date(event.data.dateTime),
-      link: urls.toAbsolute(`/events/${event.id}`),
+      link: urls.toAbsolute(eventUrl(event.id)),
     })),
     customData: `<language>en-us</language>`,
   });

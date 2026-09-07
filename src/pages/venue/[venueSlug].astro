@@ -1,10 +1,10 @@
 ---
+import { getEntry, render } from "astro:content";
 import { EventCardList } from "@/components/Common/EventCard";
 import SidebarPageLayout from "@/layouts/SidebarPageLayout.astro";
 import { cmsEditHref } from "@/utils/cms";
 import { getVenue, getEvents, getVenues } from "@/content";
 import LocationCardVenue from "@/components/Common/LocationCardVenue";
-import MarkdownContent from "@/components/Common/MarkdownContent.astro";
 import Container from "@/components/Common/Container";
 
 export async function getStaticPaths() {
@@ -17,12 +17,13 @@ export async function getStaticPaths() {
   return venuePaths;
 }
 
-const { venueSlug } = Astro.params;
+const { venueSlug = "" } = Astro.params;
 const venue = await getVenue(venueSlug);
+const entry = await getEntry("venues", venueSlug);
+if (!entry) throw new Error(`No venue found for slug ${venueSlug}`);
+const { Content } = await render(entry);
 const allEvents = await getEvents();
-const venueEvents = allEvents.filter(
-  (event) => event.data.venue?.id === venue.data.meetupId.toString(),
-);
+const venueEvents = allEvents.filter((event) => event.venueSlug === venueSlug);
 ---
 
 <SidebarPageLayout cmsHref={cmsEditHref("venues", venueSlug)}>
@@ -53,7 +54,7 @@ const venueEvents = allEvents.filter(
         {venue.data.title}
       </h1>
     </div>
-    <MarkdownContent markdown={`venues/${venueSlug}/venue.md`} />
+    <div class="prose prose-lg max-w-none"><Content /></div>
   </Fragment>
 
   <Fragment slot="after-content">

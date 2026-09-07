@@ -22,9 +22,3 @@ export function cmsEditHref(collection: CmsCollection, slug: string): string {
   const entry = collection === "events" ? slug : `${slug}/${ENTRY_FILE_NAMES[collection]}`;
   return `${CMS_PATH}/#/collections/${collection}/entries/${entry}`;
 }
-
-/** Deep link derived from a content path like `articles/<slug>/index.md`. */
-export function cmsArticleHref(markdownPath: string): string {
-  const slug = markdownPath.replace(/^articles\//, "").replace(/(\/index)?\.md$/, "");
-  return cmsEditHref("articles", slug);
-}

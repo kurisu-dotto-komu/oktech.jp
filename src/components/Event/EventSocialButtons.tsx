@@ -4,7 +4,7 @@ import { FaDiscord, FaLinkedin, FaMeetup } from "react-icons/fa6";
 import { LuExternalLink, LuSparkles } from "react-icons/lu";
 
 import { MEETUP_EVENT_URL } from "@/constants";
-import type { EventEnriched } from "@/content/events";
+import type { EventEnriched } from "@/content";
 
 interface EventSocialButtonsProps {
   event: EventEnriched;

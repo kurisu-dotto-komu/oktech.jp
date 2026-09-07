@@ -4,7 +4,7 @@ import { LuArrowUp, LuCalendar, LuRss, LuX } from "react-icons/lu";
 
 import CalendarAddEventLinks from "@/components/Common/CalendarAddEventLinks";
 import CopyText from "@/components/Common/CopyText";
-import type { EventEnriched } from "@/content/events";
+import type { EventEnriched } from "@/content";
 import { urls } from "@/utils/urls";
 
 interface CalendarSubscribeModalProps {

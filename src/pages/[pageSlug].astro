@@ -1,0 +1,16 @@
+---
+import { getCollection, getEntry } from "astro:content";
+
+import MarkdownPageLayout from "@/layouts/MarkdownPageLayout.astro";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("pages");
+  return pages.map((page) => ({ params: { pageSlug: page.id } }));
+}
+
+const { pageSlug = "" } = Astro.params;
+const entry = await getEntry("pages", pageSlug);
+if (!entry) throw new Error(`No page found for slug ${pageSlug}`);
+---
+
+<MarkdownPageLayout entry={entry} />

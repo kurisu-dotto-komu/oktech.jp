@@ -1,15 +1,15 @@
 import { SEO_DATA, SITE } from "@/constants";
-import type { EventEnriched } from "@/content";
-import type { VenueEnriched } from "@/content/venues";
+import type { EventEnriched, VenueEnriched } from "@/content";
 import { getOGImageWithFallback } from "@/utils/og";
 import { urls } from "@/utils/urls";
+import { parseEntryPath } from "@/utils/urls/entries";
 
 import { decorateEventSEO } from "./decorateEventSEO";
-import { decorateMarkdownPageSEO } from "./decorateMarkdownPageSEO";
+import { decorateArticleSEO, decoratePageSEO } from "./decorateMarkdownSEO";
 import { decorateStaticPageSEO } from "./decorateStaticPageSEO";
 import { decorateVenueSEO } from "./decorateVenueSEO";
 
-export type PageType = "static" | "event" | "venue" | "markdown" | "unknown";
+export type PageType = "static" | "event" | "venue" | "article" | "page" | "unknown";
 
 export interface PageInfo {
   type: PageType;
@@ -73,26 +73,15 @@ export function parsePageType(pathname: string): PageInfo {
     return { type: "static", id: normalizedPathname };
   }
 
-  const eventMatch = normalizedPathname.match(/^\/events\/([^/]+?)$/);
-  if (eventMatch?.[1]) {
-    return { type: "event", id: eventMatch[1] };
-  }
+  const entry = parseEntryPath(normalizedPathname);
+  if (entry && entry.type !== "page") return entry;
 
-  const venueMatch = normalizedPathname.match(/^\/venue\/([^/]+?)$/);
-  if (venueMatch?.[1]) {
-    return { type: "venue", id: venueMatch[1] };
-  }
-
+  // Deeper /events and /venue paths are assets, not pages.
   if (normalizedPathname.startsWith("/events") || normalizedPathname.startsWith("/venue")) {
     return { type: "unknown", id: normalizedPathname };
   }
 
-  const slug = normalizedPathname.replace(/^\//, "");
-  if (slug) {
-    return { type: "markdown", id: slug };
-  }
-
-  return { type: "unknown", id: normalizedPathname };
+  return entry ?? { type: "unknown", id: normalizedPathname };
 }
 
 export async function getSEO(url: string): Promise<SEOMetadata> {
@@ -108,8 +97,10 @@ export async function getSEO(url: string): Promise<SEOMetadata> {
       return decorateEventSEO(baseSEO, pageInfo.id, pathname);
     case "venue":
       return decorateVenueSEO(baseSEO, pageInfo.id, pathname);
-    case "markdown":
-      return decorateMarkdownPageSEO(baseSEO, pageInfo.id);
+    case "article":
+      return decorateArticleSEO(baseSEO, pageInfo.id);
+    case "page":
+      return decoratePageSEO(baseSEO, pageInfo.id);
     default:
       return baseSEO;
   }

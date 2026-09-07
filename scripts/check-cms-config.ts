@@ -12,8 +12,8 @@ import type { CmsConfig } from "@/cms/types";
 
 import { type JsonSchema, createValidator } from "./cms-check/jsonSchema";
 import { REPO_ROOT, loadCmsConfig } from "./cms-check/loadConfig";
+import { readSchemaKeys } from "./cms-check/schemaKeys";
 import { checkWidgets, getBuiltInWidgets } from "./cms-check/widgets";
-import { readZodObjectKeys } from "./cms-check/zodShape";
 
 const SCHEMA_PATH = "node_modules/@sveltia/cms/schema/sveltia-cms.json";
 
@@ -38,7 +38,7 @@ function checkFieldParity(config: CmsConfig): string[] {
     checkParity(
       target,
       collectionFieldNames(config, target.collection),
-      readZodObjectKeys(path.join(REPO_ROOT, target.schemaModule), target.schemaFunction),
+      readSchemaKeys(target.collection),
     ),
   );
 }

@@ -1,0 +1,16 @@
+---
+import { getCollection, getEntry } from "astro:content";
+
+import ArticleLayout from "@/layouts/ArticleLayout.astro";
+
+export async function getStaticPaths() {
+  const articles = await getCollection("articles");
+  return articles.map((article) => ({ params: { articleSlug: article.id } }));
+}
+
+const { articleSlug = "" } = Astro.params;
+const entry = await getEntry("articles", articleSlug);
+if (!entry) throw new Error(`No article found for slug ${articleSlug}`);
+---
+
+<ArticleLayout entry={entry} />

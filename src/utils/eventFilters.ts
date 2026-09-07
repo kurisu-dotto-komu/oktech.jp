@@ -11,6 +11,11 @@ interface EventWithDateTime {
   };
 }
 
+/** Anything carrying a series, either as a reference or as the front matter it replaces. */
+interface SeriesMember {
+  data: { series?: { id: string } | string; recurredFrom?: string; devOnly?: boolean };
+}
+
 /**
  * Calculates the end time of an event including a buffer period
  */
@@ -60,16 +65,21 @@ export function filterRecentEvents<T extends EventWithDateTime>(
   return events.filter((event) => isEventRecent(event, currentTime));
 }
 
+/** An event's series, from the reference or from the front matter it is migrating away from. */
+export function seriesKey(event: SeriesMember): string | undefined {
+  const { series, recurredFrom } = event.data;
+  if (typeof series === "string") return series;
+  return series?.id ?? recurredFrom;
+}
+
 /**
  * Keeps regular meetups prominent on the landing page above recurring series
  * and dev fixtures.
  */
-export function sortUpcomingByTier<
-  T extends EventWithDateTime & { data: { recurredFrom?: string; devOnly?: boolean } },
->(events: T[]): T[] {
+export function sortUpcomingByTier<T extends EventWithDateTime & SeriesMember>(events: T[]): T[] {
   const tier = (event: T): number => {
     if (event.data.devOnly) return 2;
-    if (event.data.recurredFrom) return 1;
+    if (seriesKey(event)) return 1;
     return 0;
   };
   return [...events].sort((a, b) => {
@@ -80,49 +90,22 @@ export function sortUpcomingByTier<
 }
 
 /**
- * Collapses recurring-event instances so each parent appears at most once.
- * Iterates the array in order; for past instances, the first hit per parent wins —
+ * Collapses occurrences so each series appears at most once.
+ * Iterates the array in order; for past occurrences, the first hit per series wins —
  * so callers should pass an array sorted most-recent-first to keep the freshest one.
  */
-export function dedupeRecurringInstances<T extends { data: { recurredFrom?: string } }>(
-  events: T[],
-): T[] {
+export function dedupeSeriesOccurrences<T extends SeriesMember>(events: T[]): T[] {
   const seen = new Set<string>();
   const result: T[] = [];
   for (const event of events) {
-    const parent = event.data.recurredFrom;
-    if (parent) {
-      if (seen.has(parent)) continue;
-      seen.add(parent);
+    const series = seriesKey(event);
+    if (series) {
+      if (seen.has(series)) continue;
+      seen.add(series);
     }
     result.push(event);
   }
   return result;
-}
-
-type RecurringOccurrence = {
-  dateTime: Date;
-  recurredFrom?: string;
-  isNextRecurringOccurrence?: boolean;
-};
-
-/**
- * Flags the soonest still-upcoming occurrence of each recurring series, which is what
- * `EventCardInfo` renders the "recurring every …" badge from. Derived at load time so
- * occurrences never carry a hand-maintained flag that goes stale as dates pass.
- */
-export function markNextRecurringOccurrences<T extends RecurringOccurrence>(
-  events: T[],
-  now: Date,
-): T[] {
-  const nextPerSeries = new Map<string, T>();
-  for (const event of events) {
-    if (!event.recurredFrom || event.dateTime.getTime() <= now.getTime()) continue;
-    const current = nextPerSeries.get(event.recurredFrom);
-    if (!current || event.dateTime < current.dateTime) nextPerSeries.set(event.recurredFrom, event);
-  }
-  for (const event of nextPerSeries.values()) event.isNextRecurringOccurrence = true;
-  return events;
 }
 
 /**

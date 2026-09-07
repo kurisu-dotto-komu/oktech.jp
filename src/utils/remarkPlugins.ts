@@ -75,27 +75,19 @@ export function remarkRelativeAssets() {
   };
 }
 
+/** Anchors, absolute paths and anything with a URI scheme (http:, mailto:, tel:) stay as they are. */
+const ABSOLUTE_TARGET = /^(#|\/|[a-z][a-z0-9+.-]*:)/i;
+
 function rewritePath(node: any, key: string, fileDir: string) {
   const value: string | undefined = node[key];
   if (!value || typeof value !== "string") return;
-  if (
-    value.startsWith("#") ||
-    value.startsWith("http://") ||
-    value.startsWith("https://") ||
-    value.startsWith("/")
-  )
-    return;
+  if (ABSOLUTE_TARGET.test(value)) return;
   node[key] = path.posix.normalize(path.posix.join(fileDir, value));
 }
 
 function rewriteHtmlSources(value: string, fileDir: string): string {
   return value.replace(/(src|href)\s*=\s*(["'])([^"']+)\2/g, (match, attr, quote, url) => {
-    if (
-      url.startsWith("#") ||
-      url.startsWith("/") ||
-      url.startsWith("http://") ||
-      url.startsWith("https://")
-    ) {
+    if (ABSOLUTE_TARGET.test(url)) {
       return match;
     }
     const rewritten = path.posix.normalize(path.posix.join(fileDir, url));

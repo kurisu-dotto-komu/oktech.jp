@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { LuCalendarPlus } from "react-icons/lu";
 
 import CalendarSubscribeModal from "@/components/Common/CalendarSubscribeModal";
-import type { EventEnriched } from "@/content/events";
+import type { EventEnriched } from "@/content";
 
 interface CalendarSubscribeButtonProps {
   event?: EventEnriched;

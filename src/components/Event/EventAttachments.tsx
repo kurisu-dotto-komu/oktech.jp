@@ -10,7 +10,7 @@ import {
   LuVideo,
 } from "react-icons/lu";
 
-import type { EventEnriched } from "@/content/events";
+import type { EventEnriched } from "@/content";
 
 import Container from "../Common/Container";
 import Grid from "../Common/Grid";

@@ -1,7 +1,7 @@
 import { FaGoogle, FaYahoo } from "react-icons/fa6";
 import { LuCalendar } from "react-icons/lu";
 
-import type { EventEnriched } from "@/content/events";
+import type { EventEnriched } from "@/content";
 import { urls } from "@/utils/urls";
 
 interface CalendarAddEventLinksProps {

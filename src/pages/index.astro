@@ -7,7 +7,7 @@ import { getEvents } from "@/content";
 
 import EventsSection from "@/components/Landing/LandingEventsSection";
 import {
-  dedupeRecurringInstances,
+  dedupeSeriesOccurrences,
   filterRecentEvents,
   filterUpcomingEvents,
 } from "@/utils/eventFilters";
@@ -17,7 +17,7 @@ import {
 // the full listing at /events keeps every instance.
 const allEvents = await getEvents();
 const upcomingEvents = filterUpcomingEvents(allEvents);
-const recentDeduped = dedupeRecurringInstances(filterRecentEvents(allEvents));
+const recentDeduped = dedupeSeriesOccurrences(filterRecentEvents(allEvents));
 const events = [...upcomingEvents, ...recentDeduped.slice(0, 12)];
 const totalEvents = allEvents.length;
 ---

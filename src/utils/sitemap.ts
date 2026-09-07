@@ -5,6 +5,7 @@ import { getEvents, getVenues } from "@/content";
 
 import { getSEO } from "./seo";
 import { urls } from "./urls";
+import { articleUrl, eventUrl, pageUrl, venueUrl } from "./urls/entries";
 
 export interface Entry {
   title: string;
@@ -63,14 +64,18 @@ export async function buildSitemapEntries(): Promise<Entry[]> {
   entries.push(await getSitemapItem("/oktech-events.ics"));
   entries.push(await getSitemapItem("/sitemap.xml"));
 
-  // Dynamic markdown pages from content collection
+  // Articles and standalone pages
   try {
-    const markdownPages = await getCollection("markdownPages");
+    const byId = (a: { id: string }, b: { id: string }) => a.id.localeCompare(b.id);
+    const [articles, pages] = await Promise.all([
+      getCollection("articles"),
+      getCollection("pages"),
+    ]);
     const markdownEntries: Entry[] = await Promise.all(
-      markdownPages.map(async (page) => {
-        // Remove .md extension to get the URL path
-        const slug = page.id.replace(/\.md$/, "");
-        const href = `/${slug}`;
+      [
+        ...articles.sort(byId).map((article) => articleUrl(article.id)),
+        ...pages.sort(byId).map((page) => pageUrl(page.id)),
+      ].map(async (href) => {
         const seo = await getSEO(href);
         return {
           href,
@@ -91,7 +96,7 @@ export async function buildSitemapEntries(): Promise<Entry[]> {
   const events = await getEvents();
   const eventPages: Entry[] = await Promise.all(
     events.map(async (e) => {
-      const href = `/events/${e.id}`;
+      const href = eventUrl(e.id);
       const seo = await getSEO(href);
       return {
         href,
@@ -109,7 +114,7 @@ export async function buildSitemapEntries(): Promise<Entry[]> {
   const venues = await getVenues();
   const venuePages: Entry[] = await Promise.all(
     venues.map(async (v) => {
-      const href = `/venue/${v.id}`;
+      const href = venueUrl(v.id);
       const seo = await getSEO(href);
       return {
         href,

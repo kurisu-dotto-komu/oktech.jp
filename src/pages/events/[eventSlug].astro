@@ -1,10 +1,10 @@
 ---
+import { getEntry, render } from "astro:content";
 import { getEvents, getEvent } from "@/content";
 import EventAttachments from "@/components/Event/EventAttachments";
 import EventGallery from "@/components/Event/EventGallery";
 import SidebarPageLayout from "@/layouts/SidebarPageLayout.astro";
 import { cmsEditHref } from "@/utils/cms";
-import MarkdownContent from "@/components/Common/MarkdownContent.astro";
 import EventImageBig from "@/components/Event/EventImageBig";
 import LocationCardEvent from "@/components/Common/LocationCardEvent";
 import EventTags from "@/components/Event/EventTags";
@@ -13,7 +13,7 @@ import MarketingRedirect from "@/components/Event/MarketingRedirect";
 import { isEventUpcoming } from "@/utils/eventFilters";
 
 export async function getStaticPaths() {
-  const events = await getEvents(undefined, { includeCalendarOnly: true });
+  const events = await getEvents();
 
   return events.map(({ id }) => {
     return {
@@ -22,15 +22,16 @@ export async function getStaticPaths() {
   });
 }
 
-const { eventSlug } = Astro.params;
+const { eventSlug = "" } = Astro.params;
 // getEvent already returns enhanced event with responsive images
 const event = await getEvent(eventSlug);
+const entry = await getEntry("events", eventSlug);
+if (!entry) throw new Error(`No event found for slug ${eventSlug}`);
+const { Content } = await render(entry);
 
 const isUpcoming = isEventUpcoming(event);
 
-// Occurrences of a recurring event live in their parent's file, which is deliberately
-// not editable in the CMS, so they only get the generic editor link.
-const cmsHref = event.data.bodySlug ? undefined : cmsEditHref("events", eventSlug);
+const cmsHref = cmsEditHref("events", eventSlug);
 ---
 
 <SidebarPageLayout footerEvent={event} cmsHref={cmsHref}>
@@ -62,7 +63,7 @@ const cmsHref = event.data.bodySlug ? undefined : cmsEditHref("events", eventSlu
         {event.data.title}
       </h1>
       <EventTags tags={event.data.topics} />
-      <MarkdownContent markdown={`events/${event.data.bodySlug ?? eventSlug}.md`} />
+      <div class="prose prose-lg max-w-none"><Content /></div>
     </div>
   </Fragment>
 

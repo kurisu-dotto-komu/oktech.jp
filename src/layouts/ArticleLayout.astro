@@ -1,47 +1,29 @@
 ---
-import PageLayout from "@/layouts/PageLayout.astro";
-import { cmsArticleHref } from "@/utils/cms";
-import Container from "@/components/Common/Container";
-import MarkdownContent from "@/components/Common/MarkdownContent.astro";
+import { type CollectionEntry, render } from "astro:content";
+import { LuClock } from "react-icons/lu";
+
 import ArticleAuthorBar from "@/components/Article/ArticleAuthorBar";
 import ArticleNextLink from "@/components/Article/ArticleNextLink";
+import Container from "@/components/Common/Container";
+import { getArticles } from "@/content";
+import type { MarkdownMeta } from "@/content/queries/markdown";
+import PageLayout from "@/layouts/PageLayout.astro";
 import { parseAuthor } from "@/utils/author";
-import { LuClock } from "react-icons/lu";
-import { getCollection } from "astro:content";
+import { cmsEditHref } from "@/utils/cms";
 
 interface Props {
-  markdown: string;
+  entry: CollectionEntry<"articles">;
 }
 
-const { markdown } = Astro.props;
+const { entry } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await render(entry);
+const { readingTime } = remarkPluginFrontmatter as MarkdownMeta;
 
-const markdownFiles = import.meta.glob("/content/**/*.md");
-const fullPath = `/content/${markdown}`;
-const module = (await markdownFiles[fullPath]()) as any;
-const { frontmatter } = module;
+const author = entry.data.author ? parseAuthor(entry.data.author) : undefined;
 
-const author = frontmatter?.author ? parseAuthor(frontmatter.author) : undefined;
-
-// Compute next article (next older by date)
-const pages = await getCollection("markdownPages");
-const articlePages = pages.filter((p) => p.data.filePath.startsWith("articles/"));
-
-const articles = await Promise.all(
-  articlePages.map(async (p) => {
-    const mod = (await markdownFiles[`/content/${p.data.filePath}`]()) as any;
-    const fm = mod.frontmatter;
-    return { id: p.id, title: fm?.title ?? p.id, date: fm?.date, filePath: p.data.filePath };
-  }),
-);
-
-const sorted = articles.sort((a, b) => {
-  if (a.date && b.date) return new Date(b.date).getTime() - new Date(a.date).getTime();
-  return a.title.localeCompare(b.title);
-});
-
-const currentIndex = sorted.findIndex((a) => a.filePath === markdown);
-const next = sorted[currentIndex + 1];
-const nextArticle = next ? { title: next.title, href: `/${next.id}` } : undefined;
+// The next article is the next older one, in the same order the listing uses.
+const articles = await getArticles();
+const next = articles[articles.findIndex((article) => article.id === entry.id) + 1];
 
 function formatDate(dateStr: string): string {
   const d = new Date(dateStr);
@@ -49,34 +31,32 @@ function formatDate(dateStr: string): string {
 }
 ---
 
-<PageLayout className="pt-32 pb-22" cmsHref={cmsArticleHref(markdown)}>
+<PageLayout className="pt-32 pb-22" cmsHref={cmsEditHref("articles", entry.id)}>
   <Container thin>
     <div class="mb-20 flex flex-col gap-4">
-      <h1 class="title">{frontmatter?.title}</h1>
+      <h1 class="title">{entry.data.title}</h1>
       {
-        (author || frontmatter?.date || frontmatter?.readingTime) && (
+        (author || entry.data.date || readingTime) && (
           <div class="text-base-content/60 flex flex-wrap items-center gap-2 text-sm">
             {author && <ArticleAuthorBar author={author} />}
-            {author && (frontmatter?.date || frontmatter?.readingTime) && (
+            {author && (entry.data.date || readingTime) && (
               <span class="text-base-content/30">&middot;</span>
             )}
-            {frontmatter?.date && (
+            {entry.data.date && (
               <span class="flex items-center gap-1">
                 <LuClock className="h-3.5 w-3.5" />
-                {formatDate(frontmatter.date)}
+                {formatDate(entry.data.date)}
               </span>
             )}
-            {frontmatter?.date && frontmatter?.readingTime && (
-              <span class="text-base-content/30">&middot;</span>
-            )}
-            {frontmatter?.readingTime && <span>{frontmatter.readingTime}</span>}
+            {entry.data.date && readingTime && <span class="text-base-content/30">&middot;</span>}
+            {readingTime && <span>{readingTime}</span>}
           </div>
         )
       }
     </div>
     <div class="prose prose-lg max-w-none">
-      <MarkdownContent markdown={markdown} />
+      <div class="prose prose-lg max-w-none"><Content /></div>
     </div>
-    <ArticleNextLink title={nextArticle?.title} href={nextArticle?.href} />
+    <ArticleNextLink title={next?.title} href={next?.href} />
   </Container>
 </PageLayout>

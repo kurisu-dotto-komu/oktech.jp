@@ -12,8 +12,8 @@ import matter from "gray-matter";
 import fs from "node:fs";
 import path from "node:path";
 
+import { parseEventDateTime } from "@/content/schemas/date";
 import { getEventEndTimeWithBuffer } from "@/utils/eventFilters";
-import { parseEventDateTime } from "@/utils/recurringDates";
 
 const EVENTS_DIR = path.resolve(process.cwd(), "content/events");
 
