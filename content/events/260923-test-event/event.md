@@ -1,5 +1,5 @@
 ---
-title: TEST EVENT
+title: TEST EVENT UPDATE
 description: This was a test event created with the CMS
 dateTime: 2026-09-23 23:47
 duration: 120
