@@ -17,6 +17,8 @@ export function buildBackend(): CmsBackend {
     base_url: env.PUBLIC_CMS_AUTH_BASE_URL || undefined,
     // Public repo: ask contributors for the narrowest GitHub grant (no private repo access)
     auth_scope: "public_repo",
+    // Commit status set by .github/workflows/cloudflare-staging.yml on every PR
+    preview_context: "cloudflare preview",
     // Contributors without write access propose changes from a fork (needs editorial workflow)
     open_authoring: true,
   };

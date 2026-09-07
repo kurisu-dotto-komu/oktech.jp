@@ -36,6 +36,7 @@ export function buildArticlesCollection(): CmsEntryCollection {
     path: cmsEntryPath("articles"),
     media_folder: "",
     public_folder: ".",
+    preview_path: "articles/{{slug}}",
     create: true,
     slug: "{{slug}}",
     summary: "{{title}}",
