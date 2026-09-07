@@ -4,7 +4,9 @@ description: Dear designers and developers,
 dateTime: 2016-10-22 18:00
 cover: /content/media/events/234692399-october-fun-with-mobx-and-real-life-hacking/506739.webp
 venue: 24213835
-meetupId: 234692399
+channels:
+  - type: meetup
+    ref: '234692399'
 ---
 
 Dear designers and developers,

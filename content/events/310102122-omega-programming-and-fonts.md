@@ -6,9 +6,11 @@ duration: 120
 cover: /content/media/events/310102122-omega-programming-and-fonts/222484.webp
 venue: 28095701
 howToFindUs: Find us in the 4th floor of the Meiji-ya Kyoto building
-meetupId: 310102122
-links:
-  linkedIn: https://www.linkedin.com/events/7354435879374897152/
+channels:
+  - type: meetup
+    ref: '310102122'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7354435879374897152/
 ---
 
 Come escape the summer heat with Eduardo & Jake at the MoneyForward office in Kyoto!

@@ -6,12 +6,14 @@ duration: 120
 cover: /content/media/events/308580120-agentic-sentiments/651843.webp
 venue: 24529555
 howToFindUs: In the Hankyu main building take the (huge) business elevator to the 15th floor Skylobby. Then take the far-back elevator to the 35th floor to join us in the Cybozu Office.
-meetupId: 308580120
 topics:
   - Data Science using Python
   - Python
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '308580120'
 ---
 
 Big buzzwords are on the menu for this Summer where we are happy to invite both techy and non-techy people.

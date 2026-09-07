@@ -6,16 +6,19 @@ duration: 120
 cover: /content/media/events/311973741-end-of-year-event-satellite-images-dev/494574.webp
 venue: 27553394
 howToFindUs: 1. Go to Grand Front NORTH Tower in the 1F(!). In the big space, behind Tully's go to Tower C (business area) and enter the Elevator to 16F. From there, go towards the end of the hall.
-meetupId: 311973741
 topics:
   - Software Security
   - Software Development
   - DevOps
   - Computers
   - Satellite
-links:
-  discord: https://discord.gg/Qag6XuKM?event=1441230404743860386
-  linkedIn: https://www.linkedin.com/events/7397440701023776768/
+channels:
+  - type: meetup
+    ref: '311973741'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7397440701023776768/
+  - type: discord
+    ref: https://discord.gg/Qag6XuKM?event=1441230404743860386
 ---
 
 Our last event this year is just before christmas🥂🎄with lovely presentations!

@@ -1,6 +1,7 @@
 ---
 import { getEntry, render } from "astro:content";
 import { getEvents, getEvent } from "@/content";
+import { channelUrl, rsvpChannel } from "@/content/channels";
 import EventAttachments from "@/components/Event/EventAttachments";
 import EventGallery from "@/components/Event/EventGallery";
 import SidebarPageLayout from "@/layouts/SidebarPageLayout.astro";
@@ -32,12 +33,14 @@ const { Content } = await render(entry);
 const isUpcoming = isEventUpcoming(event);
 
 const cmsHref = cmsEditHref("events", eventSlug);
+const rsvp = rsvpChannel(event.data.channels);
+const marketingHref = rsvp ? channelUrl(rsvp) : undefined;
 ---
 
 <SidebarPageLayout footerEvent={event} cmsHref={cmsHref}>
   <Fragment slot="before-layout">
     <MarketingRedirect
-      meetupId={event.data.meetupId}
+      href={marketingHref}
       eventDateTime={event.data.dateTime.toISOString()}
       isCancelled={event.data.isCancelled}
       client:load

@@ -5,7 +5,9 @@ dateTime: 2018-04-16 19:00
 duration: 120
 cover: /content/media/events/249406527-owddm-volunteer-coordination-2/506739.webp
 venue: 25085262
-meetupId: 249406527
+channels:
+  - type: meetup
+    ref: '249406527'
 ---
 
 Ever wondered how we come up with the meetup? Did you enjoy your time and feel like contributing? Do you think we could accommodate you?

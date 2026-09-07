@@ -6,13 +6,15 @@ duration: 180
 cover: /content/media/events/293731584-react-typescript-and-discussions/801628.webp
 venue: 27585838
 howToFindUs: In the 5F of above the Coco Ichibanya - Hard to miss.
-meetupId: 293731584
 topics:
   - Database Backends
   - HTML5
   - ReactJS
   - Typescript
   - Web Design
+channels:
+  - type: meetup
+    ref: '293731584'
 ---
 
 Hi Friends, 👋

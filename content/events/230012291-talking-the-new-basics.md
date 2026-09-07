@@ -6,7 +6,9 @@ duration: 120
 cover: /content/media/events/230012291-talking-the-new-basics/506739.webp
 venue: 24213835
 howToFindUs: 'From JR Station: pass through the GrandFront South Tower and take elevator next to the bridge to the 9th floor. Then take the elevator in the sky lobby to the 18th floor.'
-meetupId: 230012291
+channels:
+  - type: meetup
+    ref: '230012291'
 ---
 
 Welcome back, dear Web enthusiasts!

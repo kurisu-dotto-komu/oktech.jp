@@ -5,7 +5,9 @@ dateTime: 2017-11-25 18:00
 duration: 120
 cover: /content/media/events/242802082-november-code-talks/506739.webp
 venue: 24529555
-meetupId: 242802082
+channels:
+  - type: meetup
+    ref: '242802082'
 ---
 
 Dear all,

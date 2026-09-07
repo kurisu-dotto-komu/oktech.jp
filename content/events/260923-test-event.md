@@ -10,8 +10,9 @@ howToFindUs: You can't, it's a test
 topics:
   - AI
   - Testing
-links:
-  Test: https://google.com
+channels:
+  - type: Test
+    ref: https://google.com
 isCancelled: false
 devOnly: false
 ---

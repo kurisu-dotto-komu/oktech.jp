@@ -13,11 +13,13 @@ howToFindUs: |
   and YouTube URL: https://youtu.be/5s9GsrtG7KA
 
   If you need direction or need help locating the place, please reach out to Kimmy,  the Event Manager.
-meetupId: 284832684
 topics:
   - API
   - Automation
   - Web Security
+channels:
+  - type: meetup
+    ref: '284832684'
 ---
 
 We will be very happy to see you at the next Meetup, our first meeting of the year.

@@ -6,8 +6,8 @@ import clsx from "clsx";
 import { LuCalendarCheck, LuCalendarX, LuTicket } from "react-icons/lu";
 
 import EventCountdown from "@/components/Common/EventCountdown";
-import { MEETUP_EVENT_URL } from "@/constants";
 import type { EventEnriched } from "@/content";
+import { channelUrl, findChannel, rsvpChannel } from "@/content/channels";
 import { isEventUpcoming } from "@/utils/eventFilters";
 
 interface EventActionAlertProps {
@@ -26,15 +26,16 @@ const alertVariantClass: Record<AlertColor, string> = {
 
 export default function EventActionAlert({ event, variant = "default" }: EventActionAlertProps) {
   const isCancelled = event.data.isCancelled === true;
-  const hasMeetupLink = Boolean(event.data.meetupId);
+  const rsvp = rsvpChannel(event.data.channels);
 
-  if (!isCancelled && (!isEventUpcoming(event) || !hasMeetupLink)) {
+  if (!isCancelled && (!isEventUpcoming(event) || !rsvp)) {
     return null;
   }
 
   const isCompact = variant === "compact";
 
-  const meetupUrl = hasMeetupLink ? `${MEETUP_EVENT_URL}/${event.data.meetupId}/` : undefined;
+  const rsvpUrl = rsvp ? channelUrl(rsvp) : undefined;
+  const rsvpLabel = rsvp ? (findChannel(rsvp.type)?.label ?? rsvp.type) : "";
 
   const title: ReactNode = isCancelled ? (
     <b>Sorry, this event has been cancelled!</b>
@@ -50,11 +51,11 @@ export default function EventActionAlert({ event, variant = "default" }: EventAc
 
   const description = isCancelled
     ? "We hope to see you at another meetup soon."
-    : `Reserve your spot on Meetup.com${isCompact ? "!" : " before it's too late!"}`;
+    : `Reserve your spot on ${rsvpLabel}${isCompact ? "!" : " before it's too late!"}`;
 
   const color: AlertColor = isCancelled ? "error" : "warning";
   const IconComponent = isCancelled ? LuCalendarX : LuCalendarCheck;
-  const buttonHref = !isCancelled ? meetupUrl : undefined;
+  const buttonHref = !isCancelled ? rsvpUrl : undefined;
 
   return (
     <div

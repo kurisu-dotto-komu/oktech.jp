@@ -11,7 +11,7 @@ interface EventData {
   dateTime: string;
   duration: number;
   devOnly?: boolean;
-  meetupId?: number;
+  meetupRef?: string;
   slug: string;
 }
 
@@ -41,7 +41,9 @@ function getLatestEvent(): EventData | null {
         title: data.title,
         dateTime: eventDate.toISOString(), // Store as ISO string for consistent handling
         duration: data.duration,
-        meetupId: data.meetupId,
+        meetupRef: (data.channels ?? []).find(
+          (channel: { type: string }) => channel.type === "meetup",
+        )?.ref,
         slug: path.basename(file, ".md"),
       };
     }
@@ -94,9 +96,9 @@ test.describe("Latest Event Visibility", () => {
     const dateElement = page.locator(`text="${longDateString}"`);
     await expect(dateElement).toHaveCount(2); // Should be present in both desktop and mobile views
 
-    // Check for Meetup URL if meetupId exists
-    if (latestEvent!.meetupId) {
-      const meetupUrl = `${MEETUP_EVENT_URL}/${latestEvent!.meetupId}`;
+    // Check for Meetup URL if the event is published there
+    if (latestEvent!.meetupRef) {
+      const meetupUrl = `${MEETUP_EVENT_URL}/${latestEvent!.meetupRef}`;
       const meetupLink = page.locator(`a[href="${meetupUrl}"]`);
       await expect(meetupLink).toHaveCount(2); // Should be present in both desktop and mobile views
     }

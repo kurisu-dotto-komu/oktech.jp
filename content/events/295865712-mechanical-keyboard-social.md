@@ -6,13 +6,15 @@ duration: 180
 cover: /content/media/events/295865712-mechanical-keyboard-social/822720.webp
 venue: 27585838
 howToFindUs: In the 5F of above the Coco Ichibanya - Hard to miss.
-meetupId: 295865712
 topics:
   - Database Backends
   - HTML5
   - ReactJS
   - Typescript
   - Web Design
+channels:
+  - type: meetup
+    ref: '295865712'
 ---
 
 BRING OUT YOUR KEYBOARDS! ⌨️ 🙌

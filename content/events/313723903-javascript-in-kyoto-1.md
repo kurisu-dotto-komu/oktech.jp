@@ -6,16 +6,19 @@ duration: 180
 cover: /content/media/events/313723903-javascript-in-kyoto-1/130498.webp
 venue: 28095701
 howToFindUs: Find us in the 4th floor of the Meiji-ya Kyoto building
-meetupId: 313723903
 topics:
   - JavaScript
   - Computer Programming
   - Software Development
   - Web Development
   - Beginner Web Developer
-links:
-  discord: https://discord.com/events/1034792577293094972/1484050302503096482
-  linkedIn: https://www.linkedin.com/events/7440258373348069377/
+channels:
+  - type: meetup
+    ref: '313723903'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7440258373348069377/
+  - type: discord
+    ref: https://discord.com/events/1034792577293094972/1484050302503096482
 isCancelled: true
 ---
 

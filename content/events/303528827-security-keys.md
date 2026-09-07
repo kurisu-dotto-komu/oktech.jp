@@ -5,13 +5,15 @@ dateTime: 2024-11-02 17:00
 duration: 120
 cover: /content/media/events/303528827-security-keys/594991.webp
 venue: 27513738
-meetupId: 303528827
 topics:
   - Internet Professionals
   - Open Source
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '303528827'
 ---
 
 Hello friends,

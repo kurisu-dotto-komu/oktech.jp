@@ -5,7 +5,9 @@ dateTime: 2019-12-14 18:00
 duration: 180
 cover: /content/media/events/266823997-2019-hn-kansai-and-owddm-end-of-year-dinner/073324.webp
 venue: 25620385
-meetupId: 266823997
+channels:
+  - type: meetup
+    ref: '266823997'
 ---
 
 Hi Everyone!

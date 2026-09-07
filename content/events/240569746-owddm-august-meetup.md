@@ -4,7 +4,9 @@ description: Join us in August for another great meetup with topics on web desig
 dateTime: 2017-08-26 18:00
 cover: /content/media/events/240569746-owddm-august-meetup/506739.webp
 venue: 24213835
-meetupId: 240569746
+channels:
+  - type: meetup
+    ref: '240569746'
 ---
 
 Join us in August for another great meetup with topics on web design and web programming. For those of you who won't be escaping the summer heat at end of the month, we have the opportunity to meet again on August 26 at 6PM, at Aiming Inc.’s Osaka Studio.

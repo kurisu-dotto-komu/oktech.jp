@@ -5,7 +5,9 @@ dateTime: 2017-07-22 18:00
 cover: /content/media/events/240538427-cool-code-to-beat-the-heat-in-july/506739.webp
 venue: 24213835
 howToFindUs: To get to Aiming Inc.'s Osaka Studio, go to the Grand Front North building, take the elevator to the 9th floor, follow the signs to Office Tower B, and take another elevator to the 18th floor.
-meetupId: 240538427
+channels:
+  - type: meetup
+    ref: '240538427'
 ---
 
 Join us at air-conditioned Aiming Inc. to have a refreshing time of learning from each other.

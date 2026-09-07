@@ -6,12 +6,14 @@ duration: 120
 cover: /content/media/events/305361716-data-with-pandas/481747.webp
 venue: 24529555
 howToFindUs: In the Hankyu main building take the (huge) business elevator to the 15th floor Skylobby. Then take the far-back elevator to the 35th floor to join us in the Cybozu Office.
-meetupId: 305361716
 topics:
   - Data Science using Python
   - Python
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '305361716'
 ---
 
 Happy new year!

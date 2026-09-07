@@ -5,13 +5,15 @@ dateTime: 2024-03-16 17:00
 duration: 180
 cover: /content/media/events/299455127-wasm-airplanes-and-llm/463552.webp
 venue: 27513738
-meetupId: 299455127
 topics:
   - Open Source
   - ReactJS
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '299455127'
 ---
 
 More React in March, but this time with a twist and more 😱. Join us for this month, for a longer evening with two smaller workshops!

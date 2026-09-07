@@ -6,16 +6,19 @@ duration: 150
 cover: /content/media/events/313772788-less-bugs-and-faster-code/288904.webp
 venue: 27553394
 howToFindUs: 1. Go to Grand Front NORTH Tower in the 1F(!). In the big space, behind Tully's go to Tower C (business area) and enter the Elevator to 16F. From there, go towards the end of the hall.
-meetupId: 313772788
 topics:
   - New Technology
   - Computer Programming
   - Software Development
   - Software QA and Testing
   - Web Development
-links:
-  discord: https://discord.com/events/1034792577293094972/1505750004759793745
-  linkedIn: https://www.linkedin.com/events/7461960038052691968/
+channels:
+  - type: meetup
+    ref: '313772788'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7461960038052691968/
+  - type: discord
+    ref: https://discord.com/events/1034792577293094972/1505750004759793745
 ---
 
 The heat is on in June! 😎

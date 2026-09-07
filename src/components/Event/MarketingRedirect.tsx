@@ -1,30 +1,29 @@
 import { useEffect } from "react";
 
-import { MEETUP_EVENT_URL } from "@/constants";
-
 const OFFSET_MINUTES = 30;
 
 interface MarketingRedirectProps {
-  meetupId?: number | string;
+  /** Where an inbound campaign visitor is sent, i.e. the event's RSVP channel. */
+  href?: string;
   eventDateTime: string;
   isCancelled?: boolean;
 }
 
 export default function MarketingRedirect({
-  meetupId,
+  href,
   eventDateTime,
   isCancelled,
 }: MarketingRedirectProps) {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const source = params.get("source");
-    if (!source || !meetupId || isCancelled) return;
+    if (!source || !href || isCancelled) return;
 
     const cutoffTime = new Date(eventDateTime).getTime() - OFFSET_MINUTES * 60 * 1000;
     if (Date.now() < cutoffTime) {
-      window.location.replace(`${MEETUP_EVENT_URL}/${meetupId}/`);
+      window.location.replace(href);
     }
-  }, [meetupId, eventDateTime, isCancelled]);
+  }, [href, eventDateTime, isCancelled]);
 
   return null;
 }

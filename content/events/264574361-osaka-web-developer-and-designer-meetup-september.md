@@ -6,7 +6,9 @@ duration: 120
 cover: /content/media/events/264574361-osaka-web-developer-and-designer-meetup-september/506739.webp
 venue: 26539881
 howToFindUs: The nearest station is Honmachi on the Yotsubashi line. From Exit 28, you will find the Family Mart on 1F. Please wait outside of FamilyMart. We shall pick you up and enter via the back entrance. If in doubt, please send us a message on Meetup.com.
-meetupId: 264574361
+channels:
+  - type: meetup
+    ref: '264574361'
 ---
 
 After the great event last month, we're back at AmidA (near Honmachi station) again.

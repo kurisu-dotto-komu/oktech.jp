@@ -5,7 +5,9 @@ dateTime: 2017-05-27 18:00
 duration: 120
 cover: /content/media/events/239372163-may-friendly-talks/506739.webp
 venue: 24213835
-meetupId: 239372163
+channels:
+  - type: meetup
+    ref: '239372163'
 ---
 
 Spring is still in the air, but summer is now just around the corner. We hope that you enjoyed your holidays and had a truly golden week. With a little delay, we are happy to announce the next Designers and Developers meetup taking place on May 27 at the usual location, kindly provided by Aiming Inc.

@@ -4,7 +4,9 @@ description: 'Web developers and designers from Kansai: you are welcome to join 
 dateTime: 2016-08-27 18:00
 cover: /content/media/events/233221987-owddm-escape-the-august-heat-at-this-months/506739.webp
 venue: 24213835
-meetupId: 233221987
+channels:
+  - type: meetup
+    ref: '233221987'
 ---
 
 Web developers and designers from Kansai: you are welcome to join us for this month's summer meetup. All you need to bring is an open mind and an interest in the web, regardless of experience and background. Yes, we welcome you even if you are a total beginner and you want to have an insight into web design or development!

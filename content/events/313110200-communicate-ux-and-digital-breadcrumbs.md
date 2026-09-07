@@ -6,16 +6,19 @@ duration: 150
 cover: /content/media/events/313110200-communicate-ux-and-digital-breadcrumbs/501221.webp
 venue: 27553394
 howToFindUs: 1. Go to Grand Front NORTH Tower in the 1F(!). In the big space, behind Tully's go to Tower C (business area) and enter the Elevator to 16F. From there, go towards the end of the hall.
-meetupId: 313110200
 topics:
   - AI and Society
   - Software Security
   - UI/UX Design
   - Computer Programming
   - Interactive Art
-links:
-  discord: https://discord.com/events/1034792577293094972/1466666882521104517
-  linkedIn: https://www.linkedin.com/events/7425161162834464768/
+channels:
+  - type: meetup
+    ref: '313110200'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7425161162834464768/
+  - type: discord
+    ref: https://discord.com/events/1034792577293094972/1466666882521104517
 ---
 
 Join us for this February we are coping with the trends of the last year and look at AI through two different lenses.

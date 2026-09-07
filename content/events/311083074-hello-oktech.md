@@ -5,15 +5,18 @@ dateTime: 2025-11-01 18:30
 duration: 180
 cover: /content/media/events/311083074-hello-oktech/438931.webp
 venue: 27398802
-meetupId: 311083074
 topics:
   - Community Building
   - Computer Programming
   - Logo Design
   - Web Development
-links:
-  discord: https://discord.gg/Ab94zz28?event=1422044821530476724
-  linkedIn: https://www.linkedin.com/events/7378244133271846913/
+channels:
+  - type: meetup
+    ref: '311083074'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7378244133271846913/
+  - type: discord
+    ref: https://discord.gg/Ab94zz28?event=1422044821530476724
 ---
 
 OK... *What*? 🙀 Save the date! We celebrate! OK... **Tech**! 😎

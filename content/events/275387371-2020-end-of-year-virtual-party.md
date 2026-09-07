@@ -6,7 +6,9 @@ duration: 120
 cover: /content/media/events/275387371-2020-end-of-year-virtual-party/121224.webp
 venue: 26906060
 howToFindUs: https://spatial.chat/s/owddm?sp=0wddm
-meetupId: 275387371
+channels:
+  - type: meetup
+    ref: '275387371'
 ---
 
 Season's greetings

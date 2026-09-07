@@ -6,13 +6,15 @@ duration: 150
 cover: /content/media/events/299830334-vim-and-noise/759804.webp
 venue: 27553394
 howToFindUs: 1. Go to Grand Front NORTH Tower in the 1F(!). In the big space, behind Tully's go to Tower C (business area) and enter the Elevator to 16F. From there, go towards the end of the hall.
-meetupId: 299830334
 topics:
   - Computer Programming
   - New Technology
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '299830334'
 ---
 
 Hello everyone!

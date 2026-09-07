@@ -5,7 +5,9 @@ dateTime: 2018-12-28 20:00
 duration: 120
 cover: /content/media/events/257200534-end-of-year-party/073324.webp
 venue: 25620385
-meetupId: 257200534
+channels:
+  - type: meetup
+    ref: '257200534'
 ---
 
 Hi Everyone!

@@ -6,16 +6,19 @@ duration: 120
 cover: /content/media/events/313122761-event-driven-architecture-part-2-what-happens/580208.webp
 venue: 25963776
 howToFindUs: We are in room 801 of the Kokoplaza.
-meetupId: 313122761
 topics:
   - Engineering Leadership
   - Software Architecture
   - Study Group
   - Design Patterns
   - Software Development
-links:
-  discord: https://discord.com/events/1034792577293094972/1468947982614396980
-  linkedIn: https://www.linkedin.com/events/7425156629727412224/
+channels:
+  - type: meetup
+    ref: '313122761'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7425156629727412224/
+  - type: discord
+    ref: https://discord.com/events/1034792577293094972/1468947982614396980
 ---
 
 **Event-Driven Architecture: From Communication to Reality (3-Part Workshop Series)**

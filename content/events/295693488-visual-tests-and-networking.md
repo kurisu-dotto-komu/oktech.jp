@@ -6,12 +6,14 @@ duration: 120
 cover: /content/media/events/295693488-visual-tests-and-networking/709185.webp
 venue: 27553394
 howToFindUs: 1. Go to Grand Front NORTH Tower in the 1F(!). In the big space, behind Tully's go to Tower C (business area) and enter the Elevator to 16F. From there, go towards the end of the hall.
-meetupId: 295693488
 topics:
   - Computer Programming
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '295693488'
 ---
 
 September shenanigans up ahead 🚄

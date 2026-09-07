@@ -6,13 +6,15 @@ duration: 120
 cover: /content/media/events/301574205-the-state-of-js/274679.webp
 venue: 24529555
 howToFindUs: In the Hankyu main building take the (huge) business elevator to the 15th floor Skylobby. Then take the far-back elevator to the 35th floor to join us in the Cybozu Office.
-meetupId: 301574205
 topics:
   - Culture
   - Internet Professionals
   - Team Building
   - Technology
   - Workplace
+channels:
+  - type: meetup
+    ref: '301574205'
 ---
 
 Hello there fellow OWDDMers 👾

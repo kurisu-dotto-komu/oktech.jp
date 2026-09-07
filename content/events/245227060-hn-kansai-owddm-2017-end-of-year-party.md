@@ -6,7 +6,9 @@ duration: 120
 cover: /content/media/events/245227060-hn-kansai-owddm-2017-end-of-year-party/506739.webp
 venue: 25620385
 howToFindUs: 'From GrandFront/Hankyu: Beside the Grandfront North tower: take the underground passage direction Sky Building and follow the big road south; direction Fukushima (we are in the first floor)'
-meetupId: 245227060
+channels:
+  - type: meetup
+    ref: '245227060'
 ---
 
 This year is ending, and as always this means we're having our end-of-year party. Be prepared to spend an evening talking with people about tech, business & design and other topics in english over pizza in Umeda!

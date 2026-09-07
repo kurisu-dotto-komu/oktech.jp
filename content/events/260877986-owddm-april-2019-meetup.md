@@ -6,7 +6,9 @@ duration: 120
 cover: /content/media/events/260877986-owddm-april-2019-meetup/712718.webp
 venue: 26378946
 howToFindUs: Please follow the map in the featured picture
-meetupId: 260877986
+channels:
+  - type: meetup
+    ref: '260877986'
 ---
 
 Finally, Spring is here and the warm days are starting! Before the long golden week holiday, we would like to invite you to our April Meetup for two nice talks and optionally some drinks afterward in a nearby Izakaya.

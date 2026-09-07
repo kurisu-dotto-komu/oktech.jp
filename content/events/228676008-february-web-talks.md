@@ -6,7 +6,9 @@ duration: 120
 cover: /content/media/events/228676008-february-web-talks/506739.webp
 venue: 24213835
 howToFindUs: Take the Grandfront North building to the 9th floor (the glass elevator next to the bridge from the south tower goes up there) and use the elevator in the big hall to the 18th floor.
-meetupId: 228676008
+channels:
+  - type: meetup
+    ref: '228676008'
 ---
 
 Hello Web Enthusiasts,

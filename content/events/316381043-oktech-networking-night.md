@@ -6,15 +6,18 @@ duration: 150
 cover: /content/media/events/316381043-oktech-networking-night/008497.webp
 venue: 27398802
 howToFindUs: Tanimachi 4-chome Station Exit 7 and you will be almost there already!
-meetupId: 316381043
 topics:
   - Community Building
   - Computer Programming
   - Logo Design
   - Web Development
-links:
-  discord: https://discord.com/events/1034792577293094972/1545778736559947777
-  linkedIn: https://www.linkedin.com/events/7502038321536172032/
+channels:
+  - type: meetup
+    ref: '316381043'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7502038321536172032/
+  - type: discord
+    ref: https://discord.com/events/1034792577293094972/1545778736559947777
 ---
 
 **OKTech Year two networking!** 😎

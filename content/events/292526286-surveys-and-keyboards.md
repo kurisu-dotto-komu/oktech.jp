@@ -5,13 +5,15 @@ dateTime: 2023-04-21 18:00
 duration: 150
 cover: /content/media/events/292526286-surveys-and-keyboards/506744.webp
 venue: 27544400
-meetupId: 292526286
 topics:
   - New Technology
   - Surveying
   - Technology
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '292526286'
 ---
 
 Hello Everyone, 👋

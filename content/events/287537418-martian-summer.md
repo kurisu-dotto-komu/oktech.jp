@@ -5,13 +5,15 @@ dateTime: 2022-08-20 16:45
 duration: 150
 cover: /content/media/events/287537418-martian-summer/968216.webp
 venue: 27370028
-meetupId: 287537418
 topics:
   - Front-end Development
   - User Experience
   - Web Design
   - Web Development
   - Web Technology
+channels:
+  - type: meetup
+    ref: '287537418'
 ---
 
 The new space worked out well last time! As it was providing a big space to escape the summer sun we will be meeting there in August again. 😎

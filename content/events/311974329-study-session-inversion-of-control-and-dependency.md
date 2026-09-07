@@ -6,16 +6,19 @@ duration: 120
 cover: /content/media/events/311974329-study-session-inversion-of-control-and-dependency/265681.webp
 venue: 25963776
 howToFindUs: We are in room 701 of the Kokoplaza.
-meetupId: 311974329
 topics:
   - Engineering Leadership
   - Software Architecture
   - Study Group
   - Design Patterns
   - Software Development
-links:
-  discord: https://discord.com/events/1034792577293094972/1438179735094952196
-  linkedIn: https://www.linkedin.com/events/7394388461472034816/
+channels:
+  - type: meetup
+    ref: '311974329'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7394388461472034816/
+  - type: discord
+    ref: https://discord.com/events/1034792577293094972/1438179735094952196
 ---
 
 Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next **OKTech Study Session**, a gathering for engineers who don’t just code, but want to understand the _why_ and _how_ behind solid software design.

@@ -5,13 +5,15 @@ dateTime: 2024-02-17 17:00
 duration: 180
 cover: /content/media/events/298932038-how-and-when-react/848552.webp
 venue: 27513738
-meetupId: 298932038
 topics:
   - Open Source
   - ReactJS
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '298932038'
 ---
 
 Woohoo, January at C2 Kyoto was awesome, Let's do that in February again!

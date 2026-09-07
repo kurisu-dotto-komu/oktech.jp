@@ -5,13 +5,15 @@ dateTime: 2022-09-17 16:15
 duration: 150
 cover: /content/media/events/288129290-fast-autumn-web/659715.webp
 venue: 27370028
-meetupId: 288129290
 topics:
   - Computer Programming
   - Internet Professionals
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '288129290'
 ---
 
 We survived this summer!And this months meeting will be all about speed. 🚀

@@ -6,13 +6,15 @@ duration: 150
 cover: /content/media/events/292146517-astrobuild-workshop-by-tamas-piros/830928.webp
 venue: 27553394
 howToFindUs: In the Grandfront North Tower, behind the Tully's on the 1F, take the Business Entrance to Tower C. Use the elevator to the 16F. We are in the R³ Institute Community Room at the very end of the north corridor.
-meetupId: 292146517
 topics:
   - Computer Programming
   - Internet Professionals
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '292146517'
 ---
 
 Hello Everyone! 👋

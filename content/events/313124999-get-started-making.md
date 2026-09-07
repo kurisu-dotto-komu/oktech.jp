@@ -6,10 +6,13 @@ duration: 150
 cover: /content/media/events/313124999-get-started-making/879627.webp
 venue: 24529555
 howToFindUs: In the Hankyu main building take the (huge) business elevator to the 15th floor Skylobby. Then take the far-back elevator to the 35th floor to join us in the Cybozu Office.
-meetupId: 313124999
-links:
-  discord: https://discord.com/events/1034792577293094972/1476941874924359692
-  linkedIn: https://www.linkedin.com/events/7433148089852502016
+channels:
+  - type: meetup
+    ref: '313124999'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7433148089852502016
+  - type: discord
+    ref: https://discord.com/events/1034792577293094972/1476941874924359692
 ---
 
 Spring is knocking at the door and before this fiscal year ends we are having a special event.

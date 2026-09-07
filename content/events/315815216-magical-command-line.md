@@ -6,16 +6,19 @@ duration: 150
 cover: /content/media/events/315815216-magical-command-line/464940.webp
 venue: 24529555
 howToFindUs: In the Hankyu main building take the (huge) business elevator to the 15th floor Skylobby. Then take the far-back elevator to the 35th floor to join us in the Cybozu Office.
-meetupId: 315815216
 topics:
   - Linux Server
   - Human-Computer Interaction
   - Computer Programming
   - DevOps
   - Computers
-links:
-  discord: https://discord.com/events/1034792577293094972/1533353389159743571
-  linkedIn: https://www.linkedin.com/events/7489558849868201984
+channels:
+  - type: meetup
+    ref: '315815216'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7489558849868201984
+  - type: discord
+    ref: https://discord.com/events/1034792577293094972/1533353389159743571
 ---
 
 Approaching Autumn, we are using September to look into how we can improve the experience of working with the command line.

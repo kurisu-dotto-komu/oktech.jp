@@ -6,16 +6,19 @@ duration: 150
 cover: /content/media/events/314843745-git-workshop-day/792599.webp
 venue: 27553394
 howToFindUs: 1. Go to Grand Front NORTH Tower in the 1F(!). In the big space, behind Tully's go to Tower C (business area) and enter the Elevator to 16F. From there, go towards the end of the hall.
-meetupId: 314843745
 topics:
   - Technology
   - Software Development
   - Web Development
   - GitOps
   - Github
-links:
-  discord: https://discord.com/events/1034792577293094972/1516994737230446806
-  linkedIn: https://www.linkedin.com/events/7473205330844352512/
+channels:
+  - type: meetup
+    ref: '314843745'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7473205330844352512/
+  - type: discord
+    ref: https://discord.com/events/1034792577293094972/1516994737230446806
 ---
 
 Grab your laptop and join us to stay cool this August while leveling up your skills! ❄️

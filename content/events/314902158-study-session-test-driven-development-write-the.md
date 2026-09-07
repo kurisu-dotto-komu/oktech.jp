@@ -6,16 +6,19 @@ duration: 120
 cover: /content/media/events/314902158-study-session-test-driven-development-write-the/688053.webp
 venue: 25963776
 howToFindUs: We are in room 701 of the Kokoplaza.
-meetupId: 314902158
 topics:
   - Engineering Leadership
   - Software Architecture
   - Study Group
   - Design Patterns
   - Software Development
-links:
-  discord: https://discord.com/events/1034792577293094972/1514618926468956292
-  linkedIn: https://www.linkedin.com/events/7470831251424440320/
+channels:
+  - type: meetup
+    ref: '314902158'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7470831251424440320/
+  - type: discord
+    ref: https://discord.com/events/1034792577293094972/1514618926468956292
 ---
 
 Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next **OKTech Study Session**, a gathering for engineers who don't just code, but want to understand the _why_ and _how_ behind solid software design.

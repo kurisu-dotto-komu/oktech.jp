@@ -6,7 +6,9 @@ duration: 120
 cover: /content/media/events/242801823-autumn-discussion-for-awesome-techies/506739.webp
 venue: 25511520
 howToFindUs: Please come to the 8th Floor (Rakuten Office)
-meetupId: 242801823
+channels:
+  - type: meetup
+    ref: '242801823'
 ---
 
 Location: https://global.rakuten.com/corp/about/map/index__p6.html

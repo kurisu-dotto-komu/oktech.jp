@@ -5,10 +5,12 @@ dateTime: 2024-09-29 09:30
 duration: 420
 cover: /content/media/events/302939361-kiyotakigawa-escape/033392.webp
 venue: 27043438
-meetupId: 302939361
 topics:
   - Hiking
   - Technology
+channels:
+  - type: meetup
+    ref: '302939361'
 ---
 
 Hello Friends,

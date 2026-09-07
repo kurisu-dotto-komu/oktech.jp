@@ -5,13 +5,15 @@ dateTime: 2022-07-16 15:00
 duration: 120
 cover: /content/media/events/287159257-hello-world-meet-and-greet-at-space-kante/516520.webp
 venue: 27370201
-meetupId: 287159257
 topics:
   - New Technology
   - Open Source
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '287159257'
 ---
 
 Hello Friends, 👋

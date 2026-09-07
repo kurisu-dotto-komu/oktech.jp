@@ -5,13 +5,15 @@ dateTime: 2024-06-29 17:00
 duration: 120
 cover: /content/media/events/301456905-intro-to-aws-connect/613174.webp
 venue: 27513738
-meetupId: 301456905
 topics:
   - Internet Professionals
   - Open Source
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '301456905'
 ---
 
 Hello friends,

@@ -6,16 +6,19 @@ duration: 150
 cover: /content/media/events/313203893-measure-development-experience/143211.webp
 venue: 27553394
 howToFindUs: 1. Go to Grand Front NORTH Tower in the 1F(!). In the big space, behind Tully's go to Tower C (business area) and enter the Elevator to 16F. From there, go towards the end of the hall.
-meetupId: 313203893
 topics:
   - Leadership
   - Hardware Engineering
   - Software Product Development
   - Software Development
   - Free Software and Hardware
-links:
-  discord: https://discord.com/events/1034792577293094972/1482192480815415296
-  linkedIn: https://www.linkedin.com/event/manage/7438400984252592128/
+channels:
+  - type: meetup
+    ref: '313203893'
+  - type: linkedIn
+    ref: https://www.linkedin.com/event/manage/7438400984252592128/
+  - type: discord
+    ref: https://discord.com/events/1034792577293094972/1482192480815415296
 ---
 
 April is here and the cherry trees might still be blooming before this event! We hope you still join us for a nice evening.

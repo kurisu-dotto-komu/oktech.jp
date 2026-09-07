@@ -6,16 +6,19 @@ duration: 150
 cover: /content/media/events/312103306-vibe-coding-collab/479811.webp
 venue: 27553394
 howToFindUs: 1. Go to Grand Front NORTH Tower in the 1F(!). In the big space, behind Tully's go to Tower C (business area) and enter the Elevator to 16F. From there, go towards the end of the hall.
-meetupId: 312103306
 topics:
   - Artificial Intelligence
   - Creativity
   - Socializing
   - Fun Times
   - Creative Coding
-links:
-  discord: https://discord.com/events/1034792577293094972/1442686465363410955
-  linkedIn: https://www.linkedin.com/events/7398895953509957632/
+channels:
+  - type: meetup
+    ref: '312103306'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7398895953509957632/
+  - type: discord
+    ref: https://discord.com/events/1034792577293094972/1442686465363410955
 ---
 
 The [Live Coding Collective](https://www.meetup.com/vibe-coders-collective/) from the UK is visiting Osaka and we are happy to join this [social coding jam](https://www.meetup.com/vibe-coders-collective/events/312063796/) where we use AI to quickly turn fun ideas into functional prototype.

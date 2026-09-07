@@ -5,9 +5,11 @@ dateTime: 2022-09-07 19:00
 duration: 120
 cover: /content/media/events/288045345-creative-combo-mixer/572066.webp
 venue: 27398802
-meetupId: 288045345
 topics:
   - Web Design
+channels:
+  - type: meetup
+    ref: '288045345'
 ---
 
 Hello Everyone, this is an unexpected event! Surprise

@@ -6,14 +6,17 @@ duration: 120
 cover: /content/media/events/313789241-ai-coding-night-collab/229797.webp
 venue: 28215604
 howToFindUs: 2nd Floor, Middle Meeting Room
-meetupId: 313789241
 topics:
   - AI/ML
   - Software Development
   - App Developers
-links:
-  discord: https://discord.com/events/1034792577293094972/1483062764602920994
-  linkedIn: https://www.linkedin.com/events/7439271776125202433/
+channels:
+  - type: meetup
+    ref: '313789241'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7439271776125202433/
+  - type: discord
+    ref: https://discord.com/events/1034792577293094972/1483062764602920994
 ---
 
 Join us for a get-together with friends from [CreatorLabo](https://luma.com/creatorlabo) as we are collaborating in hosting **🚀 AI-Native Coding Night**!

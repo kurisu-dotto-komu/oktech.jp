@@ -5,13 +5,15 @@ dateTime: 2023-01-21 17:00
 duration: 120
 cover: /content/media/events/290682636-gamepad-kpis/762650.webp
 venue: 27370028
-meetupId: 290682636
 topics:
   - Computer Programming
   - Internet Professionals
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '290682636'
 ---
 
 Happy New Year! 🎊 明けましておめでとうございます！

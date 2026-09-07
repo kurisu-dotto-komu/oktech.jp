@@ -5,13 +5,15 @@ dateTime: 2023-02-18 17:00
 duration: 120
 cover: /content/media/events/291352411-webcomponents-graphql/439755.webp
 venue: 27370028
-meetupId: 291352411
 topics:
   - Computer Programming
   - Internet Professionals
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '291352411'
 ---
 
 Hello Everyone!

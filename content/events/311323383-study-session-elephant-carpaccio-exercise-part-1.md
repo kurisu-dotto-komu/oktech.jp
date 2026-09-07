@@ -6,16 +6,19 @@ duration: 120
 cover: /content/media/events/311323383-study-session-elephant-carpaccio-exercise-part-1/502481.webp
 venue: 25963776
 howToFindUs: We are in room 701 of the Kokoplaza.
-meetupId: 311323383
 topics:
   - Design Patterns
   - Engineering Leadership
   - Software Architecture
   - Software Development
   - Study Group
-links:
-  discord: https://discord.gg/Vbf8Mrz2?event=1424614326102261790
-  linkedIn: https://www.linkedin.com/events/7380820171646611456/
+channels:
+  - type: meetup
+    ref: '311323383'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7380820171646611456/
+  - type: discord
+    ref: https://discord.gg/Vbf8Mrz2?event=1424614326102261790
 ---
 
 Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next **Study Session**, a gathering for engineers who don’t just code, but want to understand the *why* and *how* behind solid software design.

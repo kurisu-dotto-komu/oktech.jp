@@ -6,16 +6,19 @@ duration: 120
 cover: /content/media/events/314050338-code-review-culture-part-2-what-will-the-ai-do-to/515379.webp
 venue: 25963776
 howToFindUs: We are in room 701 of the Kokoplaza.
-meetupId: 314050338
 topics:
   - Engineering Leadership
   - Software Architecture
   - Study Group
   - Design Patterns
   - Software Development
-links:
-  discord: https://discord.com/events/1034792577293094972/1489873931153313902
-  linkedIn: https://www.linkedin.com/events/7446081788407590912/
+channels:
+  - type: meetup
+    ref: '314050338'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7446081788407590912/
+  - type: discord
+    ref: https://discord.com/events/1034792577293094972/1489873931153313902
 ---
 
 Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next **OKTech Study Session**, a gathering for engineers who don't just code, but want to understand the why and how behind solid software design.

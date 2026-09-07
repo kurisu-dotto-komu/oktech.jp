@@ -6,16 +6,19 @@ duration: 120
 cover: /content/media/events/314902156-study-session-how-long-will-this-take-estimating/414144.webp
 venue: 25963776
 howToFindUs: We are in room 701 of the Kokoplaza.
-meetupId: 314902156
 topics:
   - Engineering Leadership
   - Software Architecture
   - Study Group
   - Design Patterns
   - Software Development
-links:
-  discord: https://discord.com/events/1034792577293094972/1510216389259165727
-  linkedIn: https://www.linkedin.com/events/7466424780200706048/
+channels:
+  - type: meetup
+    ref: '314902156'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7466424780200706048/
+  - type: discord
+    ref: https://discord.com/events/1034792577293094972/1510216389259165727
 ---
 
 Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next **OKTech Study Session**, a gathering for engineers who don't just code, but want to understand the _why_ and _how_ behind solid software design.

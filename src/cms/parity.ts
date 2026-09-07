@@ -26,10 +26,9 @@ const ALIASES = "aliases";
 const CMS_ONLY = [BODY, PULL_REQUEST] as const;
 
 /**
- * Pre-`channels` frontmatter still present in `content/`. The site renders it, so it stays in
- * the schemas; delete these from both lists together once the content is migrated.
+ * Pre-`channels` venue frontmatter still present in `content/`. The site reads it, so it
+ * stays in the schema; delete it from both lists together once the content is migrated.
  */
-const LEGACY_EVENT_KEYS = ["meetupId", "links"] as const;
 const LEGACY_VENUE_KEYS = ["coordinates", "meetupId"] as const;
 
 export const PARITY_TARGETS: readonly ParityTarget[] = [
@@ -37,7 +36,7 @@ export const PARITY_TARGETS: readonly ParityTarget[] = [
     collection: "events",
     schemaModule: "src/content/schemas/event.ts",
     cmsOnly: CMS_ONLY,
-    derived: [ALIASES, ...LEGACY_EVENT_KEYS],
+    derived: [ALIASES],
   },
   {
     collection: "series",

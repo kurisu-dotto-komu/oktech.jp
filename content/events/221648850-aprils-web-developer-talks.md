@@ -6,7 +6,9 @@ duration: 120
 cover: /content/media/events/221648850-aprils-web-developer-talks/506739.webp
 venue: 22577042
 howToFindUs: 7th Floor, North Building  Grand Front Umeda (Take the North 北 3 elevator!)
-meetupId: 221648850
+channels:
+  - type: meetup
+    ref: '221648850'
 ---
 
 Spring is here, the cherry blossom is about to finish blooming and we shall meet again!

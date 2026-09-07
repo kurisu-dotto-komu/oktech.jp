@@ -6,13 +6,15 @@ duration: 120
 cover: /content/media/events/294488629-ivskyoto2023-machine-learning-and-open-source/506744.webp
 venue: 27621042
 howToFindUs: 'South of Goichi Pizza on Takatsuji. Here is a visual guide: https://kyososha.jp/access/index.html'
-meetupId: 294488629
 topics:
   - Business Funding
   - Machine Learning
   - New Technology
   - Open Source
   - Software Development
+channels:
+  - type: meetup
+    ref: '294488629'
 ---
 
 For this month's gathering of webdevs and designers in Kyoto we have 3 short talks and plenty of discussion. Come out to meet fellow professionals and practitioners, and share your experiences.

@@ -5,7 +5,9 @@ dateTime: 2014-09-20 18:00
 cover: /content/media/events/207109452-presentations-discussions-and-connections/506739.webp
 venue: 22372122
 howToFindUs: Namba Station exit 14 at 5:30pm
-meetupId: 207109452
+channels:
+  - type: meetup
+    ref: '207109452'
 ---
 
 Here is the map to this location:

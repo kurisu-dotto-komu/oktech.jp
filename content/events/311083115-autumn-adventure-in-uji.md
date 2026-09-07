@@ -9,12 +9,15 @@ howToFindUs: |-
   We'll meet in front of the Uji sightseeing guide map in front of the Uji Keihan Station. 
 
   (Note: make sure you come to the **Uji Keihan station**, and not the Uji JR station, which is a 5-min walk away on the other side of the river)
-meetupId: 311083115
 topics:
   - Hiking
-links:
-  discord: https://discord.gg/U2NTC42Z?event=1427831349099888700
-  linkedIn: https://www.linkedin.com/events/7384038076068614145/
+channels:
+  - type: meetup
+    ref: '311083115'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7384038076068614145/
+  - type: discord
+    ref: https://discord.gg/U2NTC42Z?event=1427831349099888700
 isCancelled: true
 ---
 

@@ -5,13 +5,15 @@ dateTime: 2024-04-20 17:00
 duration: 180
 cover: /content/media/events/299829131-secure-cross-platform-apps/757256.webp
 venue: 27513738
-meetupId: 299829131
 topics:
   - Open Source
   - ReactJS
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '299829131'
 ---
 
 Hello friends,

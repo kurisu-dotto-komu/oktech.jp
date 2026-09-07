@@ -6,8 +6,9 @@ duration: 150
 cover: /content/media/events/315544216-october-event-topic-tbd/886924.webp
 venue: 27553394
 howToFindUs: 1. Go to Grand Front NORTH Tower in the 1F(!). In the big space, behind Tully's go to Tower C (business area) and enter the Elevator to 16F. From there, go towards the end of the hall.
-meetupId: 315544216
-links: {}
+channels:
+  - type: meetup
+    ref: '315544216'
 ---
 
 Save the date! Our monthly meetup is set for 17th October.

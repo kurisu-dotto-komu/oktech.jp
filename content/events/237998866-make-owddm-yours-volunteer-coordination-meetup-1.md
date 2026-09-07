@@ -6,7 +6,9 @@ duration: 60
 cover: /content/media/events/237998866-make-owddm-yours-volunteer-coordination-meetup-1/506739.webp
 venue: 25085262
 howToFindUs: http://juso-coworking.com/contact/access.html
-meetupId: 237998866
+channels:
+  - type: meetup
+    ref: '237998866'
 ---
 
 Hello Osaka Web Developers & Designers,

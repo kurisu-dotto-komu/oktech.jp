@@ -5,13 +5,15 @@ dateTime: 2023-04-15 17:00
 duration: 120
 cover: /content/media/events/291352450-design-generally-nostr-particularly/794415.webp
 venue: 27370028
-meetupId: 291352450
 topics:
   - Computer Programming
   - Decentralized Systems & Applications
   - UX Design
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '291352450'
 ---
 
 Hello everyone,

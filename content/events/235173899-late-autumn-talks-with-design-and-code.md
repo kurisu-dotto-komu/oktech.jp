@@ -5,7 +5,9 @@ dateTime: 2016-11-26 19:00
 cover: /content/media/events/235173899-late-autumn-talks-with-design-and-code/506739.webp
 venue: 24870768
 howToFindUs: 530-0003 Dojima-Avanza 21F, 1-6-20 Dojima, Kita-ku, Osaka | Follow this URL http://tinyurl.com/grh6try for directions to this month’s venue
-meetupId: 235173899
+channels:
+  - type: meetup
+    ref: '235173899'
 ---
 
 Dear Web enthusiasts and developers,

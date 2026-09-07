@@ -6,12 +6,14 @@ duration: 90
 cover: /content/media/events/286728584-talk-at-the-cafe/036038.webp
 venue: 27310813
 howToFindUs: 子供の遊び場 親子カフェ Laugh Rough Laugh (ラフラフラフ) Cafe
-meetupId: 286728584
 topics:
   - Computer Programming
   - Internet Professionals
   - Software Development
   - Web Development
+channels:
+  - type: meetup
+    ref: '286728584'
 ---
 
 Hello there, You may be confused seeing this event. 😅

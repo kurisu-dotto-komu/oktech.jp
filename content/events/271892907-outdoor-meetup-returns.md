@@ -6,7 +6,9 @@ duration: 120
 cover: /content/media/events/271892907-outdoor-meetup-returns/901481.webp
 venue: 26936190
 howToFindUs: 🚉 Accessible from the Tsurumi-ryokuchi Station on the Nagahori Tsurumi-ryokuchi line of the Osaka Metro.
-meetupId: 271892907
+channels:
+  - type: meetup
+    ref: '271892907'
 ---
 
 Welcome back web developers and designers!

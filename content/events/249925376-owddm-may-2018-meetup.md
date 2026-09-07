@@ -6,7 +6,9 @@ duration: 120
 cover: /content/media/events/249925376-owddm-may-2018-meetup/506739.webp
 venue: 24870768
 howToFindUs: 530-0003 Dojima-Avanza 21F, 1-6-20 Dojima, Kita-ku, Osaka | Follow this URL http://tinyurl.com/grh6try for directions to this month’s venue
-meetupId: 249925376
+channels:
+  - type: meetup
+    ref: '249925376'
 ---
 
 Dear Developers and Designers, May the Web be with you.

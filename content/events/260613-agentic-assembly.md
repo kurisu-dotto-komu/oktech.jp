@@ -7,11 +7,13 @@ cover: /content/media/series/agentic-assembly/cover_weekly.webp
 venue: 900000703
 series: agentic-assembly
 howToFindUs: Same building as The DECK, 7th Floor.
-meetupId: 315115640
 topics:
   - AI/ML
   - Software Development
   - New Technology
+channels:
+  - type: meetup
+    ref: '315115640'
 ---
 
 A brand new Osaka meetup for engineers working at the bleeding edge of agentic engineering. A dozen engineers, a couple of hours, somewhere in Osaka, every Saturday morning.

@@ -5,7 +5,9 @@ dateTime: 2017-06-24 18:00
 cover: /content/media/events/239372174-early-summer-night-in-june-meetup/506739.webp
 venue: 24529555
 howToFindUs: In the first floor of the Hankyu Department Building take the business elevator, in the business section, to the 15th floor (Sky Lounge) and from there take the elevator to the 35th floor.
-meetupId: 239372174
+channels:
+  - type: meetup
+    ref: '239372174'
 ---
 
 Summer is upon us soon and we have a cool early summer night meetup event for all of you aspiring web designers and developers this month.

@@ -6,13 +6,15 @@ duration: 120
 cover: /content/media/events/286489263-web-stories-in-the-park/734800.webp
 venue: 26936190
 howToFindUs: 🚉 Accessible from the Tsurumi-ryokuchi Station on the Nagahori Tsurumi-ryokuchi line of the Osaka Metro.
-meetupId: 286489263
 topics:
   - Computer Programming
   - Internet Professionals
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '286489263'
 ---
 
 **Important Note**: The Weather forecast looks like it should hold with a light chance for rain. We will still be at the meeting point but maybe we need to divert the meetup later on.

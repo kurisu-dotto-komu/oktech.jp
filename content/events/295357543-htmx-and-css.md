@@ -5,7 +5,9 @@ dateTime: 2023-08-26 17:00
 duration: 120
 cover: /content/media/events/295357543-htmx-and-css/211650.webp
 venue: 24529555
-meetupId: 295357543
+channels:
+  - type: meetup
+    ref: '295357543'
 ---
 
 Escape the summer heat at our August Web Developer and Designer meetup!

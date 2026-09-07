@@ -5,7 +5,9 @@ dateTime: 2016-09-24 18:00
 cover: /content/media/events/233957080-september-web-talks-scope-optimization-and/506739.webp
 venue: 24213835
 howToFindUs: Aiming Inc., Grand Front North tower. Use this entrance http://bit.ly/2aQrWR8 or walk through the south building from Osaka Station, take the elevator up to the 9th floor (sky lobby), disembark, then take another elevator to the 18th floor.
-meetupId: 233957080
+channels:
+  - type: meetup
+    ref: '233957080'
 ---
 
 Welcome back, dear Web enthusiasts!

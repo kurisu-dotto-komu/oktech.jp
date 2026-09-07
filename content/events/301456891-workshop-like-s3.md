@@ -5,13 +5,15 @@ dateTime: 2024-06-22 17:00
 duration: 180
 cover: /content/media/events/301456891-workshop-like-s3/656528.webp
 venue: 27009944
-meetupId: 301456891
 topics:
   - Computer Programming
   - Internet Professionals
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '301456891'
 ---
 
 Hello Everyone!

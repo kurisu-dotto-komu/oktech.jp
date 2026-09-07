@@ -6,16 +6,19 @@ duration: 150
 cover: /content/media/events/314843644-manage-dependencies-with-nix-and-co/792486.webp
 venue: 24529555
 howToFindUs: In the Hankyu main building take the (huge) business elevator to the 15th floor Skylobby. Then take the far-back elevator to the 35th floor to join us in the Cybozu Office.
-meetupId: 314843644
 topics:
   - Computer Security
   - Computer Programming
   - Software Development
   - DevOps
   - Computers
-links:
-  discord: https://discord.com/events/1034792577293094972/1516994013352296579
-  linkedIn: https://www.linkedin.com/events/7473202752966316032/
+channels:
+  - type: meetup
+    ref: '314843644'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7473202752966316032/
+  - type: discord
+    ref: https://discord.com/events/1034792577293094972/1516994013352296579
 ---
 
 Right after the Gion Festival, join us as we tackle one of the greatest problems in software development.

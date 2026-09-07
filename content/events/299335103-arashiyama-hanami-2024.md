@@ -6,13 +6,15 @@ duration: 240
 cover: /content/media/events/299335103-arashiyama-hanami-2024/888292.webp
 venue: 27764496
 howToFindUs: We will share the GPS location on the day.
-meetupId: 299335103
 topics:
   - New Technology
   - Open Source
   - PHP
   - Software Development
   - Web Design
+channels:
+  - type: meetup
+    ref: '299335103'
 ---
 
 **IN CASE OF RAIN** 🌧️

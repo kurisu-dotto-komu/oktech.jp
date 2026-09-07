@@ -6,16 +6,19 @@ duration: 150
 cover: /content/media/events/312249468-work-spinach-and-dev-containers/571041.webp
 venue: 24529555
 howToFindUs: In the Hankyu main building take the (huge) business elevator to the 15th floor Skylobby. Then take the far-back elevator to the 35th floor to join us in the Cybozu Office.
-meetupId: 312249468
 topics:
   - Business
   - Container Security
   - Socializing
   - Computer Programming
   - DevOps
-links:
-  discord: https://discord.com/events/1034792577293094972/1445044166609338409
-  linkedIn: https://www.linkedin.com/events/7401250762732994560/
+channels:
+  - type: meetup
+    ref: '312249468'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7401250762732994560/
+  - type: discord
+    ref: https://discord.com/events/1034792577293094972/1445044166609338409
 ---
 
 Let's turn over a fresh green leaf! 🥬 In this year of the horse 🐴 we strap in a for a full year of tech-challenges! neigh!

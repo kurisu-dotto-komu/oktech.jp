@@ -5,8 +5,9 @@ dateTime: 2026-07-13 11:00
 duration: 60
 venue: 22577042
 series: dev-recurring-monday
-links:
-  discord: https://discord.example/dev-recurring-discord
+channels:
+  - type: discord
+    ref: https://discord.example/dev-recurring-discord
 devOnly: true
 ---
 

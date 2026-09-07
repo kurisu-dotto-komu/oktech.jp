@@ -6,13 +6,15 @@ duration: 420
 cover: /content/media/events/292274060-owddm-hn-kansai-hacker-hanami-in-osaka/334029.webp
 venue: 27394125
 howToFindUs: We secured a spot under a nice tree, see the photos for a a more detailed location.
-meetupId: 292274060
 topics:
   - Computer Programming
   - Internet Professionals
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '292274060'
 ---
 
 Happy Spring!👋

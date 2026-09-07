@@ -6,13 +6,15 @@ duration: 180
 cover: /content/media/events/296487079-all-hallows-eve-social/796490.webp
 venue: 27585838
 howToFindUs: In the 5F of above the Coco Ichibanya - Hard to miss.
-meetupId: 296487079
 topics:
   - Database Backends
   - HTML5
   - ReactJS
   - Typescript
   - Web Design
+channels:
+  - type: meetup
+    ref: '296487079'
 ---
 
 *Have you heard?* Judging from the weather, its a bit hard to to guess, but we already have the end of October! 🍁

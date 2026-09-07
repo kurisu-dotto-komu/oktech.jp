@@ -6,7 +6,9 @@ duration: 120
 cover: /content/media/events/260439556-may-osaka-web-dev-and-design-meetup/506739.webp
 venue: 26378946
 howToFindUs: The meetup is on the 3rd floor. Enter the building from the parking entrance at the North side. If you arrive at the West entrance and see the map printed on the shuttered door, you'll need to head North and turn right.
-meetupId: 260439556
+channels:
+  - type: meetup
+    ref: '260439556'
 ---
 
 Golden Week is behind us, and the weather is heating up, so why not chill out with some cool web talks and meet designers and developers from around the Osaka area?

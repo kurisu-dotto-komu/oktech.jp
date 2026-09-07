@@ -6,16 +6,19 @@ duration: 120
 cover: /content/media/events/313937063-code-review-culture-part-1-beyond-the-checkmark/458969.webp
 venue: 25963776
 howToFindUs: We are in room 701 of the Kokoplaza.
-meetupId: 313937063
 topics:
   - Engineering Leadership
   - Software Architecture
   - Study Group
   - Design Patterns
   - Software Development
-links:
-  discord: https://discord.com/events/1034792577293094972/1488401064368541829
-  linkedIn: https://www.linkedin.com/events/7444609124576751616/
+channels:
+  - type: meetup
+    ref: '313937063'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7444609124576751616/
+  - type: discord
+    ref: https://discord.com/events/1034792577293094972/1488401064368541829
 ---
 
 Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next **OKTech Study Session**, a gathering for engineers who don't just code, but want to understand the why and how behind solid software design.

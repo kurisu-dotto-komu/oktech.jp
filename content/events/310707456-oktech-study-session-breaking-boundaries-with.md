@@ -6,13 +6,15 @@ duration: 120
 cover: /content/media/events/310707456-oktech-study-session-breaking-boundaries-with/839879.webp
 venue: 25963776
 howToFindUs: We are in room 701 of the Kokoplaza.
-meetupId: 310707456
 topics:
   - Design Patterns
   - Engineering Leadership
   - Software Architecture
   - Software Development
   - Study Group
+channels:
+  - type: meetup
+    ref: '310707456'
 ---
 
 ***Notice:*** *The event time has changed.*

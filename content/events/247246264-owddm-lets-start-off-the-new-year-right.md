@@ -6,7 +6,9 @@ duration: 120
 cover: /content/media/events/247246264-owddm-lets-start-off-the-new-year-right/506739.webp
 venue: 24213835
 howToFindUs: From JR Osaka station walk north past the Grand Front South Tower. In the Grand Front North Tower take the business elevator or the elevator 4 to the Sky Lobby (9th floor) and from there take the elevator to the 18th floor.
-meetupId: 247246264
+channels:
+  - type: meetup
+    ref: '247246264'
 ---
 
 Dear all, even as I write these lines I realize it’s been quite a while since our last gathering in Osaka. Therefore, I take the opportunity to invite everyone to the first 2018 Web Designers and Developers Meetup. We are still setting up the list of speakers and as soon as possible will offer you a preview of our lineup for the February event. By the way, if you are interested in presenting this month please let us know and we will accommodate you.

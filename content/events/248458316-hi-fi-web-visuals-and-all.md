@@ -6,7 +6,9 @@ duration: 120
 cover: /content/media/events/248458316-hi-fi-web-visuals-and-all/506739.webp
 venue: 24213835
 howToFindUs: From JR Osaka station walk north past the Grand Front South Tower. In the Grand Front North Tower take the business elevator or the elevator 4 to the Sky Lobby (9th floor) and from there take the elevator to the 18th floor.
-meetupId: 248458316
+channels:
+  - type: meetup
+    ref: '248458316'
 ---
 
 Cherry blossoms are coming to town and so is another special presenter in March.

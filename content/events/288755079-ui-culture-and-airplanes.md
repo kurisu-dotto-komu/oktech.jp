@@ -6,12 +6,14 @@ duration: 120
 cover: /content/media/events/288755079-ui-culture-and-airplanes/382924.webp
 venue: 27423406
 howToFindUs: 'More about the place here: https://business-park-618.business.site/'
-meetupId: 288755079
 topics:
   - Culture
   - Open Source
   - UI Design
   - Web Design
+channels:
+  - type: meetup
+    ref: '288755079'
 ---
 
 Dear web enthusiasts, we're in a busy autumn! 🔥

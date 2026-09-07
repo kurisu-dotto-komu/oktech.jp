@@ -6,13 +6,15 @@ duration: 120
 cover: /content/media/events/302750416-key-to-resume/823615.webp
 venue: 27553394
 howToFindUs: 1. Go to Grand Front NORTH Tower in the 1F(!). In the big space, behind Tully's go to Tower C (business area) and enter the Elevator to 16F. From there, go towards the end of the hall.
-meetupId: 302750416
 topics:
   - Computer Programming
   - New Technology
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '302750416'
 ---
 
 Hello friends,

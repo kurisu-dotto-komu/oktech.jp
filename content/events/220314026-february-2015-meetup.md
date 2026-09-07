@@ -5,7 +5,9 @@ dateTime: 2015-02-28 16:00
 cover: /content/media/events/220314026-february-2015-meetup/506739.webp
 venue: 22577042
 howToFindUs: http://kc-i.jp/en/facilities/salon/
-meetupId: 220314026
+channels:
+  - type: meetup
+    ref: '220314026'
 ---
 
 Charging right into 2015 we will have our next month web-bashing. We are not sure who will catch next times big

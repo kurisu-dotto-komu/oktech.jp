@@ -6,13 +6,15 @@ duration: 120
 cover: /content/media/events/298753297-how-to-get-into-tech-part-2/814765.webp
 venue: 27553394
 howToFindUs: 1. Go to Grand Front NORTH Tower in the 1F(!). In the big space, behind Tully's go to Tower C (business area) and enter the Elevator to 16F. From there, go towards the end of the hall.
-meetupId: 298753297
 topics:
   - Computer Programming
   - New Technology
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '298753297'
 ---
 
 We want to thank everyone for coming to hang out with us at our [last event](https://www.meetup.com/osaka-web-designers-and-developers-meetup/events/297676223). It was a hit! This month, join us again for part 2.

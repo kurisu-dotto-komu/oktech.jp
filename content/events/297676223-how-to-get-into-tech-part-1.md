@@ -6,13 +6,15 @@ duration: 150
 cover: /content/media/events/297676223-how-to-get-into-tech-part-1/457344.webp
 venue: 24529555
 howToFindUs: In the Hankyu main building take the (huge) business elevator to the 15th floor Skylobby. Then take the far-back elevator to the 35th floor to join us in the Cybozu Office.
-meetupId: 297676223
 topics:
   - Computer Programming
   - Internet Professionals
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '297676223'
 ---
 
 Are you thinking about getting into tech? Here is your chance to learn from those who have gone before! OWDDM is kicking off a new series where members of our tech community share their path in tech. Each story is unique, and could inspire you to your own journey.

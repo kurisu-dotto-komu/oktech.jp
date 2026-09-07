@@ -19,15 +19,18 @@ export type Channel = {
   rsvp?: boolean;
 };
 
+/** One row of an entry's `channels:` list. */
+export type ChannelRef = { type: string; ref: string };
+
 /** A ref that is already absolute is used verbatim; anything else is a platform-local id. */
 const isAbsolute = (ref: string): boolean => /^https?:\/\//.test(ref);
 
 export const CHANNELS: readonly Channel[] = [
   {
     id: "meetup",
-    label: "Meetup",
+    label: "Meetup.com",
     rsvp: true,
-    url: (ref) => (isAbsolute(ref) ? ref : `${MEETUP_EVENT_URL}/${ref}/`),
+    url: (ref) => (isAbsolute(ref) ? ref : `${MEETUP_EVENT_URL}/${ref}`),
   },
   {
     id: "luma",
@@ -39,3 +42,15 @@ export const CHANNELS: readonly Channel[] = [
   { id: "discord", label: "Discord", url: (ref) => ref },
   { id: "website", label: "Website", url: (ref) => ref },
 ];
+
+const byId = new Map(CHANNELS.map((channel) => [channel.id, channel]));
+
+/** The registry row for a channel, or undefined for a type nothing here knows about. */
+export const findChannel = (type: string): Channel | undefined => byId.get(type);
+
+/** Public URL of a channel row. An unregistered type can only carry a full URL. */
+export const channelUrl = ({ type, ref }: ChannelRef): string => findChannel(type)?.url(ref) ?? ref;
+
+/** The channel people sign up through, i.e. the first one whose platform takes RSVPs. */
+export const rsvpChannel = (channels: readonly ChannelRef[] = []): ChannelRef | undefined =>
+  channels.find((channel) => findChannel(channel.type)?.rsvp);

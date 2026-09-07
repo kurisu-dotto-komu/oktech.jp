@@ -6,7 +6,9 @@ duration: 360
 cover: /content/media/events/228102170-new-year-hacking-day/506739.webp
 venue: 24213835
 howToFindUs: Take the Tower B (タワー B!) elevator of the Grandfront North building to the 9th floor and take the elevator up to the 18th floor
-meetupId: 228102170
+channels:
+  - type: meetup
+    ref: '228102170'
 ---
 
 Happy New Year Websters!

@@ -6,13 +6,15 @@ duration: 120
 cover: /content/media/events/309961693-oktech-study-session-ddd-part-3-putting-the-model/580731.webp
 venue: 25963776
 howToFindUs: We are in room 801 of the Kokoplaza.
-meetupId: 309961693
 topics:
   - Design Patterns
   - Engineering Leadership
   - Software Architecture
   - Software Development
   - Study Group
+channels:
+  - type: meetup
+    ref: '309961693'
 ---
 
 ***Notice:*** *The event time changed. Robert is feeling under the weather and we had to shift the schedule by one event.*

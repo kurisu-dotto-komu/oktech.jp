@@ -5,7 +5,9 @@ dateTime: 2018-08-25 18:00
 duration: 120
 cover: /content/media/events/249925579-laid-back-meetup-in-august/506739.webp
 venue: 24213835
-meetupId: 249925579
+channels:
+  - type: meetup
+    ref: '249925579'
 ---
 
 Dear all, we hope you are fully enjoying the summer holidays. For those of you who didn't make any plans for the end of the month, no worries. We booked the room at Aiming Inc for a new designers & devs meetup, on Saturday August 25th between 6PM - 8PM.

@@ -5,9 +5,11 @@ dateTime: 2023-07-07 19:00
 duration: 120
 cover: /content/media/events/294290340-summer-night-dinner/506739.webp
 venue: 27606535
-meetupId: 294290340
 topics:
   - Dinner
+channels:
+  - type: meetup
+    ref: '294290340'
 ---
 
 Hi everyone!

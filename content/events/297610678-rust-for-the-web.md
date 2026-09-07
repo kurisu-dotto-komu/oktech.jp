@@ -5,13 +5,15 @@ dateTime: 2024-01-13 17:00
 duration: 120
 cover: /content/media/events/297610678-rust-for-the-web/354252.webp
 venue: 27513738
-meetupId: 297610678
 topics:
   - New Technology
   - Open Source
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '297610678'
 ---
 
 Hello Friends, and a Happy New Year to all!

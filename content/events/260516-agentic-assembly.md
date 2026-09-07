@@ -7,11 +7,13 @@ cover: /content/media/series/agentic-assembly/cover_weekly.webp
 venue: 27009944
 series: agentic-assembly
 howToFindUs: Direct access from Exit 14, Sakaisujihommachi Station (Osaka Metro Sakaisuji / Chuo Line). Exit 7 of Hommachi Station on the Midosuji Line might be quicker if you don't mind a short walk.
-meetupId: 314657428
 topics:
   - AI/ML
   - Software Development
   - New Technology
+channels:
+  - type: meetup
+    ref: '314657428'
 ---
 
 A brand new Osaka meetup for engineers working at the bleeding edge of agentic engineering. A dozen engineers, a couple of hours, somewhere in Osaka, every Saturday morning.

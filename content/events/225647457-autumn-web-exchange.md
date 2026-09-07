@@ -5,7 +5,9 @@ dateTime: 2015-10-31 18:00
 cover: /content/media/events/225647457-autumn-web-exchange/506739.webp
 venue: 22577042
 howToFindUs: Take the North 3(北3!) elevator of the Grandfront North building to the 7th floor and tell the entrance lady of Knowledge Salon that you registered here.
-meetupId: 225647457
+channels:
+  - type: meetup
+    ref: '225647457'
 ---
 
 Hello Webweavers,

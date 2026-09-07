@@ -9,12 +9,15 @@ howToFindUs: |-
   We'll meet in front of the Uji sightseeing guide map in front of the Uji Keihan Station. 
 
   (Note: make sure you come to the **Uji Keihan station**, and not the Uji JR station, which is a 5-min walk away on the other side of the river)
-meetupId: 311725714
 topics:
   - Hiking
-links:
-  discord: https://discord.gg/8nSn63FK?event=1435082284482171097
-  linkedIn: https://www.linkedin.com/events/7391287991563911168/
+channels:
+  - type: meetup
+    ref: '311725714'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/7391287991563911168/
+  - type: discord
+    ref: https://discord.gg/8nSn63FK?event=1435082284482171097
 ---
 
 Now that complaining-about-the-heat season (a.k.a. summer) is over, and before complaining-about-the-cold season (a.k.a. winter) starts, let's take a second to enjoy Kansai's beautiful fall colors.

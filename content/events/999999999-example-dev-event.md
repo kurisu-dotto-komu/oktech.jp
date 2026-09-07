@@ -6,16 +6,19 @@ duration: 120
 cover: /content/media/events/999999999-example-dev-event/test1.webp
 venue: 999999997
 howToFindUs: Take the quantum elevator to floor 42. Look for the holographic OK Tech banner floating near the neural interface lounge. If you get lost, just think about the venue and our AI guide will telepathically direct you!
-meetupId: 999999999
 topics:
   - Testing
   - Development
   - Future Technology
   - Web3
   - AI/ML
-links:
-  linkedIn: https://www.linkedin.com/events/test-event-7354435879374897152/
-  customWebsite: https://example.com/oktech-event
+channels:
+  - type: meetup
+    ref: '999999999'
+  - type: linkedIn
+    ref: https://www.linkedin.com/events/test-event-7354435879374897152/
+  - type: customWebsite
+    ref: https://example.com/oktech-event
 isCancelled: true
 devOnly: true
 ---

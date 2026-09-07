@@ -6,7 +6,9 @@ duration: 120
 cover: /content/media/events/262191703-june-osaka-web-dev-and-design-meetup/506739.webp
 venue: 26378946
 howToFindUs: The meetup is on the 3rd floor. Enter the building from the parking entrance at the North side. If you arrive at the West entrance and see the map printed on the shuttered door, you'll need to head North and turn right.
-meetupId: 262191703
+channels:
+  - type: meetup
+    ref: '262191703'
 ---
 
 The rainy season is upon us, as the rain grants us brief reprieve from the heat of summer. However, this is not the only gift we are given this month, as we forecast a shower of great web talks, too!

@@ -6,13 +6,15 @@ duration: 120
 cover: /content/media/events/307774539-oktech-study-session-a-walking-skeleton-approach/458708.webp
 venue: 25963776
 howToFindUs: We are in room 701 of the Kokoplaza.
-meetupId: 307774539
 topics:
   - Design Patterns
   - Engineering Leadership
   - Software Architecture
   - Software Development
   - Study Group
+channels:
+  - type: meetup
+    ref: '307774539'
 ---
 
 Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next **OKTech Study Session** a gathering for engineers who don’t just code, but want to understand the *why* and *how* behind solid software design.

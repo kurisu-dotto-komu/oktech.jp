@@ -5,13 +5,15 @@ dateTime: 2022-12-30 20:00
 duration: 120
 cover: /content/media/events/290151616-end-of-web-year-party-2022/475265.webp
 venue: 27479006
-meetupId: 290151616
 topics:
   - Computer Programming
   - Internet Professionals
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '290151616'
 ---
 
 Hello Friends,

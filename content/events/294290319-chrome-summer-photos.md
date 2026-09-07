@@ -5,13 +5,15 @@ dateTime: 2023-07-22 17:00
 duration: 150
 cover: /content/media/events/294290319-chrome-summer-photos/196039.webp
 venue: 27553394
-meetupId: 294290319
 topics:
   - Computer Programming
   - Internet Professionals
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '294290319'
 ---
 
 Hello awesome people! 🤩

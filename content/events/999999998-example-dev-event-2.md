@@ -6,16 +6,19 @@ duration: 120
 cover: /content/media/events/999999998-example-dev-event-2/test2.webp
 venue: 999999996
 howToFindUs: Enter through the main entrance and follow the neon arrows to the Innovation Hub on the 7th floor. The venue is located right next to the coffee bar. Look for the OK Tech signs and friendly volunteers wearing bright orange t-shirts!
-meetupId: 999999998
 topics:
   - Testing
   - Development
   - Future Technology
   - Web3
   - AI/ML
-links:
-  luma: https://lu.ma/oktechtest2025
-  discord: https://discord.gg/oktech-test
+channels:
+  - type: meetup
+    ref: '999999998'
+  - type: luma
+    ref: https://lu.ma/oktechtest2025
+  - type: discord
+    ref: https://discord.gg/oktech-test
 attachments:
   - icon: slides
     title: React Presentation Slides

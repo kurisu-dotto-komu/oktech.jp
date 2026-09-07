@@ -6,13 +6,15 @@ duration: 120
 cover: /content/media/events/292890108-colorful-web-meetup/983535.webp
 venue: 27553394
 howToFindUs: 1. Go to Grand Front NORTH Tower in the 1F(!). In the big space, behind Tully's go to Tower C (business area) and enter the Elevator to 16F. From there, go towards the end of the hall.
-meetupId: 292890108
 topics:
   - Computer Programming
   - Internet Professionals
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '292890108'
 ---
 
 Good Summer everyone! 👋

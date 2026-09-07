@@ -6,12 +6,14 @@ duration: 120
 cover: /content/media/events/288224695-login-september/745086.webp
 venue: 27382018
 howToFindUs: The restaurant is closed but will open for us. 😉
-meetupId: 288224695
 topics:
   - Software Development
   - UI Design
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '288224695'
 ---
 
 Welcome to September, Friends! 👋

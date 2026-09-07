@@ -6,13 +6,15 @@ duration: 120
 cover: /content/media/events/310853037-fear-in-the-software-industry/228191.webp
 venue: 27553394
 howToFindUs: 1. Go to Grand Front NORTH Tower in the 1F(!). In the big space, behind Tully's go to Tower C (business area) and enter the Elevator to 16F. From there, go towards the end of the hall.
-meetupId: 310853037
 topics:
   - Computers
   - Psychology
   - Stress Management
   - Web Design
   - Workplace
+channels:
+  - type: meetup
+    ref: '310853037'
 ---
 
 Summer break - in case you had one - is over and the heat is still on! ☀️😎

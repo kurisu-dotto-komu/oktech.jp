@@ -5,7 +5,9 @@ dateTime: 2015-03-28 17:15
 cover: /content/media/events/221046973-join-us-on-march-28th/506739.webp
 venue: 22577042
 howToFindUs: 7th Floor, North Building  Grand Front Umeda (Take the North 北 3 elevator!)
-meetupId: 221046973
+channels:
+  - type: meetup
+    ref: '221046973'
 ---
 
 While we are waiting on the spring to show up, lets have another meetup in march!

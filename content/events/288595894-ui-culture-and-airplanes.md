@@ -5,13 +5,15 @@ dateTime: 2022-10-15 16:45
 duration: 150
 cover: /content/media/events/288595894-ui-culture-and-airplanes/382348.webp
 venue: 27370028
-meetupId: 288595894
 topics:
   - Computer Programming
   - Internet Professionals
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '288595894'
 ---
 
 Dear web enthusiasts, we're in a busy autumn! 🔥

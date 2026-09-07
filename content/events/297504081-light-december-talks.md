@@ -5,13 +5,15 @@ dateTime: 2023-12-10 18:00
 duration: 180
 cover: /content/media/events/297504081-light-december-talks/812304.webp
 venue: 27705586
-meetupId: 297504081
 topics:
   - New Technology
   - Open Source
   - PHP
   - Software Development
   - Web Design
+channels:
+  - type: meetup
+    ref: '297504081'
 ---
 
 Hello Everyone,

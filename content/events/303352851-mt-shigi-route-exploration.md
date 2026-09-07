@@ -5,7 +5,9 @@ dateTime: 2024-10-20 08:45
 duration: 495
 cover: /content/media/events/303352851-mt-shigi-route-exploration/434508.webp
 venue: 27278002
-meetupId: 303352851
+channels:
+  - type: meetup
+    ref: '303352851'
 ---
 
 Hello Friends, 👋

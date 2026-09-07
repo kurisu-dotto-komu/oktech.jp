@@ -5,7 +5,9 @@ dateTime: 2017-03-25 18:00
 duration: 120
 cover: /content/media/events/237826327-march-web-talks-with-ui-ux-and-design-tools/506739.webp
 venue: 24213835
-meetupId: 237826327
+channels:
+  - type: meetup
+    ref: '237826327'
 ---
 
 Dear designers and developers,

@@ -5,13 +5,15 @@ dateTime: 2022-11-19 17:00
 duration: 120
 cover: /content/media/events/289641703-november-web-systems/470361.webp
 venue: 27370028
-meetupId: 289641703
 topics:
   - Computer Programming
   - Internet Professionals
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '289641703'
 ---
 
 Good Autumn, Friends! 🍁

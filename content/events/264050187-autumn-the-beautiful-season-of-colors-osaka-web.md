@@ -6,7 +6,9 @@ duration: 120
 cover: /content/media/events/264050187-autumn-the-beautiful-season-of-colors-osaka-web/033876.webp
 venue: 26378946
 howToFindUs: The event is on the 3rd floor. The front of the building will be closed. There will be a map printed on the shutter directing you around to the left, where there is another small entrance on the North side of the building.
-meetupId: 264050187
+channels:
+  - type: meetup
+    ref: '264050187'
 ---
 
 Hi Everyone.

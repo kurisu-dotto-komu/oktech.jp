@@ -6,13 +6,15 @@ duration: 150
 cover: /content/media/events/299334647-workshop-create-a-blogportfolio-in-astro-and/478580.webp
 venue: 24529555
 howToFindUs: In the Hankyu main building take the (huge) business elevator to the 15th floor Skylobby. Then take the far-back elevator to the 35th floor to join us in the Cybozu Office.
-meetupId: 299334647
 topics:
   - Computer Programming
   - Internet Professionals
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '299334647'
 ---
 
 Happy March Osaka tech lovers! 👾

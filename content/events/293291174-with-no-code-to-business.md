@@ -6,13 +6,15 @@ duration: 120
 cover: /content/media/events/293291174-with-no-code-to-business/760988.webp
 venue: 27573606
 howToFindUs: The No8 Hase Building is located in the same building as the drug store "Welcia". To reach the event venue, please go upstairs to the 2nd floor. Once you arrive at the second floor, you'll find the entrance to the event venue right in front of the elevator.
-meetupId: 293291174
 topics:
   - New Technology
   - Startup Businesses
   - Surveying
   - Technology Startups
   - Web Design
+channels:
+  - type: meetup
+    ref: '293291174'
 ---
 
 Hello everyone! 👋

@@ -5,7 +5,9 @@ dateTime: 2018-07-28 18:00
 duration: 120
 cover: /content/media/events/249925425-owddm-july-2018-meetup/506739.webp
 venue: 25630979
-meetupId: 249925425
+channels:
+  - type: meetup
+    ref: '249925425'
 ---
 
 We hope you're enjoying the summer and are ready for the 46th Osaka Web Designer/Developer Meetup.

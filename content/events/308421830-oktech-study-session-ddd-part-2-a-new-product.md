@@ -6,13 +6,15 @@ duration: 120
 cover: /content/media/events/308421830-oktech-study-session-ddd-part-2-a-new-product/122188.webp
 venue: 25963776
 howToFindUs: We are in room 701 of the Kokoplaza.
-meetupId: 308421830
 topics:
   - Design Patterns
   - Engineering Leadership
   - Software Architecture
   - Software Development
   - Study Group
+channels:
+  - type: meetup
+    ref: '308421830'
 ---
 
 Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next **OKTech Study Session**, a gathering for engineers who don’t just code, but want to understand the *why* and *how* behind solid software design.

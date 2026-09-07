@@ -6,13 +6,15 @@ duration: 120
 cover: /content/media/events/296533487-working-conditions-in-japan-discussion/506739.webp
 venue: 27553394
 howToFindUs: 1. Go to Grand Front NORTH Tower in the 1F(!). In the big space, behind Tully's go to Tower C (business area) and enter the Elevator to 16F. From there, go towards the end of the hall.
-meetupId: 296533487
 topics:
   - Computer Programming
   - New Technology
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '296533487'
 ---
 
 We are back with another OWDDM where Martin has abandoned us (he’s gone to JSCONF in Tokyo, lucky guy) and I, Destiny and friends fill in. We are happy to have you this month again! We are also very excited to see new faces! Welcome!

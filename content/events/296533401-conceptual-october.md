@@ -5,13 +5,15 @@ dateTime: 2023-10-21 17:00
 duration: 120
 cover: /content/media/events/296533401-conceptual-october/353221.webp
 venue: 24529555
-meetupId: 296533401
 topics:
   - Computer Programming
   - Internet Professionals
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '296533401'
 ---
 
 Hello web friends! 👋

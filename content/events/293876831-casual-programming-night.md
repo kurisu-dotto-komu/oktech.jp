@@ -5,13 +5,15 @@ dateTime: 2023-06-27 17:00
 duration: 150
 cover: /content/media/events/293876831-casual-programming-night/801884.webp
 venue: 27584681
-meetupId: 293876831
 topics:
   - Cloud Computing
   - Computer Programming
   - Software Development
   - Web Design
   - Web Development
+channels:
+  - type: meetup
+    ref: '293876831'
 ---
 
 Join us for our first _"Programming night"_: a smaller and more casual event. Talk and work together on code in a relaxed environment.

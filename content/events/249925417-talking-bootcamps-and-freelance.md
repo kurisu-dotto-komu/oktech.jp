@@ -5,7 +5,9 @@ dateTime: 2018-06-30 18:00
 duration: 120
 cover: /content/media/events/249925417-talking-bootcamps-and-freelance/839223.webp
 venue: 25630979
-meetupId: 249925417
+channels:
+  - type: meetup
+    ref: '249925417'
 ---
 
 Summer fun dev-time. What better way to escape the heat than an evening in a beautifully air conditioned room with fine folks talking about web development?
