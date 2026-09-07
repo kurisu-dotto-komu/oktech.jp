@@ -31,6 +31,9 @@ const site = !!vercelUrl ? `https://${vercelUrl}` : siteUrl;
 // and the media bucket hang off it unless overridden explicitly.
 const stagingHost = process.env.STAGING_HOST;
 const imagesHost = process.env.IMAGES_HOST || (stagingHost ? `images.${stagingHost}` : "");
+if (imagesHost && !process.env.PUBLIC_IMAGES_URL) {
+  process.env.PUBLIC_IMAGES_URL = `https://${imagesHost}`;
+}
 if (stagingHost && !process.env.PUBLIC_CMS_AUTH_BASE_URL) {
   process.env.PUBLIC_CMS_AUTH_BASE_URL = `https://auth.${stagingHost}`;
 }

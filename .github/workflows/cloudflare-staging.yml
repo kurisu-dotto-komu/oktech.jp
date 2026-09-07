@@ -21,6 +21,10 @@ env:
   SITE_URL: https://${{ vars.STAGING_HOST }}
   PUBLIC_CMS_REPO: ${{ github.repository }}
   PUBLIC_CMS_BRANCH: ${{ github.event.pull_request.base.ref || github.ref_name }}
+  # CMS uploads go to the R2 bucket (see docs/cloudflare.md); the account id is not secret but is masked in logs
+  PUBLIC_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+  PUBLIC_R2_ACCESS_KEY_ID: ${{ vars.R2_ACCESS_KEY_ID }}
+  PUBLIC_R2_BUCKET: ${{ vars.R2_BUCKET }}
   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
   CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
   # Bump to invalidate the Astro image cache
