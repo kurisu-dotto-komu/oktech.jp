@@ -5,6 +5,24 @@ import path from "node:path";
 /** Extensions whose bytes are hashed; every other file is compared by presence only. */
 const HASHED_EXTENSIONS = [".html", ".ics", ".xml", ".txt"];
 
+/**
+ * Values that change on every build regardless of content. Without masking them the gate
+ * reports all 231 html and 194 ics files as changed even when nothing was edited.
+ */
+const NONDETERMINISTIC = [
+  /\suid="[^"]*"/g, // astro-island hydration id
+  /DTSTAMP:\d{8}T\d{6}Z/g, // ICS generation stamp (src/utils/ics.ts)
+  /data-tip="\d{4}\.\d{2}\.\d{2} \d{2}:\d{2}/g, // build clock (BuiltWithCommit.tsx)
+];
+
+function hashContent(file: string): string {
+  const text = NONDETERMINISTIC.reduce(
+    (acc, pattern) => acc.replace(pattern, ""),
+    fs.readFileSync(file, "utf8"),
+  );
+  return createHash("sha256").update(text).digest("hex");
+}
+
 export const SNAPSHOT_FILE = ".parity/before.json";
 
 export type Snapshot = {
@@ -29,9 +47,7 @@ export function readDist(distDir: string): Snapshot {
   const files: Record<string, string | null> = {};
   for (const rel of paths) {
     files[rel] = HASHED_EXTENSIONS.includes(path.extname(rel))
-      ? createHash("sha256")
-          .update(fs.readFileSync(path.join(distDir, rel)))
-          .digest("hex")
+      ? hashContent(path.join(distDir, rel))
       : null;
   }
   return { createdAt: new Date().toISOString(), fileCount: paths.length, files };
