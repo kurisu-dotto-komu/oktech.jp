@@ -69,8 +69,11 @@ export const forgetPullRequest = (collection: string, slug: string): void => {
  */
 export async function previewUrl(headSha: string, context: string): Promise<string | undefined> {
   const status = await githubGet<ApiStatus>(`/repos/${cmsRepo()}/commits/${headSha}/status`);
+  // Case-insensitively: the workflow sets "Cloudflare Preview", the config says
+  // "cloudflare preview", and Sveltia's own lookup does not care either.
+  const wanted = context.toLowerCase();
   const match = status?.statuses?.find(
-    (entry) => entry.context === context && entry.state === "success",
+    (entry) => entry.context.toLowerCase() === wanted && entry.state === "success",
   );
   return match?.target_url ?? undefined;
 }
