@@ -56,7 +56,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: node_modules/.astro
-          key: ${{ runner.os }}-astro-${{ env.ASTRO_CACHE_KEY }}-${{ hashFiles('content/**/*.{png,jpg,jpeg,webp,avif,gif,svg}', 'src/assets/**/*.{png,jpg,jpeg,webp,avif,gif,svg}') }}
+          key: ${{ runner.os }}-astro-${{ env.ASTRO_CACHE_KEY }}-${{ hashFiles('content/**/*.webp', 'content/**/*.jpg', 'content/**/*.jpeg', 'content/**/*.png', 'content/**/*.svg', 'src/assets/**') }}
           restore-keys: ${{ runner.os }}-astro-${{ env.ASTRO_CACHE_KEY }}-
 
       - run: npx astro build
