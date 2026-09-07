@@ -13,4 +13,6 @@ const run = (cmd: string, env: NodeJS.ProcessEnv = {}) =>
   execSync(cmd, { stdio: "inherit", env: { ...process.env, ...env } });
 
 run("astro build", { SITE_URL: `https://${host}` });
-run(`wrangler deploy --domain ${host}`);
+// Injects the media bucket name; Wrangler cannot read it from the environment itself.
+run("tsx scripts/wrangler-config.ts");
+run(`wrangler deploy --config=wrangler.generated.jsonc --domain ${host}`);

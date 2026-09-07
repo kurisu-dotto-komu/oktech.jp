@@ -1,8 +1,15 @@
 # Media uploads
 
 Images created in the CMS go to the R2 media bucket rather than into Git, and entries store
-the public URL (`https://images.<site-host>/<key>`). There are two ways for the browser to
-reach the bucket, and the CMS picks between them from one environment variable.
+a host-free reference: **`/uploads/<key>`**, never `https://images.<site-host>/<key>`. The
+prefix is the media library's `public_url`, defined once in
+[`src/uploads.ts`](../src/uploads.ts); the build rewrites it to `$PUBLIC_IMAGES_URL/<key>` to
+fetch and optimise the file, and the deployed site serves `/uploads/*` from R2 through the
+site Worker (see [docs/cloudflare.md](./cloudflare.md)). Absolute URLs written before the
+prefix existed still resolve, so nothing has to be migrated.
+
+There are two ways for the browser to reach the bucket, and the CMS picks between them from
+one environment variable.
 
 | Mode               | `PUBLIC_MEDIA_UPLOAD_ENDPOINT` | Who can upload                                 |
 | ------------------ | ------------------------------ | ---------------------------------------------- |
@@ -110,6 +117,9 @@ answers the preflight itself from `ALLOWED_ORIGINS`. That list takes `*` as a wi
   for someone.
 - Uploads land under `events/`, `venues/` or `series/` and happen **immediately**, not on
   publish; abandoning a draft leaves a harmless orphan object.
+- The reference saved in the entry is `/uploads/<key>`. The image field shows that path
+  rather than a thumbnail when the entry is reopened — Sveltia only previews repository
+  paths and absolute URLs — but the site renders it correctly.
 - Images are converted to webp and resized in the browser before they are sent.
 
 ## Troubleshooting

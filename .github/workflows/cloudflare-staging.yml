@@ -91,7 +91,8 @@ jobs:
           PR: ${{ github.event.pull_request.number }}
         run: |
           host="pr-$PR-preview.$STAGING_HOST"
-          npx wrangler deploy --name "oktech-pr-$PR" --domain "$host"
+          npx tsx scripts/wrangler-config.ts
+          npx wrangler deploy --config=wrangler.generated.jsonc --name "oktech-pr-$PR" --domain "$host"
           echo "url=https://$host" >> "$GITHUB_OUTPUT"
 
       # CMS-created PRs (branch cms/**) get a generated description of the content changes
@@ -139,7 +140,9 @@ jobs:
 
       - name: Deploy to ${{ vars.STAGING_HOST }}
         if: github.event_name != 'pull_request'
-        run: npx wrangler deploy --domain "$STAGING_HOST"
+        run: |
+          npx tsx scripts/wrangler-config.ts
+          npx wrangler deploy --config=wrangler.generated.jsonc --domain "$STAGING_HOST"
 
   cleanup:
     if: github.event.action == 'closed'

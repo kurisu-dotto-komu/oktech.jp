@@ -3,10 +3,15 @@ import path from "path";
 import { getLocalImageDimensions, hasLocalImage, resolveLocalImage } from "./local";
 import { getRemoteImageDimensions, parseRemoteRef, resolveRemoteImage } from "./remote";
 import type { ImageDimensions, ImageRef, ImageSources, ImageVariant } from "./types";
+import { parseUploadRef } from "./uploads";
 
-/** Anything that is not an https URL is treated as a local path. */
+/**
+ * `/uploads/<key>` is a CMS upload, resolved to the media host for this build; an https URL
+ * is remote as it stands — including one already written against the media host, from before
+ * the prefix existed. Anything else is a path in the repository.
+ */
 export function parseImageRef(value: string): ImageRef {
-  return parseRemoteRef(value) ?? { kind: "local", path: value };
+  return parseUploadRef(value) ?? parseRemoteRef(value) ?? { kind: "local", path: value };
 }
 
 /** Resolves an image reference to displayable sources. */

@@ -178,14 +178,28 @@ action on an upcoming event links to — the first such row wins.
 
 ## Images and uploads
 
-An image field value is just a string, resolved by one rule: `https://…` is a remote URL (fetched
-and optimised by Astro at build time when its host is in `image.remotePatterns`), anything else is a
-path in the repository — `/content/media/events/<slug>/x.webp` for events, `./x.webp` for a venue or
-article bundle.
+An image field value is just a string, resolved by three rules:
 
-New uploads go to the R2 media bucket rather than into Git, and the entry stores the public URL.
-Which route the browser takes is one environment variable; both routes — pasting a shared R2 secret,
-or the pair of Workers that derive a credential per editor — are documented in
+- **`/uploads/<key>`** is a CMS upload, living in the R2 media bucket.
+- **`https://…`** is a remote URL, fetched and optimised by Astro at build time when its host is in
+  `image.remotePatterns`.
+- Anything else is a path in the repository — `/content/media/events/<slug>/x.webp` for events,
+  `./x.webp` for a venue or article bundle. (`content/media/` is the older, in-Git store; it is
+  unrelated to the `/uploads/` prefix and is not going away yet.)
+
+**No content ever names the media host.** An entry stores `/uploads/events/covers/x.webp` and the
+prefix is the whole contract; where that key is actually served from is environment configuration,
+defined once in [`src/uploads.ts`](../src/uploads.ts) and read in three places: the CMS writes it
+(`src/cms/media.ts` sets the media library's `public_url`), the build rewrites it to
+`$PUBLIC_IMAGES_URL/<key>` so Astro can fetch and optimise the file (`src/utils/images/uploads.ts`),
+and the deployed site serves it straight out of R2 (`workers/site/`, see
+[docs/cloudflare.md](./cloudflare.md)). Changing the prefix is changing that one file.
+
+Absolute `https://<images host>/<key>` URLs written before the prefix existed keep working — they
+are just remote URLs — so nothing has to be migrated in a hurry.
+
+Which upload route the browser takes is one environment variable; both routes — pasting a shared R2
+secret, or the pair of Workers that derive a credential per editor — are documented in
 **[docs/media-upload.md](./media-upload.md)**. Uploads are prefixed per field (`events/covers/`,
 `events/gallery/`, `venues/`, `series/`).
 

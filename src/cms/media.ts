@@ -1,5 +1,6 @@
 import type { CmsMediaConfig } from "@/cms/types";
 import { MAX_IMAGE_WIDTH } from "@/constants";
+import { UPLOADS_PUBLIC_URL } from "@/uploads";
 
 /** Upload ceiling, well under the GitHub Contents API blob limit. */
 const MAX_UPLOAD_BYTES = 10 * 1024 * 1024;
@@ -43,11 +44,12 @@ export const MEDIA_ACCESS_KEY_PLACEHOLDER = "pending-sign-in";
  */
 function uploadLibrary(prefix: string): MediaLibraries {
   const env = import.meta.env;
-  const publicUrl = env.PUBLIC_IMAGES_URL;
   const bucket = env.PUBLIC_R2_BUCKET;
-  if (!bucket || !publicUrl) return {};
+  if (!bucket) return {};
 
-  const shared = { bucket, prefix, public_url: publicUrl };
+  // Root-relative on purpose: an entry stores `/uploads/<key>` and never a hostname.
+  // Sveltia only ever concatenates this with the key, so it does not have to be absolute.
+  const shared = { bucket, prefix, public_url: UPLOADS_PUBLIC_URL };
   const endpoint = env.PUBLIC_MEDIA_UPLOAD_ENDPOINT;
 
   if (endpoint) {
