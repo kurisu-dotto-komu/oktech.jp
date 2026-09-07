@@ -38,11 +38,11 @@ Done on the `sveltia-cms` branch, deployed on staging:
 - Photo galleries are editable, orderable and captionable in the CMS.
 - Venue maps are produced at build time from a pin the editor drops on a map widget; the existing committed map images are still used where they exist.
 - Renaming an entry records the old URL and the build emits a redirect for it, so an editor cannot break an inbound link.
-- CMS uploads go to the media bucket, either directly or through an upload Worker with a maintainer whitelist ([docs/media-upload.md](./media-upload.md)).
+- CMS uploads go to the media bucket through an upload Worker that derives each editor's credential from their GitHub sign-in (write access to the repository required) ([docs/media-upload.md](./media-upload.md)).
 - Markdown bodies are edited in a CodeMirror editor with syntax highlighting instead of a rich-text control.
 - Because a static build goes stale when an event passes, a daily workflow computes the next event's end time from the content and triggers a rebuild once it has passed.
 
-Not yet done: the ~350 MB of legacy images still live in Git, the upload Worker is written and tested but not deployed, and there is no image cropping in the CMS.
+Not yet done: the ~350 MB of legacy images still live in Git, the media bucket has no backup yet, and there is no image cropping in the CMS.
 
 ## Plans
 
