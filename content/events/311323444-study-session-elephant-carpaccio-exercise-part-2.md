@@ -1,5 +1,5 @@
 ---
-title: 'Study Session / Elephant Carpaccio Exercise Part 2: Remaking it'
+title: 'Elephant Carpaccio Exercise Part 2: Remaking it'
 description: Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next OKTech Study Session,...
 dateTime: 2025-11-09 19:00
 duration: 120

@@ -1,5 +1,5 @@
 ---
-title: Agentic Assembly - AI Engineering Support Group
+title: Homegrown
 description: A small weekly gathering for engineers working at the bleeding edge of agentic engineering.
 dateTime: 2026-07-11 10:00
 duration: 120

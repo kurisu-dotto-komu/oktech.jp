@@ -1,5 +1,5 @@
 ---
-title: Agentic Assembly - AI Engineering Support Group
+title: Compiler as Harness
 description: A small weekly gathering for engineers working at the bleeding edge of agentic engineering.
 dateTime: 2026-06-27 10:00
 duration: 120

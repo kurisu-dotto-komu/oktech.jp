@@ -1,5 +1,5 @@
 ---
-title: OKTech Study Session - A Walking Skeleton Approach
+title: A Walking Skeleton Approach
 description: Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next OKTech Study Session ...
 dateTime: 2025-07-20 19:00
 duration: 120

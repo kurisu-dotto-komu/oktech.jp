@@ -1,5 +1,5 @@
 ---
-title: 'Study Session: How Long Will This Take? Estimating in the AI Era'
+title: 'How Long Will This Take? Estimating in the AI Era'
 description: Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next OKTech Study Session,...
 dateTime: 2026-06-07 19:00
 duration: 120

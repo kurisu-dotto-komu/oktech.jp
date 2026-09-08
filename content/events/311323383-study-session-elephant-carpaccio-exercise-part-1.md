@@ -1,5 +1,5 @@
 ---
-title: 'Study Session / Elephant Carpaccio Exercise Part 1: Slicing it up'
+title: 'Elephant Carpaccio Exercise Part 1: Slicing it up'
 description: Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next Study Session, a gath...
 dateTime: 2025-10-19 19:00
 duration: 120

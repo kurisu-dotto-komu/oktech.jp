@@ -1,5 +1,5 @@
 ---
-title: 'OKTech Study Session - DDD part 1: Not Another Acronym?'
+title: 'DDD part 1: Not Another Acronym?'
 description: Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next OKTech Study Session,...
 dateTime: 2025-08-03 19:00
 duration: 120

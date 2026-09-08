@@ -1,5 +1,5 @@
 ---
-title: Agentic Assembly - AI Engineering Support Group
+title: Meat Proxy
 description: A small bi-weekly gathering for engineers, vibe coders, and the curious, working at the bleeding edge of agentic engineering.
 dateTime: 2026-09-05 10:00
 duration: 120

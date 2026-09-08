@@ -1,5 +1,5 @@
 ---
-title: 'OKTech Study Session - DDD part 3: Putting the model into practice'
+title: 'DDD part 3: Putting the model into practice'
 description: 'Notice: The event time changed. Robert is feeling under the weather and we had to shift the schedule by one event.'
 dateTime: 2025-09-14 19:00
 duration: 120

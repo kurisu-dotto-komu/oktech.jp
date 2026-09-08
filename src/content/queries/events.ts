@@ -16,6 +16,8 @@ export type EventEnriched = {
   data: Omit<EventData, "cover"> & {
     id: string;
     cover: string;
+    /** Name of the event's series, shown with every occurrence, e.g. "Agentic Assembly". */
+    seriesTitle?: string;
     /** Cadence text of the event's series, e.g. "Recurring every other Saturday". */
     seriesLabel?: string;
     isNextRecurringOccurrence?: boolean;
@@ -78,6 +80,7 @@ export const getEvent = memoize(async (eventSlug: string): Promise<EventEnriched
       id: entry.id,
       ...entry.data,
       cover,
+      ...(series ? { seriesTitle: series.data.title } : {}),
       ...(series?.data.label ? { seriesLabel: series.data.label } : {}),
       ...(isNext ? { isNextRecurringOccurrence: true } : {}),
       coverCompact,

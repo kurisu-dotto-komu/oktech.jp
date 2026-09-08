@@ -1,5 +1,5 @@
 ---
-title: 'Study Session: Test Driven Development: Write the Test First'
+title: 'Test Driven Development: Write the Test First'
 description: Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next OKTech Study Session,...
 dateTime: 2026-06-21 19:00
 duration: 120

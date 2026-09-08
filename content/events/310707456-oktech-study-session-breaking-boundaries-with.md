@@ -1,5 +1,5 @@
 ---
-title: OKTech Study Session - Breaking Boundaries with Hexagonal Architecture
+title: Breaking Boundaries with Hexagonal Architecture
 description: 'Notice: The event time has changed.'
 dateTime: 2025-10-05 19:00
 duration: 120

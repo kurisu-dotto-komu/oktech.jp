@@ -1,5 +1,5 @@
 ---
-title: 'Study Session: Inversion of Control & Dependency Injection'
+title: 'Inversion of Control & Dependency Injection'
 description: Are you a software engineer who enjoys digging into new ideas, practices, and patterns that strengthen your craft? Join us for the next OKTech Study Session,...
 dateTime: 2025-11-23 19:00
 duration: 120
