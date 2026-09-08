@@ -1,6 +1,6 @@
 import type { CmsMediaConfig } from "@/cms/types";
 import { MAX_IMAGE_WIDTH } from "@/constants";
-import { UPLOADS_PUBLIC_URL } from "@/uploads";
+import { LEGACY_UPLOADS_PREFIX } from "@/uploads";
 
 /** Upload ceiling, well under the GitHub Contents API blob limit. */
 const MAX_UPLOAD_BYTES = 10 * 1024 * 1024;
@@ -21,6 +21,23 @@ export const R2_PREFIX = {
 } as const;
 
 type MediaLibraries = NonNullable<CmsMediaConfig["media_libraries"]>;
+
+/**
+ * What the bucket libraries carry as `public_url`, and therefore the prefix Sveltia puts in
+ * front of every key it hands back — it builds an asset URL as `${public_url}/${key}` and
+ * stores that verbatim (the S3 libraries declare `hotlinking: true`).
+ *
+ * It is the images host rather than `cloudflare:` so the asset **picker** keeps working:
+ * every tile in the browser is a plain `<img src>` built from this value, and a scheme no
+ * browser knows would leave the grid empty. `src/cms/uploadRefs.ts` turns the result into
+ * `cloudflare:/<key>` on save, so nothing reaches an entry with a hostname in it.
+ *
+ * No trailing slash: one would double up against the key.
+ */
+export function uploadsPublicUrl(): string {
+  const base = import.meta.env.PUBLIC_IMAGES_URL;
+  return base ? base.replace(/\/$/, "") : LEGACY_UPLOADS_PREFIX.replace(/\/$/, "");
+}
 
 /**
  * Stand-in `access_key_id` for the upload-Worker mode. Sveltia reads the access key id from
@@ -47,9 +64,7 @@ function uploadLibrary(prefix: string): MediaLibraries {
   const bucket = env.PUBLIC_R2_BUCKET;
   if (!bucket) return {};
 
-  // Root-relative on purpose: an entry stores `/uploads/<key>` and never a hostname.
-  // Sveltia only ever concatenates this with the key, so it does not have to be absolute.
-  const shared = { bucket, prefix, public_url: UPLOADS_PUBLIC_URL };
+  const shared = { bucket, prefix, public_url: uploadsPublicUrl() };
   const endpoint = env.PUBLIC_MEDIA_UPLOAD_ENDPOINT;
 
   if (endpoint) {

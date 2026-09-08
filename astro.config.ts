@@ -14,6 +14,7 @@ import {
   remarkDescription,
   remarkReadingTime,
   remarkRelativeAssets,
+  remarkUploadRefs,
 } from "./src/utils/remarkPlugins";
 
 // Get base path from environment variable, default to "" (root)
@@ -88,7 +89,13 @@ export default defineConfig({
     ...buildAliasRedirects(process.cwd()),
   },
   markdown: {
-    remarkPlugins: [remarkBreaks, remarkReadingTime, remarkDescription, remarkRelativeAssets],
+    remarkPlugins: [
+      remarkBreaks,
+      remarkReadingTime,
+      remarkDescription,
+      remarkRelativeAssets,
+      [remarkUploadRefs, { imagesUrl: process.env.PUBLIC_IMAGES_URL }],
+    ],
     rehypePlugins: [rehypeTableWrapper, rehypeTaskListCheckbox],
   },
   experimental: {

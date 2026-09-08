@@ -72,6 +72,7 @@ import { SITE } from "@/constants";
       import MarkdownEditorControl from "@/cms/widgets/markdownEditor";
       import { MARKDOWN_WIDGET, PULL_REQUEST_WIDGET } from "@/cms/widgets/names";
       import PullRequestControl from "@/cms/widgets/pullRequest";
+      import { registerUploadRefs } from "@/cms/uploadRefs";
 
       const config = buildCmsConfig();
 
@@ -87,6 +88,7 @@ import { SITE } from "@/constants";
       CMS.registerWidget(MARKDOWN_WIDGET, MarkdownEditorControl);
       registerPreviews(CMS);
       registerCmsEvents(CMS);
+      registerUploadRefs(CMS);
       CMS.init({ config });
     </script>
   </body>

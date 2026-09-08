@@ -42,7 +42,9 @@ Keep them outside the repo (e.g. `~/.cloudflare.env`, `chmod 600`). Never commit
 
 [`wrangler.jsonc`](../wrangler.jsonc) deploys `dist/` as Workers static assets; set `name` for your Worker. The custom domain is passed at deploy time and its DNS record is created automatically on first deploy.
 
-It also carries a small script, [`workers/site/`](../workers/site/), bound to the media bucket as `MEDIA` and to the assets as `ASSETS`. `assets.run_worker_first` is `["/uploads/*"]`, so the script only ever sees that one route — it streams the R2 object with a long `cache-control` and 404s otherwise, and everything else is served by the asset layer as before. That is what makes entries able to store `/uploads/<key>` with no hostname in them (see [docs/media-upload.md](./media-upload.md)).
+It also carries a small script, [`workers/site/`](../workers/site/), bound to the media bucket as `MEDIA` and to the assets as `ASSETS`. `assets.run_worker_first` is `["/uploads/*"]`, so the script only ever sees that one route — it streams the R2 object with a long `cache-control` and 404s otherwise, and everything else is served by the asset layer as before.
+
+Entries now store **`cloudflare:/<key>`** and the build resolves that to the images host, so nothing written today goes through this route; it stays for the `/uploads/<key>` references saved before the scheme existed, and for anyone who bookmarked one (see [docs/media-upload.md](./media-upload.md)).
 
 Wrangler has no environment-variable interpolation and an R2 binding naming a bucket that does not exist fails the deploy, so the bucket name is injected at deploy time: [`scripts/wrangler-config.ts`](../scripts/wrangler-config.ts) (`npm run wrangler:config`) reads `MEDIA_BUCKET` — or `PUBLIC_R2_BUCKET`, which CI already sets from the `R2_BUCKET` repository variable — and writes `wrangler.generated.jsonc`, which the deploy passes with `--config`. With no bucket configured it drops the script and the binding entirely and the site deploys as the assets-only Worker it was before.
 

@@ -13,6 +13,7 @@ const config: KnipConfig = {
     "src/cms/widgets/*.tsx",
     "src/cms/previews/index.ts",
     "src/cms/events.ts",
+    "src/cms/uploadRefs.ts",
   ],
 
   // Project files to analyze

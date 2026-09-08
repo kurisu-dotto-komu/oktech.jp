@@ -4,6 +4,10 @@ import path from "path";
 import getReadingTime from "reading-time";
 import { visit } from "unist-util-visit";
 
+// Relative rather than `@/`: astro.config.ts imports this module outside the Vite graph
+// that resolves the alias.
+import { uploadKey } from "../uploads";
+
 /**
  * Remark plugin to add reading time to frontmatter
  */
@@ -73,6 +77,41 @@ export function remarkRelativeAssets() {
       }
     });
   };
+}
+
+/**
+ * Rewrites the media-bucket references a CMS body carries — `cloudflare:/<key>`, and the
+ * `/uploads/<key>` form written before the scheme — to the images host for this build.
+ *
+ * Front matter goes through `src/utils/images/`; a body is plain Markdown that nothing else
+ * looks at, so an image inserted with the CMS asset picker would otherwise reach the browser
+ * with a scheme it cannot fetch. Without `PUBLIC_IMAGES_URL` there is nothing to point at and
+ * the reference is left alone rather than turned into a wrong URL.
+ */
+export function remarkUploadRefs({ imagesUrl }: { imagesUrl?: string } = {}) {
+  const base = imagesUrl?.replace(/\/$/, "");
+
+  return function (tree: Root) {
+    if (!base) return;
+
+    visit(tree, (node) => {
+      if (node.type === "image" || node.type === "link" || node.type === "definition") {
+        node.url = resolveUploadRef(node.url, base);
+      }
+      if (node.type === "html") {
+        node.value = node.value.replace(
+          /(src|href)\s*=\s*(["'])([^"']+)\2/g,
+          (_match, attr: string, quote: string, url: string) =>
+            `${attr}=${quote}${resolveUploadRef(url, base)}${quote}`,
+        );
+      }
+    });
+  };
+}
+
+function resolveUploadRef(url: string, base: string): string {
+  const key = uploadKey(url);
+  return key ? `${base}/${key}` : url;
 }
 
 /** Anchors, absolute paths and anything with a URI scheme (http:, mailto:, tel:) stay as they are. */

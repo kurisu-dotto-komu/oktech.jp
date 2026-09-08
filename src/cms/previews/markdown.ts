@@ -1,6 +1,12 @@
 import { micromark } from "micromark";
 import { gfm, gfmHtml } from "micromark-extension-gfm";
 
+import { bucketImageUrl } from "@/cms/previews/assets";
+import { UPLOADS_PREFIX } from "@/uploads";
+
+/** Media-bucket references in the body, which the build rewrites the same way. */
+const BUCKET_REF = new RegExp(`${UPLOADS_PREFIX}[^\\s)"'<>]+`, "g");
+
 /**
  * Markdown → HTML for the preview pane.
  *
@@ -14,7 +20,9 @@ import { gfm, gfmHtml } from "micromark-extension-gfm";
  * is what makes the result safe to hand to `dangerouslySetInnerHTML`.
  */
 export function renderMarkdown(source: string): string {
-  return micromark(source, {
+  const resolved = source.replace(BUCKET_REF, (ref) => bucketImageUrl(ref) ?? ref);
+
+  return micromark(resolved, {
     extensions: [gfm()],
     htmlExtensions: [gfmHtml()],
   });

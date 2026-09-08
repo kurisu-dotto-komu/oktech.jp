@@ -180,23 +180,35 @@ action on an upcoming event links to — the first such row wins.
 
 An image field value is just a string, resolved by three rules:
 
-- **`/uploads/<key>`** is a CMS upload, living in the R2 media bucket.
+- **`cloudflare:/<key>`** is a CMS upload, living in the R2 media bucket.
 - **`https://…`** is a remote URL, fetched and optimised by Astro at build time when its host is in
   `image.remotePatterns`.
 - Anything else is a path in the repository — `/content/media/events/<slug>/x.webp` for events,
   `./x.webp` for a venue or article bundle. (`content/media/` is the older, in-Git store; it is
-  unrelated to the `/uploads/` prefix and is not going away yet.)
+  unrelated to the bucket and is not going away yet.)
 
-**No content ever names the media host.** An entry stores `/uploads/events/covers/x.webp` and the
-prefix is the whole contract; where that key is actually served from is environment configuration,
-defined once in [`src/uploads.ts`](../src/uploads.ts) and read in three places: the CMS writes it
-(`src/cms/media.ts` sets the media library's `public_url`), the build rewrites it to
-`$PUBLIC_IMAGES_URL/<key>` so Astro can fetch and optimise the file (`src/utils/images/uploads.ts`),
-and the deployed site serves it straight out of R2 (`workers/site/`, see
-[docs/cloudflare.md](./cloudflare.md)). Changing the prefix is changing that one file.
+**No content ever names the media host.** An entry stores `cloudflare:/events/covers/x.webp` and
+that reference is the whole contract; where the key is actually served from is environment
+configuration, defined once in [`src/uploads.ts`](../src/uploads.ts) and read where it matters: the
+build rewrites it to `$PUBLIC_IMAGES_URL/<key>` so Astro can fetch and optimise the file
+(`src/utils/images/uploads.ts` for fields, `remarkUploadRefs` in `src/utils/remarkPlugins.ts` for
+images and links inside a body). Changing the convention is changing that one file.
 
-Absolute `https://<images host>/<key>` URLs written before the prefix existed keep working — they
-are just remote URLs — so nothing has to be migrated in a hurry.
+**The scheme is deliberate.** The earlier `/uploads/<key>` looked like a path on this site and was
+read as one; nothing is stored under `/uploads` in the repository, and only the build knows where
+the file really is. A scheme cannot be mistaken for a location. The deployed site still answers
+`/uploads/*` out of R2 (`workers/site/`, see [docs/cloudflare.md](./cloudflare.md)) for the
+references saved before the change, and absolute `https://<images host>/<key>` URLs keep working as
+plain remote URLs — nothing has to be migrated.
+
+**What the CMS shows.** The media library's `public_url` is the images host, so the asset picker's
+thumbnails load, and a `preSave` listener ([`src/cms/uploadRefs.ts`](../src/cms/uploadRefs.ts))
+rewrites `<public_url>/<key>` to `cloudflare:/<key>` in every field and in the body before the
+commit. The cost is the image **field**: reopen an entry and it shows a document icon and the raw
+`cloudflare:/…` text, because Sveltia's own asset lookup only understands `https:`, `data:`,
+`blob:` and repository paths. The **preview pane renders the real image** — the templates under
+`src/cms/previews/` resolve the scheme through `PUBLIC_IMAGES_URL` themselves — which is where an
+editor checks their work anyway.
 
 Which upload route the browser takes is one environment variable; both routes — pasting a shared R2
 secret, or the pair of Workers that derive a credential per editor — are documented in

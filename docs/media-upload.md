@@ -1,12 +1,24 @@
 # Media uploads
 
 Images created in the CMS go to the R2 media bucket rather than into Git, and entries store
-a host-free reference: **`/uploads/<key>`**, never `https://images.<site-host>/<key>`. The
-prefix is the media library's `public_url`, defined once in
-[`src/uploads.ts`](../src/uploads.ts); the build rewrites it to `$PUBLIC_IMAGES_URL/<key>` to
-fetch and optimise the file, and the deployed site serves `/uploads/*` from R2 through the
-site Worker (see [docs/cloudflare.md](./cloudflare.md)). Absolute URLs written before the
-prefix existed still resolve, so nothing has to be migrated.
+a host-free reference: **`cloudflare:/<key>`**, never `https://images.<site-host>/<key>`. The
+convention is defined once in [`src/uploads.ts`](../src/uploads.ts); the build rewrites it to
+`$PUBLIC_IMAGES_URL/<key>` to fetch and optimise the file. Absolute URLs, and the earlier
+`/uploads/<key>` form, still resolve, so nothing has to be migrated.
+
+**Why a scheme.** `/uploads/<key>` reads like a path on this site, and people treated it as
+one — it is not; nothing is stored under `/uploads` in the repository. A scheme says plainly
+that the file lives somewhere else and that only the build knows where. (The deployed site
+still answers `/uploads/*` out of R2 through the site Worker, for the references saved before
+the scheme; see [docs/cloudflare.md](./cloudflare.md).)
+
+**How it gets written.** Sveltia has no say in what an S3 media library stores: it builds
+`{public_url}/{key}` and saves that string. `public_url` is therefore the images host — that
+is also what every thumbnail in the asset picker is an `<img src>` for, so a scheme there
+would leave the grid blank — and a `preSave` event listener
+([`src/cms/uploadRefs.ts`](../src/cms/uploadRefs.ts)) rewrites every value matching
+`<public_url>/<key>` to `cloudflare:/<key>` on the way into the commit, front matter and body
+alike. `preSave` is the one hook whose return value Sveltia writes back.
 
 There are two ways for the browser to reach the bucket, and the CMS picks between them from
 one environment variable.
@@ -117,9 +129,12 @@ answers the preflight itself from `ALLOWED_ORIGINS`. That list takes `*` as a wi
   for someone.
 - Uploads land under `events/`, `venues/` or `series/` and happen **immediately**, not on
   publish; abandoning a draft leaves a harmless orphan object.
-- The reference saved in the entry is `/uploads/<key>`. The image field shows that path
-  rather than a thumbnail when the entry is reopened — Sveltia only previews repository
-  paths and absolute URLs — but the site renders it correctly.
+- The reference saved in the entry is `cloudflare:/<key>`. **Reopen the entry and the image
+  field shows a document icon and that text, not a thumbnail** — Sveltia only previews
+  `https:`, `data:`, `blob:` and repository paths, and a scheme it does not know is a dead
+  end for it. The **preview pane beside the form does render the real image**, as does the
+  site; and the picker you upload through has thumbnails throughout, because it works from
+  the images host rather than from the saved reference.
 - Images are converted to webp and resized in the browser before they are sent.
 
 ## Troubleshooting

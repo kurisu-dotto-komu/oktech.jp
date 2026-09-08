@@ -6,9 +6,9 @@ import type { ImageDimensions, ImageRef, ImageSources, ImageVariant } from "./ty
 import { parseUploadRef } from "./uploads";
 
 /**
- * `/uploads/<key>` is a CMS upload, resolved to the media host for this build; an https URL
- * is remote as it stands — including one already written against the media host, from before
- * the prefix existed. Anything else is a path in the repository.
+ * `cloudflare:/<key>` is a CMS upload, resolved to the media host for this build — as is the
+ * `/uploads/<key>` form entries used before the scheme. An https URL is remote as it stands,
+ * including one already written against the media host. Anything else is a repository path.
  */
 export function parseImageRef(value: string): ImageRef {
   return parseUploadRef(value) ?? parseRemoteRef(value) ?? { kind: "local", path: value };

@@ -1,10 +1,14 @@
 // Relative rather than `@/`: this file is bundled by Wrangler, which does not know the
-// TypeScript path alias. The prefix has to be the one the CMS writes and the build reads.
-import { UPLOADS_PREFIX, uploadKey } from "../../../src/uploads";
+// TypeScript path alias. The prefix has to be the one the build reads.
+import { LEGACY_UPLOADS_PREFIX, uploadKey } from "../../../src/uploads";
 import type { Env } from "./types";
 
 /**
  * Serves `/uploads/<key>` from the media bucket.
+ *
+ * Entries now store `cloudflare:/<key>` and the build resolves that to the images host, so
+ * nothing written today reaches this route — it stays for the references saved before the
+ * scheme existed, and for anyone who bookmarked one.
  *
  * `run_worker_first` in wrangler.jsonc limits this Worker to that one route, so every other
  * request is answered by the static asset layer without ever reaching here; `ASSETS.fetch`
@@ -39,7 +43,7 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const { pathname } = new URL(request.url);
 
-    if (pathname.startsWith(UPLOADS_PREFIX)) return serveUpload(env, request, pathname);
+    if (pathname.startsWith(LEGACY_UPLOADS_PREFIX)) return serveUpload(env, request, pathname);
 
     return env.ASSETS.fetch(request);
   },
