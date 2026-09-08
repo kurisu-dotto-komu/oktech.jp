@@ -16,8 +16,10 @@ export type EventEnriched = {
   data: Omit<EventData, "cover"> & {
     id: string;
     cover: string;
-    /** Name of the event's series, shown with every occurrence, e.g. "Agentic Assembly". */
+    /** Name of the event's series, shown as an eyebrow above the title, e.g. "Agentic Assembly". */
     seriesTitle?: string;
+    /** The authored title without the series prefix. */
+    sessionTitle?: string;
     /** Cadence text of the event's series, e.g. "Recurring every other Saturday". */
     seriesLabel?: string;
     isNextRecurringOccurrence?: boolean;
@@ -79,8 +81,10 @@ export const getEvent = memoize(async (eventSlug: string): Promise<EventEnriched
     data: {
       id: entry.id,
       ...entry.data,
-      // Occurrences are authored with just their own title; the series name is prepended
-      title: series ? `${series.data.title}: ${entry.data.title}` : entry.data.title,
+      // Occurrences are authored with just their own title; single-string contexts get
+      // "Series - Title", visual ones render the series as an eyebrow (EventTitle)
+      title: series ? `${series.data.title} - ${entry.data.title}` : entry.data.title,
+      ...(series ? { sessionTitle: entry.data.title } : {}),
       cover,
       ...(series ? { seriesTitle: series.data.title } : {}),
       ...(series?.data.label ? { seriesLabel: series.data.label } : {}),

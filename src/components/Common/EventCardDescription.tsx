@@ -1,5 +1,6 @@
 import clsx from "clsx";
 
+import EventTitle from "@/components/Common/EventTitle";
 import type { EventEnriched } from "@/content";
 
 import CityBadge from "./CityBadge";
@@ -40,7 +41,7 @@ export default function EventCardDescription({ event, variant }: EventCardDescri
               variant === "big" && "text-xl",
             )}
           >
-            {event.data.title}
+            <EventTitle event={event} />
           </h3>
           {isCompact && <CityBadge className="badge-xs sm:badge-md" city={event.venue?.city} />}
         </div>

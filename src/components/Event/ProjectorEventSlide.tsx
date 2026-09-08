@@ -1,6 +1,7 @@
 import { LuCalendar, LuMapPin } from "react-icons/lu";
 
 import Brand from "@/components/Common/Brand";
+import EventTitle from "@/components/Common/EventTitle";
 import type { EventEnriched } from "@/content";
 
 interface ProjectorEventSlideProps {
@@ -29,7 +30,7 @@ export default function ProjectorEventSlide({
           className="text-base-content line-clamp-4 text-[5.5vw] leading-[1.1] font-bold"
           data-testid="projector-title"
         >
-          {event.data.title}
+          <EventTitle event={event} />
         </h1>
       </div>
 

@@ -4,6 +4,7 @@ import { getEvents, getEvent } from "@/content";
 import { channelUrl, rsvpChannel } from "@/content/channels";
 import EventAttachments from "@/components/Event/EventAttachments";
 import EventGallery from "@/components/Event/EventGallery";
+import EventTitle from "@/components/Common/EventTitle";
 import SidebarPageLayout from "@/layouts/SidebarPageLayout.astro";
 import { cmsEditHref } from "@/utils/cms";
 import EventImageBig from "@/components/Event/EventImageBig";
@@ -63,7 +64,7 @@ const marketingHref = rsvp ? channelUrl(rsvp) : undefined;
         <LocationCardEvent event={event} horizontal client:load />
       </div>
       <h1 class="sub-title !font-medium">
-        {event.data.title}
+        <EventTitle event={event} />
       </h1>
       <EventTags tags={event.data.topics} />
       <div class="prose prose-lg max-w-none"><Content /></div>

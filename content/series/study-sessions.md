@@ -1,5 +1,5 @@
 ---
-title: Study Sessions
+title: Study Session
 label: Ongoing series · dates vary
 devOnly: false
 ---

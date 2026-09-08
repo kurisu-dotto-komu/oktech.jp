@@ -2,6 +2,7 @@ import { useMemo } from "react";
 
 import Container from "@/components/Common/Container";
 import EventCardInfo from "@/components/Common/EventCardInfo";
+import EventTitle from "@/components/Common/EventTitle";
 import GalleryDisclaimer from "@/components/Common/GalleryDisclaimer";
 import MegaSlideshowButton from "@/components/Common/MegaSlideshowButton";
 import EventGalleryImages from "@/components/Event/EventGalleryImages";
@@ -64,7 +65,9 @@ export default function EventsViewAlbum({ events }: Props) {
                   href={`/events/${event.id}`}
                   className="flex flex-col gap-4 transition-opacity hover:opacity-80 md:flex-row md:items-end md:justify-between"
                 >
-                  <h2 className="text-2xl font-bold">{event.data.title}</h2>
+                  <h2 className="text-2xl font-bold">
+                    <EventTitle event={event} />
+                  </h2>
                   <div className="flex flex-row items-start gap-4 md:flex-row-reverse">
                     <CityBadge city={event.venue?.city} />
                     <EventCardInfo event={event} variant="big" fields={["date"]} fullAddress />
