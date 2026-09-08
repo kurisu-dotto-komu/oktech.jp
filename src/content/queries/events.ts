@@ -79,6 +79,8 @@ export const getEvent = memoize(async (eventSlug: string): Promise<EventEnriched
     data: {
       id: entry.id,
       ...entry.data,
+      // Occurrences are authored with just their own title; the series name is prepended
+      title: series ? `${series.data.title}: ${entry.data.title}` : entry.data.title,
       cover,
       ...(series ? { seriesTitle: series.data.title } : {}),
       ...(series?.data.label ? { seriesLabel: series.data.label } : {}),

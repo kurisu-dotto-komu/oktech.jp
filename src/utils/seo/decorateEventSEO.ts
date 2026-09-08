@@ -27,10 +27,7 @@ export async function decorateEventSEO(
       event.data.coverPage?.src ??
       getOGImageWithFallback(pathname, { eventId, title: event.data.title });
 
-    // Series occurrences carry only their own title; the series name gives it context
-    const pageTitle = event.data.seriesTitle
-      ? `${event.data.title} · ${event.data.seriesTitle}`
-      : event.data.title;
+    const pageTitle = event.data.title;
 
     const baseKeywords = ["Event", "Technology", "Meetup"];
     const additionalKeywords = topics.filter((keyword): keyword is string => Boolean(keyword));

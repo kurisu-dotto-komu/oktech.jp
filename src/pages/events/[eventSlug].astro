@@ -62,11 +62,6 @@ const marketingHref = rsvp ? channelUrl(rsvp) : undefined;
       <div class="flex flex-col gap-6 pb-8 lg:hidden">
         <LocationCardEvent event={event} horizontal client:load />
       </div>
-      {
-        event.data.seriesTitle && (
-          <p class="text-base-content/60 -mb-4 font-medium">{event.data.seriesTitle}</p>
-        )
-      }
       <h1 class="sub-title !font-medium">
         {event.data.title}
       </h1>
