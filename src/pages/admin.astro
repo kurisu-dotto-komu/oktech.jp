@@ -29,6 +29,22 @@ import { SITE } from "@/constants";
         display: none;
       }
 
+      /*
+       * The thumbnail src/cms/fieldThumbnails.ts puts into an image field whose value is a
+       * `cloudflare:/<key>` reference, in place of the document icon Sveltia falls back to.
+       * Both rules key off the attribute that module sets, so a box it has not touched keeps
+       * Sveltia's own appearance.
+       */
+      .preview[data-cms-thumbnail] > .icon {
+        display: none;
+      }
+
+      .preview[data-cms-thumbnail] > img[data-cms-thumbnail] {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+
       /* The post-save pull request bar. The site's Tailwind build is not loaded here, so
          these are the only styles src/cms/notice.ts has to work with. */
       .cms-notice {
@@ -68,7 +84,9 @@ import { SITE } from "@/constants";
       import { bootstrapMediaUploads } from "@/cms/bootstrap";
       import { buildCmsConfig } from "@/cms/config";
       import { registerCmsEvents } from "@/cms/events";
+      import { registerFieldThumbnails } from "@/cms/fieldThumbnails";
       import { registerPreviews } from "@/cms/previews";
+      import { registerRequiredFields } from "@/cms/requiredFields";
       import MarkdownEditorControl from "@/cms/widgets/markdownEditor";
       import { MARKDOWN_WIDGET, PULL_REQUEST_WIDGET } from "@/cms/widgets/names";
       import PullRequestControl from "@/cms/widgets/pullRequest";
@@ -88,7 +106,10 @@ import { SITE } from "@/constants";
       CMS.registerWidget(MARKDOWN_WIDGET, MarkdownEditorControl);
       registerPreviews(CMS);
       registerCmsEvents(CMS);
+      // Before the rewrite: an entry that is not going to be saved is not worth rewriting.
+      registerRequiredFields(CMS, config);
       registerUploadRefs(CMS);
+      registerFieldThumbnails();
       CMS.init({ config });
     </script>
   </body>

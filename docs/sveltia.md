@@ -14,23 +14,25 @@ version) and served from our own `/admin` page — no CDN, no `config.yml`.
 `CMS.init({ config: buildCmsConfig() })`. The config itself is TypeScript under
 [`src/cms/`](../src/cms/), type-checked against the types `@sveltia/cms` ships:
 
-| File               | Contents                                                              |
-| ------------------ | --------------------------------------------------------------------- |
-| `config.ts`        | `buildCmsConfig()` — assembles everything below                       |
-| `backend.ts`       | GitHub backend (repo, branch, OAuth origin)                           |
-| `media.ts`         | Global media folder, upload transformations, per-field bucket target  |
-| `bootstrap/`       | Exchanges the GitHub token for an upload credential before `CMS.init` |
-| `output.ts`        | Slug rules and markdown output options                                |
-| `parity.ts`        | Which schema keys are allowed to have no CMS field, and vice versa    |
-| `types.ts`         | Local aliases for the `@sveltia/cms` types                            |
-| `collections/*.ts` | `events`, `series`, `venues`, `articles`, `pages`                     |
-| `fields/*.ts`      | Shared field builders (`titleField`, `coverField`, `channelsField`…)  |
-| `widgets/*`        | The `pull_request` link and the `markdown_code` body editor           |
-| `previews/*`       | The preview-pane templates, rendered with the site's own components   |
-| `github/*`         | Looks an entry's pull request and its deploy preview up on GitHub     |
-| `events.ts`        | `postSave` / `postPublish` listeners behind the pull request notice   |
-| `notice.ts`        | The dismissible bar at the bottom of `/admin`                         |
-| `colorScheme.ts`   | Reads and watches the CMS light/dark choice, shared by both of those  |
+| File                 | Contents                                                                  |
+| -------------------- | ------------------------------------------------------------------------- |
+| `config.ts`          | `buildCmsConfig()` — assembles everything below                           |
+| `backend.ts`         | GitHub backend (repo, branch, OAuth origin)                               |
+| `media.ts`           | Global media folder, upload transformations, per-field bucket target      |
+| `bootstrap/`         | Exchanges the GitHub token for an upload credential before `CMS.init`     |
+| `output.ts`          | Slug rules and markdown output options                                    |
+| `parity.ts`          | Which schema keys are allowed to have no CMS field, and vice versa        |
+| `types.ts`           | Local aliases for the `@sveltia/cms` types                                |
+| `requiredFields.ts`  | `preSave` guard rejecting a save that would write an empty required field |
+| `fieldThumbnails.ts` | Shows the real image behind a `cloudflare:/` value in an image field      |
+| `collections/*.ts`   | `events`, `series`, `venues`, `articles`, `pages`                         |
+| `fields/*.ts`        | Shared field builders (`titleField`, `coverField`, `channelsField`…)      |
+| `widgets/*`          | The `pull_request` link and the `markdown_code` body editor               |
+| `previews/*`         | The preview-pane templates, rendered with the site's own components       |
+| `github/*`           | Looks an entry's pull request and its deploy preview up on GitHub         |
+| `events.ts`          | `postSave` / `postPublish` listeners behind the pull request notice       |
+| `notice.ts`          | The dismissible bar at the bottom of `/admin`                             |
+| `colorScheme.ts`     | Reads and watches the CMS light/dark choice, shared by both of those      |
 
 Event, venue and article pages carry a **CMS** footer link that opens that entry in the editor.
 Venues and articles are folder bundles, so Sveltia addresses them by their whole sub path
@@ -204,11 +206,22 @@ plain remote URLs — nothing has to be migrated.
 **What the CMS shows.** The media library's `public_url` is the images host, so the asset picker's
 thumbnails load, and a `preSave` listener ([`src/cms/uploadRefs.ts`](../src/cms/uploadRefs.ts))
 rewrites `<public_url>/<key>` to `cloudflare:/<key>` in every field and in the body before the
-commit. The cost is the image **field**: reopen an entry and it shows a document icon and the raw
-`cloudflare:/…` text, because Sveltia's own asset lookup only understands `https:`, `data:`,
-`blob:` and repository paths. The **preview pane renders the real image** — the templates under
-`src/cms/previews/` resolve the scheme through `PUBLIC_IMAGES_URL` themselves — which is where an
-editor checks their work anyway.
+commit. Sveltia's own asset lookup only understands `https:`, `data:`, `blob:` and repository
+paths, so it renders a saved bucket reference as a document icon beside the raw text. Two things
+put the picture back:
+
+- The **preview pane renders the real image** — the templates under `src/cms/previews/` resolve
+  the scheme through `PUBLIC_IMAGES_URL` themselves.
+- The image **field** shows a thumbnail next to the value, from
+  [`src/cms/fieldThumbnails.ts`](../src/cms/fieldThumbnails.ts). There is no supported hook for
+  this: `getMediaFieldURL()` passes a value through only for those three schemes, there is no
+  reverse lookup from `public_url` back to a key, and the field control is a Svelte component that
+  `CMS.getFieldType("image")` does not hand back, so it cannot be wrapped or re-registered. The
+  module is a `MutationObserver` that finds an image field whose displayed value is an upload
+  reference and adds an `<img>` to the empty preview box, hidden or shown by two rules in
+  `admin.astro` that key off the attribute it sets. **It is tied to three of Sveltia's class
+  names** (`.filled`, `.preview.no-thumbnail`, `.filename`) and is the first thing to check after
+  a `@sveltia/cms` upgrade; if they change it falls back to the icon rather than breaking.
 
 Which upload route the browser takes is one environment variable; both routes — pasting a shared R2
 secret, or the pair of Workers that derive a credential per editor — are documented in
@@ -282,6 +295,35 @@ Svelte components with no extension point: the card markup carries no slug, no c
 pull request reference, only the visible title and a build-specific Svelte scope class. Anything
 injected there would have to re-derive the slug from the rendered title and would break on the next
 release, so the board keeps Sveltia's own deploy-status badge and preview button and nothing more.
+
+## Required fields
+
+**Sveltia does not enforce a required field on a new editorial-workflow entry.** With
+`publish_mode: editorial_workflow` and a backend that implements it, `isRequiredEnforced()`
+(`services/contents/draft/validate/required.js`) returns `false` for any entry that has no pull
+request yet, and `saveEntry()` passes that straight into `validateEntry()`. Nothing is marked, no
+error is shown, and the commit goes through: Decap's answer to
+[decaporg/decap-cms#464](https://github.com/decaporg/decap-cms/issues/464) is that an unfinished
+entry may sit in a pull request until someone hands it over for review, which is where
+`validateWorkflowEntry()` does check it.
+
+That produced `content/events/555d18e2df14-abdca6c8d55c.md`, an event committed with `title: ''`
+and `dateTime: ''`. The name is what an empty slug template looks like: both tags resolved to
+nothing, so `fillTemplate()` fell back to a pair of random ids
+(`services/common/template/replacers.js`). `omit_empty_optional_fields` does not drop those two
+keys, because they are not optional.
+
+The leniency is taken back in [`src/cms/requiredFields.ts`](../src/cms/requiredFields.ts). It is a
+`preSave` listener — the last hook before the commit — that reads `required` from the same config
+Sveltia is given, walks it including every list row's sub-fields, and throws when a required value
+is empty. Throwing aborts the save, and `new Error("saving_failed", { cause })` is the one shape
+whose message the editor's error dialog prints, so the editor is told which fields to fill in. A
+title can therefore never be empty at commit time, which is also what keeps a random-id slug from
+being generated silently.
+
+Note that this makes `/admin` stricter than a local checkout: **Work with Local Repository** has no
+editorial workflow, so Sveltia's own field-level validation applies there and marks the fields red
+before this hook is ever reached.
 
 ## The preview pane
 

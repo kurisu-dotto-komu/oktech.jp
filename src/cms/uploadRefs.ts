@@ -1,20 +1,10 @@
 import type { AppEventListener } from "@sveltia/cms";
 
 import { uploadsPublicUrl } from "@/cms/media";
+import type { CmsEntryMap, CmsEventRegistry } from "@/cms/types";
 import { uploadRef } from "@/uploads";
 
-/** The Immutable Map methods this needs; the `immutable` types are not installed here. */
-interface EntryMap {
-  toJS(): unknown;
-  setIn(keyPath: (string | number)[], value: unknown): EntryMap;
-}
-
 type Change = { keyPath: (string | number)[]; value: string };
-
-/** The slice of the `@sveltia/cms` API this module uses, so admin.astro can pass `CMS` in. */
-export interface EventRegistry {
-  registerEventListener(listener: AppEventListener): void;
-}
 
 const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
@@ -59,16 +49,16 @@ function collect(node: unknown, keyPath: (string | number)[], pattern: RegExp): 
  * between the upload and the commit. Only the default locale is walked — the site is not
  * localised, and `i18n` is empty.
  */
-export function registerUploadRefs(cms: EventRegistry): void {
+export function registerUploadRefs(cms: CmsEventRegistry): void {
   cms.registerEventListener({
     name: "preSave",
     handler: ({ entry }) => {
-      const map = entry as unknown as EntryMap;
+      const map = entry as unknown as CmsEntryMap;
       const { data } = map.toJS() as { data?: unknown };
       const changes = collect(data, [], refPattern(uploadsPublicUrl()));
       if (!changes.length) return;
 
-      return changes.reduce<EntryMap>(
+      return changes.reduce<CmsEntryMap>(
         (updated, { keyPath, value }) => updated.setIn(["data", ...keyPath], value),
         map,
       ) as unknown as ReturnType<AppEventListener["handler"]>;
