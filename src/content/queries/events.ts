@@ -3,7 +3,11 @@ import { type CollectionEntry, getCollection, getEntry } from "astro:content";
 import { FALLBACK_COVER, SHOW_DEV_ENTRIES } from "@/constants";
 import { type GalleryImage, resolveGallery } from "@/content/queries/gallery";
 import { type ProcessedVenue, processVenue } from "@/content/queries/venues";
-import { isEventUpcoming, seriesKey } from "@/utils/eventFilters";
+import {
+  filterListedOccurrences,
+  isEventUpcoming,
+  nextSeriesOccurrenceIds,
+} from "@/utils/eventFilters";
 import { resolveEntryImage } from "@/utils/images";
 import { memoize } from "@/utils/memoize";
 import { type ResponsiveImageData, getResponsiveImage } from "@/utils/responsiveImage";
@@ -40,18 +44,9 @@ export type EventEnriched = {
  * Ids of the soonest still upcoming occurrence of each series, which is what `EventCardInfo`
  * renders the cadence badge from. Derived on read so it can never go stale.
  */
-const nextSeriesOccurrences = memoize(async (): Promise<Set<string>> => {
-  const events = await getCollection("events");
-  const now = Date.now();
-  const soonest = new Map<string, EventEntry>();
-  for (const event of events) {
-    const key = seriesKey(event);
-    if (!key || event.data.dateTime.getTime() <= now) continue;
-    const current = soonest.get(key);
-    if (!current || event.data.dateTime < current.data.dateTime) soonest.set(key, event);
-  }
-  return new Set([...soonest.values()].map((event) => event.id));
-});
+const nextSeriesOccurrences = memoize(
+  async (): Promise<Set<string>> => nextSeriesOccurrenceIds(await getCollection("events")),
+);
 
 export const getEvent = memoize(async (eventSlug: string): Promise<EventEnriched> => {
   const entry = await getEntry("events", eventSlug);
@@ -102,16 +97,34 @@ export const getEvent = memoize(async (eventSlug: string): Promise<EventEnriched
   };
 });
 
-export const getEvents = memoize(async (limitRecent?: number): Promise<EventEnriched[]> => {
+const sortedEvents = memoize(async (): Promise<EventEnriched[]> => {
   const events = await getCollection("events");
   const relevant = SHOW_DEV_ENTRIES ? events : events.filter((entry) => !entry.data.devOnly);
   const enriched = await Promise.all(relevant.map((entry) => getEvent(entry.id)));
-  const prioritized = enriched
-    // The loader hands entries over in file system order, so ties need a stable tiebreak.
-    .sort(
-      (a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime() || a.id.localeCompare(b.id),
-    )
-    .map((event, index) => ({ ...event, priority: index < 16 }));
+  // The loader hands entries over in file system order, so ties need a stable tiebreak.
+  return enriched.sort(
+    (a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime() || a.id.localeCompare(b.id),
+  );
+});
+
+/** Eager-loads the images of whatever comes first on the page it is rendered on. */
+const withPriority = (events: EventEnriched[]): EventEnriched[] =>
+  events.map((event, index) => ({ ...event, priority: index < 16 }));
+
+/**
+ * Every event, later occurrences of a series included. For the surfaces that address an
+ * occurrence directly: its page, its OG route, its .ics and the combined calendar.
+ */
+export const getAllEvents = memoize(
+  async (): Promise<EventEnriched[]> => withPriority(await sortedEvents()),
+);
+
+/**
+ * The listing-facing set: a series is announced by its next date only, so the occurrences
+ * after it are left out. Used by every browsable surface and by the feeds that mirror them.
+ */
+export const getEvents = memoize(async (limitRecent?: number): Promise<EventEnriched[]> => {
+  const prioritized = withPriority(filterListedOccurrences(await sortedEvents()));
   if (limitRecent === undefined) return prioritized;
   const upcomingIndex = prioritized.findIndex((event) => !isEventUpcoming(event));
   return prioritized.slice(0, upcomingIndex + limitRecent);

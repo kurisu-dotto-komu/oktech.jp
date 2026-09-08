@@ -1,6 +1,6 @@
 ---
 import { getEntry, render } from "astro:content";
-import { getEvents, getEvent } from "@/content";
+import { getAllEvents, getEvent } from "@/content";
 import { channelUrl, rsvpChannel } from "@/content/channels";
 import EventAttachments from "@/components/Event/EventAttachments";
 import EventGallery from "@/components/Event/EventGallery";
@@ -15,7 +15,7 @@ import MarketingRedirect from "@/components/Event/MarketingRedirect";
 import { isEventUpcoming } from "@/utils/eventFilters";
 
 export async function getStaticPaths() {
-  const events = await getEvents();
+  const events = await getAllEvents();
 
   return events.map(({ id }) => {
     return {

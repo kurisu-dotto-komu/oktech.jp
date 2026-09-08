@@ -1,12 +1,12 @@
 import type { APIRoute } from "astro";
 
-import { getEvents } from "@/content";
+import { getAllEvents } from "@/content";
 import { generateEventICS, wrapICSCalendar } from "@/utils/ics";
 
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const events = await getEvents();
+  const events = await getAllEvents();
 
   return events.map((event) => ({
     params: { eventSlug: event.id },

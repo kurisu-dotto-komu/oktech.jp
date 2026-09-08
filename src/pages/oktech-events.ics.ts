@@ -1,9 +1,9 @@
 import { SITE } from "@/constants";
-import { getEvents } from "@/content";
+import { getAllEvents } from "@/content";
 import { generateEventICS, wrapICSCalendar } from "@/utils/ics";
 
 export async function GET() {
-  const events = await getEvents();
+  const events = await getAllEvents();
 
   // Sort events by date (newest first)
   const sortedEvents = events.sort(

@@ -1,6 +1,6 @@
 import type { GetStaticPaths } from "astro";
 
-import { getEvents } from "@/content";
+import { getAllEvents } from "@/content";
 import { createOGImageRoute } from "@/utils/og";
 
 /**
@@ -14,7 +14,7 @@ import { createOGImageRoute } from "@/utils/og";
 export const GET = createOGImageRoute(async () => null);
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const events = await getEvents();
+  const events = await getAllEvents();
   return events.map((event) => ({
     params: { eventSlug: event.id },
   }));

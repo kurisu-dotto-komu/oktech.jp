@@ -16,6 +16,9 @@ interface SeriesMember {
   data: { series?: { id: string } | string; devOnly?: boolean };
 }
 
+/** An identifiable occurrence: enough to tell the occurrences of one series apart. */
+type SeriesOccurrence = EventWithDateTime & SeriesMember & { id: string };
+
 /**
  * Calculates the end time of an event including a buffer period
  */
@@ -106,6 +109,44 @@ export function dedupeSeriesOccurrences<T extends SeriesMember>(events: T[]): T[
     result.push(event);
   }
   return result;
+}
+
+/**
+ * Ids of the soonest still upcoming occurrence of each series — the one that carries the
+ * cadence label on its card.
+ */
+export function nextSeriesOccurrenceIds<T extends SeriesOccurrence>(
+  events: T[],
+  currentTime: Date = new Date(),
+): Set<string> {
+  const soonest = new Map<string, T>();
+  for (const event of events) {
+    const key = seriesKey(event);
+    if (!key || !isFutureOccurrence(event, currentTime)) continue;
+    const current = soonest.get(key);
+    if (!current || event.data.dateTime < current.data.dateTime) soonest.set(key, event);
+  }
+  return new Set([...soonest.values()].map((event) => event.id));
+}
+
+function isFutureOccurrence(event: EventWithDateTime, currentTime: Date): boolean {
+  return event.data.dateTime.getTime() > currentTime.getTime();
+}
+
+/**
+ * Drops the upcoming occurrences of a series that are not the soonest one. Listings — the
+ * landing page, /events, /events/list, /events/album, rss.xml and the sitemap — announce a
+ * series only by its next date; every occurrence keeps its own page, its own .ics and its
+ * slot in the combined calendar.
+ */
+export function filterListedOccurrences<T extends SeriesOccurrence>(
+  events: T[],
+  currentTime: Date = new Date(),
+): T[] {
+  const next = nextSeriesOccurrenceIds(events, currentTime);
+  return events.filter(
+    (event) => !seriesKey(event) || !isFutureOccurrence(event, currentTime) || next.has(event.id),
+  );
 }
 
 /**
