@@ -1,5 +1,5 @@
 ---
-title: Face the Bug
+title: 'AA12: Face the Bug'
 description: A small bi-weekly gathering for engineers, vibe coders, and the curious, working at the bleeding edge of agentic engineering.
 dateTime: 2026-08-15 10:00
 duration: 120

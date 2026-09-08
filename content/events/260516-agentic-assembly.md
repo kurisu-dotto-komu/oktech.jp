@@ -1,5 +1,5 @@
 ---
-title: Hello, AA
+title: 'AA01: Hello, AA'
 description: A small weekly gathering for engineers working at the bleeding edge of agentic engineering.
 dateTime: 2026-05-16 10:00
 duration: 120

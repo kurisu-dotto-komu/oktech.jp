@@ -1,5 +1,5 @@
 ---
-title: 'Engels'' Pause?'
+title: 'AA04: Engels'' Pause?'
 description: A small weekly gathering for engineers working at the bleeding edge of agentic engineering.
 dateTime: 2026-06-06 10:00
 duration: 120

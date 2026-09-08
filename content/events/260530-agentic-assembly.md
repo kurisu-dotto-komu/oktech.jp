@@ -1,5 +1,5 @@
 ---
-title: Workflows Unleashed
+title: 'AA03: Workflows Unleashed'
 description: A small weekly gathering for engineers working at the bleeding edge of agentic engineering.
 dateTime: 2026-05-30 10:00
 duration: 120

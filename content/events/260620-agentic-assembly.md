@@ -1,5 +1,5 @@
 ---
-title: Kill Switch
+title: 'AA06: Kill Switch'
 description: A small weekly gathering for engineers working at the bleeding edge of agentic engineering.
 dateTime: 2026-06-20 10:00
 duration: 120

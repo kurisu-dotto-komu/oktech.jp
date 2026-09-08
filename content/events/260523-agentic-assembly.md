@@ -1,5 +1,5 @@
 ---
-title: Foothills of the Singularity
+title: 'AA02: Foothills of the Singularity'
 description: A small weekly gathering for engineers working at the bleeding edge of agentic engineering.
 dateTime: 2026-05-23 10:00
 duration: 120
