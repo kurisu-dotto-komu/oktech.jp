@@ -1,9 +1,9 @@
 ---
-title: Agentic Assembly - AI Engineering Support Group
+title: Agentic Assembly - AI Engineering Support Group Test Change
 description: A small bi-weekly gathering for engineers, vibe coders, and the curious, working at the bleeding edge of agentic engineering.
 dateTime: 2026-10-31 10:00
 duration: 120
-cover: /content/media/series/agentic-assembly/cover_biweekly.webp
+cover: cloudflare:/events/covers/gettyimages-1279187433-2048x2048.webp
 venue: 27009944-the-deck
 series: agentic-assembly
 howToFindUs: Enter The DECK, 1st floor on the left, immediately inside 本町サザンビル. Direct access from Exit 14, Sakaisujihommachi Station (Osaka Metro Sakaisuji / Chuo Line). Exit 7 of Hommachi Station on the Midosuji Line might be quicker if you don't mind a short walk.
