@@ -8,10 +8,10 @@ const DEFAULT_WIDTHS = [420, 1198] as const;
 
 /** Runs Astro's image service; falls back to the raw source when it cannot (dev, unknown host). */
 export async function safeGetImage(options: UnresolvedImageTransform): Promise<{ src: string }> {
-  // In dev mode, bypass image optimization to avoid proxy/fetch issues
-  if (import.meta.env.DEV) {
-    const src = options.src as ImageMetadata;
-    return { src: src?.src || (options.src as string) || "" };
+  // In dev, remote sources are served as-is (no fetch through the dev server); local
+  // files still go through Astro's dev image endpoint so crops match the build
+  if (import.meta.env.DEV && typeof options.src === "string") {
+    return { src: options.src };
   }
   try {
     const { getImage } = await import("astro:assets");
