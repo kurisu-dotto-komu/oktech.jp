@@ -1,5 +1,7 @@
 ---
-title: Magical Command Line
+aliases:
+  - /events/315815216-september-event-topic-tbd
+title: Magical Command Line Testing
 description: Approaching Autumn, we are using September to look into how we can improve the experience of working with the command line.
 dateTime: 2026-09-12 17:00
 duration: 150
@@ -19,8 +21,8 @@ channels:
     ref: https://www.linkedin.com/events/7489558849868201984
   - type: discord
     ref: https://discord.com/events/1034792577293094972/1533353389159743571
-aliases:
-  - /events/315815216-september-event-topic-tbd
+isCancelled: false
+devOnly: false
 ---
 
 Approaching Autumn, we are using September to look into how we can improve the experience of working with the command line.
